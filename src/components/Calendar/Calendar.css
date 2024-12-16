@@ -1,0 +1,137 @@
+/* Container Styling */
+.calendar-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background-color: #ff8c00;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.calendar-header button:hover {
+  background-color: #ff6e00;
+}
+
+.calendar-header h2 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Calendar Body */
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Days of Week */
+.calendar-days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #555;
+}
+
+.calendar-day-of-week {
+  padding: 10px 0;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* Days Grid */
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* Individual Day Styling */
+.calendar-day {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-day:hover {
+  background-color: #ffe3c2;
+}
+
+/* Selected Day */
+.calendar-day.selected {
+  background-color: #ff8c00;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty Days */
+.calendar-day.empty {
+  background-color: transparent;
+  cursor: default;
+}
+
+/* Events */
+.calendar-event {
+  font-size: 12px;
+  color: #fff;
+  background-color: #ff4d4d;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .calendar-container {
+    padding: 15px;
+  }
+
+  .calendar-header h2 {
+    font-size: 22px;
+  }
+
+  .calendar-header button {
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+
+  .calendar-days-of-week {
+    font-size: 12px;
+  }
+
+  .calendar-day {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

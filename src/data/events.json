@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "title": "Winter Market at Kiener Plaza",
+    "date": "2024-12-12",
+    "time": "10:00 AM - 5:00 PM",
+    "location": "Kiener Plaza, St. Louis, MO",
+    "description": "A charming outdoor market with local vendors, festive treats, and hot cocoa."
+  },
+  {
+    "id": 2,
+    "title": "St. Louis Symphony Christmas Concert",
+    "date": "2024-12-15",
+    "time": "7:30 PM",
+    "location": "St. Louis Symphony Hall",
+    "description": "A night of heartwarming Christmas music by the renowned St. Louis Symphony."
+  },
+  {
+    "date": "2024-12-25",
+    "title": "Christmas Day",
+    "description": "A day to celebrate Christmas with family and friends."
+  },
+  {
+    "date": "2024-12-31",
+    "title": "New Year's Eve",
+    "description": "Countdown to the New Year with celebrations."
+  }
+]
