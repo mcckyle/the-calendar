@@ -1,6 +1,6 @@
 # Saint Louis Calendar
 
-The **Saint Louis Calendar** is a React-based calendar application built with Vite, designed to allow users to view events for a specific month. This project demonstrates how to set up a calendar interface, render event data, and manage state using React hooks.
+The **Saint Louis Calendar** is a React-based calendar application built with Vite. This project allows users to view events for a specific month, navigate between months, and display events for selected days. It demonstrates setting up a calendar interface, rendering event data, and managing state using React hooks.
 
 ## Features
 
@@ -16,3 +16,7 @@ The **Saint Louis Calendar** is a React-based calendar application built with Vi
 - **Vite**: A fast build tool and development server for React.
 - **CSS Grid & Flexbox**: For responsive and flexible layout design.
 - **JSON File**: Events data is fetched from a local JSON file to render events for specific dates.
+
+## Contributing
+
+This project is open-source and contributions are welcome. Whether it's reporting bugs, suggesting new features, or submitting code, your collaboration is valuable in growing this community-driven project.

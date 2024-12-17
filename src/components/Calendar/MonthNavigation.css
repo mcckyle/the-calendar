@@ -1,0 +1,29 @@
+/* MonthNavigation Styling */
+.month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.month-navigation button {
+  background-color: #ff8c00;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.month-navigation button:hover {
+  background-color: #ff6e00;
+}
+
+.month-navigation h2 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}

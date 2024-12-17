@@ -1,0 +1,33 @@
+/* Days Styling */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.day {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.day:hover {
+  background-color: #ffe3c2;
+}
+
+.day.selected {
+  background-color: #ff8c00;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.day.empty {
+  background-color: transparent;
+  cursor: default;
+}

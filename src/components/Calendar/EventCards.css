@@ -1,0 +1,10 @@
+/* EventCards Styling */
+.event-card {
+  font-size: 12px;
+  color: #fff;
+  background-color: #ff4d4d;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-top: 5px;
+  display: inline-block;
+}
