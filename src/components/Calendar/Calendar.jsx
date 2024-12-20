@@ -1,15 +1,17 @@
+// Calendar.jsx
 import React from 'react';
+import './Base.css';
 import './Calendar.css';
-import events from '../../data/events.json';
+import { useCalendarContext } from './CalendarContext';
 import MonthNavigation from './MonthNavigation';
 import DaysOfWeek from './DaysOfWeek';
 import Days from './Days';
 import EventCards from './EventCards';
-import useCalendarState from '../../hooks/useCalendarState';
-import './Base.css';
+import events from '../../data/events.json';
+
 
 const Calendar = () => {
-  const { currentDate, selectedDate, changeMonth, selectDate } = useCalendarState();
+  const { currentDate, selectedDate, changeMonth, selectDate } = useCalendarContext();
 
   return (
     <div className="calendar-container">

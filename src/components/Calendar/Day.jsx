@@ -1,30 +1,33 @@
 import React from 'react';
-import { getFirstDayOfMonth, getTotalDaysInMonth } from '../../utils/dateHelpers';
-import Day from './Day';
+import './Day.css';
 
-const Days = ({ currentDate, selectedDate, onDayClick, events }) => {
-  const firstDay = getFirstDayOfMonth(currentDate.getFullYear(), currentDate.getMonth());
-  const totalDays = getTotalDaysInMonth(currentDate.getFullYear(), currentDate.getMonth());
-  const daysArray = [];
+const Day = ({ day, selectedDate, currentDate, onClick, events }) => {
+  const isSelected =
+    selectedDate?.getDate() === day &&
+    selectedDate?.getMonth() === currentDate.getMonth() &&
+    selectedDate?.getFullYear() === currentDate.getFullYear();
 
-  for (let i = 0; i < firstDay; i++) {
-    daysArray.push(<div className="calendar-day empty" key={`empty-${i}`}></div>);
-  }
+  // Find if there are any events for this day
+  const dayEvents = events.filter((event) => {
+    const eventDate = new Date(event.date);
+    return eventDate.getDate() === day &&
+      eventDate.getMonth() === currentDate.getMonth() &&
+      eventDate.getFullYear() === currentDate.getFullYear();
+  });
 
-  for (let day = 1; day <= totalDays; day++) {
-    daysArray.push(
-      <Day
-        key={day}
-        day={day}
-        selectedDate={selectedDate}
-        currentDate={currentDate}
-        onClick={onDayClick}
-        events={events}
-      />
-    );
-  }
-
-  return <div className="calendar-days">{daysArray}</div>;
+  return (
+    <div
+      className={`calendar-day ${isSelected ? 'selected' : ''}`}
+      onClick={() => onClick(day)}
+    >
+      <span>{day}</span>
+      {dayEvents.length > 0 && (
+        <div className="event-indicator">
+          <span>{dayEvents[0]?.title}</span>
+        </div>
+      )}
+    </div>
+  );
 };
 
-export default Days;
+export default Day;

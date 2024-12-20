@@ -1,16 +1,16 @@
 // MonthNavigation.jsx
 import React from 'react';
+import { useCalendarContext } from './CalendarContext';
 import './MonthNavigation.css';
 
-const MonthNavigation = ({ onPrevMonth, onNextMonth, currentDate }) => {
+const MonthNavigation = () => {
+  const { currentDate, changeMonth } = useCalendarContext();
+
   return (
-    <div className="calendar-header">
-      <button onClick={onPrevMonth}>&lt;</button>
-      <h2>
-        {currentDate.toLocaleString('default', { month: 'long' })}{' '}
-        {currentDate.getFullYear()}
-      </h2>
-      <button onClick={onNextMonth}>&gt;</button>
+    <div className="month-navigation">
+      <button onClick={() => changeMonth(-1)}>Previous</button>
+      <span>{currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+      <button onClick={() => changeMonth(1)}>Next</button>
     </div>
   );
 };
