@@ -18,12 +18,13 @@ export const CalendarProvider = ({ children }) => {
     setCurrentDate(newDate);
   };
 
-  const selectDate = (day) => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(day);
-    setSelectedDate(newDate);
-  };
-
+  const selectDate = (date) => {
+  if (date instanceof Date && !isNaN(date)) {
+    setSelectedDate(date);
+  } else {
+    console.error('Invalid date:', date);
+  }
+};
   return (
     <CalendarContext.Provider value={{ currentDate, selectedDate, changeMonth, selectDate }}>
       {children}

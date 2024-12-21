@@ -1,17 +1,75 @@
-/* globals.css */
+/* Global Styling */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
+  line-height: 1.6; /* Improve line height for readability */
+  color: #333; /* Default text color for better contrast */
 }
 
+/* Heading Styling */
 h1, h2, h3 {
   margin: 0;
   font-weight: bold;
+  color: #333; /* Ensure headings have consistent color */
 }
 
+h1 {
+  font-size: 2rem; /* Standard size for h1 */
+  margin-bottom: 0.5rem; /* Slight margin for better spacing */
+}
+
+h2 {
+  font-size: 1.5rem; /* Standard size for h2 */
+  margin-bottom: 0.5rem; /* Slight margin for spacing */
+}
+
+h3 {
+  font-size: 1.25rem; /* Standard size for h3 */
+  margin-bottom: 0.5rem;
+}
+
+/* Button Styling */
 button {
   font-family: inherit;
   cursor: pointer;
+  padding: 8px 12px; /* Standard padding */
+  border: 1px solid #ccc; /* Border for buttons */
+  border-radius: 6px; /* Rounded corners */
+  background-color: #007bff; /* Default background */
+  color: white; /* Text color inside buttons */
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darken button on hover */
+}
+
+button:focus {
+  outline: none; /* Remove default focus outline for better custom focus styles */
+}
+
+/* Links Styling */
+a {
+  text-decoration: none; /* Remove underlines */
+  color: #007bff; /* Default color for links */
+}
+
+a:hover {
+  color: #0056b3; /* Darken color on hover */
+}
+
+/* Input Styling */
+input, textarea, select {
+  font-family: inherit;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007bff; /* Highlight borders on focus */
+  outline: none; /* Remove default outline */
 }

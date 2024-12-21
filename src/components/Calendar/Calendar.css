@@ -1,4 +1,4 @@
-/* Container Styling */
+/* General Styling */
 .calendar-container {
   width: 100%;
   max-width: 700px;
@@ -6,7 +6,7 @@
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
 }
 
@@ -15,43 +15,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  background-color: #ffffff; /* Solid background for the header */
+  padding: 10px; /* Adds spacing around the header */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  color: #333; /* Ensure text color is dark enough for visibility */
 }
 
 .calendar-header button {
-  background-color: #ff8c00;
+  background-color: #007bff;
   border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #fff;
+  font-size: 18px;
+  color: white;
   padding: 8px 12px;
   border-radius: 6px;
-  transition: background-color 0.3s;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .calendar-header button:hover {
-  background-color: #ff6e00;
+  background-color: #0056b3;
 }
 
 .calendar-header h2 {
-  font-size: 28px;
+  font-size: 24px;
   margin: 0;
+  color: #333 !important; /* Force dark text color for better visibility */
   font-weight: bold;
-  color: #333;
+  text-align: center; /* Center-align the month name */
+  background-color: transparent; /* Ensure the background is not causing issues */
 }
 
-/* Calendar Body */
+/* Body Styling */
 .calendar-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* Days of Week */
 .calendar-days-of-week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
   text-align: center;
   font-weight: bold;
   color: #555;
@@ -59,56 +64,91 @@
 
 .calendar-day-of-week {
   padding: 10px 0;
-  background-color: #f9f9f9;
+  background-color: #f3f4f6;
   border-radius: 4px;
 }
 
 /* Days Grid */
-.calendar-days {
+.days-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(7, 1fr); /* Ensures 7 columns */
+  gap: 0.5rem;
+  padding: 5px; /* Adds spacing to prevent overflow */
 }
 
-/* Individual Day Styling */
 .calendar-day {
+  padding: 1rem;
   text-align: center;
-  padding: 12px;
-  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
   cursor: pointer;
-  background-color: #f5f5f5;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
+  color: #333; /* Ensures the text color is visible */
+  position: relative; /* Needed to position event marker inside the cell */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
 }
 
 .calendar-day:hover {
-  background-color: #ffe3c2;
+  background-color: #f0f8ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #333; /* Ensures text is still visible on hover */
 }
 
-/* Selected Day */
 .calendar-day.selected {
-  background-color: #ff8c00;
-  color: #fff;
+  background-color: #007bff;
+  color: white; /* Ensures selected date has white text */
   font-weight: bold;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Empty Days */
 .calendar-day.empty {
   background-color: transparent;
+  border: none;
   cursor: default;
+  color: transparent; /* Ensures empty cells have no text */
 }
 
-/* Events */
-.calendar-event {
-  font-size: 12px;
-  color: #fff;
-  background-color: #ff4d4d;
-  padding: 3px 6px;
+/* Event Markers */
+.calendar-day .event-marker {
+  position: absolute; /* Position it at the bottom of the day cell */
+  bottom: 5px;
+  right: 5px;
+  background-color: #ff5722; /* Contrasting color for event marker */
+  color: white;
+  padding: 2px 6px;
   border-radius: 4px;
-  margin-top: 5px;
+  font-size: 12px;
   display: inline-block;
+}
+
+/* Event Panel */
+.event-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+}
+
+.event-panel .close-button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.event-panel .close-button:hover {
+  background-color: #e64a19;
 }
 
 /* Responsive Design */
@@ -118,20 +158,15 @@
   }
 
   .calendar-header h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .calendar-header button {
-    font-size: 18px;
-    padding: 6px 10px;
+    font-size: 16px;
   }
 
-  .calendar-days-of-week {
-    font-size: 12px;
-  }
-
+  .calendar-days-of-week,
   .calendar-day {
     font-size: 14px;
-    padding: 8px;
   }
 }
