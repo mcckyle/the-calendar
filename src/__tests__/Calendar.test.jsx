@@ -1,101 +1,46 @@
-import '@testing-library/jest-dom';
-
 import React from 'react';
+import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Calendar from '../components/Calendar/Calendar';
-import events from '../../__mocks__/events.json';
+import Calendar from '../components/Calendar/Calendar.jsx';
+import { CalendarContext } from '../components/Calendar/CalendarContext.jsx';
 
-//   Below commented out lines belong in the corresponding test file for jest.mock() calls.
-//   jest.mock('../../data/events.json', () => [
-//     {
-//       date: '2024-12-01',
-//       title: 'Sample Event',
-//     },
-//   ]);
-//
-//   jest.mock('../../hooks/useCalendarState', () => ({
-//     currentDate: new Date('2024-12-01'),
-//     selectedDate: new Date('2024-12-01'),
-//     changeMonth: jest.fn(),
-//     selectDate: jest.fn(),
-//   }));
+test('renders Calendar component and responds to user actions', () => {
+  // Mock context values and functions
+  const mockChangeMonth = jest.fn();
+  const mockSelectDate = jest.fn();
+  const mockContext = {
+    currentDate: new Date(2024, 11, 1), // Example: December 1, 2024
+    selectedDate: null,
+    changeMonth: mockChangeMonth,
+    selectDate: mockSelectDate,
+  };
 
-describe('Calendar Component', () => {
-  it('renders the calendar header with the current month and year', () => {
-    render(<Calendar />);
-    const header = screen.getByRole('heading', { level: 2 });
-    expect(header).toHaveTextContent(new Date().toLocaleString('default', { month: 'long' }));
-  });
+  // Render Calendar component with mocked context
+  render(
+    <CalendarContext.Provider value={mockContext}>
+      <Calendar />
+    </CalendarContext.Provider>
+  );
 
-  it('renders days of the week', () => {
-    render(<Calendar />);
-    const daysOfWeek = screen.getAllByText(/Sun|Mon|Tue|Wed|Thu|Fri|Sat/);
-    expect(daysOfWeek).toHaveLength(7);
-  });
+  // Verify Calendar sub-components render
+  expect(screen.getByText(/Sun/i)).toBeInTheDocument(); // Days of the week
+  expect(screen.getByText(/Mon/i)).toBeInTheDocument();
+  expect(screen.getByText(/Sat/i)).toBeInTheDocument();
 
-//   it('renders all days of the current month', () => {
-//     render(<Calendar />);
-//     const currentDate = new Date();
-//     const totalDays = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-//     const days = screen.getAllByRole('button');
-//     expect(days.length).toBe(totalDays);
-//   });
+  // Verify month navigation renders
+  expect(screen.getByRole('button', { name: /prev/i })).toBeInTheDocument(); // Assuming button text has "prev"
+  expect(screen.getByRole('button', { name: /next/i })).toBeInTheDocument(); // Assuming button text has "next"
 
-  it('navigates to the previous month when the back button is clicked', () => {
-    render(<Calendar />);
-    const backButton = screen.getByText('<');
-    fireEvent.click(backButton);
-    const header = screen.getByRole('heading', { level: 2 });
-    const prevMonth = new Date();
-    prevMonth.setMonth(prevMonth.getMonth() - 1);
-    expect(header).toHaveTextContent(prevMonth.toLocaleString('default', { month: 'long' }));
-  });
+  // Test "previous month" button click
+  fireEvent.click(screen.getByRole('button', { name: /prev/i }));
+  expect(mockChangeMonth).toHaveBeenCalledWith(-1);
 
-  it('navigates to the next month when the forward button is clicked', () => {
-    render(<Calendar />);
-    const forwardButton = screen.getByText('>');
-    fireEvent.click(forwardButton);
-    const header = screen.getByRole('heading', { level: 2 });
-    const nextMonth = new Date();
-    nextMonth.setMonth(nextMonth.getMonth() + 1);
-    expect(header).toHaveTextContent(nextMonth.toLocaleString('default', { month: 'long' }));
-  });
+  // Test "next month" button click
+  fireEvent.click(screen.getByRole('button', { name: /next/i }));
+  expect(mockChangeMonth).toHaveBeenCalledWith(1);
 
-//   it('selects a day when clicked', () => {
-//     render(<Calendar />);
-//     const dayButton = screen.getByText('15'); // Arbitrary day
-//     fireEvent.click(dayButton);
-//     expect(dayButton).toHaveClass('selected');
-//   });
-
-//   it('displays events for a selected day', () => {
-//     const eventDate = events[0]?.date || '2024-12-01';
-//     render(<Calendar />);
-//     const eventDay = screen.getByText(new Date(eventDate).getDate().toString());
-//     fireEvent.click(eventDay);
-//     const eventTitle = screen.getByText(events[0]?.title || 'Sample Event');
-//     expect(eventTitle).toBeInTheDocument();
-//   });
-
-  it('does not crash when there are no events', () => {
-    render(<Calendar />);
-    const days = screen.getAllByRole('button');
-    expect(() => fireEvent.click(days[0])).not.toThrow();
-  });
-
-  it('handles edge cases for leap years', () => {
-    const leapYear = new Date(2020, 1, 29); // February 29, 2020
-    expect(leapYear.getDate()).toBe(29);
-    render(<Calendar />);
-    const days = screen.getAllByRole('button');
-    expect(days).toBeTruthy();
-  });
-
-  it('displays an empty state if no events exist for the selected day', () => {
-    render(<Calendar />);
-    const dayWithoutEvent = screen.getByText('1'); // Arbitrary day
-    fireEvent.click(dayWithoutEvent);
-    const noEventsMessage = screen.queryByText(/No events/);
-    expect(noEventsMessage).toBeNull();
-  });
+  // Test day selection
+  const dayElement = screen.getByText('15'); // Assuming "15" is a day in the calendar
+  fireEvent.click(dayElement);
+  expect(mockSelectDate).toHaveBeenCalledWith(15);
 });

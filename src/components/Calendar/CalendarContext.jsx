@@ -1,8 +1,8 @@
-// CalendarContext.js
+// CalendarContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 
 // Create the context
-const CalendarContext = createContext();
+export const CalendarContext = createContext();
 
 // Custom hook to use the Calendar context
 export const useCalendarContext = () => useContext(CalendarContext);
