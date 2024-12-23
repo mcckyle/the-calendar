@@ -1,42 +1,143 @@
+/* Root container - Layout and padding for the overall page */
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0 auto; /* Centers the app horizontally */
+  padding: 2rem; /* Provides space around the content */
+  text-align: center; /* Ensures the text is centered */
+  background-color: #f4f4f4; /* Light background to make content more readable */
+  color: #333; /* Dark text color for contrast and legibility */
+}
+
+/* Calendar container */
+.calendar-container {
+  max-width: 100%;
+  margin: 0 auto; /* Centers the calendar */
+  padding: 1rem;
+  background-color: #ffffff; /* White background for the calendar */
+  border-radius: 12px; /* Rounded corners for a softer look */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Calendar body layout */
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Button styling for the calendar */
+button {
+  padding: 0.8em 1.2em;
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Days of the week container styling */
+.days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Seven columns for each day */
+  gap: 10px;
+  font-weight: bold;
+}
+
+/* Day styling within the calendar */
+.day {
+  padding: 1em;
+  background-color: #f0f0f0; /* Light gray background for each day */
+  border-radius: 6px; /* Rounded corners */
   text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Day hover effect */
+.day:hover {
+  background-color: #ddd; /* Darker gray on hover */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Day selected styling */
+.day.selected {
+  background-color: #007bff; /* Blue background for selected day */
+  color: white; /* White text on selected day */
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Event panel styling (modal) */
+.event-panel {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Use fixed positioning to make it overlay the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset by 50% of width/height to truly center */
+  width: 80%; /* Set the width of the modal */
+  max-width: 600px; /* Optional: Set a max-width for the modal */
+  height: auto; /* Adjust height based on content */
+  z-index: 1000; /* Make sure it's above other elements */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.card {
-  padding: 2em;
+/* Close button for the event panel */
+.event-panel .close-button {
+  background-color: #e74c3c; /* Red close button */
+  color: white;
+  border: none;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
 }
 
-.read-the-docs {
-  color: #888;
+/* Close button hover effect */
+.event-panel .close-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Event card styling */
+.event-card {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+  margin-bottom: 1rem; /* Space between event cards */
+}
+
+.event-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Accessibility and smooth scrolling enhancements */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for better user experience */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  line-height: 1.6; /* Easy to read text */
 }

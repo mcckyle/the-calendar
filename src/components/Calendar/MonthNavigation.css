@@ -1,29 +1,44 @@
-/* MonthNavigation Styling */
 .month-navigation {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.month-navigation button {
-  background-color: #ff8c00;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background-color 0.3s;
-}
-
-.month-navigation button:hover {
-  background-color: #ff6e00;
-}
-
-.month-navigation h2 {
-  font-size: 28px;
-  margin: 0;
+.nav-button {
+  font-size: 24px;
   font-weight: bold;
   color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.month-year {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.month {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+.year {
+  font-size: 18px;
+  color: #777;
 }

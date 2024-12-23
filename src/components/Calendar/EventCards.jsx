@@ -3,7 +3,9 @@ import EventCard from './EventCard';
 import './EventCards.css';
 
 const EventCards = ({ selectedDate, events }) => {
-  if (!selectedDate || isNaN(selectedDate)) {
+
+  if (!selectedDate || isNaN(selectedDate))
+  {
     return <p>Please select a valid date.</p>;
   }
 
@@ -21,11 +23,13 @@ const EventCards = ({ selectedDate, events }) => {
     <div className="event-cards">
       {filteredEvents.length > 0 ? (
         filteredEvents.map((event) => (
-          <div key={event.id} className="event-card">
-            <h3>{event.title}</h3>
-            <p>{event.time}</p>
-            <p>{event.location}</p>
-          </div>
+          <EventCard
+            key={event.id}
+            title={event.title}
+            date={new Date(event.date).toLocaleDateString()}
+            time={event.time}
+            description={event.description}
+          />
         ))
       ) : (
         <p>No events for this day.</p>

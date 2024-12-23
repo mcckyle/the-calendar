@@ -8,9 +8,16 @@ const MonthNavigation = () => {
 
   return (
     <div className="month-navigation">
-      <button onClick={() => changeMonth(-1)}>Previous</button>
-      <span>{currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
-      <button onClick={() => changeMonth(1)}>Next</button>
+      <button className="nav-button prev-button" onClick={() => changeMonth(-1)}>
+        &lt;
+      </button>
+      <div className="month-year">
+        <span className="month">{currentDate.toLocaleDateString('en-US', { month: 'long' })}</span>
+        <span className="year">{currentDate.toLocaleDateString('en-US', { year: 'numeric' })}</span>
+      </div>
+      <button className="nav-button next-button" onClick={() => changeMonth(1)}>
+        &gt;
+      </button>
     </div>
   );
 };

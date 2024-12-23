@@ -1,6 +1,6 @@
 // Calendar.jsx
 import React, { useState } from 'react';
-//import './Base.css';
+import './Base.css';
 import './Calendar.css';
 import { useCalendarContext } from './CalendarContext';
 import MonthNavigation from './MonthNavigation';
@@ -8,25 +8,13 @@ import DaysOfWeek from './DaysOfWeek';
 import Days from './Days';
 import EventCards from './EventCards';
 import events from '../../data/events.json';
+import EventPanel from './EventPanel';
+import useDayClick from './useDayClick';
 
 
 const Calendar = () => {
   const { currentDate, selectedDate, changeMonth, selectDate } = useCalendarContext();
-  const [showEventPanel, setShowEventPanel] = useState(false);
-
-  const handleDayClick = (day) => {
-  // Ensure day is valid for the current month
-  if (day > 0 && day <= new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate()) {
-    const selected = new Date(currentDate);
-    selected.setDate(day);
-    selectDate(selected);
-    setShowEventPanel(true);
-  } else {
-    console.error('Invalid selected date:', day);
-  }
-};
-
-  const closeEventPanel = () => setShowEventPanel(false);
+  const { showEventPanel, handleDayClick, closeEventPanel } = useDayClick(currentDate, selectDate);
 
   return (
     <div className="calendar-container">
@@ -44,12 +32,11 @@ const Calendar = () => {
           events={events}
         />
         {showEventPanel && (
-          <div className="event-panel">
-            <button onClick={closeEventPanel} className="close-button">
-              Close
-            </button>
-            <EventCards selectedDate={selectedDate} events={events} />
-          </div>
+          <EventPanel
+            selectedDate={selectedDate}
+            events={events}
+            onClose={closeEventPanel}
+          />
         )}
       </div>
     </div>

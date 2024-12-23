@@ -40,10 +40,11 @@
 .calendar-header h2 {
   font-size: 24px;
   margin: 0;
-  color: #333 !important; /* Force dark text color for better visibility */
+  color: #333 !important; /* Ensure dark text color */
   font-weight: bold;
-  text-align: center; /* Center-align the month name */
-  background-color: transparent; /* Ensure the background is not causing issues */
+  text-align: center;
+  background-color: transparent; /* Avoid background issues */
+  opacity: 1; /* Ensure no transparency */
 }
 
 /* Body Styling */
@@ -109,16 +110,14 @@
 }
 
 /* Event Markers */
-.calendar-day .event-marker {
-  position: absolute; /* Position it at the bottom of the day cell */
-  bottom: 5px;
-  right: 5px;
-  background-color: #ff5722; /* Contrasting color for event marker */
+.event-marker {
+  margin-top: 5px;
+  background-color: orange;
   color: white;
-  padding: 2px 6px;
+  font-size: 0.8rem;
+  padding: 2px 4px;
   border-radius: 4px;
-  font-size: 12px;
-  display: inline-block;
+  text-align: center;
 }
 
 /* Event Panel */

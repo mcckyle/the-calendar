@@ -6,6 +6,7 @@ body {
   background-color: #f4f4f9;
   line-height: 1.6; /* Improve line height for readability */
   color: #333; /* Default text color for better contrast */
+  font-size: 1rem; /* Set a base font size for consistency */
 }
 
 /* Heading Styling */
@@ -47,13 +48,15 @@ button:hover {
 }
 
 button:focus {
-  outline: none; /* Remove default focus outline for better custom focus styles */
+  outline: 2px solid #0056b3; /* Custom focus outline for accessibility */
+  outline-offset: 4px; /* Offset outline to make it stand out */
 }
 
 /* Links Styling */
 a {
   text-decoration: none; /* Remove underlines */
   color: #007bff; /* Default color for links */
+  transition: color 0.3s ease;
 }
 
 a:hover {
@@ -67,9 +70,48 @@ input, textarea, select {
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #fff;
+  font-size: 1rem; /* Consistent font size for form elements */
 }
 
 input:focus, textarea:focus, select:focus {
   border-color: #007bff; /* Highlight borders on focus */
   outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle focus shadow */
+}
+
+/* Form Labels */
+label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block; /* Ensure labels are block-level for proper spacing */
+}
+
+/* General Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem; /* Reduce font size for mobile screens */
+  }
+
+  h1 {
+    font-size: 1.8rem; /* Smaller heading size for mobile */
+  }
+
+  h2 {
+    font-size: 1.4rem; /* Smaller heading size for mobile */
+  }
+
+  h3 {
+    font-size: 1.1rem; /* Smaller heading size for mobile */
+  }
+
+  button {
+    padding: 6px 10px; /* Adjust button padding for smaller screens */
+  }
 }

@@ -1,25 +1,30 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif; /* Preferred system fonts */
+  line-height: 1.5; /* Improved line height for readability */
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Color variables for improved maintainability */
+  --primary-background-color: #242424;
+  --primary-text-color: #fff;
+  --link-color: #646cff;
+  --link-hover-color: #535bf2;
+  --button-background-color: #1a1a1a;
+  --button-hover-border-color: #646cff;
+  --button-focus-ring-color: -webkit-focus-ring-color;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--link-color);
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--link-hover-color);
 }
 
 body {
@@ -28,11 +33,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color); /* Ensures good contrast on dark background */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-weight: 600; /* Make heading more prominent */
 }
 
 button {
@@ -42,27 +50,27 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-background-color);
+  color: var(--primary-text-color); /* Button text should contrast well */
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  display: inline-block;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  border-color: var(--button-hover-border-color);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--button-focus-ring-color);
+}
+
+button:active {
+  background-color: #333; /* Darken background when button is clicked for a better visual cue */
+}
+
+/* Improve focus visibility for accessibility */
+button:focus {
+  box-shadow: 0 0 0 3px rgba(100, 111, 255, 0.5); /* Visible focus ring for accessibility */
 }
