@@ -158,5 +158,13 @@
     "time": "6:00 PM",
     "location": "Chess Club and Scholastic Center, St. Louis, MO",
     "description": "Test your skills or learn the game with fellow chess enthusiasts."
+  },
+  {
+    "id": 21,
+    "title": "Highway to Destiny Meeting",
+    "date": "2025-01-20",
+    "time": "6:00 PM",
+    "location": "Online, St. Louis, MO",
+    "description": "Board of Directors meeting."
   }
 ]

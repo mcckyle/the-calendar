@@ -1,32 +1,36 @@
 // CalendarContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 
-// Create the context
-export const CalendarContext = createContext();
+// Create the Calendar Context
+const CalendarContext = createContext();
 
-// Custom hook to use the Calendar context
 export const useCalendarContext = () => useContext(CalendarContext);
 
-// CalendarProvider component to wrap the app and provide state
 export const CalendarProvider = ({ children }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
 
-  const changeMonth = (delta) => {
+  const changeMonth = (offset) => {
+    // Create a new date based on the current date
     const newDate = new Date(currentDate);
-    newDate.setMonth(currentDate.getMonth() + delta);
+    newDate.setMonth(currentDate.getMonth() + offset); // Adjust the month by the offset
     setCurrentDate(newDate);
   };
 
-  const selectDate = (date) => {
-  if (date instanceof Date && !isNaN(date)) {
-    setSelectedDate(date);
-  } else {
-    console.error('Invalid date:', date);
-  }
-};
+  const changeWeek = (offset) => {
+    // Create a new date based on the current date
+    const newDate = new Date(currentDate);
+    newDate.setDate(currentDate.getDate() + offset * 7); // Adjust by weeks
+    setCurrentDate(newDate);
+  };
+
   return (
-    <CalendarContext.Provider value={{ currentDate, selectedDate, changeMonth, selectDate }}>
+    <CalendarContext.Provider
+      value={{
+        currentDate,
+        changeMonth,
+        changeWeek,
+      }}
+    >
       {children}
     </CalendarContext.Provider>
   );

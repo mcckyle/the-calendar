@@ -169,3 +169,138 @@
     font-size: 14px;
   }
 }
+
+
+/* Daily Schedule Layout */
+.daily-schedule {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.schedule-timeslots {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-time-slot {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-time-slot span {
+  font-weight: bold;
+}
+
+.event-card {
+  background-color: #e3f2fd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+/* Button to Toggle View */
+.toggle-view-button {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-view-button:hover {
+  background-color: #1565c0;
+}
+
+.week-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.week-day {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.day-header {
+  background-color: #e3e3e3;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-slot {
+  display: flex;
+  align-items: flex-start;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+  min-height: 50px;
+}
+
+.time-label {
+  width: 50px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.events {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.event-card {
+  background-color: #d0f0d0;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #333;
+  border: 1px solid #9cd09c;
+}
+
+.week-day:hover {
+  background-color: #bbdefb;
+}
+
+.week-navigation {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.toggle-week-view-button,
+.toggle-view-button {
+  margin: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.all-day-events {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.all-day-event {
+  margin: 4px 0;
+  padding: 6px;
+  background-color: #ffe4b2;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
