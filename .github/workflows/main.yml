@@ -33,6 +33,6 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        branch: gh-pages          # The branch to push to
-        folder: dist              # Vite build output folder
-        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages           # The branch to push to.
+        folder: dist               # Vite's build folder is dist.
+        token: ${{ secrets.GH_TOKEN }}  # Using the PAT secret for deployment.
