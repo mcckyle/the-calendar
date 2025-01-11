@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "CI=false jest",
+    "test": "jest",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {

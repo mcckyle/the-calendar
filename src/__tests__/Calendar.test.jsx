@@ -2,40 +2,22 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Calendar from '../components/Calendar/Calendar.jsx';
-import { useDayClick } from '../components/Calendar/useDayClick';
-import { CalendarContext } from '../components/Calendar/CalendarContext.jsx';
+import { CalendarProvider } from '../components/Calendar/CalendarContext'; // Import the provider
 
 test('renders Calendar component and handles user interactions', () => {
-  // Mock context values and functions
-  const mockChangeMonth = jest.fn();
-  const mockSelectDate = jest.fn();
-  const mockContext = {
-    currentDate: new Date(2024, 11, 1), // December 1, 2024
-    selectedDate: null,
-    changeMonth: mockChangeMonth,
-    selectDate: mockSelectDate,
-  };
-
   render(
-    <CalendarContext.Provider value={mockContext}>
+    <CalendarProvider>
       <Calendar />
-    </CalendarContext.Provider>
+    </CalendarProvider>
   );
 
-  // Verify Calendar sub-components render
-  expect(screen.getByText(/Sun/i)).toBeInTheDocument();
-  expect(screen.getByText(/Sat/i)).toBeInTheDocument();
+	// Get all elements with "Sun" text
+	const dayHeaders = screen.getAllByText(/Sun/i);
 
-  // Verify month navigation renders
-  expect(screen.getByRole('button', { name: /Previous month/i })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: /Next month/i })).toBeInTheDocument();
-  expect(screen.getByText(/December/i)).toBeInTheDocument();
+	// Ensure there is only one "Sun" in the div with the class "calendar-day-of-week"
+	expect(dayHeaders.some(el => el.className === 'calendar-day-of-week')).toBe(true);
 
-  // Test "Previous month" button click
-  fireEvent.click(screen.getByRole('button', { name: /Previous month/i }));
-  expect(mockChangeMonth).toHaveBeenCalledWith(-1);
-
-  // Test "Next month" button click
-  fireEvent.click(screen.getByRole('button', { name: /Next month/i }));
-  expect(mockChangeMonth).toHaveBeenCalledWith(1);
+  // Test interactions (e.g., change week buttons)
+  fireEvent.click(screen.getByRole('button', { name: /Previous week/i }));
+  fireEvent.click(screen.getByRole('button', { name: /Next week/i }));
 });

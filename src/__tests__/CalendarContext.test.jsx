@@ -2,15 +2,15 @@ import { renderHook, act } from '@testing-library/react';
 import { CalendarProvider, useCalendarContext } from '../components/Calendar/CalendarContext.jsx';
 
 describe('CalendarContext', () => {
-  it('provides default context values', () => {
-    const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
+	it('provides default context values', () => {
+	  const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
 
-    // Assert default state
-    expect(result.current.currentDate).toBeInstanceOf(Date);
-    expect(result.current.selectedDate).toBeNull();
-    expect(typeof result.current.changeMonth).toBe('function');
-    expect(typeof result.current.selectDate).toBe('function');
-  });
+	  // Assert default state
+	  expect(result.current.currentDate).toBeInstanceOf(Date);
+	  expect(result.current.selectedDate).toBeNull(); // Ensure selectedDate is null
+	  expect(typeof result.current.changeMonth).toBe('function');
+	  expect(typeof result.current.selectDate).toBe('function'); // Ensure selectDate is a function
+	});
 
     it('updates currentDate when changeMonth is called', () => {
     const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
@@ -54,15 +54,16 @@ describe('CalendarContext', () => {
     expect(result.current.selectedDate).toEqual(validDate);
   });
 
-  it('does not update selectedDate when an invalid date is passed to selectDate', () => {
-    const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
+	it('does not update selectedDate when an invalid date is passed to selectDate', () => {
+	  const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
 
-    const initialSelectedDate = result.current.selectedDate;
+	  const initialSelectedDate = result.current.selectedDate;
 
-    act(() => {
-      result.current.selectDate('Invalid date'); // Pass an invalid date
-    });
+	  act(() => {
+		result.current.selectDate('Invalid date'); // Pass an invalid date
+	  });
 
-    expect(result.current.selectedDate).toBe(initialSelectedDate); // Ensure selectedDate is unchanged
-  });
+	  // Ensure selectedDate remains unchanged
+	  expect(result.current.selectedDate).toBe(initialSelectedDate);
+	});
 });

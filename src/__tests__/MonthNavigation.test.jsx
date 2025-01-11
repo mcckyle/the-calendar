@@ -25,23 +25,24 @@ describe('MonthNavigation Component', () => {
 //     expect(screen.getByText('2024')).toBeInTheDocument();
 //   });
 
-  it('calls changeMonth with -1 when previous month button is clicked', () => {
-    const mockChangeMonth = jest.fn();
-    const mockCurrentDate = new Date('2024-11-01');
+	it('calls changeWeek with -1 when previous week button is clicked', () => {
+	  const mockChangeWeek = jest.fn(); // Mock changeWeek instead of changeMonth
+	  const mockCurrentDate = new Date('2024-11-01');
 
-    useCalendarContext.mockReturnValue({
-      currentDate: mockCurrentDate,
-      changeMonth: mockChangeMonth,
-    });
+	  // Mock the useCalendarContext hook to return the mock currentDate and changeWeek
+	  useCalendarContext.mockReturnValue({
+		currentDate: mockCurrentDate,
+		changeWeek: mockChangeWeek,
+	  });
 
-    render(<MonthNavigation />);
+	  render(<MonthNavigation />);
 
-    // Simulate click on previous month button
-    fireEvent.click(screen.getByLabelText('Previous month'));
+	  // Simulate click on previous week button
+	  fireEvent.click(screen.getByLabelText('Previous week')); // Note the aria-label
 
-    // Check if changeMonth is called with -1
-    expect(mockChangeMonth).toHaveBeenCalledWith(-1);
-  });
+	  // Check if changeWeek is called with -1
+	  expect(mockChangeWeek).toHaveBeenCalledWith(-1);
+	});
 
 //   it('calls changeMonth with 1 when next month button is clicked', () => {
 //     const mockChangeMonth = jest.fn();
