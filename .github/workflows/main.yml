@@ -1,4 +1,4 @@
-name: CI
+name: main
 
 on:
   push:
@@ -26,3 +26,13 @@ jobs:
 
     - name: Run tests
       run: npm test
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages         # The branch to push to.
+        folder: build             # The folder containing the built site.
+        token: ${{ secrets.GITHUB_TOKEN }} # GitHub token for authentication.
