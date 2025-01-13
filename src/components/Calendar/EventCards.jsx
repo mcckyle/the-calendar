@@ -9,15 +9,14 @@ const EventCards = ({ selectedDate, events }) => {
     return <p>Please select a valid date.</p>;
   }
 
-  const filteredEvents = events.filter((event) => {
-    const eventDate = new Date(event.date); // Parse event date
-    if (isNaN(eventDate))
-    {
-      console.error(`Invalid event date: ${event.date}`);
-      return false;
-    }
-    return eventDate.toDateString() === selectedDate.toDateString();
-  });
+	const filteredEvents = events.filter((event) => {
+	  const eventDate = new Date(event.date); // Parse event date
+	  if (isNaN(eventDate)) {
+		console.error(`Invalid event date: ${event.date}`);
+		return false;
+	  }
+	  return eventDate.toDateString() === selectedDate.toDateString();
+	});
 
   return (
     <div className="event-cards">

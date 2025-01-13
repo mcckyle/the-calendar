@@ -7,12 +7,17 @@ import { CalendarProvider } from '../components/Calendar/CalendarContext'; // Im
 test('renders Calendar component and handles user interactions', () => {
   render(
     <CalendarProvider>
-      <Calendar />
+      <Calendar
+        hours={['8:00 AM', '9:00 AM', '10:00 AM']} // Provide hours
+        navigateWeek={() => {}}
+        getEventsForTimeSlot={() => []}
+        renderTimeLabel={(hour) => hour}
+      />
     </CalendarProvider>
   );
 
-	// Get all elements with "Sun" text
-	const dayHeaders = screen.getAllByText(/Sun/i);
+  // Wait for "Sun" elements to appear
+  await waitFor(() => screen.getAllByText(/Sun/i));
 
 	// Ensure there is only one "Sun" in the div with the class "calendar-day-of-week"
 	expect(dayHeaders.some(el => el.className === 'calendar-day-of-week')).toBe(true);

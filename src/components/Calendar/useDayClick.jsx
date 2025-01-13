@@ -1,22 +1,21 @@
+// useDayClick.jsx
 import { useState } from 'react';
 
-const useDayClick = (currentDate, selectDate) => {
+const useDayClick = (currentDate) => {
+  const [selectedDay, setSelectedDay] = useState(null);
   const [showEventPanel, setShowEventPanel] = useState(false);
 
   const handleDayClick = (day) => {
-    if (day > 0 && day <= new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate()) {
-      const selected = new Date(currentDate);
-      selected.setDate(day);
-      selectDate(selected);
-      setShowEventPanel(true);
-    } else {
-      console.error('Invalid selected date:', day);
-    }
+    console.log("handleDayClick called with:", day.toDateString());
+    setSelectedDay(day);
+    setShowEventPanel(true); // This triggers the EventPanel to show
   };
 
-  const closeEventPanel = () => setShowEventPanel(false);
+  const closeEventPanel = () => {
+    setShowEventPanel(false);
+  };
 
-  return { showEventPanel, handleDayClick, closeEventPanel };
+  return { selectedDay, showEventPanel, handleDayClick, closeEventPanel };
 };
 
 export default useDayClick;

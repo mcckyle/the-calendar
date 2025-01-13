@@ -159,12 +159,36 @@
     "location": "Chess Club and Scholastic Center, St. Louis, MO",
     "description": "Test your skills or learn the game with fellow chess enthusiasts."
   },
-  {
+    {
     "id": 21,
+    "title": "LaunchCode mock interviews",
+    "date": "2025-01-13",
+    "time": "5:30 PM - 8:30 PM",
+    "location": "Online, St. Louis, MO",
+    "description": "Interview practice session."
+  },
+  {
+    "id": 22,
     "title": "Highway to Destiny Meeting",
     "date": "2025-01-20",
-    "time": "6:00 PM",
+    "time": "6:45 PM",
     "location": "Online, St. Louis, MO",
-    "description": "Board of Directors meeting."
+    "description": "Board Meetup."
+  },
+  {
+    "id": 23,
+    "title": "Saint Louis Career Fair",
+    "date": "2025-01-27",
+    "time": "9:30 AM - 1:00 PM",
+    "location": "Marriott St. Louis Grand, 800 Washington Avenue, St. Louis, MO 63101",
+    "description": "Dress to impress. Bring a resume."
+  },
+  {
+    "id": 24,
+    "title": "Health Care Appt.",
+    "date": "2025-03-20",
+    "time": "9:30 AM",
+    "location": "TBD",
+    "description": "TBD"
   }
 ]
