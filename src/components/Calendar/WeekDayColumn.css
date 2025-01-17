@@ -1,0 +1,98 @@
+/* WeekDayColumn container */
+.week-day-column {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.week-day-column:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Day header with date */
+.day-header {
+  background-color: #2b8a3e; /* Consistent green */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.day-header span {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+
+/* Time slots container */
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Time slot appearance */
+.time-slot {
+  background-color: #f7f7f7; /* Light gray for time slot background */
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.time-slot:hover {
+  background-color: #e0e0e0; /* Darker gray on hover */
+  transform: translateY(-3px);
+}
+
+/* Event block within time slot */
+.event {
+  background-color: #2b8a3e; /* Green event background */
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state for time slots */
+.no-events {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.no-events:hover {
+  background-color: #fafafa;
+}
+
+/* Time label within each time slot */
+.time-label {
+  font-size: 1rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+}

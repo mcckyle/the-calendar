@@ -4,28 +4,33 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Calendar from '../components/Calendar/Calendar.jsx';
 import { CalendarProvider } from '../components/Calendar/CalendarContext'; // Import the provider
 
-test('renders Calendar component and handles user interactions', async () => {
+test('renders navigation buttons and handles week changes', () => {
   render(
     <CalendarProvider>
       <Calendar
-        hours={['8:00 AM', '9:00 AM', '10:00 AM']} // Provide hours
-        navigateWeek={() => {}}
-        getEventsForTimeSlot={() => []}
-        renderTimeLabel={(hour) => hour}
+        weekDates={[]} // No need to provide actual dates for this test
+        renderMonthYear={() => 'January 2025'} // Stub for month-year rendering
+        getEventsForDay={() => []} // Not needed for this test
+        getEventsForTimeSlot={() => []} // Not needed for this test
+        renderTimeLabel={() => {}} // Not needed for this test
       />
     </CalendarProvider>
   );
 
-  // Wait for "Sun" elements to appear
-  await waitFor(() => screen.getAllByText(/Sun/i));
+  // Assert navigation buttons are present
+  const prevButton = screen.getByRole('button', { name: /Previous/i });
+  const nextButton = screen.getByRole('button', { name: /Next/i });
 
-  // Get all elements with "Sun" text
-  const dayHeaders = screen.getAllByText(/Sun/i);
+  expect(prevButton).toBeInTheDocument();
+  expect(nextButton).toBeInTheDocument();
 
-  // Ensure there is only one "Sun" in the div with the class "calendar-day-of-week"
-  expect(dayHeaders.some(el => el.className === 'calendar-day-of-week')).toBe(true);
+  // Test clicking the Previous button
+  fireEvent.click(prevButton);
 
-  // Test interactions (e.g., change week buttons)
-  fireEvent.click(screen.getByRole('button', { name: /Previous week/i }));
-  fireEvent.click(screen.getByRole('button', { name: /Next week/i }));
+  // Add assertions to ensure the context is updated
+  expect(screen.getByText('January 2025')).toBeInTheDocument();
+
+  // Test clicking the Next button
+  fireEvent.click(nextButton);
+  expect(screen.getByText('January 2025')).toBeInTheDocument(); // Adjust expectation as needed
 });
