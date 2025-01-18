@@ -219,6 +219,16 @@
   },
   {
     "id": 23,
+    "title": "Online Career fair",
+    "date": "2025-01-20",
+    "startTime": "11:00",
+	"endTime": "15:00",
+	"allDay": false,
+    "location": "Online, St. Louis, MO",
+    "description": "By JobFairX."
+  },
+  {
+    "id": 24,
     "title": "Saint Louis Career Fair",
     "date": "2025-01-27",
     "startTime": "09:30",
@@ -228,7 +238,7 @@
     "description": "Dress to impress. Bring a resume."
   },
   {
-    "id": 24,
+    "id": 25,
     "title": "Health Care Appt.",
     "date": "2025-03-20",
     "startTime": "09:30",
