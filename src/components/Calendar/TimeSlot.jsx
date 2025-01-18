@@ -11,7 +11,7 @@ const TimeSlot = ({ hour, label, events, onEventClick }) => {
     const convertTo12HourFormat = (time) => {
 	  const [hour, minute] = time.split(':').map(num => parseInt(num));
 	  const isPM = hour >= 12;
-	  const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format
+	  const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format.
 	  const adjustedMinute = minute.toString().padStart(2, '0');
 	  return `${adjustedHour}:${adjustedMinute} ${isPM ? 'PM' : 'AM'}`;
 	};
@@ -25,13 +25,13 @@ const TimeSlot = ({ hour, label, events, onEventClick }) => {
             <div
               key={event.id}
               className="event"
-              onClick={() => onEventClick(event)} // Handle event click
+              onClick={() => onEventClick(event)} //Notify parent when an event is clicked.
             >
               <strong>{event.title}</strong> {/* Display only event title */}
             </div>
           ))
         ) : (
-          <div className="no-events">No events</div> // Placeholder for empty time slots
+          <div className="no-events">No events</div> // Placeholder for empty time slots.
         )}
       </div>
     </div>

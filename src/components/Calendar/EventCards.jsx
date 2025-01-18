@@ -11,7 +11,8 @@ const EventCards = ({ selectedDate, events }) => {
 
 	const filteredEvents = events.filter((event) => {
 	  const eventDate = new Date(event.date); // Parse event date
-	  if (isNaN(eventDate)) {
+	  if (isNaN(eventDate))
+	  {
 		console.error(`Invalid event date: ${event.date}`);
 		return false;
 	  }

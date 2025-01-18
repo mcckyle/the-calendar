@@ -121,13 +121,15 @@ const Calendar = ({ hours }) => {
 	const parseEventTime = (date, time) => {
 	  if (!date || !time) return null; // Ensure both date and time exist
 
-	  const [timePart, modifier] = time.split(' '); // Split "01:00 PM" into "01:00" and "PM"
-	  let [hours, minutes] = timePart.split(':').map(Number);
+	  const [timePart, modifier] = time.split(" "); // Split "01:00 PM" into "01:00" and "PM"
+	  let [hours, minutes] = timePart ? timePart.split(":").map(Number) : [0, 0]; // Default to 00:00 if timePart is missing
 
-	  if (modifier === 'PM' && hours !== 12) {
+	  if (modifier === "PM" && hours !== 12)
+	  {
 		hours += 12; // Convert PM hours to 24-hour format
 	  }
-	  if (modifier === 'AM' && hours === 12) {
+	  if (modifier === "AM" && hours === 12)
+	  {
 		hours = 0; // Convert midnight (12 AM) to 0
 	  }
 
@@ -138,27 +140,28 @@ const Calendar = ({ hours }) => {
 	  return parsedDate;
 	};
 
-	// Updated normalizeEvents function
 	const normalizeEvents = (events) =>
 	  events.map((event) => {
-		const date = event.date || ""; // Ensure date exists
-		const startTime = event.startTime || ""; // Ensure startTime exists
+		const date = event.date || ""; // Ensure date exists.
+		const allDay = event.allDay ?? (!event.startTime && !event.endTime); // Guess based on missing time fields.
 
-		console.log("Raw Date:", date, "Raw Start Time:", startTime); // Log before processing
+		// If it's an all-day event, no need to parse startTime or endTime.
+		const startTimeDate = !allDay && event.startTime ? parseEventTime(date, event.startTime) : null;
+		const endTimeDate = !allDay && event.endTime ? parseEventTime(date, event.endTime) : null;
 
-		const startTimeDate = parseEventTime(date, startTime); // Convert 12-hour time to Date object
-
-		if (!startTimeDate || isNaN(startTimeDate)) {
-		  console.error("Invalid Date created for event:", event); // Check for invalid dates
+		// Log invalid date warnings.
+		if (!allDay && (!startTimeDate || isNaN(startTimeDate)))
+		{
+		  console.error("Invalid Date created for event:", event);
 		}
 
 		return {
 		  id: event.id,
 		  title: event.title || "Untitled Event",
 		  date: date, // Keep the raw date string
-		  startTime: startTimeDate, // Converted to a Date object
-		  endTime: event.endTime ? parseEventTime(date, event.endTime) : null, // Similarly handle endTime
-		  allDay: event.allDay ?? (!startTime && !event.endTime), // Guess based on missing time fields
+		  startTime: startTimeDate, // Parsed to Date object if applicable
+		  endTime: endTimeDate, // Parsed to Date object if applicable
+		  allDay: allDay, // Explicitly mark allDay
 		};
 	  });
 	  
