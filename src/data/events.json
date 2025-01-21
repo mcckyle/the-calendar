@@ -237,8 +237,18 @@
     "location": "Marriott St. Louis Grand, 800 Washington Avenue, St. Louis, MO 63101",
     "description": "Dress to impress. Bring a resume."
   },
-  {
+    {
     "id": 25,
+    "title": "Highway to Destiny Meeting",
+    "date": "2025-02-17",
+    "startTime": "18:45",
+	"endTime": null,
+	"allDay": false,
+    "location": "Virtual, St. Louis, MO",
+    "description": "Board Conference."
+  },
+  {
+    "id": 26,
     "title": "Health Care Appt.",
     "date": "2025-03-20",
     "startTime": "09:30",

@@ -8,8 +8,8 @@ const WeekDayColumn = ({
   onEventClick,
   convertTo12HourFormat
 }) => {
-	// Generate hours from 8 AM to 1 AM (17 hours total)
-	const hours = Array.from({ length: 17 }, (_, i) => (i + 8) % 24);
+	// Generate hours from 9 AM to 9 PM (12 hours total)
+	const hours = Array.from({ length: 12 }, (_, i) => i + 9);
 
   return (
     <div className="week-day-column">

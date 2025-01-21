@@ -33,12 +33,12 @@ const Calendar = ({ hours }) => {
 	};
 
 	const [startOfWeek, setStartOfWeek] = useState(() => {
-	  // Initialize to the current week's start date
+	  // Initialize to the current week's start date (Sunday)
 	  const now = new Date();
 	  const day = now.getDay();
-	  const diff = now.getDate() - day + (day === 0 ? -6 : 1); // Adjust for Sunday (0)
-	  const startOfWeekDate = new Date(now); // Clone the current date
-	  startOfWeekDate.setDate(diff); // Modify the clone
+	  const diff = now.getDate() - day; // Adjust for Sunday
+	  const startOfWeekDate = new Date(now);
+	  startOfWeekDate.setDate(diff); // Set the date to the Sunday of the current week
 	  return startOfWeekDate;
 	});
   
