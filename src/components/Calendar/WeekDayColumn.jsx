@@ -9,7 +9,7 @@ const WeekDayColumn = ({
   convertTo12HourFormat
 }) => {
 	// Generate hours from 9 AM to 9 PM (12 hours total)
-	const hours = Array.from({ length: 12 }, (_, i) => i + 9);
+	const hours = Array.from({ length: 13 }, (_, i) => i + 9);
 
   return (
     <div className="week-day-column">
