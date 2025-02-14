@@ -1,4 +1,7 @@
-// Calendar.jsx
+//Filename: Calendar.jsx
+//Date: 13 February 2025
+//Description: Main parent component for the local calendar project.
+
 import React, { useState, useEffect } from 'react';
 import './Base.css';
 import './Calendar.css';
@@ -10,7 +13,7 @@ import MonthNavigation from './MonthNavigation';
 import WeekDayColumn from './WeekDayColumn';
 
 const Calendar = ({ hours }) => {
-  const [selectedDay, setSelectedDay] = useState(null);
+  //const [selectedDay, setSelectedDay] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showEventPanel, setShowEventPanel] = useState(false);
   const [weekDays, setWeekDays] = useState([]);
