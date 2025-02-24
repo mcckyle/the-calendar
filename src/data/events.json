@@ -257,8 +257,28 @@
     "location": "Virtual, St. Louis, MO",
     "description": "Board Conference."
   },
-  {
+    {
     "id": 27,
+    "title": "Saint Louis Career Fair",
+    "date": "2025-03-05",
+    "startTime": "09:30",
+    "endTime": "13:00",
+	"allDay": false,
+    "location": "Marriott St. Louis Grand, 800 Washington Avenue, St. Louis, MO 63101",
+    "description": "Dress to impress. Bring a resume."
+  },
+  {
+    "id": 28,
+    "title": "Highway to Destiny Meeting",
+    "date": "2025-03-17",
+    "startTime": "18:45",
+	"endTime": null,
+	"allDay": false,
+    "location": "Virtual, Saint Louis, MO",
+    "description": "Board Conference."
+  },
+  {
+    "id": 29,
     "title": "Health Care Appt.",
     "date": "2025-05-23",
     "startTime": "09:00",
