@@ -1,16 +1,17 @@
 //Filename: Calendar.jsx
-//Date: 13 February 2025
-//Description: Main parent component for the local calendar project.
+//Author: Kyle McColgan
+//Date: 13 July 2025
+//Description: This file contains the main parent component for the local Saint Louis React calendar project.
 
 import React, { useState, useEffect } from 'react';
-import './Base.css';
+import '../Base.css';
 import './Calendar.css';
 import { useCalendarContext } from './CalendarContext';
-import DaysOfWeek from './DaysOfWeek';
+import DaysOfWeek from '../DaysOfWeek/DaysOfWeek.jsx';
 import events from '../../data/events.json';
-import EventPanel from './EventPanel';
-import MonthNavigation from './MonthNavigation';
-import WeekDayColumn from './WeekDayColumn';
+import EventPanel from '../EventPanel/EventPanel.jsx';
+import MonthNavigation from '../MonthNavigation/MonthNavigation.jsx';
+import WeekDayColumn from '../WeekDayColumn/WeekDayColumn.jsx';
 
 const Calendar = ({ hours }) => {
   //const [selectedDay, setSelectedDay] = useState(null);

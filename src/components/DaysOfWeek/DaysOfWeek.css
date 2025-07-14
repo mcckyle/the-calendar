@@ -1,0 +1,33 @@
+/* DaysOfWeek Container Styling */
+.days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #6a5832;
+  background-color: #f3f3ea;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #d6c69e;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Individual Day Name Styling */
+.day-of-week {
+  padding: 10px 0;
+  background-color: #fffef9;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #3b3427;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.day-of-week:hover
+{
+	background-color: #f0e6d0;
+}

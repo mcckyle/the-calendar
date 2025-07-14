@@ -1,10 +1,15 @@
+//Filename: EventPanel.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the EventPanel.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import EventPanel from '../components/Calendar/EventPanel.jsx';
-import EventCard from '../components/Calendar/EventCard.jsx';
+import EventPanel from '../components/EventPanel/EventPanel.jsx';
+import EventCard from '../components/EventCard/EventCard.jsx';
 
-jest.mock("../components/Calendar/EventCard", () => {
+jest.mock("../components/EventCard/EventCard.jsx", () => {
   // Mock EventCard for isolation
   return ({ title, date, time, description }) => (
     <div data-testid="event-card">

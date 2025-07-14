@@ -1,0 +1,130 @@
+/* Base Container Styling */
+.calendar-container {
+  width: 100%;
+  max-width: 920px; /* Increase max-width for a more spacious look */
+  margin: 60px auto; /* Larger margin for better positioning */
+  padding: 40px;
+  background-color: #fcfaf4;
+  border: 2px solid #c9a94d;
+  border-radius: 18px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12); /* Enhanced shadow for more lift */
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #2a2a2a;
+  line-height: 1.85; /* Better line-height for readability */
+  transition: all 0.3s ease-in-out; /* Smooth transition for interactive elements */
+}
+
+/* Calendar Body Layout */
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Increased gap for a more spacious layout */
+  background-color: transparent;
+}
+
+/* Ensure high contrast for day cells */
+.calendar-day {
+  padding: 22px; /* Increased padding for more clickable space */
+  text-align: center;
+  background-color: #f8f6ef; /* Light background for day cells */
+  border: 1px solid #e2dbc8; /* Soft border for day cells */
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2e3a59;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Calendar day hover and active state */
+.calendar-day:hover {
+  background-color: #ece8d9;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Selected day styling */
+.calendar-day.selected {
+  background-color: #2e3a59;
+  color: #fffbe9;
+  font-weight: 700;
+  border: 2px solid #c9a94d;
+  transform: scale(1.05); /* Slight zoom effect on selected day */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Adds depth to the selected day */
+}
+
+/* Empty day cells styling */
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  color: transparent; /* Ensures empty cells have no text */
+}
+
+/* Buttons Styling */
+button {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #2e3a59;
+  border: 2px solid #c9a94d;
+  padding: 12px 20px; /* Increased padding for better clickability */
+  border-radius: 12px; /* Rounder corners for consistency */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Focusable Elements for Accessibility */
+button:focus,
+.calendar-day:focus {
+  outline: 3px solid #c9a94d;
+  outline-offset: 3px;
+}
+
+button:hover {
+  background-color: #1f2b45;
+  transform: translateY(-3px); /* Adds a subtle lift to buttons */
+}
+
+button:focus {
+  outline: 3px solid #c9a94d;
+  outline-offset: 3px;
+}
+
+/* Responsive Design: Adjust layout on smaller screens */
+@media (max-width: 768px) {
+  .calendar-container {
+    max-width: 95%; /* Makes the calendar container fit better on smaller screens */
+    padding: 30px;
+  }
+  
+  .calendar-day
+  {
+	  font-size: 1rem;
+	  padding: 18px;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .calendar-header button {
+    font-size: 1rem;
+  }
+}
+
+/* Smooth scrolling for better UX. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body Defaults. */
+body {
+  background-color: #fdfcf7;
+  color: #2a2a2a;
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.85;
+}

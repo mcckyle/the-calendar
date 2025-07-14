@@ -1,0 +1,96 @@
+/* Time Slot container */
+.time-slot {
+  background-color: linear-gradient(145deg, #fdfcf8, #fef1e7);
+  border-radius: 14px;
+  border: 1px solid #d6ca81;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.time-slot:hover {
+  transform: translateY(-6px); /* Lift effect on hover. */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Time label (hour) inside each time slot. */
+.time-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3e321a;
+  text-align: center;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #cdbf8c;
+  padding-bottom: 6px;
+}
+
+/* Events Container. */
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual event within time slot */
+.event {
+  background-color: linear-gradient(120deg, #3f6934, #2b8a3e);
+  color: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.event:hover {
+  transform: translateY(-4px); /* Hover effect for events. */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Add shadow on hover. */
+}
+
+/* Placeholder for no events. */
+.no-events {
+  color: #8a8373;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  background-color: #fdfdfc;
+  border: 1px dashed #d0c5a1;
+  border-radius: 10px;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Optional small effect for no events */
+.no-events:hover {
+  background-color: #f6f3eb;
+}
+
+/* Responsive design: Make time slots more compact on smaller screens */
+@media (max-width: 768px) {
+  .time-slot {
+    padding: 16px;
+  }
+
+  .time-label {
+    font-size: 1.1rem;
+  }
+
+  .event {
+    font-size: 0.95rem;
+  }
+
+  .no-events {
+    font-size: 0.9rem;
+  }
+}

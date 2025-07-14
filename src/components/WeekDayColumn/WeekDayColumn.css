@@ -1,0 +1,115 @@
+/* WeekDay Column container. */
+.week-day-column {
+  background: linear-gradient(145deg, #fdfcf8, #f3f1e7);
+  border-radius: 14px;
+  border: 1px solid #d6caa1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.week-day-column:hover {
+  transform: scale(1.04);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Day header Styling. */
+.day-header {
+  background-color: #2e6533;
+  color: #f9f9f9;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.day-header span {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #f0e8da;
+}
+
+/* Time Slots container. */
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual Time Slot. */
+.time-slot {
+  background-color: #fcfcfa;
+  border: 1px solid #e8dec1;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.time-slot:hover {
+  background-color: #f2eee0;
+  transform: translateY(-3px);
+}
+
+/* Time Label. */
+.time-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3b3425;
+  margin-bottom: 8px;
+  font-family: 'Georgia', serif;
+}
+
+/* Event Block. */
+.event {
+  background: linear-gradient(135deg, #3f6934, #2b8a3e);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Empty state for time slots */
+.no-events {
+  font-size: 1rem;
+  color: #9e9480;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-style: italic;
+  border: 1px dashed #cdbf8c;
+  font-family: 'Georgia', serif;
+  transition: background-color 0.3s ease;
+}
+
+.no-events:hover {
+  background-color: #f6f3eb;
+}
+

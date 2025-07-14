@@ -1,0 +1,81 @@
+/* General calendar day styling */
+.calendar-day {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 6px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2e2e2e;
+  background-color: #fcfaf4;
+  border: 2px solid #d8c08f;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  user-select: none;
+}
+
+.calendar-day:hover {
+  background-color: #efe9dc;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-day.selected {
+  background-color: #2e3a59;
+  color: #fffef5;
+  transform: scale(1.1);
+  border-color: #b99b48;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.calendar-day.selected:hover {
+  background-color: #1f2b45;
+}
+
+.calendar-day:active {
+  transform: scale(1.04);
+}
+
+/* Event indicator for the day */
+.event-indicator {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 6px;
+  background-color: #b99b48;
+  color: #fffef5;
+  font-size: 0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  border-radius: 14px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.calendar-day:hover .event-indicator {
+  opacity: 1;
+}
+
+/* Styling for empty days */
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  box-shadow: none;
+  color: transparent;
+}
+
+.calendar-day.empty:hover {
+  background-color: transparent;
+  transform: none;
+}

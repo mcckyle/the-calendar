@@ -1,7 +1,12 @@
+//Filename: EventCards.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the EventCards.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import EventCards from '../components/Calendar/EventCards';
+import EventCards from '../components/EventCards/EventCards.jsx';
 
 jest.spyOn(console, 'error').mockImplementation(() => {}); // Suppress console.error in test output
 

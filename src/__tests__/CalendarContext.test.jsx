@@ -1,3 +1,8 @@
+//Filename: CalendarContext.test.jsx
+//Author: Kyle McColgan
+//Date: 13 July 2025
+//Description: This file contains Jest unit test suite for the CalendarContext.jsx for the local Saint Louis React calendar project.
+
 import { renderHook, act } from '@testing-library/react';
 import { CalendarProvider, useCalendarContext } from '../components/Calendar/CalendarContext.jsx';
 
@@ -25,23 +30,27 @@ describe('CalendarContext', () => {
 			result.current.changeMonth(1); // Move to the next month
 		});
 
-		let updatedDate = new Date(result.current.currentDate); // Updated date
-		let expectedMonth = (initialMonth + 1) % 12;
-		let expectedYear = initialYear + (expectedMonth < initialMonth ? 1 : 0); // Adjust year if wrapped
-		expect(updatedDate.getMonth()).toBe(expectedMonth);
-		expect(updatedDate.getFullYear()).toBe(expectedYear);
+		let newDate1 = new Date(result.current.currentDate); // Updated date
+		let newMonth1 = newDate1.getMonth();
+		let newYear1 = newDate1.getFullYear();
+		
+		const monthDiff1 = (newYear1 - initialYear) * 12 + (newMonth1 - initialMonth);
+		
+		expect(monthDiff1).toBe(1);
 
-		// Test moving backward two months
+		// Test moving backward two months.
 		act(() => {
 			result.current.changeMonth(-2); // Move back two months
 		});
 
-		updatedDate = new Date(result.current.currentDate); // Further updated date
-		expectedMonth = (expectedMonth - 2 + 12) % 12; // Add 12 to handle negative months
-		expectedYear = expectedYear - (expectedMonth > (initialMonth - 2 + 12) % 12 ? 1 : 0); // Adjust year if wrapped
-		expect(updatedDate.getMonth()).toBe(expectedMonth);
-		expect(updatedDate.getFullYear()).toBe(expectedYear);
-		});
+		let newDate2 = new Date(result.current.currentDate); // Updated date
+		let newMonth2 = newDate2.getMonth();
+		let newYear2 = newDate2.getFullYear();
+		
+		const monthDiff2 = (newYear2 - initialYear) * 12 + (newMonth2 - initialMonth);
+		
+		expect(monthDiff2).toBe(-1);
+	});
 
 
 	  it('updates selectedDate when a valid date is passed to selectDate', () => {

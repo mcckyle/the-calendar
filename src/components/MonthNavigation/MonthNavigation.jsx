@@ -1,6 +1,10 @@
-// MonthNavigation.jsx
+//Filename: MonthNavigation.jsx
+//Author: Kyle McColgan
+//Date: 13 July 2025
+//Description: This file contains the MonthNavigation component for the local Saint Louis React calendar project.
+
 import React from 'react';
-import { useCalendarContext } from './CalendarContext';
+import { useCalendarContext } from '../Calendar/CalendarContext.jsx';
 import './MonthNavigation.css';
 
 const MonthNavigation = () => {

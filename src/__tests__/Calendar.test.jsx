@@ -1,16 +1,21 @@
+//Filename: Calendar.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the Calendar.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Calendar from '../components/Calendar/Calendar.jsx';
 import { CalendarProvider } from '../components/Calendar/CalendarContext'; // Import the provider
 
-jest.mock('../components/Calendar/WeekDayColumn', () => ({ day, groupedEvents, onEventClick, convertTo12HourFormat }) => (
+jest.mock('../components/WeekDayColumn/WeekDayColumn.jsx', () => ({ day, groupedEvents, onEventClick, convertTo12HourFormat }) => (
   <div data-testid="week-day-column">
     <span>{day.toDateString()}</span>
   </div>
 ));
 
-jest.mock('../components/Calendar/EventPanel', () => ({ selectedEvent, onClose }) => (
+jest.mock('../components/EventPanel/EventPanel.jsx', () => ({ selectedEvent, onClose }) => (
   <div data-testid="event-panel">
     <span>{selectedEvent ? selectedEvent.title : 'No Event'}</span>
     <button onClick={onClose}>Close</button>

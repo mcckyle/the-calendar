@@ -1,89 +1,101 @@
 /* Global Styling */
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  line-height: 1.6; /* Improve line height for readability */
-  color: #333; /* Default text color for better contrast */
   font-size: 1rem; /* Set a base font size for consistency */
+  line-height: 1.75; /* Improve line height for readability */
+  color: var(--text-color, #2a2a2a);
+  background-color: var(--primary-bg, #fdfcf7);
+  font-family: var(--body-font, 'Cormorant Garamond', Georgia, serif);
 }
 
 /* Heading Styling */
 h1, h2, h3 {
-  margin: 0;
-  font-weight: bold;
-  color: #333; /* Ensure headings have consistent color */
+  font-family: var(--title-font, 'Playfair Display', serif);
+  font-weight: 700;
+  color: var(--deep-blue, #2e3a59);
+  margin: 0 0 0.5rem;
 }
 
 h1 {
-  font-size: 2rem; /* Standard size for h1 */
-  margin-bottom: 0.5rem; /* Slight margin for better spacing */
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--accent-gold, #c9a94d);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: 1.5rem; /* Standard size for h2 */
-  margin-bottom: 0.5rem; /* Slight margin for spacing */
+  font-size: 2rem;
+  color: var(--deep-blue);
 }
 
 h3 {
-  font-size: 1.25rem; /* Standard size for h3 */
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--deep-blue);
 }
 
 /* Button Styling */
 button {
-  font-family: inherit;
+  font-family: var(--body-font);
+  font-weight: 600;
+  padding: 10px 16px;
+  background-color: var(--button-bg, #2e3a59);
+  color: var(--button-text-color, #fff);
+  border: 2px solid var(--accent-gold, #c9a94d);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 8px 12px; /* Standard padding */
-  border: 1px solid #ccc; /* Border for buttons */
-  border-radius: 6px; /* Rounded corners */
-  background-color: #007bff; /* Default background */
-  color: white; /* Text color inside buttons */
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darken button on hover */
+  background-color: #1f2b45;
+  transform: scale(1.03);
 }
 
 button:focus {
-  outline: 2px solid #0056b3; /* Custom focus outline for accessibility */
+  outline: 3px solid var(--accent-gold);
   outline-offset: 4px; /* Offset outline to make it stand out */
 }
 
-/* Links Styling */
+/* Link Styling */
 a {
+  color: var(--link-color, #2e3a59);
   text-decoration: none; /* Remove underlines */
-  color: #007bff; /* Default color for links */
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #0056b3; /* Darken color on hover */
+  color: var(--accent-gold, #c9a94d);
 }
 
 /* Input Styling */
-input, textarea, select {
-  font-family: inherit;
-  padding: 8px 12px;
+input,
+textarea,
+select {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #fff;
-  font-size: 1rem; /* Consistent font size for form elements */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input:focus, textarea:focus, select:focus {
-  border-color: #007bff; /* Highlight borders on focus */
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle focus shadow */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 6px rgba(201, 169, 77, 0.3);
+  outline: none;
 }
 
 /* Form Labels */
 label {
+  font-family: var(--body-font);
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  display: block; /* Ensure labels are block-level for proper spacing */
+  display: block;
 }
 
 /* General Container Styling */
@@ -91,27 +103,31 @@ label {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: var(--secondary-bg, #fffdf6);
+  border: 1px solid var(--accent-gold, #c9a94d);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   body {
-    font-size: 0.9rem; /* Reduce font size for mobile screens */
+    font-size: 0.95rem; /* Reduce font size for mobile screens */
   }
 
   h1 {
-    font-size: 1.8rem; /* Smaller heading size for mobile */
+    font-size: 2rem; /* Smaller heading size for mobile */
   }
 
   h2 {
-    font-size: 1.4rem; /* Smaller heading size for mobile */
+    font-size: 1.6rem; /* Smaller heading size for mobile */
   }
 
   h3 {
-    font-size: 1.1rem; /* Smaller heading size for mobile */
+    font-size: 1.25rem; /* Smaller heading size for mobile */
   }
 
   button {
-    padding: 6px 10px; /* Adjust button padding for smaller screens */
+    padding: 8px 12px; /* Adjust button padding for smaller screens */
   }
 }

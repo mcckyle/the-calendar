@@ -1,0 +1,101 @@
+/* Container styling */
+.event-panel {
+  background: linear-gradient(145deg, #e8e1d4, #dfdaf5); /* Soft gradient background */
+  border-radius: 16px;
+  border: 2px solid #bfa77a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  max-width: 700px;
+  margin: 60px auto;
+  font-family: 'Cormorant Garamond', serif;
+  color: #3a2e1e;
+  animation: fadeSlideIn 0.6s ease;
+  transform-origin: top center;
+  backdrop-filter: blur(2px);
+}
+
+/* Subtle slide/fade animation */
+@keyframes fadeSlideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Button style for close */
+.event-panel button {
+  background-color: #8c2f39;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.event-panel button:hover {
+  background-color: #a03b49;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Title styling */
+.event-panel h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2b1e0f;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Event detail styling */
+.event-panel h3 {
+  font-size: 1.5rem;
+  color: #4e3a24;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Description and time styling */
+.event-panel p {
+  font-size: 1.1rem;
+  color: #5a4a3b;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Add a "no event" fallback. */
+.event-panel p.no-event {
+  color: #9c8e7a;
+  text-align: center;
+  font-style: italic;
+}
+
+.event-panel p.time-range {
+  font-weight: 600;
+  color: #3a2e1e;
+}
+
+/* Adjust padding for inner details. */
+.event-panel div {
+  padding: 1rem;
+  background-color: rgba(255, 250, 240, 0.5);
+  border-radius: 12px;
+  border: 1px solid #d6c6a8;
+  margin-top: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Accessibility Text Fallbacks. */
+.event-panel h2,
+.event-panel h3,
+.event-panel p {
+  font-family: 'Arial', sans-serif; /* Use a more readable sans-serif font for body text */
+}

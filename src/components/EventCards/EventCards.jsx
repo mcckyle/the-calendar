@@ -1,5 +1,10 @@
+//Filename: EventCards.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains the EventCards.jsx component.
+
 import React from 'react';
-import EventCard from './EventCard';
+import EventCard from '../EventCard/EventCard.jsx';
 import './EventCards.css';
 
 const EventCards = ({ selectedDate, events }) => {

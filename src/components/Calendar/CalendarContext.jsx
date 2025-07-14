@@ -1,4 +1,8 @@
-// CalendarContext.jsx
+//Filename: CalendarContext.jsx
+//Author: Kyle McColgan
+//Date: 13 July 2025
+//Description: This file contains the Calendar context component for the local Saint Louis React calendar project.
+
 import React, { createContext, useContext, useState } from 'react';
 
 // Create the Calendar Context

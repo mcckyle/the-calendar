@@ -1,7 +1,12 @@
+//Filename: Day.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the Day.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Day from '../components/Calendar/Day';
+import Day from '../components/Day/Day.jsx';
 
 // Mock data
 const mockEvents = [

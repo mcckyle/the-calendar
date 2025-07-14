@@ -1,7 +1,12 @@
+//Filename: MonthNavigation.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the MonthNavigation.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import MonthNavigation from '../components/Calendar/MonthNavigation';
+import MonthNavigation from '../components/MonthNavigation/MonthNavigation';
 import { useCalendarContext } from '../components/Calendar/CalendarContext';
 
 // Mocking the useCalendarContext hook

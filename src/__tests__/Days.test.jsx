@@ -1,7 +1,12 @@
+//Filename: Days.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the Days.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Days from '../components/Calendar/Days';
+import Days from '../components/Days/Days.jsx';
 
 const mockDate = new Date(2024, 10, 1); // November 2024
 const mockSelectedDate = new Date(2024, 10, 5); // Selected date: November 5, 2024

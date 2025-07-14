@@ -1,0 +1,33 @@
+/* EventCards Wrapper Styling */
+.event-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75em;
+  padding: 2em;
+  margin: 2em auto;
+  background: linear-gradient(to bottom right, #fdfaf3, #f3efe4);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 960px;
+  font-family: 'Cormorant Garamond', serif;
+  transition: background 0.4s ease;
+}
+
+.event-cards p {
+  color: #4b3f2b;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .event-cards {
+    padding: 1.25em;
+    margin: 1em;
+	gap: 1.25em;
+  }
+
+  .event-cards p {
+    font-size: 1rem;
+  }
+}

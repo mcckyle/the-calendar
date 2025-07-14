@@ -1,5 +1,10 @@
+//Filename: EventPanel.jsx
+//Author: Kyle McColgan
+//Date: 13 July 2025
+//Description: This file contains the EventPanel component for the local Saint Louis React calendar project.
+
 import React from 'react';
-import EventCard from './EventCard';
+import EventCard from '../EventCard/EventCard.jsx';
 import './EventPanel.css';
 
 const EventPanel = ({ selectedEvent, onClose }) => {

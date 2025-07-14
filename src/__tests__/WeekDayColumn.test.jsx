@@ -1,10 +1,15 @@
+//Filename: WeekDayColumn.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the WeekDayColumn.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import WeekDayColumn from '../components/Calendar/WeekDayColumn.jsx';
+import WeekDayColumn from '../components/WeekDayColumn/WeekDayColumn.jsx';
 
 // Mock the TimeSlot component
-jest.mock('../components/Calendar/TimeSlot', () => ({ hour, label, events, onEventClick }) => (
+jest.mock('../components/TimeSlot/TimeSlot.jsx', () => ({ hour, label, events, onEventClick }) => (
   <div data-testid={`time-slot-${hour}`}>
     <span>{label}</span>
     {events.map((event, index) => (

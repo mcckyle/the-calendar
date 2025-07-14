@@ -1,0 +1,78 @@
+.month-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: linear-gradient(135deg, #f8f5f0, #ece6d9);
+  padding: 20px 40px;
+  border-radius: 16px;
+  border: 2px solid #cbb88a;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  position: relative;
+}
+
+.nav-button {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3a2e1e;
+  background-color: #fefefe;
+  border: 2px solid #bfa77a;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+  background-color: #f3e8d5;
+  transform: scale(1.15);
+}
+
+.month-year {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.month {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2b1e0f;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.year {
+  font-size: 1.2rem;
+  color: #7e6a50;
+  font-weight: 500;
+}
+
+@media (max-width: 600px)
+{
+	.month-navigation
+	{
+		flex-direction: column;
+		padding: 16px 20px;
+		gap: 1rem;
+	}
+	
+	.nav-button
+	{
+		font-size: 22px;
+		padding: 10px;
+	}
+	
+	.month
+	{
+		font-size: 1.8rem;
+	}
+	
+	.year
+	{
+		font-size: 1rem;
+	}
+}

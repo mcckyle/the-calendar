@@ -1,7 +1,12 @@
+//Filename: TimeSlot.test.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains unit tests for the TimeSlot.jsx component.
+
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import TimeSlot from '../components/Calendar/TimeSlot.jsx';
+import TimeSlot from '../components/TimeSlot/TimeSlot.jsx';
 
 describe('TimeSlot', () => {
   const mockOnEventClick = jest.fn();

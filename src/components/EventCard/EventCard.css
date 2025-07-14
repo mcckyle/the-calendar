@@ -1,0 +1,65 @@
+.calendar-event {
+  background: linear-gradient(to bottom right, #fffdf6, #f5eee1);
+  border-radius: 14px;
+  border: 2px solid #d6c69e;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.75em;
+  margin: 1.5em auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 480px;
+  font-family: 'Cormorant Garamond', serif;
+  cursor: pointer;
+}
+
+.calendar-event:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.event-header {
+  margin-bottom: 1.2em;
+  border-bottom: 1px solid #d6c69e;
+  padding-bottom: 0.6em;
+}
+
+.event-title {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #3a2e1e;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.event-date-time {
+  font-size: 1rem;
+  color: #9a7b38;
+  font-style: italic;
+  margin-top: 0.4em;
+}
+
+.event-description {
+  font-size: 1.05rem;
+  color: #4a4a4a;
+  margin-top: 0.75em;
+  line-height: 1.65;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .calendar-event {
+    padding: 1.25em;
+    margin: 1em;
+  }
+
+  .event-title {
+    font-size: 1.3em;
+  }
+
+  .event-date-time {
+    font-size: 0.85rem;
+  }
+  
+    .event-description {
+    font-size: 0.95rem;
+  }
+}
