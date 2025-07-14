@@ -2,11 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/the-calendar/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saint Louis Events</title>
-    <script type="module" crossorigin src="/the-calendar/assets/index-oo7MFiyh.js"></script>
-    <link rel="stylesheet" crossorigin href="/the-calendar/assets/index-VJMUyZRT.css">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/the-calendar/vite.svg" />
+	<link rel="stylesheet" href="/styles.css" />
+	
+	<style>
+	  :root {
+	    --gold: #c9a94b;
+		--deep-blue: #1b1f3b;
+		--ivory: #f9f7f1;
+		--marble: #eae6da;
+		--text-color: #2c2c2c;
+		--title-font: 'Playfair Display', serif;
+		--body-font: 'Cormorant Garamond', serif;
+	}
+	
+	body {
+	  margin: 0;
+	  background: var(--marble);
+	  color: var(--text-color);
+	  font-family: var(--body-font);
+	  line-height: 1.6;
+	}
+	
+	h1, h2, h3, h4 {
+	  font-family: var(--title-font);
+	  color: var(--deep-blue);
+	  letter-spacing: 0.5px;
+	}
+	
+	#root {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  padding: 2rem;
+	  background: var(--ivory);
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+	  border: 2px solid var(--gold);
+	  border-radius: 12px;
+	}
+  </style>	
+    <script type="module" crossorigin src="/the-calendar/assets/index-CgT7J6OZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/the-calendar/assets/index-VmPpf9c3.css">
   </head>
   <body>
     <div id="root"></div>
