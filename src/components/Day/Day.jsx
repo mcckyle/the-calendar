@@ -1,3 +1,8 @@
+//Filename: Day.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains the Day.jsx component for the local Saint Louis React calendar project.
+
 import React from 'react';
 import './Day.css';
 
@@ -19,6 +24,8 @@ const Day = ({ day, selectedDate, currentDate, onClick, events }) => {
     <div
       className={`calendar-day ${isSelected ? 'selected' : ''}`}
       onClick={() => onClick(day)}
+      title={dayEvents[0]?.title}
+      aria-label={`Day${day} ${isSelected ? ' (selected)' : ''}${dayEvents.length > 0 ? ', has event' : ''}`}
     >
       <span>{day}</span>
       {dayEvents.length > 0 && (

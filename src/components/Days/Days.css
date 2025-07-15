@@ -1,87 +1,54 @@
-/* Calendar Container */
-.calendar-container {
-  max-width: 540px;
-  margin: 0 auto;
-  font-family: 'Playfair Display', serif;
-  background-color: #fcfaf4;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border: 2px solid #d8c08f;
-}
-
-/* Header Styling */
-.calendar-header {
-  text-align: center;
-  margin-bottom: 16px;
-  color: #2e2e2e;
-}
-
-.calendar-header h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0;
-  color: #2b2b2b;
-  letter-spacing: 0.5px;
-}
-
-/* Weekdays Styling */
-.days-of-week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  font-weight: 600;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  margin-bottom: 8px;
-  color: #7a693d;
-}
-
-.day-of-week {
-  padding: 10px 0;
-  border-bottom: 1px solid #e4dac3;
-}
-
-/* Days Grid */
+/* Days Grid. */
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 10px;
+  padding: 16px;
+  background: #f9f6ef;
+  border: 2px solid #d8c08f;
+  border-radius: 18px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
 }
 
 .day {
-  text-align: center;
-  padding: 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  background-color: #fdfaf5;
-  color: #3b3b3b;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   position: relative;
+  text-align: center;
+  padding: 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  background: radial-gradient(circle at top left, #fcfaf4, #f5f1df);
+  color: #3a3a3a;
   font-size: 1rem;
   font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-family: 'Playfair Display', serif;
+  box-shadow:
+    inset 0 0 0.5px #fff,
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .day:hover {
-  background-color: #f2e5c7;
-  transform: scale(1.05);
+  background: radial-gradient(circle at center, #f0e6d1, #e6dec5);
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .day.selected {
-  background-color: #2e3a59;
+  background: radial-gradient(circle at center, #2e3a59, #1f2b45);
   color: #fffef5;
   font-weight: 700;
   border: 2px solid #b99b48;
-  transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  z-index: 1;
 }
 
-.day.empty {
+.calendar-day.empty {
   background-color: transparent;
-  color: transparent; /* Ensure empty days have no text */
+  color: transparent;
   cursor: default;
   box-shadow: none;
+  pointer-events: none;
 }
 
 /* Event Marker */
@@ -89,19 +56,20 @@
   position: absolute;
   bottom: 6px;
   right: 6px;
-  background-color: #b99b48;
-  color: white;
-  font-size: 0.65rem;
-  padding: 3px 5px;
-  border-radius: 50%;
+  background: linear-gradient(135deg, #c6a94d, #b99b48);
+  color: #fffef5;
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 12px;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   opacity: 0.85;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .day:hover .event-marker
 {
 	opacity: 1;
+    transform: scale(1.1);
 }

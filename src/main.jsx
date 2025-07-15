@@ -1,6 +1,6 @@
 //Filename: main.jsx
 //Author: Kyle McColgan
-//Date: 13 July 2025
+//Date: 14 July 2025
 //Description: This file contains the main entry-point component for the local Saint Louis React calendar project.
 
 import { StrictMode } from 'react'
@@ -12,5 +12,5 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);

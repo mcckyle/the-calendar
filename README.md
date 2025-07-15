@@ -24,7 +24,7 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 
 ![Calendar Screenshot](./public/images/Screenshot_20241222_222219-1.png)
 
-> **Link**: Calendar: https://kmccol1.github.io/the-calendar/
+> **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
 ## Installation
 

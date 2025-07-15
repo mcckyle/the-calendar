@@ -11,7 +11,7 @@ const EventCards = ({ selectedDate, events }) => {
 
   if (!selectedDate || isNaN(selectedDate))
   {
-    return <p>Please select a valid date.</p>;
+    return <div className="event-cards-message">Please select a valid date!!</div>;
   }
 
 	const filteredEvents = events.filter((event) => {
@@ -25,21 +25,23 @@ const EventCards = ({ selectedDate, events }) => {
 	});
 
   return (
-    <div className="event-cards">
+    <section className="event-cards" aria-live="polite">
       {filteredEvents.length > 0 ? (
         filteredEvents.map((event) => (
           <EventCard
             key={event.id}
             title={event.title}
-            date={new Date(event.date).toLocaleDateString()}
-            time={event.time}
+            date={event.date}
+            startTime={event.startTime}
+            endTime={event.endTime}
+            allDay={event.allDay}
             description={event.description}
           />
         ))
       ) : (
-        <p>No events for this day.</p>
+        <p className="event-cards-message">No events for this day!</p>
       )}
-    </div>
+    </section>
   );
 };
 

@@ -1,3 +1,8 @@
+//Filename: TimeSlot.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains the TimeSlot.jsx component for the local Saint Louis React calendar project.
+
 import React from 'react';
 import './TimeSlot.css';
 
@@ -17,24 +22,25 @@ const TimeSlot = ({ hour, label, events, onEventClick }) => {
 	};
 
   return (
-    <div className="time-slot">
-      <span className="time-label">{label}</span>
-      <div className="events">
+    <section className="time-slot" aria-label={`Time Slot: ${label}`}>
+      <header className="time-label">{label}</header>
+      <div className="slot-events">
         {events.length > 0 ? (
           events.map((event) => (
-            <div
+            <button
               key={event.id}
               className="event"
               onClick={() => onEventClick(event)} //Notify parent when an event is clicked.
+              aria-label={`View event: ${event.title}`}
             >
               <strong>{event.title}</strong> {/* Display only event title */}
-            </div>
+            </button>
           ))
         ) : (
-          <div className="no-events">No events</div> // Placeholder for empty time slots.
+          <div className="slot-empty">No Events!</div> // Placeholder for empty time slots.
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

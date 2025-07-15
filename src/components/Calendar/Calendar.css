@@ -1,14 +1,15 @@
 /* General layout */
 .calendar-container {
   font-family: 'Playfair Display', serif;
-  background-color: #fcfaf4;
-  border: 2px solid #b99b48;
-  border-radius: 18px;
-  padding: 32px;
+  background: linear-gradient(145deg, #fcfaf4, #f3ede0);
+  border: 3px solid #c6a94d;
+  border-radius: 20px;
   max-width: 1200px;
-  margin: 40px auto;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.6s ease-in-out;
+  margin: 60px auto;
+  box-shadow:
+    inset 0 0 8px #b99b48,
+    0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 /* Calendar header */
@@ -16,63 +17,68 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
-  font-size: 1.3rem;
-  background-color: #2e3a59;
+  padding: 26px;
+  background: radial-gradient(circle at center, #2e3a59 0%, #1f2b45 100%);
   color: #fffef5;
-  border-radius: 12px;
-  box-shadow: inset 0 -3px 0 #b99b48;
+  border-radius: 14px;
+  box-shadow: inset 0 -4px 0 #c6a94d;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .calendar-header button {
-  background: #fff;
+  background: #fffef5;
   color: #2a3a59;
-  border: 2px solid #b99b48;
-  padding: 10px 24px;
+  border: 2px solid #c6a94d;
+  padding: 10px 26px;
   font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 10px;
   font-family: 'Cormorant Garamond', serif;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .calendar-header button:hover {
   background-color: #2e3a59;
   color: #fffef5;
+  transform: translateY(-2px);
 }
 
-/* Calendar body */
+/* Calendar body. */
 .calendar-body {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
-/* Week Grid */
+/* Week Grid. */
 .week-view {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 16px;
-  padding: 16px;
 }
 
-/* Weekday Column */
+/* Weekday Column. */
 .week-view .week-day-column {
-  background-color: #f8f6ef;
-  border-radius: 12px;
-  padding: 16px;
+  background-color: #fdfcf7;
+  border: 2px solid #e5dac1;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow:
+    inset 0 1px 0 #fffdf5,
+    0 8px 24px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-  border: 1px solid #e0d6b4;
 }
 
 .week-view .week-day-column:hover {
-  transform: scale(1.03);
+  transform: scale(1.035);
 }
 
-/* Time Slots */
+/* Time Slot Styling. */
 .week-view .week-day-column .time-slot {
-  background-color: #fdfcf7;
-  border-radius: 10px;
-  padding: 8px;
-  margin-bottom: 6px;
+  background-color: #fffdf5;
+  border-radius: 12px;
+  border: 1px solid #e0d6b4;
+  padding: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-family: 'Georgia', serif;
@@ -82,26 +88,26 @@
   background-color: #f3efe4;
 }
 
-/* Event styling */
+/* Event Cards styling. */
 .event {
   background-color: #2e3a59;
   color: #fffef5;
-  padding: 14px;
-  border-radius: 10px;
-  margin-top: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 14px;
   font-family: 'Playfair Display', serif;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.2);
 }
 
 .event .event-title {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .event .event-location {
@@ -110,22 +116,23 @@
   font-style: italic;
 }
 
-/* Empty state */
+/* Empty state. */
 .no-events {
   text-align: center;
   font-size: 1rem;
-  color: #777;
+  color: #888;
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #fffef5;
   font-family: 'Cormorant Garamond', serif;
+  border: 1px dashed #ccc4a4;
 }
 
 .no-events:hover {
   background-color: #f7f3e6;
 }
 
-/* Time slot label */
+/* Time labels. */
 .time-label {
   font-size: 1rem;
   color: #5c5c5c;
@@ -148,27 +155,28 @@
 }
 
 .event-popup .popup-title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
   font-family: 'Playfair Display', serif;
   color: #2e3a59;
+  margin-bottom: 10px;
 }
 
 .event-popup .popup-location,
 .event-popup .popup-description {
   font-size: 1rem;
-  color: #555;
+  color: #444;
   font-family: 'Georgia', serif;
 }
 
 .event-popup .popup-close-btn {
   background-color: #2e3a59;
   color: #fffef5;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 2px solid #b99b48;
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: 2px solid #c6a94d;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 24px;
   display: block;
   width: 100%;
   font-family: 'Cormorant Garamond', serif;

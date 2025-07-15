@@ -1,4 +1,8 @@
-// Days.jsx
+//Filename: Days.jsx
+//Author: Kyle McColgan
+//Date: 14 July 2025
+//Description: This file contains the Days.jsx component for the local Saint Louis React calendar project.
+
 import React from 'react';
 import './Days.css';
 
@@ -16,7 +20,8 @@ const Days = ({ currentDate, selectedDate, onDayClick, events }) => {
     const month = currentDate.getMonth();
     const dayString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
-    console.log(`Checking events for: ${dayString}`);
+    //Below line is for debugging purposes only...
+    //console.log(`Checking events for: ${dayString}`);
     return events.filter(event => event.date === dayString);
   };
 
@@ -35,6 +40,8 @@ const Days = ({ currentDate, selectedDate, onDayClick, events }) => {
             key={day}
             className={`calendar-day ${selectedDate && selectedDate.getDate() === day ? 'selected' : ''}`}
             onClick={() => onDayClick(day)}
+            title={eventsForDay.map(e => e.title).join(', ')}
+            aria-label={`Day ${day}${eventsForDay.length ? ', has events' : ''}`}
           >
             {day}
             {eventsForDay.length > 0 && (

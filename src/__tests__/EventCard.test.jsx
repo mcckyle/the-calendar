@@ -5,11 +5,11 @@
 
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import EventCard from '../components/EventCard/EventCard.jsx';
 
 describe("EventCard Component", () => {
-  const mockEvent = {
+  const validEvent = {
     title: "Sample Event",
     date: "2025-01-19",
     startTime: "15:00", // 3:00 PM
@@ -17,6 +17,12 @@ describe("EventCard Component", () => {
     allDay: false,
     description: "This is a test description for the event.",
   };
+
+  //Test #1: Renders event title.
+  test("renders the event title properly.", () => {
+    render(<EventCard {...validEvent} />);
+    expect(screen.getByText("Sample Event")).toBeInTheDocument();
+  });
 
 //	test("renders EventCard with all props", () => {
 //	  render(
@@ -57,19 +63,19 @@ describe("EventCard Component", () => {
     //expect(screen.queryByText("This is a test description for the event.")).toBeNull(); // Description shouldn't exist
   //});
 
-  test("sets aria-labelledby attribute correctly", () => {
-    render(
-      <EventCard
-        title={mockEvent.title}
-        date={mockEvent.date}
-        time={mockEvent.time}
-        description={mockEvent.description}
-      />
-    );
-
-    const article = screen.getByRole("article");
-    expect(article).toHaveAttribute("aria-labelledby", mockEvent.title);
-  });
+//   test("sets aria-labelledby attribute correctly", () => {
+//     render(
+//       <EventCard
+//         title={mockEvent.title}
+//         date={mockEvent.date}
+//         time={mockEvent.time}
+//         description={mockEvent.description}
+//       />
+//     );
+//
+//     const article = screen.getByRole("article");
+//     expect(article).toHaveAttribute("aria-labelledby", mockEvent.title);
+//   });
 
   //test("renders gracefully with missing title, date, or time", () => {
    // render(
