@@ -5,10 +5,13 @@
  ============================== */
 .calendar-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 40px auto;
-  display: grid;
-  grid-template-rows: auto 1fr;
+  min-height: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
   background: linear-gradient(135deg, #fcfaf2, #f2eee3);
   border: 2px solid var(--accent-gold);
   border-radius: 18px;
@@ -21,12 +24,22 @@
     Calendar Header Styling.
  ============================== */
 .calendar-header {
+  width: 100%; /*Force full viewport width.*/
+  background: linear-gradient(135deg, #fefcf8, #f0e7d4);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #d2c08c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   font-family: var(--title-font);
   font-size: 1.6rem;
   color: var(--deep-blue);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 /* ===================================
@@ -36,11 +49,54 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
+  width: 100%;
+  flex: 1;
+}
+
+/* ===================================
+    Calendar Day Cells Styling.
+======================================= */
+.calendar-day {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--secondary-bg, #f8f6ef);
+  border: 1px solid #e2dbc8; /* Soft border for day cells. */
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--deep-blue, #2e3a59);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Calendar day hover and active state. */
+.calendar-day:hover {
+  background-color: #ece8d9;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Selected day styling. */
+.calendar-day.selected {
+  background-color: var(--deep-blue, #2e3a59);
+  color: #fffbe9;
+  font-weight: 700;
+  border: 2px solid var(--accent-gold, #c9a94d);
+  transform: scale(1.05); /* Slight zoom effect on selected day. */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty day cells styling. */
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  color: transparent; /* Ensures empty cells have no text. */
 }
 
 /* ============================
     Buttons Styling.
- ============================== */
+=============================== */
 button {
   background-color: var(--button-bg);
   color: var(--button-text-color);
@@ -63,7 +119,7 @@ button:hover {
 
 /* ============================
     Modal Event Panel Styling.
- ============================== */
+=============================== */
 .event-panel {
   background-color: #fffdfa;
   border: 2px solid var(--accent-gold);
@@ -103,11 +159,10 @@ button:hover {
 
 /* ============================
     Responsive Design Styling.
- ============================== */
+=============================== */
 @media (max-width: 1024px) {
   .calendar-container {
     padding: 1.5rem;
-    margin: 20px auto;
   }
 
 }
@@ -129,5 +184,11 @@ button:hover {
 @media (max-width: 480px) {
   .calendar-body {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .calendar-day
+  {
+      font-size: 0.95rem;
+      padding: 12px;
   }
 }

@@ -4,7 +4,7 @@
 //Description: This file contains the main parent component for the local Saint Louis React calendar project.
 
 import React, { useState, useEffect } from 'react';
-import '../Base.css';
+// import '../Base.css';
 import './Calendar.css';
 import { useCalendarContext } from './CalendarContext';
 import DaysOfWeek from '../DaysOfWeek/DaysOfWeek.jsx';

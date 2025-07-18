@@ -11,7 +11,9 @@
   margin-bottom: 2.2rem;
   background: linear-gradient(145deg, #fffdf8, #f4eedc);
   border: 2px solid var(--accent-gold);
-  border-radius: 20px;
+  border-radius: 0;
+  width: 100%;
+  margin: 0;
   box-shadow:
     0 16px 36px rgba(0, 0, 0, 0.12),
     inset 0 0 2px rgba(255, 255, 255, 0.4);
