@@ -1,78 +1,124 @@
+/* Filename: MonthNavigation.css */
+
+/* =====================================
+    Month Navigation Container Styling.
+======================================== */
 .month-navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, #fefcf8, #f0e7d4);
-  padding: 1.75rem 2.5rem;
-  border: 2px solid #d2c08c;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  padding: 1.8rem 2.6rem;
+  margin-bottom: 2.2rem;
+  background: linear-gradient(145deg, #fffdf8, #f4eedc);
+  border: 2px solid var(--accent-gold);
+  border-radius: 20px;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.12),
+    inset 0 0 2px rgba(255, 255, 255, 0.4);
   font-family: 'Cinzel', serif;
   position: relative;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.month-navigation:hover
+{
+    transform: translateY(-2px);
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.15),
+      inset 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* =====================================
+    Navigation Buttons Styling.
+======================================== */
 .nav-button {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #3a2e1e;
-  background-color: #fffef8;
+  color: #2f2416;
+  background: linear-gradient(145deg, #fffef9, #f8f3e2);
   border: 2px solid #c4ae7c;
   border-radius: 50%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   cursor: pointer;
-  transition: transform 0.25s ease, background-color 0.25s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.08),
+    inset 0 0 0.8px rgba(255, 255, 255, 0.6);
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #f5e8cd;
-  transform: scale(1.12);
+  background: linear-gradient(145deg, #f8efda, #f1e6c9);
+  transform: scale(1.15);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.12),
+    inset 0 0 1px #fff;
 }
 
+.nav-button:active {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* =====================================
+    Month and Year Display Styling.
+======================================== */
 .month-year {
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
+  color: #3a2e1e;
 }
 
 .month {
-  font-size: 2.25rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #2a1e0f;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: #2e3a59;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .year {
-  font-size: 1.15rem;
-  color: #7b6846;
-  font-weight: 500;
+  font-size: 1.2rem;
+  color: #7d6a4e;
   font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  margin-left: 6px;
+  display: inline-block;
 }
 
-@media (max-width: 600px)
+/* =====================================
+    Responsive Design Styling.
+========================================= */
+@media (max-width: 768px)
 {
 	.month-navigation
 	{
 		flex-direction: column;
-		padding: 1.25rem 1.5rem;
-		gap: 1.25rem;
+        gap: 1.5rem;
+		padding: 1.4rem 1.8rem;
+
 	}
+
+	.month
+	{
+        font-size: 2rem;
+    }
 	
 	.nav-button
 	{
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		padding: 10px 14px;
 	}
-	
-	.month
-	{
-		font-size: 1.75rem;
-	}
-	
-	.year
-	{
-		font-size: 1rem;
-	}
+}
+
+@media (max-width: 480px)
+{
+    .month {
+      font-size: 1.75rem;
+    }
+
+    .year
+    {
+        font-size: 1rem;
+    }
 }
