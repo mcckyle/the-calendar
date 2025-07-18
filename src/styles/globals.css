@@ -1,133 +1,60 @@
-/* Global Styling */
-body {
+/* globals.css */
+:root {
+  --title-font: 'Playfair Display', serif;
+  --body-font: 'Cormorant Garamond', serif;
+
+  --primary-bg: #f9f7f1;
+  --secondary-bg: #ffffff;
+  --accent-gold: #c9a94b;
+  --deep-blue: #1b1f3b;
+  --text-color: #2c2c2c;
+
+  --button-bg: var(--deep-blue);
+  --button-hover-bg: #2e3358;
+  --button-text-color: #ffffff;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 1rem; /* Set a base font size for consistency */
-  line-height: 1.75; /* Improve line height for readability */
-  color: var(--text-color, #2a2a2a);
-  background-color: var(--primary-bg, #fdfcf7);
-  font-family: var(--body-font, 'Cormorant Garamond', Georgia, serif);
+  background: var(--primary-bg);
+  font-family: var(--body-font);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Heading Styling */
-h1, h2, h3 {
-  font-family: var(--title-font, 'Playfair Display', serif);
-  font-weight: 700;
-  color: var(--deep-blue, #2e3a59);
-  margin: 0 0 0.5rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  border-bottom: 2px solid var(--accent-gold, #c9a94d);
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: 2rem;
+h1, h2, h3, h4 {
+  font-family: var(--title-font);
   color: var(--deep-blue);
 }
 
-h3 {
-  font-size: 1.5rem;
-  color: var(--deep-blue);
-}
-
-/* Button Styling */
+/* Buttons Styling */
 button {
   font-family: var(--body-font);
-  font-weight: 600;
-  padding: 10px 16px;
-  background-color: var(--button-bg, #2e3a59);
-  color: var(--button-text-color, #fff);
-  border: 2px solid var(--accent-gold, #c9a94d);
-  border-radius: 8px;
+  color: var(--button-text-color);
+  background: var(--button-bg);
+  border: 2px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #1f2b45;
-  transform: scale(1.03);
-}
-
-button:focus {
-  outline: 3px solid var(--accent-gold);
-  outline-offset: 4px; /* Offset outline to make it stand out */
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
 }
 
 /* Link Styling */
 a {
-  color: var(--link-color, #2e3a59);
+  color: var(--deep-blue);
   text-decoration: none; /* Remove underlines */
-  font-weight: 500;
-  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--accent-gold, #c9a94d);
-}
-
-/* Input Styling */
-input,
-textarea,
-select {
-  font-family: var(--body-font);
-  font-size: 1rem;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 6px rgba(201, 169, 77, 0.3);
-  outline: none;
-}
-
-/* Form Labels */
-label {
-  font-family: var(--body-font);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-/* General Container Styling */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: var(--secondary-bg, #fffdf6);
-  border: 1px solid var(--accent-gold, #c9a94d);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  body {
-    font-size: 0.95rem; /* Reduce font size for mobile screens */
-  }
-
-  h1 {
-    font-size: 2rem; /* Smaller heading size for mobile */
-  }
-
-  h2 {
-    font-size: 1.6rem; /* Smaller heading size for mobile */
-  }
-
-  h3 {
-    font-size: 1.25rem; /* Smaller heading size for mobile */
-  }
-
-  button {
-    padding: 8px 12px; /* Adjust button padding for smaller screens */
-  }
+  color: var(--accent-gold);
 }

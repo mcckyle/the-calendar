@@ -1,32 +1,46 @@
-/* Root container - Layout and padding for the overall page. */
-#root {
-  max-width: 1280px;
-  margin: 0 auto; /* Centers the app horizontally. */
-  padding: 3rem 2rem; /* Provides space around the content. */
-  background-color: var(--primary-bg); /* Light background to make content more readable. */
-  color: var(--text-color); /* Dark text color for contrast and legibility. */
-  font-family: var(--body-font);
-}
+/* App.css - Calendar container. */
 
-/* Calendar container. */
+/* ============================
+    Calendar Container Styling.
+ ============================== */
 .calendar-container {
   width: 100%;
+  max-width: 1400px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
   background: linear-gradient(135deg, #fcfaf2, #f2eee3);
-  border-radius: 18px;
   border: 2px solid var(--accent-gold);
+  border-radius: 18px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-/* Calendar body layout. */
-.calendar-body {
-  display: flex;
-  flex-direction: column;
+  padding: 2rem;
   gap: 1.5rem;
 }
 
-/* Button styling for the calendar. */
+/* ============================
+    Calendar Header Styling.
+ ============================== */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--title-font);
+  font-size: 1.6rem;
+  color: var(--deep-blue);
+}
+
+/* ===================================
+    Calendar Body (7 Columns) Styling.
+ ===================================== */
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+/* ============================
+    Buttons Styling.
+ ============================== */
 button {
   background-color: var(--button-bg);
   color: var(--button-text-color);
@@ -37,8 +51,8 @@ button {
   font-weight: 600;
   font-family: var(--body-font);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Button hover effect. */
@@ -47,7 +61,9 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* Modal-like Event Panel styling. */
+/* ============================
+    Modal Event Panel Styling.
+ ============================== */
 .event-panel {
   background-color: #fffdfa;
   border: 2px solid var(--accent-gold);
@@ -75,7 +91,6 @@ button:hover {
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   font-size: 1rem;
-  border: none;
   cursor: pointer;
   font-family: 'Cinzel', serif;
   transition: background-color 0.2s ease;
@@ -86,15 +101,33 @@ button:hover {
   background-color: #a0353d;
 }
 
-/* Accessibility and smooth scrolling enhancements. */
-html {
-  scroll-behavior: smooth; /* Smooth scrolling for better UX. */
+/* ============================
+    Responsive Design Styling.
+ ============================== */
+@media (max-width: 1024px) {
+  .calendar-container {
+    padding: 1.5rem;
+    margin: 20px auto;
+  }
+
 }
 
-body {
-  margin: 0;
-  font-family: var(--body-font);
-  background-color: var(--primary-bg);
-  color: var(--text-color);
-  line-height: 1.7;
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .calendar-body
+  {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-body {
+    grid-template-columns: 1fr 1fr;
+  }
 }
