@@ -1,41 +1,81 @@
-/* EventCards Wrapper Styling */
+/* Filename: EventCards.css */
+
+/* =====================================
+    EventCards Section Wrapper Styling.
+======================================== */
 .event-cards {
   display: flex;
   flex-direction: column;
-  gap: 2em;
-  padding: 2.5em;
-  margin: 3em auto;
-  background: linear-gradient(to bottom, #fefcf6, #f7f1dd);
-  border-radius: 20px;
-  border: 2px solid #c8b27a;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
-  max-width: 980px;
-  font-family: 'Playfair Display', serif;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  margin: 3.5rem auto;
+  background: linear-gradient(145deg, #fffdf7, #f6f2e3);
+  border-radius: 22px;
+  border: 2px solid var(--accent-gold);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    inset 0 0 2px rgba(255, 255, 255, 0.6);
+  max-width: 1080px;
+  font-family: var(--title-font);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.event-cards:hover
+{
+    background: linear-gradient(145deg, #fefcf8, #f9f6ed);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* =====================================
+    Message Styling for Empty State.
+======================================== */
 .event-cards-message {
-  font-size: 1.2rem;
-  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-family: var(--body-font);
   color: #4b3f2b;
-  padding: 1em;
-  border-radius: 12px;
-  background-color: #fcf8ec;
-  border: 1px solid #dfcc9a;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  background: linear-gradient(to right, #fcfaf4, #f4eedb);
+  border: 1.5px dashed #c9a94d;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
   text-align: center;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-@media (max-width: 600px) {
+.event-cards-message:hover
+{
+  transform: scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================
+    Responsive Design Styling.
+======================================== */
+@media (max-width: 768px) {
   .event-cards {
-    padding: 1.5em;
-    margin: 1.5em;
-    gap: 1.5em;
+    padding: 1.8rem;
+    margin: 2rem;
+    gap: 2rem;
   }
 
   .event-cards-message {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-cards {
+    padding: 1.4rem;
+    margin: 1.2rem;
+    gap: 1.5rem;
+  }
+
+  .event-cards-message {
+    font-size: 1.1rem;
   }
 }
