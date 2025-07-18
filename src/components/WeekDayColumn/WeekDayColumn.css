@@ -1,64 +1,84 @@
-/* WeekDay Column container. */
+/* Filename: WeekDayColumn.css */
+
+/* ===================================
+    WeekDay Column Container Styling.
+====================================== */
 .weekday-column {
   background: linear-gradient(145deg, #fdfbf6, #f3f0e7);
-  border-radius: 16px;
+  border-radius: 18px;
   border: 2px solid #d4c28d;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  padding: 16px;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.08),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.25rem;
   font-family: 'Cormorant Garamond', serif;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
+  position: relative;
+  /*box-sizing: border-box;*/
   min-width: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .weekday-column:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    inset 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Header Bar for Date Styling. (TOFIX: GREEN COLOUR). */
+/* ======================================
+    Header Section (Date Label) Styling.
+========================================= */
 .weekday-header {
-  background-color: #2e6533;
-  border-radius: 10px;
-  padding: 12px;
+  background: linear-gradient(135deg, #396b40, #2e6533);
+  border-radius: 14px;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.12),
+    inset 0 0 0.8px rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 0.4rem;
+  font-family: 'Cinzel', serif;
 }
 
 .weekday-label
 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: #fffdf4;
     margin: 0;
     text-transform: capitalize;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* DO NOT DELETE! ***MUST KEEP BELOW STYLES FOR ALIGNMENT RELATED PURPOSES... ****/
 
-.day-header span {
+/*.day-header span {
   font-size: 1rem;
   font-weight: 500;
-  text-transform: capitalize;
   color: #f0e8da;
-}
+  text-transform: capitalize;
+}*/
 
-/* Time Slots container. */
+/* ======================================
+    Time Slots Container Styling.
+========================================= */
 .time-slots {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.85rem;
 }
 
-/* Individual Time Slot. */
+/* ======================================
+    Legacy Time Slot Placeholder Styling.
+    (Keeps Layout Integrity).
+========================================== */
 .time-slot {
   background-color: #fcfcfa;
   border: 1px solid #e8dec1;
@@ -78,4 +98,22 @@
 {
     background-color: #f3efe4;
     transform: scale(1.02);
+}
+
+/* ============================
+    Responsive Design Styling.
+================================ */
+
+@media (max-width: 768px)
+{
+    .weekday-column
+    {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .weekday-label
+    {
+        font-size: 1.15rem;
+    }
 }
