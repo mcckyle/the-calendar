@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains the EventCard.jsx component for the local Saint Louis React calendar project.
 
 import React from 'react';
@@ -15,10 +15,6 @@ const EventCard = ({ title, date, startTime, endTime, allDay, description }) => 
           minute: "2-digit",
         })
       : "No Start Time Available";
-
-  // Format the full date using toLocaleDateString for CST time zone explicitly...
-  //const formattedDate = new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-  //console.log("Raw Date Input:", date);
 
 	const formattedDate = date
 	  ? new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {

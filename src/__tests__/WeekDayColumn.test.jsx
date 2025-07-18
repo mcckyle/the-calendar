@@ -1,15 +1,16 @@
 //Filename: WeekDayColumn.test.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 17 July 2025
 //Description: This file contains unit tests for the WeekDayColumn.jsx component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import WeekDayColumn from '../components/WeekDayColumn/WeekDayColumn.jsx';
 
-// Mock the TimeSlot component
+// Mock the TimeSlot component.
 jest.mock('../components/TimeSlot/TimeSlot.jsx', () => ({ hour, label, events, onEventClick }) => (
+
   <div data-testid={`time-slot-${hour}`}>
     <span>{label}</span>
     {events.map((event, index) => (
@@ -25,11 +26,13 @@ jest.mock('../components/TimeSlot/TimeSlot.jsx', () => ({ hour, label, events, o
 ));
 
 describe('WeekDayColumn', () => {
-  const mockDay = new Date(2025, 0, 15); // Example date: January 15, 2025
+  const mockDay = new Date(2025, 0, 15); // Example date: January 15, 2025.
+
   const mockGroupedEvents = {
-    8: [{ id: 1, title: 'Morning Event' }],
+    9: [{ id: 1, title: 'Morning Event' }],
     12: [{ id: 2, title: 'Lunch Event' }],
   };
+
   const mockOnEventClick = jest.fn();
   const mockConvertTo12HourFormat = jest.fn((time) => `${time} AM/PM`);
 
@@ -37,7 +40,8 @@ describe('WeekDayColumn', () => {
     jest.clearAllMocks();
   });
 
-  test('renders the day header with the correct date', () => {
+  //Test #1: Renders the day header with the correct date.
+  test('renders the day header with the correct date.', () => {
     render(
       <WeekDayColumn
         day={mockDay}
@@ -47,61 +51,163 @@ describe('WeekDayColumn', () => {
       />
     );
 
-    // Assert the day header renders the correct date
+    // Assert the day header renders the correct date.
     expect(screen.getByText(mockDay.toDateString())).toBeInTheDocument();
   });
 
-	test('renders time slots for all hours from 9 AM to 9 PM', () => {
-	  render(
-		<WeekDayColumn
-		  day={mockDay}
-		  groupedEvents={mockGroupedEvents}
-		  onEventClick={mockOnEventClick}
-		  convertTo12HourFormat={mockConvertTo12HourFormat}
-		/>
-	  );
+  //Test #2: Renders time slots for all hours from 9 AM to 9 PM.
+  test('renders time slots for all hours from 9 AM to 9 PM.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={mockGroupedEvents}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
 
-	  // Check for all 12 time slots using their unique `data-testid` attributes
-	  for (let hour = 9; hour <= 20; hour++)
-	  {
-		expect(screen.getByTestId(`time-slot-${hour}`)).toBeInTheDocument();
-	  }
-	});
+    // Check for all 12 time slots using their unique `data-testid` attributes.
+    for (let hour = 9; hour <= 21; hour++)
+    {
+      expect(screen.getByTestId(`time-slot-${hour}`)).toBeInTheDocument();
+    }
+  });
 
-  //test('calls convertTo12HourFormat for each hour label', () => {
-    //render(
-      //<WeekDayColumn
-        //day={mockDay}
-        //groupedEvents={mockGroupedEvents}
-        //onEventClick={mockOnEventClick}
-        //convertTo12HourFormat={mockConvertTo12HourFormat}
-      ///>
-    //);
+  //Test #3: Calls convertTo12HourFormat for each hour.
+  test('calls convertTo12HourFormat for each generated hour.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{}}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
 
-    // Assert convertTo12HourFormat was called 24 times
-    //expect(mockConvertTo12HourFormat).toHaveBeenCalledTimes(24);
+    expect(mockConvertTo12HourFormat).toHaveBeenCalledTimes(13); // 9 - 21 inclusive = 13 slots.
+  });
 
-    // Check if convertTo12HourFormat was called with specific hours
-    //expect(mockConvertTo12HourFormat).toHaveBeenCalledWith('8:00');
-    //expect(mockConvertTo12HourFormat).toHaveBeenCalledWith('12:00');
-    //expect(mockConvertTo12HourFormat).toHaveBeenCalledWith('23:00');
-  //});
+  //Test #4: Passes correct label to the TimeSlot component via convertTo12HourFormat.
+  test('passes the convered label to the TimeSlot component.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{}}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
 
-	//test('passes events and calls onEventClick when an event is clicked', () => {
-	 // render(
-		//<WeekDayColumn
-		  //day={mockDay}
-		  //groupedEvents={mockGroupedEvents}
-		  //onEventClick={mockOnEventClick}
-		  //convertTo12HourFormat={mockConvertTo12HourFormat}
-		///>
-	  //);
+    // Use ^ and $ regex anchors for exact matching to avoid partial matches like 19:00
+    expect(screen.getByText(/^9:00 AM\/PM$/)).toBeInTheDocument();
+    expect(screen.getByText(/^21:00 AM\/PM$/)).toBeInTheDocument();
+  });
 
-	  // Find an existing event button (hour 8, first event)
-	  //const eventButton = screen.getByTestId('event-8-0'); 
-	  //fireEvent.click(eventButton);
+  //Test #5: Renders events inside the correct TimeSlot.
+  test('renders events in the correct TimeSlot based on groupedEvents.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={mockGroupedEvents}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
 
-	  // Assert that onEventClick gets called with the correct event
-	  //expect(mockOnEventClick).toHaveBeenCalledWith(mockGroupedEvents[8][0]);
-	//});
+    expect(screen.getByTestId('event-9-0')).toBeInTheDocument(); // Morning Event.
+    expect(screen.getByTestId('event-12-0')).toBeInTheDocument(); // Lunch Event.
+  });
+
+  //Test #6: Calls onEventClick when an event button is clicked on.
+  test('calls onEventClick with the correct event when the button is clicked on.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={mockGroupedEvents}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    fireEvent.click(screen.getByTestId('event-9-0')); // Click on the Morning Event.
+    expect(mockOnEventClick).toHaveBeenCalledWith(mockGroupedEvents[9][0]);
+  });
+
+  //Test #7: Handles case where groupedEvents is empty (renders empty TimeSlots).
+  test('calls convertTo12HourFormat for each generated hour.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{}}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    for(let hour = 9; hour <= 21; hour ++)
+    {
+        expect(screen.getByTestId(`time-slot-${hour}`)).toBeInTheDocument();
+    }
+  });
+
+  //Test #8: Handles case where groupedEvents has hours outside the 9-21 range (should ignore them).
+  test('calls convertTo12HourFormat for each generated hour.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{ 8: [{ id: 99, title: 'Early Event' }] }} // Outside the 9-21 range.
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    expect(screen.queryByTestId('event-8-0')).not.toBeInTheDocument();
+  });
+
+  //Test #9: Section element has correct aria-label for accessibility purposes.
+  test('has an aria-label describing the schedule for the given day.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={mockGroupedEvents}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    expect(screen.getByLabelText(`Schedule for ${mockDay.toDateString()}`)).toBeInTheDocument();
+  });
+
+  //Test #10: Each TimeSlot receives events array, even when empty.
+  test('calls convertTo12HourFormat for each generated hour.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{}} // No events provided.
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    expect(screen.getAllByTestId(/time-slot-/)).toHaveLength(13);
+  });
+
+// *** OLD TESTS COMMENTED OUT BELOW THIS LINE. ***
+// 	test('passes events and calls onEventClick when an event is clicked', () => {
+// 	 render(
+// 		<WeekDayColumn
+// 		  day={mockDay}
+// 		  groupedEvents={mockGroupedEvents}
+// 		  onEventClick={mockOnEventClick}
+// 		  convertTo12HourFormat={mockConvertTo12HourFormat}
+// 		/>
+// 	  );
+//
+// 	  //Find an existing event button (hour 8, first event).
+// 	  const eventButton = screen.getByTestId('event-8-0');
+// 	  fireEvent.click(eventButton);
+//
+// 	  //Assert that onEventClick gets called with the correct event.
+// 	  expect(mockOnEventClick).toHaveBeenCalledWith(mockGroupedEvents[8][0]);
+// 	});
 });

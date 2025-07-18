@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar Component matches snapshot for default render. 1`] = `
+<DocumentFragment>
+  <div
+    class="calendar-container"
+  >
+    <div
+      class="calendar-header"
+    >
+      <button>
+        Previous
+      </button>
+      <span>
+        July 2025
+      </span>
+      <button>
+        Next
+      </button>
+    </div>
+    <div
+      class="calendar-body"
+    >
+      <div
+        class="week-view"
+      >
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sun Jul 13 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Mon Jul 14 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Tue Jul 15 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Wed Jul 16 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Thu Jul 17 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Fri Jul 18 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sat Jul 19 2025
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

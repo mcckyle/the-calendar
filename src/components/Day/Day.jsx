@@ -1,6 +1,6 @@
 //Filename: Day.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains the Day.jsx component for the local Saint Louis React calendar project.
 
 import React from 'react';
@@ -12,9 +12,9 @@ const Day = ({ day, selectedDate, currentDate, onClick, events }) => {
     selectedDate?.getMonth() === currentDate.getMonth() &&
     selectedDate?.getFullYear() === currentDate.getFullYear();
 
-  // Find if there are any events for this day
+  // Find if there are any events for this day.
   const dayEvents = events.filter((event) => {
-    const eventDate = new Date(event.date);
+    const eventDate = new Date(`${event.date}T00:00:00`); //Enforce consistent parsing.
     return eventDate.getDate() === day &&
       eventDate.getMonth() === currentDate.getMonth() &&
       eventDate.getFullYear() === currentDate.getFullYear();

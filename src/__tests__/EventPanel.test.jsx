@@ -1,21 +1,21 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains unit tests for the EventPanel.jsx component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import EventPanel from '../components/EventPanel/EventPanel.jsx';
-import EventCard from '../components/EventCard/EventCard.jsx';
 
+// Mock EventCard for isolation.
 jest.mock("../components/EventCard/EventCard.jsx", () => {
-  // Mock EventCard for isolation
-  return ({ title, date, time, description }) => (
+  return ({ title, date, startTime, endTime, description }) => (
     <div data-testid="event-card">
       <h3>{title}</h3>
       <p>{date}</p>
-      <p>{time}</p>
+      <p>{startTime || "No Start Time"}</p>
+      <p>{endTime || "No End Time"}</p>
       <p>{description}</p>
     </div>
   );
@@ -26,7 +26,8 @@ describe("EventPanel Component", () => {
   const mockEvent = {
     title: "Sample Event",
     date: "2024-12-25",
-    time: "5:00 PM",
+    startTime: "5:00 PM",
+    endTime: "6:00 PM",
     description: "This is a test description for the event.",
   };
 
@@ -34,40 +35,87 @@ describe("EventPanel Component", () => {
     jest.clearAllMocks();
   });
 
-  //test("renders EventPanel with event details", () => {
-  //  render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+  //Test #1: Renders "No event selected" when selectedEvent is null.
+  test("renders fallback message when no event is selected.", () => {
+    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+    expect(screen.getByText(/No event selected/i)).toBeInTheDocument();
+  });
 
-    //expect(screen.getByText("Event Details")).toBeInTheDocument();
-    //expect(screen.getByText("Sample Event")).toBeInTheDocument();
-    //expect(screen.getByText("2024-12-25")).toBeInTheDocument();
-    //expect(screen.getByText("5:00 PM")).toBeInTheDocument();
-    //expect(screen.getByText("This is a test description for the event.")).toBeInTheDocument();
-  //});
+  //Test #2: Does not render EventCard when no event is selected.
+  test("does not render EventCard when no event is selected.", () => {
+    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+    expect(screen.queryByTestId("event-card")).not.toBeInTheDocument();
+  });
 
-  test("calls onClose when Close button is clicked", () => {
+  //Test #3: Renders EventCard when selectedEvent is provided.
+  test("renders EventCard with selected event details.", () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+    expect(screen.getByTestId("event-card")).toBeInTheDocument();
+    expect(screen.getByText(/Sample Event/i)).toBeInTheDocument();
+    expect(screen.getByText(/2024-12-25/i)).toBeInTheDocument();
+    expect(screen.getByText(/5:00 PM/i)).toBeInTheDocument();
+    expect(screen.getByText(/6:00 PM/i)).toBeInTheDocument();
+    expect(screen.getByText(/This is a test description/i)).toBeInTheDocument();
+  });
+
+  //Test #4: Calls onClock when the Close button gets clicked on.
+  test("calls onClose when Close button gets clicked on.", () => {
     render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    const closeButton = screen.getByRole("button", { name: /close/i });
-    fireEvent.click(closeButton);
+    fireEvent.click(screen.getByRole("button", { name: /close/i }));
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
-  //test("passes correct props to EventCard", () => {
-  //  render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+  //Test #5: The EventPanel has aria-live="polite" when no event is selected.
+  test('applies aria-live="polite" when no event is selected.', () => {
+    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
 
-    //const eventCard = screen.getByTestId("event-card");
+    const section = screen.getByRole('region', { hidden: true }) || document.querySelector('.event-panel');
 
-    //expect(eventCard).toHaveTextContent("Sample Event");
-    //expect(eventCard).toHaveTextContent("2024-12-25");
-    //expect(eventCard).toHaveTextContent("5:00 PM");
-    //expect(eventCard).toHaveTextContent("This is a test description for the event.");
-  //});
+    expect(section).toHaveAttribute('aria-live', 'polite');
+  });
 
-  //test("renders without crashing if no event is selected", () => {
-  //  render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+  //Test #6: The EventPanel uses role="dialog" when an event is selected.
+  test('uses role="dialog" when an event is selected.', () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    //expect(screen.queryByText("Event Details")).toBeNull();
-    //expect(screen.queryByTestId("event-card")).toBeNull();
-  //});
+    const dialog = screen.getByRole('dialog');
+
+    expect(dialog).toBeInTheDocument();
+  });
+
+  //Test #7: Displays a header with text "Event Details" when an event is selected.
+  test('displays "Event Details" heading for a selected event.', () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+
+    expect(screen.getByRole('heading', { name: /Event Details/i})).toBeInTheDocument();
+  });
+
+  //Test #8: Provides an accessible name for the dialog.
+  test("dialog has aria-labelledby pointing to the header.", () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+
+    const dialog = screen.getByRole('dialog');
+
+    expect(dialog).toHaveAttribute('aria-labelledby', 'eventDetailsTitle');
+  });
+
+  //Test #9: Handles missing event details gracefully (renders defaults).
+  test("renders default values if event details are missing.", () => {
+    const incompleteEvent = { title: "", date: "" }; //Test even is missing the time and description field values.
+    render(<EventPanel selectedEvent={incompleteEvent} onClose={mockOnClose} />);
+
+    expect(screen.getByText(/Untitled Event/i)).toBeInTheDocument();
+    expect(screen.getByText(/1970-01-01/i)).toBeInTheDocument(); // Default date value.
+    expect(screen.getByText(/No Start Time/i)).toBeInTheDocument();
+    expect(screen.getByText(/No End Time/i)).toBeInTheDocument();
+  });
+
+  //Test #10: Does not render the Close button when no event is selected.
+  test("does not render the Close button when no event is selected.", () => {
+    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+
+    expect(screen.queryByRole('button', { name: /close/i })).not.toBeInTheDocument();
+  });
 });

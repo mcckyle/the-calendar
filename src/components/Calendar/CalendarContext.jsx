@@ -1,11 +1,10 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 13 July 2025
+//Date: 16 July 2025
 //Description: This file contains the Calendar context component for the local Saint Louis React calendar project.
 
 import React, { createContext, useContext, useState } from 'react';
 
-// Create the Calendar Context
 export const CalendarContext = createContext();
 
 export const useCalendarContext = () => useContext(CalendarContext);
@@ -13,13 +12,13 @@ export const useCalendarContext = () => useContext(CalendarContext);
 const getStartOfWeek = (date) => {
   const newDate = new Date(date);
   const day = newDate.getDay();
-  const diff = newDate.getDate() - day + (day === 0 ? -6 : 1); // Adjust for Sunday (start on Monday)
+  const diff = newDate.getDate() - day + (day === 0 ? -6 : 1); // Adjust for Sunday (start on Monday).
   return new Date(newDate.setDate(diff));
 };
 
 export const CalendarProvider = ({ children }) => {
   const [currentDate, setCurrentDate] = useState(getStartOfWeek(new Date()));
-  const [selectedDate, setSelectedDate] = useState(null); // Add selectedDate state
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
@@ -44,10 +43,10 @@ export const CalendarProvider = ({ children }) => {
     <CalendarContext.Provider
       value={{
         currentDate,
-        selectedDate, // Add selectedDate to the context value
+        selectedDate, // Add selectedDate to the context value.
         changeMonth,
         changeWeek,
-        selectDate, // Add selectDate function
+        selectDate, // Add selectDate function.
       }}
     >
       {children}

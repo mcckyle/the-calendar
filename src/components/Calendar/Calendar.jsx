@@ -189,7 +189,7 @@ const Calendar = ({ hours }) => {
 
 	  return eventsByHour;
 	};
-	  
+
   return (
     <div className="calendar-container">
       <div className="calendar-header">

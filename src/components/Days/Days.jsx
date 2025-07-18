@@ -1,6 +1,6 @@
 //Filename: Days.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains the Days.jsx component for the local Saint Louis React calendar project.
 
 import React from 'react';
@@ -14,7 +14,7 @@ const Days = ({ currentDate, selectedDate, onDayClick, events }) => {
 
   const emptyDays = Array.from({ length: firstDayOfMonth }, () => null);
 
-  // Helper function to filter events for a specific day
+  // Helper function to filter events for a specific day.
   const getEventsForDay = (day) => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -27,11 +27,11 @@ const Days = ({ currentDate, selectedDate, onDayClick, events }) => {
 
   return (
     <div className="days-grid">
-      {/* Render empty days */}
+      {/* Render empty days. */}
       {emptyDays.map((_, index) => (
         <div key={`empty-${index}`} className="calendar-day empty"></div>
       ))}
-      {/* Render actual days */}
+      {/* Render actual days. */}
       {daysArray.map((day) => {
         const eventsForDay = getEventsForDay(day);
 

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventCard Component matches snapshot. 1`] = `
+<DocumentFragment>
+  <article
+    aria-labelledby="event-Sample Event"
+    class="event-card"
+    role="article"
+  >
+    <header
+      class="event-card-header"
+    >
+      <h3
+        class="event-card-title"
+        id="event-Sample Event"
+      >
+        Sample Event
+      </h3>
+      <p
+        class="event-card-meta"
+      >
+        <span
+          class="event-date"
+        >
+          Sunday, January 19, 2025
+        </span>
+        <span
+          class="event-time"
+        >
+           • 03:00 PM
+        </span>
+      </p>
+    </header>
+    <p
+      class="event-card-description"
+    >
+      This is a test description for the event.
+    </p>
+  </article>
+</DocumentFragment>
+`;

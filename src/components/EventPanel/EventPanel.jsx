@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains the EventPanel component for the local Saint Louis React calendar project.
 
 import React from 'react';
@@ -11,7 +11,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
   if(!selectedEvent)
   {
       return (
-        <section className="event-panel" aria-live="polite">
+        <section className="event-panel" aria-live="polite" aria-label="Event Panel">
           <p className="no-event">No event selected!</p>
         </section>
       );

@@ -1,6 +1,6 @@
 //Filename: EventCards.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 16 July 2025
 //Description: This file contains the EventCards.jsx component.
 
 import React from 'react';
@@ -25,7 +25,7 @@ const EventCards = ({ selectedDate, events }) => {
 	});
 
   return (
-    <section className="event-cards" aria-live="polite">
+    <section className="event-cards" aria-live="polite" aria-label="Event cards section">
       {filteredEvents.length > 0 ? (
         filteredEvents.map((event) => (
           <EventCard
