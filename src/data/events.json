@@ -306,5 +306,15 @@
 	"allDay": false,
     "location": "TBD",
     "description": "TBD"
+  },
+    {
+    "id": 32,
+    "title": "Job Fair",
+    "date": "2025-07-31",
+    "startTime": "13:00",
+	"endTime": "15:00",
+	"allDay": false,
+    "location": "UMSL Student Center",
+    "description": "Come dressed to impress. Bring several copies of your resume (5+ copies)"
   }
 ]

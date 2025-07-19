@@ -1,9 +1,35 @@
 /* Filename: Calendar.css */
 
+/* ============================
+    Calendar Container Styling.
+=============================== */
+.calendar-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  height: auto;
+  min-height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  background: linear-gradient(135deg, #fcfaf2, #f2eee3);
+  border: 2px solid var(--accent-gold);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 /* =========================
     Calendar Header Styling.
 ============================== */
 .calendar-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,9 +38,15 @@
   color: #fffef5;
   border-radius: 14px;
   box-shadow: inset 0 -4px 0 var(--accent-gold);
-  font-size: 1.5rem;
+  font-family: var(--title-font);
+  font-size: 1.6rem;
   letter-spacing: 0.5px;
   text-shadow: 1px 1px 2px #000;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .calendar-header span
@@ -41,11 +73,58 @@
   transform: translateY(-2px);
 }
 
-/* =========================
-    Calendar Body Styling.
-============================== */
+/* ====================================
+    Calendar Body (7 Columns) Styling.
+ ====================================== */
 .calendar-body {
+  width: 100%;
   margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  height: auto;
+  align-self: stretch;
+}
+
+/* ===================================
+    Calendar Day Cells Styling.
+====================================== */
+.calendar-day {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--secondary-bg, #f8f6ef);
+  border: 1px solid #e2dbc8; /* Soft border for day cells. */
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--deep-blue, #2e3a59);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Calendar day hover and active state. */
+.calendar-day:hover {
+  background-color: #ece8d9;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Selected day styling. */
+.calendar-day.selected {
+  background-color: var(--deep-blue, #2e3a59);
+  color: #fffbe9;
+  font-weight: 700;
+  border: 2px solid var(--accent-gold, #c9a94d);
+  transform: scale(1.05); /* Slight zoom effect on selected day. */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty day cells styling. */
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  color: transparent; /* Ensures empty cells have no text. */
 }
 
 /* ===================================
@@ -55,147 +134,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.2rem;
-}
-
-/* Weekday Column Styles. */
-.week-day-column {
-  background-color: #fdfcf7;
-  border: 2px solid #e5dac1;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow:
-    inset 0 1px 0 #fffdf5,
-    0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.week-day-column:hover {
-  transform: scale(1.035);
-}
-
-/* =========================
-    Time Slots Styling.
-============================== */
-.time-slot {
-  background-color: #fffdf5;
-  border-radius: 12px;
-  border: 1px solid #e0d6b4;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-family: 'Georgia', serif;
-}
-
-.time-slot:hover {
-  background-color: #f3efe4;
-}
-
-/* =========================
-    Events Styling.
-============================== */
-.event {
-  background-color: var(--deep-blue);
-  color: #fffef5;
-  padding: 16px;
-  border-radius: 12px;
-  margin-top: 14px;
-  font-family: var(--title-font);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.2);
-}
-
-.event .event-title {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.event .event-location {
-  font-size: 0.95rem;
-  color: #e6dec8;
-  font-style: italic;
-}
-
-/* =========================
-    Empty State Styling.
-============================== */
-.no-events {
-  text-align: center;
-  font-size: 1rem;
-  color: #888;
-  padding: 14px;
-  border-radius: 12px;
-  background-color: #fffef5;
-  font-family: var(--body-font);
-  border: 1px dashed #ccc4a4;
-}
-
-.no-events:hover {
-  background-color: #f7f3e6;
-}
-
-/* =========================
-    Time Labels Styling.
-============================== */
-.time-label {
-  font-size: 1rem;
-  color: #5c5c5c;
-  font-weight: 600;
-  padding: 12px;
-  background-color: #fffdf5;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-family: 'Georgia', serif;
-}
-
-/* =========================
-    Event Popup Styling.
-============================== */
-.event-popup {
-  padding: 24px;
-  background-color: #fcfaf4;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-.event-popup .popup-title {
-  font-size: 1.7rem;
-  font-weight: bold;
-  font-family: var(--title-font);
-  color: var(--deep-blue);
-  margin-bottom: 10px;
-}
-
-.event-popup .popup-location,
-.event-popup .popup-description {
-  font-size: 1rem;
-  color: #444;
-  font-family: 'Georgia', serif;
-}
-
-.event-popup .popup-close-btn {
-  background-color: var(--deep-blue);
-  color: #fffef5;
-  padding: 14px 28px;
-  border-radius: 10px;
-  border: 2px solid var(--accent-gold);
-  cursor: pointer;
-  margin-top: 24px;
-  display: block;
   width: 100%;
-  font-family: var(--body-font);
-  transition: background-color 0.3s ease;
-}
-
-.event-popup .popup-close-btn:hover {
-  background-color: #1f2b45;
+  align-items: start;
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -211,3 +152,40 @@
 	transform: translateY(0);
   }
 }
+
+/* ============================
+    Responsive Design Styling.
+=============================== */
+@media (max-width: 1024px) {
+  .calendar-container {
+    padding: 1.5rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .calendar-body
+  {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-body {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .calendar-day
+  {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
