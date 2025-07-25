@@ -1,10 +1,9 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
-//Description: This file contains the main parent component for the local Saint Louis React calendar project.
+//Date: 24 July 2025
+//Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from 'react';
-// import '../Base.css';
 import './Calendar.css';
 import { useCalendarContext } from './CalendarContext';
 import DaysOfWeek from '../DaysOfWeek/DaysOfWeek.jsx';
@@ -30,22 +29,22 @@ const Calendar = ({ hours }) => {
   const convertTo12HourFormat = (time) => {
 	  const [hour, minute] = time.split(':').map(num => parseInt(num));
 	  const isPM = hour >= 12;
-	  const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format
+	  const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format.
 	  const adjustedMinute = minute.toString().padStart(2, '0');
 	  return `${adjustedHour}:${adjustedMinute} ${isPM ? 'PM' : 'AM'}`;
 	};
 
 	const [startOfWeek, setStartOfWeek] = useState(() => {
-	  // Initialize to the current week's start date (Sunday)
+	  // Initialize to the current week's start date (Sunday).
 	  const now = new Date();
 	  const day = now.getDay();
-	  const diff = now.getDate() - day; // Adjust for Sunday
+	  const diff = now.getDate() - day; // Adjust for Sunday.
 	  const startOfWeekDate = new Date(now);
-	  startOfWeekDate.setDate(diff); // Set the date to the Sunday of the current week
+	  startOfWeekDate.setDate(diff); // Set the date to the Sunday of the current week.
 	  return startOfWeekDate;
 	});
   
-    // Format the month name and year for the calendar header
+    // Format the month name and year for the calendar header.
 	const renderMonthYear = () => {
 	  console.log('startOfWeek:', startOfWeek);
 	  const monthOptions = { month: 'long', year: 'numeric' };
@@ -57,15 +56,14 @@ const Calendar = ({ hours }) => {
   };
   
 	const renderTimeLabel = (hour) => {
-	  const timeString = `${hour}:00`; // Convert hour to "HH:00"
-	  return convertTo12HourFormat(timeString); // Convert to 12-hour format
+	  const timeString = `${hour}:00`; // Convert hour to "HH:00".
+	  return convertTo12HourFormat(timeString); // Convert to 12-hour format.
 	};
   
 	const navigateWeek = (direction) => {
 	  const newStartOfWeek = new Date(startOfWeek);
 	  newStartOfWeek.setDate(startOfWeek.getDate() + direction * 7);
 
-	  // Ensure the new date is correctly set to the start of the next week
 	  setStartOfWeek(newStartOfWeek);
 	};
 
@@ -77,7 +75,7 @@ const Calendar = ({ hours }) => {
 		  return day;
 		});
 		setWeekDays(weekDaysArray);
-		console.log("Week Dates:", weekDaysArray); // Log to verify correct week days
+		console.log("Week Dates:", weekDaysArray); // Log to verify correct week days.
 	  };
 
 	  generateWeekDays();
@@ -85,7 +83,7 @@ const Calendar = ({ hours }) => {
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
-    setShowEventPanel(true); // Open the event panel
+    setShowEventPanel(true); // Open the event panel.
   };
 
   const closeEventPanel = () => {
@@ -104,49 +102,49 @@ const Calendar = ({ hours }) => {
     return weekDates;
   };
 
-  const weekDates = getWeekDates(); // Get updated dates when startOfWeek changes
+  const weekDates = getWeekDates(); // Get updated dates when startOfWeek changes.
   
     // Filter events by selected day.
 	const getEventsForDay = (day) => {
 	  return events.filter(event => {
-		// Normalize both event date and day to 'YYYY-MM-DD'
-		const eventDate = new Date(event.startTime).toISOString().split('T')[0];  // Format event date to 'YYYY-MM-DD'
-		const dayDate = day.toISOString().split('T')[0];  // Format day to 'YYYY-MM-DD'
+		// Normalize both event date and day to 'YYYY-MM-DD'.
+		const eventDate = new Date(event.startTime).toISOString().split('T')[0];  // Format event date to 'YYYY-MM-DD'.
+		const dayDate = day.toISOString().split('T')[0];  // Format day to 'YYYY-MM-DD'.
 
 		// Log both normalized dates
 		console.log(`Event Date: ${eventDate}, Day Date: ${dayDate}`);
 
-		return eventDate === dayDate; // Match event date to current day
+		return eventDate === dayDate; // Match event date to current day.
 	  });
 	};
 	
-	// Helper function to parse 12-hour time into a Date object
+	// Helper function to parse 12-hour time into a Date object.
 	const parseEventTime = (date, time) => {
-	  if (!date || !time) return null; // Ensure both date and time exist
+	  if (!date || !time) return null;
 
-	  const [timePart, modifier] = time.split(" "); // Split "01:00 PM" into "01:00" and "PM"
-	  let [hours, minutes] = timePart ? timePart.split(":").map(Number) : [0, 0]; // Default to 00:00 if timePart is missing
+	  const [timePart, modifier] = time.split(" ");
+	  let [hours, minutes] = timePart ? timePart.split(":").map(Number) : [0, 0];
 
 	  if (modifier === "PM" && hours !== 12)
 	  {
-		hours += 12; // Convert PM hours to 24-hour format
+		hours += 12; // Convert PM hours to 24-hour format.
 	  }
 	  if (modifier === "AM" && hours === 12)
 	  {
-		hours = 0; // Convert midnight (12 AM) to 0
+		hours = 0; // Convert midnight (12 AM) to 0.
 	  }
 
 	  // Create a Date object with the parsed time
-	  const parsedDate = new Date(`${date}T00:00:00`); // Start with the date at midnight
-	  parsedDate.setHours(hours, minutes, 0, 0); // Set the correct hours and minutes
+	  const parsedDate = new Date(`${date}T00:00:00`); // Start with the date at midnight.
+	  parsedDate.setHours(hours, minutes, 0, 0); // Set the correct hours and minutes.
 
 	  return parsedDate;
 	};
 
 	const normalizeEvents = (events) =>
 	  events.map((event) => {
-		const date = event.date || ""; // Ensure date exists.
-		const allDay = event.allDay ?? (!event.startTime && !event.endTime); // Guess based on missing time fields.
+		const date = event.date || "";
+		const allDay = event.allDay ?? (!event.startTime && !event.endTime);
 
 		// If it's an all-day event, no need to parse startTime or endTime.
 		const startTimeDate = !allDay && event.startTime ? parseEventTime(date, event.startTime) : null;
@@ -161,17 +159,17 @@ const Calendar = ({ hours }) => {
 		return {
 		  id: event.id,
 		  title: event.title || "Untitled Event",
-		  date: date, // Keep the raw date string
-		  startTime: startTimeDate, // Parsed to Date object if applicable
-		  endTime: endTimeDate, // Parsed to Date object if applicable
-		  allDay: allDay, // Explicitly mark allDay
+		  date: date, // Keep the raw date string.
+		  startTime: startTimeDate,
+		  endTime: endTimeDate,
+		  allDay: allDay, // Explicitly mark allDay.
 		};
 	  });
 	  
 	const filterEventsByDay = (day) => {
-	  const startOfDay = new Date(day.getFullYear(), day.getMonth(), day.getDate()); // Local start of the day
+	  const startOfDay = new Date(day.getFullYear(), day.getMonth(), day.getDate()); // Local start of the day.
 	  const endOfDay = new Date(startOfDay);
-	  endOfDay.setDate(startOfDay.getDate() + 1); // Local end of the day
+	  endOfDay.setDate(startOfDay.getDate() + 1); // Local end of the day.
 
 	  return normalizedEvents.filter(event => {
 		return event.startTime >= startOfDay && event.startTime < endOfDay;
@@ -179,12 +177,12 @@ const Calendar = ({ hours }) => {
 	};
 		
 	const groupEventsByHour = (day) => {
-	  const eventsByHour = Array.from({ length: 24 }, () => []); // Create 24 independent arrays
+	  const eventsByHour = Array.from({ length: 24 }, () => []); // Create 24 independent arrays.
 	  const dayEvents = filterEventsByDay(day);
 
 	  dayEvents.forEach((event) => {
-		const hour = event.startTime.getHours(); // Extract the hour from event time (local time)
-		eventsByHour[hour].push(event); // Add event to the correct hour
+		const hour = event.startTime.getHours(); // Extract the hour from event time (local time).
+		eventsByHour[hour].push(event); // Add event to the correct hour.
 	  });
 
 	  return eventsByHour;
