@@ -1,65 +1,28 @@
 /* Filename: App.css */
 
-/* ============================
-    Buttons Styling.
-=============================== */
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
-  border: 2px solid var(--accent-gold);
-  padding: 0.75em 1.5em;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--body-font);
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+
+/* ===========================
+   Responsive Design Styling.
+============================== */
+
+/* Fix Vertical Stacking on Smaller Screen Sizes. */
+@media(max-width: 1024px)
+{
+  .calendar-body {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* Button hover effect. */
-button:hover {
-  background-color: var(--button-hover-bg);
-  transform: translateY(-2px);
+@media(max-width: 768px)
+{
+  .calendar-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* ============================
-    Modal Event Panel Styling.
-=============================== */
-.event-panel {
-  background-color: #fffdfa;
-  border: 2px solid var(--accent-gold);
-  border-radius: 14px;
-  padding: 2rem;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 680px;
-  z-index: 1000;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(4px);
+@media(max-width: 480px)
+{
+  .calendar-body {
+    grid-template-columns: 1fr;
+  }
 }
-
-/* Close button for the event panel. */
-.event-panel .close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: #8c2f39;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: 'Cinzel', serif;
-  transition: background-color 0.2s ease;
-}
-
-/* Close button hover effect */
-.event-panel .close-button:hover {
-  background-color: #a0353d;
-}
-

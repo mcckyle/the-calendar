@@ -1,11 +1,10 @@
 //Filename: main.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
-//Description: This file contains the main entry-point component for the local Saint Louis React calendar project.
+//Date: 01 August 2025
+//Description: This file contains the main entry-point component for the Saint Louis calendar project.
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './styles/globals.css';
 import './index.css'
 import App from './App.jsx'
 

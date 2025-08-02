@@ -22,7 +22,7 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20241222_222219-1.png)
+![Calendar Screenshot](./public/images/Screenshot_20250731_213514.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
@@ -50,7 +50,7 @@ To get the project running locally, follow these steps:
    npm run dev
    ```
 
-   The app will be live at `http://localhost:3000`.
+   The app will go live at `http://localhost:3000`.
 
 ## Project Status & Roadmap
 

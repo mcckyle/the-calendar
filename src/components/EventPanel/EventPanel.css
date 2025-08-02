@@ -139,3 +139,42 @@
     font-size: 1.5rem;
   }
 }
+
+/* ============================
+   Modal Event Panel Styling.
+=============================== */
+
+/*.event-panel {
+  background-color: #fffdfa;
+  border: 2px solid var(--accent-gold);
+  border-radius: 14px;
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 680px;
+  z-index: 1000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.event-panel .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #8c2f39;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  transition: background-color 0.2s ease;
+}
+
+.event-panel .close-button:hover {
+  background-color: #a0353d;
+}*/
