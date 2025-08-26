@@ -18,6 +18,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         Next
       </button>
     </div>
+    <p
+      style="color: red;"
+    >
+      Error: fetch is not defined
+    </p>
     <div
       class="calendar-body"
     >
