@@ -4,7 +4,6 @@
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from 'react';
-import './Calendar.css';
 import { useCalendarContext } from './CalendarContext';
 import { useEvents } from "../../hooks/useEvents";
 import DaysOfWeek from '../DaysOfWeek/DaysOfWeek.jsx';
@@ -13,31 +12,24 @@ import EventPanel from '../EventPanel/EventPanel.jsx';
 import MonthNavigation from '../MonthNavigation/MonthNavigation.jsx';
 import WeekDayColumn from '../WeekDayColumn/WeekDayColumn.jsx';
 
+import {
+	convertTo12HourFormat,
+	normalizeEvents,
+	groupEventsByHour,
+} from "../../utils/eventUtils";
+
+import './Calendar.css';
+
 const Calendar = ({ hours }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showEventPanel, setShowEventPanel] = useState(false);
   const [weekDays, setWeekDays] = useState([]);
   const { currentDate, changeWeek, selectedDate } = useCalendarContext();
-
-  const apiUrl = "https://calendar-backend-xxa6.onrender.com";
-  
   const [normalizedEvents, setNormalizedEvents] = useState([]);
 
-	useEffect(() => {
-	  const normalized = normalizeEvents(events);
-	  console.log("Normalized Events:", normalized); //For debugging purposes...
-	  setNormalizedEvents(normalized);
-	}, [events]);
-  
-  const convertTo12HourFormat = (time) => {
-	  const [hour, minute] = time.split(':').map(num => parseInt(num));
-	  const isPM = hour >= 12;
-	  const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format.
-	  const adjustedMinute = minute.toString().padStart(2, '0');
-	  return `${adjustedHour}:${adjustedMinute} ${isPM ? 'PM' : 'AM'}`;
-	};
+  const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
-	const [startOfWeek, setStartOfWeek] = useState(() => {
+  const [startOfWeek, setStartOfWeek] = useState(() => {
 	  // Initialize to the current week's start date (Sunday).
 	  const now = new Date();
 	  const day = now.getDay();
@@ -45,7 +37,28 @@ const Calendar = ({ hours }) => {
 	  const startOfWeekDate = new Date(now);
 	  startOfWeekDate.setDate(diff); // Set the date to the Sunday of the current week.
 	  return startOfWeekDate;
-	});
+  });
+
+  //Compute start and end of the current week.
+  const weekStart = startOfWeek.toISOString().split("T")[0];
+  const weekEnd = new Date(startOfWeek);
+  weekEnd.setDate(startOfWeek.getDate() + 6); // Sunday + 6 == Saturday.
+  const weekEndISO = weekEnd.toISOString().split("T")[0];
+
+  const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
+  
+	useEffect(() => {
+	  if( (events) && (events.length > 0) )
+	  {
+		  const normalized = normalizeEvents(events);
+		  console.log("Normalized Events:", normalized); //For debugging purposes...
+		  setNormalizedEvents(normalized);
+	  }
+	  else
+	  {
+		  setNormalizedEvents([]); //Clear if no events found...
+	  }
+	}, [events]);
   
     // Format the month name and year for the calendar header.
 	const renderMonthYear = () => {
@@ -55,7 +68,7 @@ const Calendar = ({ hours }) => {
 	};
 
   const getEventsForTimeSlot = (day, hour) => {
-    return events.filter(event => event.date === day.toDateString() && event.time === hour);
+    return normalizedEvents.filter(event => event.date === day.toDateString() && event.time === hour);
   };
   
 	const renderTimeLabel = (hour) => {
@@ -94,22 +107,9 @@ const Calendar = ({ hours }) => {
     setSelectedEvent(null);
   };
   
-  const getWeekDates = () => {
-    const weekDates = [];
-    for (let i = 0; i < 7; i++)
-	{
-      const date = new Date(currentDate);
-      date.setDate(currentDate.getDate() + i);
-      weekDates.push(date);
-    }
-    return weekDates;
-  };
-
-  const weekDates = getWeekDates(); // Get updated dates when startOfWeek changes.
-  
     // Filter events by selected day.
 	const getEventsForDay = (day) => {
-	  return events.filter(event => {
+	  return normalizedEvents.filter(event => {
 		// Normalize both event date and day to 'YYYY-MM-DD'.
 		const eventDate = new Date(event.startTime).toISOString().split('T')[0];  // Format event date to 'YYYY-MM-DD'.
 		const dayDate = day.toISOString().split('T')[0];  // Format day to 'YYYY-MM-DD'.
@@ -120,76 +120,6 @@ const Calendar = ({ hours }) => {
 		return eventDate === dayDate; // Match event date to current day.
 	  });
 	};
-	
-	// Helper function to parse 12-hour time into a Date object.
-	const parseEventTime = (date, time) => {
-	  if (!date || !time) return null;
-
-	  const [timePart, modifier] = time.split(" ");
-	  let [hours, minutes] = timePart ? timePart.split(":").map(Number) : [0, 0];
-
-	  if (modifier === "PM" && hours !== 12)
-	  {
-		hours += 12; // Convert PM hours to 24-hour format.
-	  }
-	  if (modifier === "AM" && hours === 12)
-	  {
-		hours = 0; // Convert midnight (12 AM) to 0.
-	  }
-
-	  // Create a Date object with the parsed time
-	  const parsedDate = new Date(`${date}T00:00:00`); // Start with the date at midnight.
-	  parsedDate.setHours(hours, minutes, 0, 0); // Set the correct hours and minutes.
-
-	  return parsedDate;
-	};
-
-	const normalizeEvents = (events) =>
-	  events.map((event) => {
-		const date = event.date || "";
-		const allDay = event.allDay ?? (!event.startTime && !event.endTime);
-
-		// If it's an all-day event, no need to parse startTime or endTime.
-		const startTimeDate = !allDay && event.startTime ? parseEventTime(date, event.startTime) : null;
-		const endTimeDate = !allDay && event.endTime ? parseEventTime(date, event.endTime) : null;
-
-		// Log invalid date warnings.
-		if (!allDay && (!startTimeDate || isNaN(startTimeDate)))
-		{
-		  console.error("Invalid Date created for event:", event);
-		}
-
-		return {
-		  id: event.id,
-		  title: event.title || "Untitled Event",
-		  date: date, // Keep the raw date string.
-		  startTime: startTimeDate,
-		  endTime: endTimeDate,
-		  allDay: allDay, // Explicitly mark allDay.
-		};
-	  });
-	  
-	const filterEventsByDay = (day) => {
-	  const startOfDay = new Date(day.getFullYear(), day.getMonth(), day.getDate()); // Local start of the day.
-	  const endOfDay = new Date(startOfDay);
-	  endOfDay.setDate(startOfDay.getDate() + 1); // Local end of the day.
-
-	  return normalizedEvents.filter(event => {
-		return event.startTime >= startOfDay && event.startTime < endOfDay;
-	  });
-	};
-		
-	const groupEventsByHour = (day) => {
-	  const eventsByHour = Array.from({ length: 24 }, () => []); // Create 24 independent arrays.
-	  const dayEvents = filterEventsByDay(day);
-
-	  dayEvents.forEach((event) => {
-		const hour = event.startTime.getHours(); // Extract the hour from event time (local time).
-		eventsByHour[hour].push(event); // Add event to the correct hour.
-	  });
-
-	  return eventsByHour;
-	};
 
   return (
     <div className="calendar-container">
@@ -198,6 +128,9 @@ const Calendar = ({ hours }) => {
         <span>{renderMonthYear()}</span>
         <button onClick={() => navigateWeek(1)}>Next</button>
       </div>
+
+      {loading && <p>Loading events...</p>}
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
       
       <div className="calendar-body">
         <div className="week-view">
@@ -205,7 +138,7 @@ const Calendar = ({ hours }) => {
             <WeekDayColumn
               key={day.toDateString()}
               day={day}
-              groupedEvents={groupEventsByHour(day)}
+              groupedEvents={groupEventsByHour(day, normalizedEvents)}
               onEventClick={handleEventClick}
               convertTo12HourFormat={convertTo12HourFormat}
             />

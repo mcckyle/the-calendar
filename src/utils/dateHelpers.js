@@ -1,4 +1,8 @@
-// dateHelpers.js
+//Filename: dateHelpers.js
+//Author: Kyle McColgan
+//Date: 25 August 2025
+//Description: This file contains some helper functions for the Saint Louis calendar project.
+
 export const getFirstDayOfMonth = (year, month) => {
   return new Date(year, month, 1).getDay();
 };
