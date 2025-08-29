@@ -114,7 +114,7 @@ const Calendar = ({ hours }) => {
 		const eventDate = new Date(event.startTime).toISOString().split('T')[0];  // Format event date to 'YYYY-MM-DD'.
 		const dayDate = day.toISOString().split('T')[0];  // Format day to 'YYYY-MM-DD'.
 
-		// Log both normalized dates
+		// Log both normalized dates.
 		console.log(`Event Date: ${eventDate}, Day Date: ${dayDate}`);
 
 		return eventDate === dayDate; // Match event date to current day.

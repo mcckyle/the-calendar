@@ -1,12 +1,12 @@
 //Filename: App.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
+//Date: 27 August 2025
 //Description: This file contains the main parent component for the local Saint Louis React calendar project.
 
 import React from 'react';
 import { CalendarProvider } from './components/Calendar/CalendarContext';
 import Calendar from './components/Calendar/Calendar';
-import './App.css'
+import './App.css';
 
 const App = () => {
     const hours = Array.from({ length: 24 }, (_, i) =>
@@ -14,9 +14,11 @@ const App = () => {
     );
 
   return (
-    <CalendarProvider>
-      <Calendar hours={hours} />
-    </CalendarProvider>
+    <div className="app">
+      <CalendarProvider>
+        <Calendar hours={hours} />
+      </CalendarProvider>
+    </div>
   );
 };
 

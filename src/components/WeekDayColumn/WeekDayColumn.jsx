@@ -1,7 +1,7 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
-//Description: This file contains the WeekDayColumn component for the local Saint Louis React calendar project.
+//Date: 27 August 2025
+//Description: This file contains the WeekDayColumn component for the Saint Louis React calendar project.
 
 import React from 'react';
 import TimeSlot from '../TimeSlot/TimeSlot.jsx';
@@ -11,13 +11,15 @@ const WeekDayColumn = ({
   day,
   groupedEvents,
   onEventClick,
-  convertTo12HourFormat
+  convertTo12HourFormat,
 }) => {
-    // Generate hours from 9 AM to 9 PM (12 hours total).
+    // Generate hours from 9 AM to 9 PM (13 slots total).
     const hours = Array.from({ length: 13 }, (_, i) => i + 9);
 
   return (
-    <section className="weekday-column" aria-label={`Schedule for ${day.toDateString()}`}>
+    <section className="weekday-column"
+             aria-label={`Schedule for ${day.toDateString()}`}
+    >
       <header className="weekday-header">
         <h3 className="weekday-label">{day.toDateString()}</h3>
       </header>

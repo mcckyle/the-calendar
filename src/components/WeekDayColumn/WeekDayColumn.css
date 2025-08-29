@@ -4,66 +4,45 @@
     WeekDay Column Container Styling.
 ====================================== */
 .weekday-column {
-  background: linear-gradient(145deg, #fdfbf6, #f3f0e7);
-  border-radius: 18px;
-  border: 2px solid #d4c28d;
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.08),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.5);
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  font-family: 'Cormorant Garamond', serif;
-  position: relative;
-  min-width: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
 }
 
 .weekday-column:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.12),
-    inset 0 0 1px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 /* ======================================
     Header Section (Date Label) Styling.
 ========================================= */
 .weekday-header {
-  background: linear-gradient(135deg, #396b40, #2e6533);
-  border-radius: 14px;
+  background: var(--deep-blue);
+  border-radius: var(--border-radius);
   padding: 1rem;
   text-align: center;
-  box-shadow:
-    0 6px 16px rgba(0, 0, 0, 0.12),
-    inset 0 0 0.8px rgba(255, 255, 255, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: 'Cinzel', serif;
+
+  box-shadow: inset 0 -3px 0 var(--accent-gold);
 }
 
 .weekday-label
 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #fffdf4;
+    font-family: var(--title-font);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
     margin: 0;
-    text-transform: capitalize;
-    letter-spacing: 0.8px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.5px;
 }
-
-/* DO NOT DELETE! ***MUST KEEP BELOW STYLES FOR ALIGNMENT RELATED PURPOSES... ****/
-
-/*.day-header span {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #f0e8da;
-  text-transform: capitalize;
-}*/
 
 /* ======================================
     Time Slots Container Styling.
@@ -71,7 +50,7 @@
 .time-slots {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 /* ======================================
@@ -79,30 +58,31 @@
     (Keeps Layout Integrity).
 ========================================== */
 .time-slot {
-  background-color: #fcfcfa;
-  border: 1px solid #e8dec1;
-  border-radius: 10px;
-  padding: 10px;
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  padding: 0.75rem;
+  font-family: var(--body-font);
   font-size: 0.95rem;
+  color: var(--text-color);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-family: 'Arial', sans-serif;
+  box-shadow: var(--shadow-sm);
+
+  transition: background var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
 }
 
 .time-slot:hover
 {
-    background-color: #f3efe4;
+    background-color: #f4f2ea;
     transform: scale(1.02);
 }
 
 /* ============================
     Responsive Design Styling.
 ================================ */
-
 @media (max-width: 768px)
 {
     .weekday-column
@@ -113,6 +93,6 @@
 
     .weekday-label
     {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 }

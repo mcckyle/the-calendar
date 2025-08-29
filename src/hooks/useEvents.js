@@ -1,7 +1,7 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 25 August 2025
-//Description: This file contains the back end integration hook for the Saint Louis Calendar.
+//Date: 27 August 2025
+//Description: This file contains the frontend hook to call the backend endpoint for the Saint Louis Calendar.
 
 import { useState, useEffect } from "react";
 
@@ -11,20 +11,27 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      async function fetchEvents() {
+      async function fetchEvents()
+      {
           setLoading(true);
 
           try
           {
-              const response = await fetch(`${apiUrl}/events?start=${weekStart}&end=${weekEnd}`);
+              const parameters = new URLSearchParams({
+                  city: "Saint Louis",
+                  start: weekStart,
+                  end: weekEnd,
+              });
+
+              const response = await fetch(`${apiUrl}/api/events?${parameters.toString()}`);
 
               if( !response.ok)
               {
                   throw new Error("Failed to fetch events!");
+              }
 
-            }
-            const date = await response.json();
-            setEvents(data);
+              const data = await response.json();
+              setEvents(data);
         }
         catch(err)
         {
@@ -34,9 +41,11 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
         {
             setLoading(false);
         }
-    }
+      }
+
     fetchEvents();
-}, [apiUrl, weekStart, weekEnd]);
+
+  }, [apiUrl, weekStart, weekEnd]);
 
   return { events, loading, error };
 }

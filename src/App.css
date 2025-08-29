@@ -1,12 +1,29 @@
 /* Filename: App.css */
 
 
-/* ===========================
-   Responsive Design Styling.
-============================== */
+/* ===============================
+   App-Level Container Styling.
+================================== */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 2rem;
+  background: var(--primary-bg);
+  box-sizing: border-box;
+}
+
+.app > * {
+  width: 100%;
+}
 
 /* Fix Vertical Stacking on Smaller Screen Sizes. */
-@media(max-width: 1024px)
+/*@media(max-width: 1024px)
 {
   .calendar-body {
     grid-template-columns: repeat(4, 1fr);
@@ -25,4 +42,4 @@
   .calendar-body {
     grid-template-columns: 1fr;
   }
-}
+}*/

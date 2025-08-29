@@ -1,76 +1,77 @@
 /* Filename: Calendar.css */
 
-/* ============================
+/* ==============================
     Calendar Container Styling.
-=============================== */
+================================= */
 .calendar-container {
   width: 100%;
-  max-width: 100%;
   margin: 0 auto;
-  height: auto;
-  min-height: auto;
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  gap: 1.5rem;
 
-  background: linear-gradient(135deg, #fcfaf2, #f2eee3);
-  border: 2px solid var(--accent-gold);
-  border-radius: 18px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
   padding: 2rem;
   box-sizing: border-box;
-  overflow-x: hidden;
+
+  animation: fadeIn 0.6s ease forwards;
 }
 
-/* =========================
+/* ===========================
     Calendar Header Styling.
 ============================== */
 .calendar-header {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem 2rem;
-  background: radial-gradient(circle at center, var(--deep-blue) 0%, #1f2b45 100%);
-  color: #fffef5;
-  border-radius: 14px;
-  box-shadow: inset 0 -4px 0 var(--accent-gold);
+  padding: 1.25rem 1.75rem;
+
+  background: var(--deep-blue);
+  color: #fff;
+  border-radius: var(--border-radius);
   font-family: var(--title-font);
-  font-size: 1.6rem;
-  letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px #000;
+  font-size: 1.4rem;
+  letter-spacing: 0.3px;
+
+
+  box-shadow: inset 0 -3px 0 var(--accent-gold);
   position: sticky;
   top: 0;
-  left: 0;
-  z-index: 1000;
-  box-sizing: border-box;
+  z-index: 10;
 }
 
 .calendar-header span
 {
-    font-family: var(--title-font);
+    font-weight: 600;
 }
 
 /* Calendar Header Buttons Styles. */
 .calendar-header button {
-  background: #fffef5;
+  background: #fff;
   color: var(--deep-blue);
-  border: 2px solid var(--accent-gold);
-  padding: 10px 26px;
-  font-size: 1rem;
-  border-radius: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   font-family: var(--body-font);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+
+  transition: all var(--transition-speed) ease;
 }
 
 .calendar-header button:hover {
-  background-color: var(--deep-blue);
-  color: #fffef5;
+  background: var(--deep-blue);
+  color: #fff;
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.calendar-header button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ====================================
@@ -78,114 +79,76 @@
  ====================================== */
 .calendar-body {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+
+/* =====================================
+    Calendar Week Grid Layout Styling.
+======================================== */
+.week-view {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
-  height: auto;
-  align-self: stretch;
+
+  grid-template-columns: repeat(7, minmax(160px, 1fr));
+  min-width: calc(7 * 160px + 6 * 1rem);
 }
 
 /* ===================================
     Calendar Day Cells Styling.
 ====================================== */
 .calendar-day {
-  padding: 20px;
+  padding: 1.2rem 0.8rem;
   text-align: center;
-  background-color: var(--secondary-bg, #f8f6ef);
-  border: 1px solid #e2dbc8; /* Soft border for day cells. */
-  border-radius: 12px;
-  font-size: 1.1rem;
+
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
   font-weight: 500;
-  color: var(--deep-blue, #2e3a59);
+  color: var(--deep-blue);
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+
+  transition: all var(--transition-speed) ease;
 }
 
-/* Calendar day hover and active state. */
+/* Calendar Day Hover and Selected States. */
 .calendar-day:hover {
-  background-color: #ece8d9;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background-color: #f4f2ea;
   transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Selected day styling. */
+/* Selected Day Styling. */
 .calendar-day.selected {
-  background-color: var(--deep-blue, #2e3a59);
-  color: #fffbe9;
-  font-weight: 700;
-  border: 2px solid var(--accent-gold, #c9a94d);
+  background: var(--deep-blue);
+  color: #fff;
+  font-weight: 600;
+  border: 2px solid var(--accent-gold);
   transform: scale(1.05); /* Slight zoom effect on selected day. */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
 }
 
-/* Empty day cells styling. */
+/* Empty Day Cells Styling. */
 .calendar-day.empty {
-  background-color: transparent;
-  border: none;
+  background: transparent;
   cursor: default;
-  color: transparent; /* Ensures empty cells have no text. */
-}
-
-/* ===================================
-    Calendar Week Grid Layout Styling.
-====================================== */
-.week-view {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.2rem;
-  width: 100%;
-  align-items: start;
-  overflow-x: hidden;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 /* =========================
     Animations Styling.
-============================== */
+============================ */
 @keyframes fadeIn {
-  0% {
+  from {
     opacity: 0;
-	transform: translateY(20px);
+	transform: translateY(12px);
   }
-  100% {
+  to {
     opacity: 1;
 	transform: translateY(0);
   }
 }
-
-/* ============================
-    Responsive Design Styling.
-=============================== */
-@media (max-width: 1024px) {
-  .calendar-container {
-    padding: 1.5rem;
-  }
-
-}
-
-@media (max-width: 768px) {
-  .calendar-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .calendar-body
-  {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .calendar-body {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .calendar-day
-  {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-}
-
