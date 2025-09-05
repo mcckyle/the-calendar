@@ -1,7 +1,7 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 27 August 2025
-//Description: This file contains the WeekDayColumn component for the Saint Louis React calendar project.
+//Date: 05 September 2025
+//Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React from 'react';
 import TimeSlot from '../TimeSlot/TimeSlot.jsx';
@@ -17,13 +17,7 @@ const WeekDayColumn = ({
     const hours = Array.from({ length: 13 }, (_, i) => i + 9);
 
   return (
-    <section className="weekday-column"
-             aria-label={`Schedule for ${day.toDateString()}`}
-    >
-      <header className="weekday-header">
-        <h3 className="weekday-label">{day.toDateString()}</h3>
-      </header>
-
+    <section className="weekday-column" aria-label={`Schedule for ${day.toDateString()}`}>
       <div className="time-slots">
         {hours.map((hour) => (
           <TimeSlot

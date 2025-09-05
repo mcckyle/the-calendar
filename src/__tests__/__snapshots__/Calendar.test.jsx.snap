@@ -8,15 +8,29 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     <div
       class="calendar-header"
     >
-      <button>
-        Previous
-      </button>
-      <span>
-        August 2025
-      </span>
-      <button>
-        Next
-      </button>
+      <nav
+        aria-label="Week navigation"
+        class="week-navigation"
+      >
+        <button
+          aria-label="Previous week"
+          class="nav-button"
+        >
+          ‹
+        </button>
+        <div
+          aria-live="polite"
+          class="month-year"
+        >
+          August 2025
+        </div>
+        <button
+          aria-label="Next week"
+          class="nav-button"
+        >
+          ›
+        </button>
+      </nav>
     </div>
     <p
       style="color: red;"
@@ -27,55 +41,172 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       class="calendar-body"
     >
       <div
+        class="days-of-week-container"
+        role="row"
+      >
+        <div
+          aria-label="Sunday, August 31"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Sun
+          </span>
+          <span
+            class="dow-date"
+          >
+            Aug 31
+          </span>
+        </div>
+        <div
+          aria-label="Monday, September 1"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Mon
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 1
+          </span>
+        </div>
+        <div
+          aria-label="Tuesday, September 2"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Tue
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 2
+          </span>
+        </div>
+        <div
+          aria-label="Wednesday, September 3"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Wed
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 3
+          </span>
+        </div>
+        <div
+          aria-label="Thursday, September 4"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Thu
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 4
+          </span>
+        </div>
+        <div
+          aria-label="Friday, September 5"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Fri
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 5
+          </span>
+        </div>
+        <div
+          aria-label="Saturday, September 6"
+          class="days-of-week-item"
+          role="columnheader"
+        >
+          <span
+            class="dow-label"
+          >
+            Sat
+          </span>
+          <span
+            class="dow-date"
+          >
+            Sep 6
+          </span>
+        </div>
+      </div>
+      <div
         class="week-view"
       >
         <div
           data-testid="week-day-column"
         >
           <span>
-            Sun Aug 24 2025
+            Sun Aug 31 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Mon Aug 25 2025
+            Mon Sep 01 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Tue Aug 26 2025
+            Tue Sep 02 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Wed Aug 27 2025
+            Wed Sep 03 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Thu Aug 28 2025
+            Thu Sep 04 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Fri Aug 29 2025
+            Fri Sep 05 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Sat Aug 30 2025
+            Sat Sep 06 2025
           </span>
         </div>
       </div>

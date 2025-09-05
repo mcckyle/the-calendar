@@ -1,62 +1,63 @@
 /* Filename: EventCard.css */
 
-/*===============================
+/* ==================================
     Event Card Container Styling.
-================================= */
-.event-card {
-  background: linear-gradient(145deg #fcfaf4 0%, #f6f2e5 100%);
-  border: 2px solid var(--accent-gold);
-  border-radius: 18px;
-  padding: 2rem;
-  margin: 32px auto;
-  font-family: var(--title-font);
-  color: var(--text-color);
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.12),
-    inset 0 0 1px #fffdf5;
-  max-width: 800px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+===================================== */
+.event-card
+{
+    background: var(--secondary-bg, #fff);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 680px;
+
+    font-family: var(--body-font);
+    color: var(--text-color, #1f2937);
+    box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.08));
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.event-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
-  background: linear-gradient(145deg #fffdf7, #f9f6ef);
+.event-card:hover
+{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md, 0 8px 20px rgba(0, 0, 0, 0.12));
 }
 
-/*===============================
+/* =============================
     Header Section Styling.
-================================= */
-.event-card-header {
-  padding-bottom: 1rem;
-  margin-bottom: 1.2rem;
-  border-bottom: 2px solid rgba(201, 169, 75, 0.4);
+================================ */
+.event-card-header
+{
+    margin-bottom: 0.75rem;
 }
 
-.event-card-title {
-  font-size: 1.9rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--deep-blue);
-  letter-spacing: 0.6px;
+.event-card-title
+{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: #111827; /* Color: near black. */
+    letter-spacing: 0.2px;
+    line-height: 1.3;
 }
 
-/*===============================
+/* ===============================
     Meta Information Styling.
-================================= */
-.event-card-meta {
-  font-size: 1rem;
-  color: #8d2337;
-  margin-top: 0.5rem;
-  font-style: italic;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+================================== */
+.event-card-meta
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    font-size: 0.9rem;
+    color: #6b7280; /* Color: gray-500. */
 }
 
 .event-date
 {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .event-time
@@ -64,42 +65,43 @@
     font-weight: 400;
 }
 
-/*=========================================
-    Event Description Information Styling.
-=========================================== */
-.event-card-description {
-  margin-top: 1.4rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #444;
-  font-family: var(--body-font);
-  letter-spacing: 0.3px;
+/* ===============================
+    Event Description Styling.
+================================== */
+.event-card-description
+{
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #374151; /* Color: gray-700. */
+    margin-top: 0.75rem;
 }
 
-/*==============================
+/* ===============================
     Responsive Design Styling.
-================================ */
-@media (max-width: 768px) {
-  .event-card {
-    padding: 1.5rem
-    margin: 20px;
-  }
+================================== */
+@media (max-width: 768px)
+{
+    .event-card
+    {
+        padding: 1.25rem;
+        margin: 0.75rem;
+    }
 
-  .event-card-title {
-    font-size: 1.6rem;
-  }
-
-    .event-card-description {
-    font-size: 1rem;
-  }
+    .event-card-title
+    {
+        font-size: 1.25rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .event-card {
-    padding: 1.2rem
-  }
+@media (max-width: 480px)
+{
+    .event-card
+    {
+        padding: 1rem;
+    }
 
-  .event-card-title {
-    font-size: 1.4rem;
-  }
+    .event-card-title
+    {
+        font-size: 1.1rem;
+    }
 }

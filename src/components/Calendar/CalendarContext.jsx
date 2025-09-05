@@ -1,19 +1,18 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 16 July 2025
-//Description: This file contains the Calendar context component for the local Saint Louis React calendar project.
+//Date: 04 September 2025
+//Description: This file contains the Calendar context component for the Saint Louis React calendar project.
 
 import React, { createContext, useContext, useState } from 'react';
 
 export const CalendarContext = createContext();
-
 export const useCalendarContext = () => useContext(CalendarContext);
 
 const getStartOfWeek = (date) => {
   const newDate = new Date(date);
-  const day = newDate.getDay();
-  const diff = newDate.getDate() - day + (day === 0 ? -6 : 1); // Adjust for Sunday (start on Monday).
-  return new Date(newDate.setDate(diff));
+  const day = newDate.getDay(); //Sunday == 0, Monday == 1, etc.
+  newDate.setDate(newDate.getDate() - day); //Backup to Sunday.
+  return newDate;
 };
 
 export const CalendarProvider = ({ children }) => {

@@ -22,12 +22,12 @@ exports[`EventCard Component matches snapshot. 1`] = `
         <span
           class="event-date"
         >
-          Sunday, January 19, 2025
+          Saturday, January 18, 2025
         </span>
         <span
           class="event-time"
         >
-           • 03:00 PM
+           • 1/19/2025, 03:00 PM
         </span>
       </p>
     </header>

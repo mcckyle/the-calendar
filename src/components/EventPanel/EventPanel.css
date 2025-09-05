@@ -1,148 +1,150 @@
 /* Filename: EventPanel.css */
 
-/* =============================================
+/* ================================================
     Event Panel (Modal-Like Container) Styling.
-================================================ */
-.event-panel {
-  background: linear-gradient(150deg, #fffdf8, #f6f1e0);
-  border: 2px solid var(--accent-gold);
-  border-radius: 24px;
-  padding: 2.8rem;
-  margin: 70px auto;
-  max-width: 800px;
-  color: #2e261c;
-  font-family: var(--title-font);
-  position: relative;
-  z-index: 1000;
-  box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.18),
-    inset 0 0 2px rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(6px);
-  /*animation: fadeSlideIn 0.6s ease;*/
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+=================================================== */
+.event-panel
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+
+    background: var(--secondary-bg, #fff);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 700px;
+    width: 90%;
+
+    color: var(--text-color, #1f2937);
+    font-family: var(--body-font);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(14px);
+    z-index: 2000;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/*.event-panel:hover
+.event-panel[role="dialog"]
 {
-    transform: scale(1.02);
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.22);
-}*/
-
-/* Entry Animation Styles. */
-/*@keyframes fadeSlideIn {
-  from {
-    transform: translateY(-24px) scale(1);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
     opacity: 1;
-  }
-}*/
+    transform: translate(-50%, -50%) scale(1);
+}
 
-/* =================
+/* ====================
+   Overlay Styling.
+======================= */
+.event-overlay
+{
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.55); /* Dark Slate With Transparency Effect. */
+    z-index: 1500;
+
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* ====================
     Header Styling.
-==================== */
+======================= */
 .event-panel-header
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    border-bottom: 1.5px solid #d9c69d;
-    padding-bottom: 1rem;
+
+    margin-bottom: 1.25rem;
 }
 
-/* Panel Title Styles. */
-.event-panel h2 {
-  font-size: 2.2rem;
-  font-family: 'Cinzel', serif;
-  color: #2e3a59;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin: 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+/* Event Panel Title Styles. */
+.event-panel h2
+{
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: var(--title-font);
+    margin: 0;
+    color: #111827; /* Color: near black. */
+    letter-spacing: 0.2px;
 }
 
-/* =======================
-    Close Button Styling.
-========================== */
-.close-button {
-  background: linear-gradient(145deg, #822f3d, #6b2433);
-  color: #fffef5;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: none;
-  font-family: 'Cinzel', serif;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  transition: background 0.25s ease, transform 0.2s ease;
+/* =========================
+    Close Button Styles.
+============================ */
+.close-button
+{
+    background: transparent;
+    border: none;
+    color: #374151; /* Color: slate-700. */
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+
+    padding: 0.5rem;
+    border-radius: 50%;
+
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.close-button:hover {
-  background: linear-gradient(145deg, #9c3544, #812d3a);
-  transform: scale(1.06);
+.close-button:hover
+{
+    background: rgba(0, 0, 0, 0.06);
+    transform: scale(1.1);
 }
 
-/* ==============================
+/* ================================
     Empty State Message Styling.
-================================= */
+=================================== */
 .no-event
 {
-    font-size: 1.2rem;
-    font-style: italic;
+    font-size: 1rem;
     text-align: center;
-    padding: 1.4rem;
-    background: linear-gradient(to right, #fcfaf4, #f4eedb);
-    border: 1.5px dashed var(--accent-gold);
-    border-radius: 14px;
+    padding: 1rem;
+    border-radius: 0.75rem;
+
+    background: rgba(243, 244, 246, 0.7); /* Color: gray-100. */
+    color: #4b5563; /* Color: gray-600. */
     font-family: var(--body-font);
-    color: #6b5e4b;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-    letter-spacing: 0.3px;
 }
 
-/* ==============================
-    Responsive Design Styling.
- ================================= */
+@keyframes fadeIn
+{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===============================
+    Responsive Design Styles.
+================================== */
 @media (max-width: 768px)
 {
     .event-panel
     {
-        padding: 2rem;
-        margin: 2rem;
+        padding: 1.5rem;
     }
 
     .event-panel h2
     {
-        font-size: 1.8rem;
-    }
-
-    .close-button
-    {
-        padding: 8px 16px;
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 }
 
 @media (max-width: 480px)
 {
-  .event-panel
-  {
-    padding: 1.6rem;
-  }
+    .event-panel
+    {
+        padding: 1.2rem;
+        width: 95%;
+    }
 
-  .event-panel h2
-  {
-    font-size: 1.5rem;
-  }
+    .event-panel h2
+    {
+        font-size: 1.2rem;
+    }
 }
 
-/* ============================
-   Modal Event Panel Styling.
-=============================== */
+/* *** Legacy Event Panel Styles Past This Line. *** */
 
 /*.event-panel {
   background-color: #fffdfa;
@@ -178,3 +180,21 @@
 .event-panel .close-button:hover {
   background-color: #a0353d;
 }*/
+
+/*.event-panel:hover
+ {  *
+ transform: scale(1.02);
+ box-shadow: 0 24px 56px rgba(0, 0, 0, 0.22);
+ }*/
+
+/* Entry Animation Styles. */
+/*@keyframes fadeSlideIn {
+ f *rom {
+ transform: translateY(-24px) scale(1);
+ opacity: 0;
+ }
+ to {
+ transform: translateY(0) scale(1);
+ opacity: 1;
+ }
+ }*/

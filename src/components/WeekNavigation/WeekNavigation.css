@@ -1,0 +1,104 @@
+/* Filename: WeekNavigation.css */
+
+/* ========================================
+    Week Navigation Layout Styling.
+=========================================== */
+.week-navigation
+{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+
+    font-family: var(--title-font);
+    font-weight: 600;
+    color: #fff; /* *** Inherits the header theme. *** */
+    padding: 0.5rem 0;
+}
+
+/* ==================================
+    Navigation Buttons Styling.
+===================================== */
+.nav-button
+{
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-button:hover
+{
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-button:active
+{
+    transform: scale(0.95);
+}
+
+/* *** Positioning for left/right navigation buttons! *** */
+.nav-button:first-of-type
+{
+    justify-self: start;
+}
+
+.nav-button:last-of-type
+{
+    justify-self: end;
+}
+
+/* ==================================
+   Month / Year Display Styling.
+===================================== */
+.month-year
+{
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.5px;
+    min-width: 160px;
+
+    justify-self: center;
+}
+
+/* ================================
+    Responsive Design Styling.
+=================================== */
+@media (max-width: 768px)
+{
+	.week-navigation
+	{
+		grid-template-columns: auto;
+        grid-row-gap: 0.75rem;
+        justify-items: center;
+	}
+
+	.month-year
+	{
+        font-size: 1.2rem;
+    }
+	
+	.nav-button
+	{
+        width: 2.25rem;
+        height: 2.25rem;
+		font-size: 1.3rem;
+	}
+}

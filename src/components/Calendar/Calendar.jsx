@@ -1,15 +1,15 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 25 August 2025
+//Date: 04 September 2025
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from 'react';
 import { useCalendarContext } from './CalendarContext';
 import { useEvents } from "../../hooks/useEvents";
-import DaysOfWeek from '../DaysOfWeek/DaysOfWeek.jsx';
+import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
 import events from '../../data/events.json';
 import EventPanel from '../EventPanel/EventPanel.jsx';
-import MonthNavigation from '../MonthNavigation/MonthNavigation.jsx';
+import WeekNavigation from '../WeekNavigation/WeekNavigation.jsx';
 import WeekDayColumn from '../WeekDayColumn/WeekDayColumn.jsx';
 
 import {
@@ -24,78 +24,47 @@ const Calendar = ({ hours }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showEventPanel, setShowEventPanel] = useState(false);
   const [weekDays, setWeekDays] = useState([]);
-  const { currentDate, changeWeek, selectedDate } = useCalendarContext();
+  const { currentDate } = useCalendarContext();
   const [normalizedEvents, setNormalizedEvents] = useState([]);
 
   const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
-  const [startOfWeek, setStartOfWeek] = useState(() => {
-	  // Initialize to the current week's start date (Sunday).
-	  const now = new Date();
-	  const day = now.getDay();
-	  const diff = now.getDate() - day; // Adjust for Sunday.
-	  const startOfWeekDate = new Date(now);
-	  startOfWeekDate.setDate(diff); // Set the date to the Sunday of the current week.
-	  return startOfWeekDate;
-  });
-
-  //Compute start and end of the current week.
-  const weekStart = startOfWeek.toISOString().split("T")[0];
-  const weekEnd = new Date(startOfWeek);
-  weekEnd.setDate(startOfWeek.getDate() + 6); // Sunday + 6 == Saturday.
+  //Compute the start + end of the current week from CalendarContext.jsx.
+  const weekStart = currentDate.toISOString().split("T")[0];
+  const weekEnd = new Date(currentDate);
+  weekEnd.setDate(currentDate.getDate() + 6); // Sunday + 6 == Saturday.
   const weekEndISO = weekEnd.toISOString().split("T")[0];
 
+  //Fetch the events...
   const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
-  
-	useEffect(() => {
-	  if( (events) && (events.length > 0) )
-	  {
-		  const normalized = normalizeEvents(events);
-		  console.log("Normalized Events:", normalized); //For debugging purposes...
-		  setNormalizedEvents(normalized);
-	  }
-	  else
-	  {
-		  setNormalizedEvents([]); //Clear if no events found...
-	  }
-	}, [events]);
-  
-    // Format the month name and year for the calendar header.
-	const renderMonthYear = () => {
-	  console.log('startOfWeek:', startOfWeek);
-	  const monthOptions = { month: 'long', year: 'numeric' };
-	  return startOfWeek.toLocaleString('en-US', monthOptions);
-	};
 
-  const getEventsForTimeSlot = (day, hour) => {
-    return normalizedEvents.filter(event => event.date === day.toDateString() && event.time === hour);
-  };
-  
-	const renderTimeLabel = (hour) => {
-	  const timeString = `${hour}:00`; // Convert hour to "HH:00".
-	  return convertTo12HourFormat(timeString); // Convert to 12-hour format.
-	};
-  
-	const navigateWeek = (direction) => {
-	  const newStartOfWeek = new Date(startOfWeek);
-	  newStartOfWeek.setDate(startOfWeek.getDate() + direction * 7);
+  useEffect(() => {
+    if( (events) && (events.length > 0) )
+    {
+      const normalized = normalizeEvents(events);
+      console.log("Normalized Events:", normalized); //For debugging purposes...
+      setNormalizedEvents(normalized);
+    }
+    else
+    {
+      setNormalizedEvents([]); //Clear if no events found...
+    }
+  }, [events]);
 
-	  setStartOfWeek(newStartOfWeek);
-	};
+  //Generate the seven days of the week based on CalendarContext.jsx.
+  useEffect(() => {
+    const generateWeekDays = () => {
+      const weekDaysArray = Array.from({ length: 7 }, (_, i) => {
+        const day = new Date(currentDate);
+        day.setDate(currentDate.getDate() + i);
+        return day;
+      });
+      setWeekDays(weekDaysArray);
+      console.log("Week Dates:", weekDaysArray); // Log to verify correct week days.
+    };
 
-	useEffect(() => {
-	  const generateWeekDays = () => {
-		const weekDaysArray = Array.from({ length: 7 }, (_, i) => {
-		  const day = new Date(startOfWeek); 
-		  day.setDate(startOfWeek.getDate() + i);
-		  return day;
-		});
-		setWeekDays(weekDaysArray);
-		console.log("Week Dates:", weekDaysArray); // Log to verify correct week days.
-	  };
-
-	  generateWeekDays();
-	}, [startOfWeek]);
+    generateWeekDays();
+  }, [currentDate]);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -106,33 +75,18 @@ const Calendar = ({ hours }) => {
     setShowEventPanel(false);
     setSelectedEvent(null);
   };
-  
-    // Filter events by selected day.
-	const getEventsForDay = (day) => {
-	  return normalizedEvents.filter(event => {
-		// Normalize both event date and day to 'YYYY-MM-DD'.
-		const eventDate = new Date(event.startTime).toISOString().split('T')[0];  // Format event date to 'YYYY-MM-DD'.
-		const dayDate = day.toISOString().split('T')[0];  // Format day to 'YYYY-MM-DD'.
-
-		// Log both normalized dates.
-		console.log(`Event Date: ${eventDate}, Day Date: ${dayDate}`);
-
-		return eventDate === dayDate; // Match event date to current day.
-	  });
-	};
 
   return (
     <div className="calendar-container">
       <div className="calendar-header">
-        <button onClick={() => navigateWeek(-1)}>Previous</button>
-        <span>{renderMonthYear()}</span>
-        <button onClick={() => navigateWeek(1)}>Next</button>
+        <WeekNavigation />
       </div>
 
       {loading && <p>Loading events...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
       
       <div className="calendar-body">
+        <DaysOfWeek weekDays={weekDays} />
         <div className="week-view">
           {weekDays.map((day) => (
             <WeekDayColumn

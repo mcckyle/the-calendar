@@ -1,7 +1,7 @@
 //Filename: eventUtils.js
 //Author: Kyle McColgan
-//Date: 25 August 2025
-//Description: This file contains the helper functions for the Saint Louis calendar project.
+//Date: 02 September 2025
+//Description: This file contains Calendar-related helper functions for the Saint Louis calendar project.
 
 export const convertTo12HourFormat = (time) => {
     const [hour, minute] = time.split(':').map(num => parseInt(num));
@@ -34,30 +34,51 @@ export const parseEventTime = (date, time) => {
     return parsedDate;
 };
 
-export const normalizeEvents = (events) =>
-events.map((event) => {
-    const date = event.date || "";
-    const allDay = event.allDay ?? (!event.startTime && !event.endTime);
+// *** Legacy normalizeEvents for events.json events. ***
+// export const normalizeEvents = (events) =>
+// events.map((event) => {
+//     const date = event.date || "";
+//     const allDay = event.allDay ?? (!event.startTime && !event.endTime);
+//
+//     // If it's an all-day event, no need to parse startTime or endTime.
+//     const startTimeDate = !allDay && event.startTime ? parseEventTime(date, event.startTime) : null;
+//     const endTimeDate = !allDay && event.endTime ? parseEventTime(date, event.endTime) : null;
+//
+//     // Log invalid date warnings.
+//     if (!allDay && (!startTimeDate || isNaN(startTimeDate)))
+//     {
+//         console.error("Invalid Date created for event:", event);
+//     }
+//
+//     return {
+//         id: event.id,
+//         title: event.title || "Untitled Event",
+//         date: date, // Keep the raw date string.
+//         startTime: startTimeDate,
+//         endTime: endTimeDate,
+//         allDay: allDay, // Explicitly mark allDay.
+//     };
+// });
 
-    // If it's an all-day event, no need to parse startTime or endTime.
-    const startTimeDate = !allDay && event.startTime ? parseEventTime(date, event.startTime) : null;
-    const endTimeDate = !allDay && event.endTime ? parseEventTime(date, event.endTime) : null;
+// *** New Updated normalizeEvents for the Ticketmaster API. ***
+export function normalizeEvents(events)
+{
+    return events.map(event => {
+        const startTime = event.dates?.start?.dateTime
+          ? new Date(event.dates.start.dateTime)
+          : null;
 
-    // Log invalid date warnings.
-    if (!allDay && (!startTimeDate || isNaN(startTimeDate)))
-    {
-        console.error("Invalid Date created for event:", event);
-    }
-
-    return {
-        id: event.id,
-        title: event.title || "Untitled Event",
-        date: date, // Keep the raw date string.
-        startTime: startTimeDate,
-        endTime: endTimeDate,
-        allDay: allDay, // Explicitly mark allDay.
-    };
-});
+        return {
+            id: event.id,
+            title: event.name,
+            venue: event._embedded?.venues?.[0]?.name ?? "Unknown venue",
+            city: event._embedded?.venues?.[0]?.city?.name ?? "Unknown city",
+            startTime: startTime,
+            date: startTime ? startTime.toDateString() : null,
+            time: startTime ? startTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : null
+        };
+    }).filter(e => e.startTime !== null);
+}
 
 export const filterEventsByDay = (events, day) => {
     if( (!day) || !(day instanceof Date))

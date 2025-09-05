@@ -103,7 +103,7 @@ describe("EventPanel Component", () => {
 
   //Test #9: Handles missing event details gracefully (renders defaults).
   test("renders default values if event details are missing.", () => {
-    const incompleteEvent = { title: "", date: "" }; //Test even is missing the time and description field values.
+    const incompleteEvent = { title: "", date: "" }; //Test event is missing the time and description field values...
     render(<EventPanel selectedEvent={incompleteEvent} onClose={mockOnClose} />);
 
     expect(screen.getByText(/Untitled Event/i)).toBeInTheDocument();

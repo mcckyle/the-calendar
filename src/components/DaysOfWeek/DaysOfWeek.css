@@ -1,79 +1,99 @@
 /* Filename: DaysOfWeek.css */
 
-/* ================================
+/* ====================================
     Days Of Week Container Styling.
-=================================== */
-.days-of-week-container {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  background: var(--secondary-bg);
-  padding: 14px 18px;
-  border-radius: 16px;
-  border: 2px solid var(--accent-gold);
-  font-family: var(--title-font);
-  box-shadow:
-    inset 0 0 1px #fffdf5,
-    0 6px 18px rgba(0, 0, 0, 0.06);
+======================================= */
+.days-of-week-container
+{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    background: var(--secondary-bg);
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
 }
 
-/* ================================
+/* ===================================
     Individual Day Header Styling.
-==================================== */
-.days-of-week-item {
-  text-align: center;
-  padding: 10px 0;
-  background: linear-gradient(145deg, #fffdf4, #1f2b45);
-  border-radius: 12px;
-  font-weight: 700;
-  color: var(--deep-blue);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  font-size: 1rem;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+====================================== */
+.days-of-week-item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5rem 0.4rem;
+    border-radius: var(--border-radius);
+    background: #fff;
+    font-family: var(--title-font);
+    text-align: center;
+    cursor: default;
+
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 /* Hover Interaction. */
-.day-of-week-item:hover
+.days-of-week-item:hover
 {
-    background: linear-gradient(145deg, #f3efe4, #eae4d6);
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
+}
+
+/* Weekday Label Styles. */
+.dow-label
+{
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--deep-blue);
+    letter-spacing: 0.5px;
+}
+
+/* Date Label Styles. */
+.dow-date
+{
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+    margin-top: 0.15rem;
 }
 
 /* ================================
     Responsive Design Styling.
-===================================== */
+=================================== */
 
 @media (max-width: 768px)
 {
     .days-of-week-container
     {
-        padding: 12px;
-        gap: 6px;
+        padding: 0.6rem;
+        gap: 0.4rem;
     }
 
-    .days-of-week-item
+    .dow-label
     {
-        font-size: 0.9rem;
-        padding: 8px 0;
+        font-size: 0.8rem;
+    }
+
+    .dow-date
+    {
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px)
 {
-  .days-of-week-container
-  {
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: minmax(40px, auto);
-  }
+    .days-of-week-container
+    {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(36px, auto);
+    }
 
-  .days-of-week-item
-  {
-    font-size: 0.85rem;
-  }
+    .dow-label,
+    .dow-date
+    {
+        font-size: 0.7rem;
+    }
 }
-

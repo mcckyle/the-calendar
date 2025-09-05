@@ -1,23 +1,31 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 14 July 2025
-//Description: This file contains the DaysOfWeek.jsx component for the local Saint Louis React calendar project.
+//Date: 05 September 2025
+//Description: This file contains the row of date labels for the Saint Louis React calendar project.
 
 import React from 'react';
 import './DaysOfWeek.css';
 
-const DaysOfWeek = () => {
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DaysOfWeek = ({ weekDays = [] }) => {
   return (
     <div className="days-of-week-container" role="row">
-      {daysOfWeek.map((day, index) => (
+      {weekDays.map((day, index) => (
         <div
           key={index}
           className="days-of-week-item"
           role="columnheader"
-          aria-label={`Day of week: ${day}`}
+          aria-label={day.toLocaleDateString('en-US', {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+          })}
         >
-          {day}
+          <span className="dow-label">
+              {day.toLocaleDateString('en-US', { weekday: 'short' })}
+          </span>
+          <span className="dow-date">
+              {day.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          </span>
         </div>
       ))}
     </div>

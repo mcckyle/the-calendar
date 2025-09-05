@@ -1,98 +1,69 @@
 /* Filename: WeekDayColumn.css */
 
-/* ===================================
+/* ======================================
     WeekDay Column Container Styling.
-====================================== */
-.weekday-column {
-  background: var(--secondary-bg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-
-  transition: transform var(--transition-speed) ease,
-              box-shadow var(--transition-speed) ease;
-}
-
-.weekday-column:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-/* ======================================
-    Header Section (Date Label) Styling.
 ========================================= */
-.weekday-header {
-  background: var(--deep-blue);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  text-align: center;
-
-  box-shadow: inset 0 -3px 0 var(--accent-gold);
-}
-
-.weekday-label
+.weekday-column
 {
-    font-family: var(--title-font);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #fff;
-    margin: 0;
-    letter-spacing: 0.5px;
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.75rem;
+
+    transition: transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
-/* ======================================
+.weekday-column:hover
+{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==================================
     Time Slots Container Styling.
-========================================= */
-.time-slots {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-/* ======================================
-    Legacy Time Slot Placeholder Styling.
-    (Keeps Layout Integrity).
-========================================== */
-.time-slot {
-  background: var(--secondary-bg);
-  border-radius: var(--border-radius);
-  padding: 0.75rem;
-  font-family: var(--body-font);
-  font-size: 0.95rem;
-  color: var(--text-color);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: var(--shadow-sm);
-
-  transition: background var(--transition-speed) ease,
-              transform var(--transition-speed) ease;
-}
-
-.time-slot:hover
+===================================== */
+.time-slots
 {
-    background-color: #f4f2ea;
-    transform: scale(1.02);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-gold) transparent;
 }
 
-/* ============================
+/* Custom Scrollbar for Webkit Browsers. */
+.time-slots::-webkit-scrollbar
+{
+    width: 6px;
+}
+
+.time-slots::-webkit-scrollbar-thumb
+{
+    background: var(--accent-gold);
+    border-radius: 4px;
+}
+
+.time-slots::-webkit-scrollbar-track
+{
+    background: transparent;
+}
+
+/* ================================
     Responsive Design Styling.
-================================ */
+=================================== */
 @media (max-width: 768px)
 {
     .weekday-column
     {
-        padding: 1.25rem;
-        gap: 1rem;
-    }
-
-    .weekday-label
-    {
-        font-size: 1.1rem;
+        padding: 0.75rem;
+        gap: 0.6rem;
     }
 }

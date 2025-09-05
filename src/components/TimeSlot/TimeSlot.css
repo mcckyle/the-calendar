@@ -1,120 +1,141 @@
 /* Filename: TimeSlot.css */
 
-/* ==============================
+/* =================================
     Time Slot Container Styling.
-================================= */
-.time-slot {
-  background: var(--secondary-bg);
-  border-radius: var(--border-radius);
-  padding: 1.25rem;
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow-sm);
-
-  transition: transform var(--transition-speed),
-              box-shadow var(--transition-speed);
-}
-
-.time-slot:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* ===========================
-    Time Label Styling.
-=============================== */
-.time-label {
-  font-family: var(--title-font);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--deep-blue);
-  text-align: left;
-
-  border-bottom: 1px solid #e0dccf;
-  padding-bottom: 0.4rem;
-  margin-bottom: 0.8rem;
-}
-
-/* ================================
-    Slot Events Container Styling.
-=================================== */
-.slot-events {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-/* ================================
-    Event Button Styling.
 ==================================== */
-.event {
-  background: var(--deep-blue);
-  color: #fff;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-
-  font-size: 0.95rem;
-  font-weight: 500;
-  font-family: var(--body-font);
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-
-  transition: all var(--transition-speed) ease;
-}
-
-.event:hover {
-  background: #2a3658;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.event:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
-}
-
-/* ==================================
-    No Events Placeholder Styling.
-====================================== */
-.slot-empty {
-  font-family: var(--body-font);
-  font-size: 0.9rem;
-  color: #7a7264;
-  text-align: center;
-
-  background-color: #faf8f2;
-  padding: 0.6rem;
-  border-radius: 10px;
-  border: 1px dashed #d5ccb5;
-
-  transition: background-color var(--transition-speed),
-              transform var(--transition-speed);
-}
-
-.slot-empty:hover {
-  background-color: #f4f2ea;
-  transform: scale(1.01);
-}
-
-/* ==================================
-    Responsive Adjustments Styling.
-===================================== */
-@media (max-width: 768px) {
-  .time-slot {
+.time-slot
+{
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
     padding: 1rem;
-  }
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
 
-  .time-label {
+    transition: box-shadow var(--transition-speed),
+                transform var(--transition-speed);
+}
+
+.time-slot:hover
+{
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+/* =========================
+    Time Label Styling.
+============================ */
+.time-label
+{
+    font-family: var(--title-font);
     font-size: 1rem;
-  }
+    font-weight: 600;
+    color: var(--deep-blue);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e1d6;
+    padding-bottom: 0.25rem;
+}
 
-  .event {
+/* ===================================
+    Slot Events Container Styling.
+====================================== */
+.slot-events
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ============================
+    Event Button Styling.
+=============================== */
+.event
+{
+    background: var(--deep-blue);
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
     font-size: 0.9rem;
-    padding: 0.65rem 0.85rem;
+    font-weight: 500;
+    font-family: var(--body-font);
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+
+    transition: background-color var(--transition-speed),
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+}
+
+.event:hover
+{
+    background: #2d3c5a;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.event:active
+{
+    transform: scale(0.98);
+}
+
+.event-title
+{
+    display: block;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ====================================
+    No Events Placeholder Styling.
+======================================= */
+.slot-empty
+{
+    font-family: var(--body-font);
+    font-size: 0.85rem;
+    color: #868078;
+    text-align: center;
+
+    background-color: #faf8f3;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px dashed #d9d2bd;
+
+    transition: background-color var(--transition-speed),
+                transform var(--transition-speed);
+}
+
+.slot-empty:hover
+{
+    background-color: #f4f2eb;
+    transform: scale(1.01);
+}
+
+/* =====================================
+    Responsive Adjustments Styling.
+======================================== */
+@media (max-width: 768px)
+{
+  .time-slot
+  {
+      padding: 0.85rem;
   }
 
-  .slot-empty {
-    font-size: 0.85rem;
+  .time-label
+  {
+      font-size: 0.95rem;
+  }
+
+  .event
+  {
+      font-size: 0.85rem;
+      padding: 0.6rem 0.8rem;
+  }
+
+  .slot-empty
+  {
+      font-size: 0.8rem;
   }
 }

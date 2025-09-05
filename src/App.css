@@ -1,25 +1,26 @@
 /* Filename: App.css */
 
-
 /* ===============================
    App-Level Container Styling.
 ================================== */
 
-.app {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+.app
+{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
-  padding: 2rem;
-  background: var(--primary-bg);
-  box-sizing: border-box;
+    padding: 2rem;
+    background: var(--primary-bg);
+    box-sizing: border-box;
 }
 
-.app > * {
-  width: 100%;
+.app > *
+{
+    width: 100%;
 }
 
 /* Fix Vertical Stacking on Smaller Screen Sizes. */

@@ -1,7 +1,7 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 27 August 2025
-//Description: This file contains the frontend hook to call the backend endpoint for the Saint Louis Calendar.
+//Date: 02 September 2025
+//Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar.
 
 import { useState, useEffect } from "react";
 
@@ -31,7 +31,8 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
               }
 
               const data = await response.json();
-              setEvents(data);
+              const embedded = data._embedded?.events ?? [];
+              setEvents(embedded);
         }
         catch(err)
         {

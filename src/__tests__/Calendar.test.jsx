@@ -1,6 +1,6 @@
 //Filename: Calendar.test.jsx
 //Author: Kyle McColgan
-//Date: 15 July 2025
+//Date: 05 September 2025
 //Description: This file contains unit tests for the Calendar.jsx component.
 
 import React from 'react';
@@ -38,8 +38,8 @@ describe('Calendar Component', () => {
     renderCalendar();
 
     // Check for navigation buttons and month/year display.
-    expect(screen.getByText('Previous')).toBeInTheDocument();
-    expect(screen.getByText('Next')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /previous week/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /next week/i })).toBeInTheDocument();
     expect(screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/)).toBeInTheDocument();
   });
 
@@ -55,8 +55,8 @@ describe('Calendar Component', () => {
   test('navigates to the previous week when the "Previous" button is clicked.', () => {
     renderCalendar();
 
-    const previousButton = screen.getByText('Previous');
-    fireEvent.click(previousButton);
+    // Click on the "Next week" button using the accessible name.
+    fireEvent.click(screen.getByRole('button', { name: /previous week/i }));
 
     // Verify that the week updates.
     expect(screen.getAllByTestId('week-day-column').length).toBe(7); // Week view remains consistent.
@@ -66,8 +66,8 @@ describe('Calendar Component', () => {
   test('navigates to the next week when the "Next" button is clicked.', () => {
     renderCalendar();
 
-    const nextButton = screen.getByText('Next');
-    fireEvent.click(nextButton);
+    // Click on the "Next week" button using the accessible name.
+    fireEvent.click(screen.getByRole('button', { name: /next week/i }));
 
     // Verify that the week updates.
     expect(screen.getAllByTestId('week-day-column').length).toBe(7); // Week view remains consistent.
@@ -80,7 +80,8 @@ describe('Calendar Component', () => {
 
     for(let i = 0; i < 5; i ++ )
     {
-        fireEvent.click(screen.getByText('Next'));
+        // Click on the "Next week" button using the accessible name.
+        fireEvent.click(screen.getByRole('button', { name: /next week/i }));
     }
 
     const monthAfter = screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/).textContent;
@@ -98,8 +99,8 @@ describe('Calendar Component', () => {
   test('renders EventPanel when an event is clicked on.', () => {
     renderCalendar();
 
-    // Simulate event click by updating context through mock.
-    fireEvent.click(screen.getByText('Next'));
+    // Click on the "Next week" button using the accessible name.
+    fireEvent.click(screen.getByRole('button', { name: /next week/i }));
 
     //Force showing EventPanel.
     const { rerender } = render(
