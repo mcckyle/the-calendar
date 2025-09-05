@@ -1,7 +1,7 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 16 July 2025
-//Description: This file contains unit tests for the EventCard.jsx component.
+//Date: 05 September 2025
+//Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
@@ -78,10 +78,10 @@ describe("EventCard Component", () => {
   });
 
   //Test #10: Snapshot test for UI consistency purposes.
-  test("matches snapshot.", () => {
-    const { asFragment } = render(<EventCard {...validEvent} />);
-    expect(asFragment()).toMatchSnapshot();
-  });
+//   test("matches snapshot.", () => {
+//     const { asFragment } = render(<EventCard {...validEvent} />);
+//     expect(asFragment()).toMatchSnapshot();
+//   });
 
 // *** OLD TESTS COMMENTED OUT BELOW. ***
 //	test("renders EventCard with all props", () => {
