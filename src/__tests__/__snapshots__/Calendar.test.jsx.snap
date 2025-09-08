@@ -2,10 +2,10 @@
 
 exports[`Calendar Component matches snapshot for default render. 1`] = `
 <DocumentFragment>
-  <div
-    class="calendar-container"
+  <section
+    class="calendar"
   >
-    <div
+    <header
       class="calendar-header"
     >
       <nav
@@ -18,12 +18,12 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         >
           ‹
         </button>
-        <div
+        <time
           aria-live="polite"
           class="month-year"
         >
-          August 2025
-        </div>
+          September 2025
+        </time>
         <button
           aria-label="Next week"
           class="nav-button"
@@ -31,9 +31,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           ›
         </button>
       </nav>
-    </div>
+    </header>
     <p
-      style="color: red;"
+      class="calendar-status error"
     >
       Error: fetch is not defined
     </p>
@@ -45,7 +45,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         role="row"
       >
         <div
-          aria-label="Sunday, August 31"
+          aria-label="Sunday, September 7"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -57,11 +57,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Aug 31
+            Sep 7
           </span>
         </div>
         <div
-          aria-label="Monday, September 1"
+          aria-label="Monday, September 8"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -73,11 +73,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 1
+            Sep 8
           </span>
         </div>
         <div
-          aria-label="Tuesday, September 2"
+          aria-label="Tuesday, September 9"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -89,11 +89,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 2
+            Sep 9
           </span>
         </div>
         <div
-          aria-label="Wednesday, September 3"
+          aria-label="Wednesday, September 10"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -105,11 +105,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 3
+            Sep 10
           </span>
         </div>
         <div
-          aria-label="Thursday, September 4"
+          aria-label="Thursday, September 11"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -121,11 +121,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 4
+            Sep 11
           </span>
         </div>
         <div
-          aria-label="Friday, September 5"
+          aria-label="Friday, September 12"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -137,11 +137,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 5
+            Sep 12
           </span>
         </div>
         <div
-          aria-label="Saturday, September 6"
+          aria-label="Saturday, September 13"
           class="days-of-week-item"
           role="columnheader"
         >
@@ -153,7 +153,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <span
             class="dow-date"
           >
-            Sep 6
+            Sep 13
           </span>
         </div>
       </div>
@@ -164,53 +164,53 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           data-testid="week-day-column"
         >
           <span>
-            Sun Aug 31 2025
+            Sun Sep 07 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Mon Sep 01 2025
+            Mon Sep 08 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Tue Sep 02 2025
+            Tue Sep 09 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Wed Sep 03 2025
+            Wed Sep 10 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Thu Sep 04 2025
+            Thu Sep 11 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Fri Sep 05 2025
+            Fri Sep 12 2025
           </span>
         </div>
         <div
           data-testid="week-day-column"
         >
           <span>
-            Sat Sep 06 2025
+            Sat Sep 13 2025
           </span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </DocumentFragment>
 `;

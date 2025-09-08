@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.jsx
 //Author: Kyle McColgan
-//Date: 04 September 2025
+//Date: 08 September 2025
 //Description: This file contains the week navigation functionality for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -24,9 +24,11 @@ const WeekNavigation = () => {
       >
           ‹
       </button>
-      <div className="month-year" aria-live="polite">
+
+      <time className="month-year" aria-live="polite">
         {formatMonthYear()}
-      </div>
+      </time>
+
       <button
         className="nav-button"
         aria-label="Next week"

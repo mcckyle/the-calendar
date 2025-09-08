@@ -3,7 +3,8 @@
 /* =============================
    Global CSS Variables Styles.
 ================================ */
-:root {
+:root
+{
     --title-font: 'Playfair Display', serif;
     --body-font: 'Inter', serif;
 
@@ -133,13 +134,27 @@ a:hover
 {
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
 
     transition: box-shadow var(--transition-speed) ease;
 }
 
 .container:hover
 {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
+}
+
+@media(max-width: 768px)
+{
+    .calendar-container
+    {
+        padding: 1rem;
+        gap: 1.25rem;
+    }
+
+    .calendar-title
+    {
+        font-size: 1.5rem;
+    }
 }

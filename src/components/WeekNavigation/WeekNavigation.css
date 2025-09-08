@@ -12,8 +12,8 @@
 
     font-family: var(--title-font);
     font-weight: 600;
-    color: #fff; /* *** Inherits the header theme. *** */
     padding: 0.5rem 0;
+    color: var(--deep-blue);
 }
 
 /* ==================================
@@ -21,35 +21,41 @@
 ===================================== */
 .nav-button
 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-    cursor: pointer;
 
+    background: var(--secondary-bg);
+    color: var(--deep-blue);
+    border: 1px solid rgba(27, 31, 59, 0.2);
+    border-radius: var(--border-radius);
+
+    width: 2.25rem;
+    height: 2.25rem;
+
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--shadow-sm);
 
-    transition: all var(--transition-speed) ease;
+    transition: background var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 .nav-button:hover
 {
-    background: var(--accent-gold);
-    border-color: var(--accent-gold);
+    background: var(--deep-blue);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
 }
 
 .nav-button:active
 {
     transform: scale(0.95);
+    box-shadow: var(--shadow-sm);
 }
 
 /* *** Positioning for left/right navigation buttons! *** */
@@ -97,8 +103,8 @@
 	
 	.nav-button
 	{
-        width: 2.25rem;
-        height: 2.25rem;
-		font-size: 1.3rem;
+        width: 2rem;
+        height: 2rem;
+		font-size: 1.1rem;
 	}
 }
