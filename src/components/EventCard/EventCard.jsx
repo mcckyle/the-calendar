@@ -1,12 +1,24 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 04 September 2025
+//Date: 08 September 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from 'react';
 import './EventCard.css';
 
-const EventCard = ({ title, date, startTime, endTime, allDay, description }) => {
+const EventCard = ({
+	title,
+	date,
+	startTime,
+	endTime,
+	allDay,
+	description,
+	venueName,
+	venueAddress,
+	venueCity,
+	venueState,
+	url
+  }) => {
 
 	//Normalize the date...
 	let formattedDate = "Invalid Date";
@@ -49,7 +61,22 @@ const EventCard = ({ title, date, startTime, endTime, allDay, description }) => 
 			    {formattedStartTime && <span className="event-time"> • {formattedStartTime}</span>}
               </p>
 		</header>
+
 		{description && <p className="event-card-description">{description}</p>}
+
+		<div className="event-card-venue">
+		  <strong>Location:</strong>{" "}
+		  {venueName}, {venueAddress && `${venueAddress}, `}
+		  {venueCity} {venueState}
+		</div>
+
+		{url && (
+			<p className="event-card-link">
+			  <a href={url} target="_blank" rel="noopener noreferrer">
+			    View on Ticketmaster →
+			  </a>
+			</p>
+		)}
 	  </article>
 	);
 };

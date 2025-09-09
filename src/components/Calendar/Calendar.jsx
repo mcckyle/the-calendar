@@ -39,11 +39,11 @@ const Calendar = ({ hours }) => {
   const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
 
   useEffect(() => {
-    if( (events) && (events.length > 0) )
+    if ( (events) && (events.length > 0) )
     {
-      const normalized = normalizeEvents(events);
-      console.log("Normalized Events:", normalized); //For debugging purposes...
-      setNormalizedEvents(normalized);
+      //const normalized = normalizeEvents(events);
+      console.log("Normalized Events from hook:", events); //For debugging purposes...
+      setNormalizedEvents(events);
     }
     else
     {

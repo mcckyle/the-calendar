@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 08 September 2025
 //Description: This file contains the event modal for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -47,6 +47,11 @@ const EventPanel = ({ selectedEvent, onClose }) => {
             endTime={selectedEvent.endTime || "No End Time"}
             allDay={selectedEvent.allDay || false}
             description={selectedEvent.description || "No Description"}
+            venueName={selectedEvent.venueName || "Unknown venue"}
+            venueAddress={selectedEvent.venueAddress || ""}
+            venueCity={selectedEvent.venueCity || ""}
+            venueState={selectedEvent.venueState || ""}
+            url={selectedEvent.url || ""}
           />
         </section>
       </>

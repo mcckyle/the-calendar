@@ -1,6 +1,6 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 02 September 2025
+//Date: 08 September 2025
 //Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar.
 
 import { useState, useEffect } from "react";
@@ -32,7 +32,27 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
 
               const data = await response.json();
               const embedded = data._embedded?.events ?? [];
-              setEvents(embedded);
+              const normalized = embedded.map(event => {
+                const venue = event._embedded?.venues?.[0] || {};
+                const dateTimeStr = event.dates?.start?.dateTime;
+                const startTime = dateTimeStr ? new Date(dateTimeStr) : null;
+
+                return {
+                  id: event.id,
+                  title: event.name,
+                  startTime: startTime,
+                  date: startTime ? startTime.toDateString() : null,
+                  time: startTime ? startTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit"}) : null,
+                  allDay: false,
+                  description: event.info || event.pleaseNote || "",
+                  venueName: venue.name || "Unknown venue",
+                  venueAddress: venue.address?.line1 || "",
+                  venueCity: venue.city?.name || "",
+                  venueState: venue.state?.stateCode || "",
+                  url: event.url || "",
+                };
+              }).filter(e => e.startTime !== null); // Only keep events with a valid starting time.
+              setEvents(normalized);
         }
         catch(err)
         {

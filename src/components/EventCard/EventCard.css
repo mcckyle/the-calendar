@@ -65,6 +65,29 @@
     font-weight: 400;
 }
 
+.event-card-venue
+{
+    font-size: 0.95rem;
+    color: rgba(44, 44, 44, 0.8);
+    margin-top: 0.5rem;
+}
+
+.event-card-link a
+{
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.event-card-link a:hover
+{
+    color: var(--deep-blue);
+}
+
 /* ===============================
     Event Description Styling.
 ================================== */
