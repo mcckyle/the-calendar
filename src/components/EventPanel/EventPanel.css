@@ -8,20 +8,20 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) scale(0.96);
     opacity: 0;
 
     background: var(--secondary-bg, #fff);
     border-radius: 1rem;
     padding: 2rem;
-    max-width: 700px;
+    max-width: 680px;
     width: 90%;
 
     color: var(--text-color, #1f2937);
     font-family: var(--body-font);
 
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(16px);
     z-index: 2000;
 
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -31,6 +31,17 @@
 {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+}
+
+.event-panel.empty
+{
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    transform: none;
+    top: auto;
+    left: auto;
+    position: relative;
 }
 
 /* ====================
@@ -56,17 +67,19 @@
     align-items: center;
 
     margin-bottom: 1.25rem;
+    border-bottom: 1px solid #ece8df;
+    padding-bottom: 0.75rem;
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     font-family: var(--title-font);
     margin: 0;
-    color: #111827; /* Color: near black. */
-    letter-spacing: 0.2px;
+    color: var(--deep-blue);
+    letter-spacing: 0.3px;
 }
 
 /* =========================
@@ -76,12 +89,12 @@
 {
     background: transparent;
     border: none;
-    color: #374151; /* Color: slate-700. */
+    color: #4b5563;
     font-size: 1.4rem;
     line-height: 1;
     cursor: pointer;
 
-    padding: 0.5rem;
+    padding: 0.4rem;
     border-radius: 50%;
 
     transition: background 0.2s ease, transform 0.2s ease;
@@ -98,14 +111,16 @@
 =================================== */
 .no-event
 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     text-align: center;
-    padding: 1rem;
-    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--border-radius);
 
-    background: rgba(243, 244, 246, 0.7); /* Color: gray-100. */
-    color: #4b5563; /* Color: gray-600. */
+    background: #f9f8f6;
+    color: #6b7280; /* Color: gray-600. */
     font-family: var(--body-font);
+
+    box-shadow: var(--shadow-sm);
 }
 
 @keyframes fadeIn
@@ -126,7 +141,7 @@
 
     .event-panel h2
     {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -140,7 +155,7 @@
 
     .event-panel h2
     {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 }
 

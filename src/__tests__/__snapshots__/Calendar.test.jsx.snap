@@ -46,7 +46,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <div
           aria-label="Sunday, September 7"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span
@@ -62,7 +62,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Monday, September 8"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span
@@ -78,7 +78,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Tuesday, September 9"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span
@@ -94,7 +94,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Wednesday, September 10"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span
@@ -110,7 +110,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Thursday, September 11"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span
@@ -126,7 +126,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Friday, September 12"
-          class="days-of-week-item"
+          class="days-of-week-item today"
           role="columnheader"
         >
           <span
@@ -142,7 +142,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
         <div
           aria-label="Saturday, September 13"
-          class="days-of-week-item"
+          class="days-of-week-item "
           role="columnheader"
         >
           <span

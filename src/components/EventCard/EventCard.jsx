@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 08 September 2025
+//Date: 12 September 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -55,20 +55,28 @@ const EventCard = ({
 	return (
 	  <article className="event-card" role="article" aria-labelledby={`event-${title}`}>
 		<header className="event-card-header">
-		  <h3 id={`event-${title}`} className="event-card-title">{title}</h3>
+		  <h3 id={`event-${title}`} className="event-card-title">
+		    {title}
+		  </h3>
 			  <p className="event-card-meta">
 			    <span className="event-date">{formattedDate}</span>
-			    {formattedStartTime && <span className="event-time"> • {formattedStartTime}</span>}
+			    {formattedStartTime && (
+					<span className="event-time"> • {formattedStartTime}</span>
+				)}
               </p>
 		</header>
 
-		{description && <p className="event-card-description">{description}</p>}
+		{description && (
+			<p className="event-card-description">{description}</p>
+		)}
 
-		<div className="event-card-venue">
-		  <strong>Location:</strong>{" "}
-		  {venueName}, {venueAddress && `${venueAddress}, `}
-		  {venueCity} {venueState}
-		</div>
+		<p className="event-card-venue">
+		  <span className="venue-label">📍</span>
+		  {venueName}
+		  {venueAddress && `, ${venueAddress}`}
+		  {venueCity && `, ${venueCity}`}
+		  {venueState && `, ${venueState}`}
+		</p>
 
 		{url && (
 			<p className="event-card-link">
