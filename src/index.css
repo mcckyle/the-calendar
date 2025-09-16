@@ -6,7 +6,7 @@
 :root
 {
     --title-font: 'Playfair Display', serif;
-    --body-font: 'Inter', serif;
+    --body-font: 'Inter', sans-serif;
 
     --primary-bg: #f9f7f1;
     --secondary-bg: #ffffff;
@@ -21,7 +21,7 @@
     --border-radius: 14px;
     --transition-speed: 0.25s;
     --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* ================================

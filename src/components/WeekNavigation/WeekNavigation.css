@@ -6,15 +6,13 @@
 .week-navigation
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    gap: 1.25rem;
 
     font-family: var(--title-font);
-    font-weight: 600;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     color: var(--deep-blue);
-    gap: 1rem;
 }
 
 /* ==================================
@@ -22,27 +20,25 @@
 ===================================== */
 .nav-button
 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 600;
 
-    background: var(--secondary-bg);
+    background: var(--secondary-bg, #fff);
     color: var(--deep-blue);
     border: 1px solid rgba(27, 31, 59, 0.15);
     border-radius: 50%;
 
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
 
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-sm);
 
-    transition: background var(--transition-speed) ease,
-                color var(--transition-speed) ease,
-                transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
 }
 
 .nav-button:hover
@@ -50,13 +46,11 @@
     background: var(--deep-blue);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(27, 31, 59, 0.25);
 }
 
 .nav-button:active
 {
-    transform: scale(0.9);
-    box-shadow: var(--shadow-sm);
+    transform: scale(0.92);
 }
 
 /* ==================================
@@ -64,11 +58,11 @@
 ===================================== */
 .month-year
 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.5px;
-    min-width: 160px;
+    min-width: 180px;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
@@ -88,13 +82,13 @@
 
 	.month-year
 	{
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 	
 	.nav-button
 	{
-        width: 2.2rem;
-        height: 2.2rem;
-		font-size: 1.1rem;
+        width: 2.3rem;
+        height: 2.3rem;
+		font-size: 1.2rem;
 	}
 }
