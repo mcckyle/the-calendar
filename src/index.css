@@ -8,14 +8,16 @@
     --title-font: 'Playfair Display', serif;
     --body-font: 'Inter', sans-serif;
 
-    --primary-bg: #f9f7f1;
-    --secondary-bg: #ffffff;
-    --accent-gold: #c9a94b;
-    --deep-blue: #1b1f3b;
-    --text-color: #2c2c2c;
+    --primary-bg: #fdfcfb; /* Color: Soft-white Background. */
+    --secondary-bg: #ffffff; /* Color: Card/Container Background. */
+    --deep-blue: #002f6c;
+    --accent-red: #c8102e;
+    --accent-gold: #ffb81c;
+    --neutral-gray: #4a4a4a;
+    --subtle-gray: #e6e6e6;
 
     --button-bg: var(--deep-blue);
-    --button-hover-bg: #2e3358;
+    --button-hover-bg: #004080;
     --button-text-color: #ffffff;
 
     --border-radius: 14px;
@@ -34,16 +36,18 @@ body,
     height: 100%;
     font-family: var(--body-font);
     background: var(--primary-bg);
-    color: var(--text-color);
+    color: var(--neutral-gray);
     line-height: 1.6;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
-/* Heading Styling. */
+/* Headings Styling. */
 h1, h2, h3, h4, h5, h6
 {
     font-family: var(--title-font);
@@ -105,7 +109,7 @@ a
 
 a:hover
 {
-    color: var(--accent-gold);
+    color: var(--accent-red);
 }
 
 /* =================================

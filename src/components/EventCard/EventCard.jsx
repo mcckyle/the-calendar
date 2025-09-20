@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 12 September 2025
+//Date: 16 September 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -26,7 +26,7 @@ const EventCard = ({
 	{
 		const dateObj = date instanceof Date ? date : new Date(date);
 
-		if(!isNaN(dateObj.getTime()))
+		if (!isNaN(dateObj.getTime()))
 		{
 			formattedDate = dateObj.toLocaleDateString("en-US", {
 				weekday: "long",
@@ -53,37 +53,43 @@ const EventCard = ({
 	}
 
 	return (
-	  <article className="event-card" role="article" aria-labelledby={`event-${title}`}>
+	  <article
+	    className="event-card"
+	    role="article"
+	    aria-labelledby={`event-${title}`}
+	  >
 		<header className="event-card-header">
 		  <h3 id={`event-${title}`} className="event-card-title">
 		    {title}
 		  </h3>
-			  <p className="event-card-meta">
-			    <span className="event-date">{formattedDate}</span>
-			    {formattedStartTime && (
-					<span className="event-time"> • {formattedStartTime}</span>
-				)}
-              </p>
+		  <p className="event-card-meta">
+		    <span className="event-date">{formattedDate}</span>
+		    {formattedStartTime && (
+				<span className="event-time"> • {formattedStartTime}</span>
+			)}
+		  </p>
 		</header>
 
 		{description && (
-			<p className="event-card-description">{description}</p>
+			<section className="event-card-description">{description}</section>
 		)}
 
-		<p className="event-card-venue">
-		  <span className="venue-label">📍</span>
-		  {venueName}
-		  {venueAddress && `, ${venueAddress}`}
-		  {venueCity && `, ${venueCity}`}
-		  {venueState && `, ${venueState}`}
-		</p>
+		{(venueName || venueAddress || venueCity || venueState) && (
+		  <p className="event-card-venue">
+		    <span className="venue-label" aria-hidden="true">📍</span>
+		    {venueName}
+			{venueAddress && `, ${venueAddress}`}
+			{venueCity && `, ${venueCity}`}
+			{venueState && `, ${venueState}`}
+		  </p>
+		)}
 
 		{url && (
-			<p className="event-card-link">
-			  <a href={url} target="_blank" rel="noopener noreferrer">
-			    View on Ticketmaster →
-			  </a>
-			</p>
+		  <p className="event-card-link">
+		    <a href={url} target="_blank" rel="noopener noreferrer">
+			  View Event →
+			</a>
+		  </p>
 		)}
 	  </article>
 	);

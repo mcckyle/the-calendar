@@ -9,10 +9,13 @@
     justify-content: space-between;
     align-items: center;
 
-    background: var(--secondary-bg);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+
     padding: 0.75rem 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
+
     gap: 0.5rem;
     overflow-x: auto;
     scrollbar-width: none;
@@ -29,20 +32,21 @@
 .days-of-week-item
 {
     flex: 1;
-    min-width: 60px;
+    min-width: 64px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 0.6rem 0.4rem;
+    padding: 0.65rem 0.5rem;
     border-radius: var(--border-radius);
     background: #fff;
+
     font-family: var(--title-font);
     text-align: center;
-    cursor: default;
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 /* Hover Interaction. */
@@ -52,12 +56,19 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Today Highlight Styles. */
+/* =============================
+   Today Highlight Styling.
+================================ */
 .days-of-week-item.today
 {
-    background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
+    background: linear-gradient(
+        135deg,
+        var(--deep-blue) 0%,
+        var(--accent-gold) 100%
+    );
     color: #fff;
-    box-shadow: var(--shadow-md);
+
+    box-shadow: 0 4px 12px rgba(27, 31, 59, 0.25);
 }
 
 .days-of-week-item.today .dow-label,
@@ -74,7 +85,7 @@
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.3px;
     color: var(--deep-blue);
 }
 

@@ -20,7 +20,7 @@ const App = () => {
           <header className="app-calendar-header">
             <h1 className="app-calendar-title">Saint Louis Calendar</h1>
             <p className="app-calendar-subtitle">
-              Discover upcoming events across Saint Louis.
+              Discover upcoming events across Saint Louis!
             </p>
           </header>
           <Calendar hours={hours} />

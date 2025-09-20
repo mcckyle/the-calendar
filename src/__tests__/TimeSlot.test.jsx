@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 17 July 2025
+//Date: 18 September 2025
 //Description: This file contains unit tests for the TimeSlot.jsx component.
 
 import React from 'react';
@@ -190,7 +190,7 @@ describe('TimeSlot', () => {
       />
     );
 
-    const header = screen.getByText(label).closest('header');
+    const header = screen.getByText(label).closest('h3');
     expect(header).not.toBeNull();
   });
 

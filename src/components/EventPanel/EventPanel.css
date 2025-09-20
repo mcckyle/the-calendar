@@ -11,14 +11,14 @@
     transform: translate(-50%, -50%) scale(0.96);
     opacity: 0;
 
-    background: var(--secondary-bg, #fff);
-    border-radius: 1rem;
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
     padding: 2rem;
     max-width: 680px;
     width: 90%;
 
-    color: var(--text-color, #1f2937);
-    font-family: var(--body-font);
+    color: var(--text-color);
+    font-family: var(--body-font, sans-serif);
 
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(16px);
@@ -33,15 +33,31 @@
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* ================================
+   Empty State Message Styling.
+ =================================== */
 .event-panel.empty
 {
-    box-shadow: none;
     background: transparent;
     padding: 0;
+    box-shadow: none;
+    position: relative;
     transform: none;
     top: auto;
     left: auto;
-    position: relative;
+}
+
+.no-event
+{
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 1rem 1.25rem;
+    border-radius: var(--border-radius);
+
+    background: #f8f7f4;
+    color: #6b7280; /* Color: gray-600. */
+    font-family: var(--body-font, sans-serif);
+    box-shadow: var(--shadow-sm);
 }
 
 /* ====================
@@ -76,7 +92,7 @@
 {
     font-size: 1.5rem;
     font-weight: 600;
-    font-family: var(--title-font);
+    font-family: var(--title-font, serif);
     margin: 0;
     color: var(--deep-blue);
     letter-spacing: 0.3px;
@@ -106,23 +122,15 @@
     transform: scale(1.1);
 }
 
-/* ================================
-    Empty State Message Styling.
-=================================== */
-.no-event
+.close-button:focus
 {
-    font-size: 0.95rem;
-    text-align: center;
-    padding: 1rem 1.25rem;
-    border-radius: var(--border-radius);
-
-    background: #f9f8f6;
-    color: #6b7280; /* Color: gray-600. */
-    font-family: var(--body-font);
-
-    box-shadow: var(--shadow-sm);
+    outline: 2px solid #fff;
+    outline-offset: 2px;
 }
 
+/* ===============================
+   Animations Styles.
+================================== */
 @keyframes fadeIn
 {
     from { opacity: 0; }
@@ -130,7 +138,7 @@
 }
 
 /* ===============================
-    Responsive Design Styles.
+   Media Queries Styles.
 ================================== */
 @media (max-width: 768px)
 {

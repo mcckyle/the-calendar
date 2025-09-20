@@ -8,10 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
 
-    font-family: var(--title-font);
     padding: 0.75rem 0;
+    font-family: var(--title-font);
     color: var(--deep-blue);
 }
 
@@ -23,13 +23,13 @@
     font-size: 1.4rem;
     font-weight: 600;
 
-    background: var(--secondary-bg, #fff);
+    background: var(--secondary-bg);
     color: var(--deep-blue);
     border: 1px solid rgba(27, 31, 59, 0.15);
-    border-radius: 50%;
+    border-radius: 1.25rem;
 
-    width: 2.6rem;
-    height: 2.6rem;
+    min-width: 2.8rem;
+    min-height: 2.6rem;
 
     cursor: pointer;
     display: flex;
@@ -38,6 +38,7 @@
 
     transition: background 0.25s ease,
                 color 0.25s ease,
+                box-shadow 0.25s ease,
                 transform 0.25s ease;
 }
 
@@ -45,28 +46,44 @@
 {
     background: var(--deep-blue);
     color: #fff;
+    box-shadow: 0 4px 10px rgba(27, 31, 59, 0.25);
     transform: translateY(-2px);
 }
 
 .nav-button:active
 {
-    transform: scale(0.92);
+    transform: scale(0.94);
 }
 
 /* ==================================
-   Month / Year Display Styling.
+   Month-Year Title Styling.
 ===================================== */
 .month-year
 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     text-align: center;
-    letter-spacing: 0.5px;
-    min-width: 180px;
+    letter-spacing: 0.4px;
+    min-width: 190px;
 
-    background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
+    background: var(--secondary-bg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    position: relative;
+}
+
+/* Subtle Underline Accent. */
+.month-year::after
+{
+    content: "";
+    display: block;
+    margin: 0.3rem auto 0;
+    width: 40%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--deep-blue));
+    border-radius: 2px;
+    opacity: 0.8;
 }
 
 /* ================================
@@ -83,12 +100,13 @@
 	.month-year
 	{
         font-size: 1.25rem;
+        min-width: auto;
     }
 	
 	.nav-button
 	{
-        width: 2.3rem;
+        width: 2.4rem;
         height: 2.3rem;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 	}
 }

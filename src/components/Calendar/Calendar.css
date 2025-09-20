@@ -14,7 +14,7 @@
 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    border: 1px solid #e5e73b;
+    border: 1px solid var(--subtle-gray);
     padding: 1.5rem 2rem;
     box-sizing: border-box;
 
@@ -31,18 +31,18 @@
     justify-content: center;
 
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
     position: sticky;
     top: 0;
     z-index: 10;
 
-    background: rgba(27, 31  59, 0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(0, 47, 108, 0.95); /* Color: Deep Blue. */
+    backdrop-filter: blur(10px);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 
     font-family: var(--title-font);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: #fff;
     letter-spacing: 0.3px;
@@ -65,9 +65,9 @@
 
 .calendar-status.error
 {
-    background: rgba(255, 0, 0, 0.08);
-    color: #b00020;
-    font-weight: 500;
+    background: rgba(200, 16, 46, 0.1); /* Color: Flag Red. */
+    color: var(--accent-red);
+    font-weight: 600;
 }
 
 /* ========================================
