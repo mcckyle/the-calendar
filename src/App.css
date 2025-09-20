@@ -6,25 +6,20 @@
 .app
 {
     width: 100%;
-    min-height: 100vh;
-
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-
-    padding: 2rem;
-    background: var(--primary-bg);
+    padding: 2rem 1rem;
 }
 
 /* =====================================
-   Main Calendar Container Styling.
+   Calendar Main Container Styling.
 ======================================== */
 .calendar-container
 {
     width: 100%;
+
     background: var(--secondary-bg);
     border: 1px solid var(--subtle-gray);
-
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
 
@@ -33,8 +28,8 @@
     gap: 2rem;
     padding: 2rem;
 
-    transition: border-color var(--transition-speed),
-                box-shadow var(--transition-speed);
+    transition: border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 .calendar-container:hover
@@ -44,26 +39,24 @@
 }
 
 /* ==========================================
-   Calendar Title and Subtitle Styling.
+   Calendar Header Styling.
 ============================================= */
 .app-calendar-header
 {
     text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--subtle-gray);
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--subtle-gray);
 }
 
 .app-calendar-title
 {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    margin-bottom: 0.75rem;
 }
 
 .app-calendar-subtitle
@@ -94,5 +87,18 @@
     .app-calendar-subtitle
     {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px)
+{
+    .calendar-container
+    {
+        padding: 1rem;
+    }
+
+    .app-calendar-title
+    {
+        font-size: 1.7rem;
     }
 }

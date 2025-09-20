@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 08 September 2025
+//Date: 19 September 2025
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from 'react';
@@ -14,7 +14,6 @@ import WeekDayColumn from '../WeekDayColumn/WeekDayColumn.jsx';
 
 import {
 	convertTo12HourFormat,
-	normalizeEvents,
 	groupEventsByHour,
 } from "../../utils/eventUtils";
 
@@ -77,7 +76,7 @@ const Calendar = ({ hours }) => {
   };
 
   return (
-    <section className="calendar">
+    <section className="calendar" aria-label="Weekly Event Calendar">
       <header className="calendar-header">
         <WeekNavigation />
       </header>
@@ -102,10 +101,7 @@ const Calendar = ({ hours }) => {
 
       {/* Conditionally render the EventPanel */}
       {showEventPanel && (
-        <EventPanel
-          selectedEvent={selectedEvent}
-          onClose={closeEventPanel}
-        />
+        <EventPanel selectedEvent={selectedEvent} onClose={closeEventPanel} />
       )}
     </section>
   );

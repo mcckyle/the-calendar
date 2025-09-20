@@ -6,8 +6,6 @@
 .calendar
 {
     width: 100%;
-    margin: 0 auto;
-
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -17,6 +15,7 @@
     border: 1px solid var(--subtle-gray);
     padding: 1.5rem 2rem;
     box-sizing: border-box;
+    box-shadow: var(--shadow-sm);
 
     animation: fadeIn 0.5s ease-out forwards;
 }
@@ -27,11 +26,8 @@
 .calendar-header
 {
     display: flex;
-    align-items: center;
     justify-content: center;
-
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
     position: sticky;
     top: 0;
@@ -58,7 +54,7 @@
     padding: 0.6rem 1rem;
     border-radius: var(--border-radius);
     background: rgba(0, 0, 0, 0.03);
-    color: var(--text-color);
+    color: var(--neutral-gray);
     max-width: 400px;
     margin: 0 auto;
 }
@@ -95,13 +91,14 @@
 
 .week-view > *
 {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 .week-view > *:hover
 {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
 }
 
 /* =========================

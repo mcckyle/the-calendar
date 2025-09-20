@@ -10,8 +10,8 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 - **Interactive Calendar**: View and interact with a calendar of the current month.
 - **Month Navigation**: Seamlessly navigate between months using intuitive buttons.
 - **Event Display**: View events for specific days and see event markers on days with scheduled activities.
-- **Responsive Design**: The app adapts to different screen sizes using CSS Grid and Flexbox for a smooth user experience across devices.
-- **Event Management**: Events are displayed dynamically from a JSON file, making it easy to add new events.
+- **Responsive Design**: The calendar adapts to different screen sizes using CSS Grid and Flexbox for a smooth user experience across devices.
+- **Event Management**: Events are displayed dynamically using a dedicated backend API, which automatically adds new events from throughout the area.
   
 ## Technologies Used
 
@@ -22,7 +22,7 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20250731_213514.png)
+![Calendar Screenshot](./public/images/Screenshot_20250919_230449.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
