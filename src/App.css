@@ -1,7 +1,7 @@
 /* Filename: App.css */
 
 /* ===============================
-   App-Level Container Styling.
+   App Container Styling.
 ================================== */
 .app
 {
@@ -50,9 +50,9 @@
 
 .app-calendar-title
 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
@@ -62,11 +62,10 @@
 .app-calendar-subtitle
 {
     font-size: 1.15rem;
-    font-weight: 400;
     color: var(--neutral-gray);
-    line-height: 1.6;
     max-width: 600px;
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* =======================

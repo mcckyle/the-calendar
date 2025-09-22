@@ -8,16 +8,15 @@
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
-    margin-bottom: 0.75rem;
     box-shadow: var(--shadow-sm);
 
-    transition: transform var(--transition-speed, 0.25s) ease,
-                box-shadow var(--transition-speed, 0.25s) ease;
+    transition: box-shadow var(--transition-speed, 0.25s) ease,
+                transform var(--transition-speed, 0.25s) ease;
 }
 
 .time-slot:hover
 {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: var(--shadow-md);
 }
 
@@ -27,13 +26,11 @@
 .time-label
 {
     font-family: var(--title-font, serif);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--deep-blue);
 
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 0.4rem;
 }
 
 /* ===================================
@@ -66,20 +63,19 @@
     cursor: pointer;
     box-shadow: var(--shadow-sm);
 
-    transition: transform var(--transition-speed, 0.25s) ease,
-                box-shadow var(--transition-speed, 0.25s) ease;
-
+    transition: box-shadow var(--transition-speed, 0.25s) ease,
+                transform var(--transition-speed, 0.25s) ease;
 }
 
 .event:hover
 {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: var(--shadow-md);
 }
 
 .event:active
 {
-    transform: scale(0.97);
+    transform: scale(0.98);
 }
 
 .event:focus
@@ -104,24 +100,23 @@
 {
     font-family: var(--body-font, sans-serif);
     font-size: 0.8rem;
-    color: #7d7a74;
+    color: #8c8982;
     text-align: center;
 
-    background-color: #f8f7f4;
-    padding: 0.4rem;
+    padding: 0.35rem;
     border-radius: var(--border-radius);
+    background: rgba(248, 247, 244, 0.8);
     border: 1px dashed #dcd5c2;
 }
 
-/* =====================================
+/* ===========================
     Media Query Styling.
-======================================== */
+============================== */
 @media (max-width: 768px)
 {
     .time-slot
     {
         padding: 0.6rem 0.75rem;
-        margin-bottom: 0.6rem;
     }
 
     .time-label

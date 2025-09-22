@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 
     font-family: var(--title-font);
     color: var(--deep-blue);
@@ -19,6 +19,13 @@
 ===================================== */
 .nav-button
 {
+    width: 2.6rem;
+    height: 2.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 1.4rem;
     font-weight: 600;
 
@@ -26,19 +33,9 @@
     color: var(--deep-blue);
     border: 1px solid var(--subtle-gray);
     border-radius: 50%;
-
-    width: 2.8rem;
-    height: 2.8rem;
-
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    transition: background var(--transition-speed) ease,
-                color var(--transition-speed) ease,
-                transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease
 }
 
 .nav-button:hover
@@ -59,11 +56,11 @@
 ===================================== */
 .month-year
 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.4px;
-    min-width: 190px;
+    min-width: 160px;
 
     color: #fff;
     position: relative;
@@ -95,14 +92,14 @@
 
 	.month-year
 	{
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         min-width: auto;
     }
 	
 	.nav-button
 	{
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 2.2rem;
+        height: 2.2rem;
 		font-size: 1.1rem;
 	}
 }

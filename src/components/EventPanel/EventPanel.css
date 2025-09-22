@@ -54,7 +54,7 @@
     padding: 1rem 1.25rem;
     border-radius: var(--border-radius);
 
-    background: #f8f7f4;
+    background: rgba(248, 247, 244, 0.9);
     color: #6b7280; /* Color: gray-600. */
     font-family: var(--body-font, sans-serif);
     box-shadow: var(--shadow-sm);
@@ -83,19 +83,19 @@
     align-items: center;
 
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid #ece8df;
     padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     font-family: var(--title-font, serif);
     margin: 0;
     color: var(--deep-blue);
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
 }
 
 /* =========================
@@ -106,7 +106,7 @@
     background: transparent;
     border: none;
     color: #4b5563;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     line-height: 1;
     cursor: pointer;
 
@@ -119,12 +119,12 @@
 .close-button:hover
 {
     background: rgba(0, 0, 0, 0.06);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .close-button:focus
 {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--accent-gold);
     outline-offset: 2px;
 }
 
@@ -149,7 +149,7 @@
 
     .event-panel h2
     {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -163,7 +163,7 @@
 
     .event-panel h2
     {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 }
 

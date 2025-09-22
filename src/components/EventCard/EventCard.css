@@ -16,7 +16,7 @@
     color: var(--text-color);
     box-shadow: var(--shadow-sm);
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .event-card:hover
@@ -35,7 +35,7 @@
 
 .event-card-title
 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 600;
     margin: 0 0 0.3rem 0;
     color: var(--deep-blue);
@@ -105,7 +105,7 @@
     text-decoration: none;
 
     position: relative;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-speed, 0.25s) ease;
 }
 
 .event-card-link a::after
@@ -120,7 +120,7 @@
     transform: scaleX(0);
     transform-origin: left;
 
-    transition: transform var(--transition-speed) ease;
+    transition: transform var(--transition-speed, 0.25s) ease;
 }
 
 .event-card-link a:hover
@@ -146,7 +146,7 @@
 
     .event-card-title
     {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 }
 
@@ -159,6 +159,6 @@
 
     .event-card-title
     {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 }

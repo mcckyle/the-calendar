@@ -33,15 +33,14 @@
     top: 0;
     z-index: 10;
 
-    background: rgba(0, 47, 108, 0.95); /* Color: Deep Blue. */
+    background: var(--deep-blue);
     backdrop-filter: blur(10px);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 
+    color: #fff;
     font-family: var(--title-font);
     font-size: 1.15rem;
     font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.3px;
 }
 
 /* ===================================
@@ -53,15 +52,15 @@
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
     border-radius: var(--border-radius);
-    background: rgba(0, 0, 0, 0.03);
-    color: var(--neutral-gray);
     max-width: 400px;
     margin: 0 auto;
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--neutral-gray);
 }
 
 .calendar-status.error
 {
-    background: rgba(200, 16, 46, 0.1); /* Color: Flag Red. */
+    background: rgba(200, 16, 46, 0.08); /* Color: Flag Red. */
     color: var(--accent-red);
     font-weight: 600;
 }
