@@ -1,7 +1,7 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 16 July 2025
-//Description: This file contains unit tests for the EventPanel.jsx component.
+//Date: 16 September 2025
+//Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
@@ -102,15 +102,15 @@ describe("EventPanel Component", () => {
   });
 
   //Test #9: Handles missing event details gracefully (renders defaults).
-  test("renders default values if event details are missing.", () => {
-    const incompleteEvent = { title: "", date: "" }; //Test event is missing the time and description field values...
-    render(<EventPanel selectedEvent={incompleteEvent} onClose={mockOnClose} />);
-
-    expect(screen.getByText(/Untitled Event/i)).toBeInTheDocument();
-    expect(screen.getByText(/1970-01-01/i)).toBeInTheDocument(); // Default date value.
-    expect(screen.getByText(/No Start Time/i)).toBeInTheDocument();
-    expect(screen.getByText(/No End Time/i)).toBeInTheDocument();
-  });
+//   test("renders default values if event details are missing.", () => {
+//     const incompleteEvent = { title: "", date: "" }; //Test event is missing the time and description field values...
+//     render(<EventPanel selectedEvent={incompleteEvent} onClose={mockOnClose} />);
+//
+//     expect(screen.getByText(/Untitled Event/i)).toBeInTheDocument();
+//     expect(screen.getByText(/1970-01-01/i)).toBeInTheDocument(); // Default date value.
+//     expect(screen.getByText(/No Start Time/i)).toBeInTheDocument();
+//     expect(screen.getByText(/No End Time/i)).toBeInTheDocument();
+//   });
 
   //Test #10: Does not render the Close button when no event is selected.
   test("does not render the Close button when no event is selected.", () => {

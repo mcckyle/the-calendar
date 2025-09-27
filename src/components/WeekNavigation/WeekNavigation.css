@@ -8,10 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
 
     font-family: var(--title-font);
-    color: var(--deep-blue);
+    color: #fff;
+    padding: 0.75rem 1rem;
 }
 
 /* ==================================
@@ -19,50 +20,50 @@
 ===================================== */
 .nav-button
 {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 600;
 
-    background: var(--secondary-bg);
-    color: var(--deep-blue);
-    border: 1px solid var(--subtle-gray);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
     border-radius: 50%;
+    color: #fff;
     cursor: pointer;
 
-    transition: all var(--transition-speed) ease
+    transition: background var(--transition-speed),
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
 }
 
 .nav-button:hover
 {
-    background: var(--deep-blue);
-    color: #fff;
-    box-shadow: var(--shadow-md);
+    background: var(--accent-gold);
+    color: var(--deep-blue);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .nav-button:active
 {
-    transform: scale(0.94);
+    transform: scale(0.92);
 }
 
 /* ==================================
-   Month-Year Title Styling.
+   Month-Year Label Styling.
 ===================================== */
 .month-year
 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 700;
+    letter-spacing: 0.3px;
     text-align: center;
-    letter-spacing: 0.4px;
     min-width: 160px;
-
-    color: #fff;
     position: relative;
 }
 
@@ -74,9 +75,9 @@
     margin: 0.3rem auto 0;
     width: 40%;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--deep-blue));
+    background: linear-gradient(90deg, var(--accent-gold), #fff);
     border-radius: 2px;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 /* ================================
@@ -92,7 +93,7 @@
 
 	.month-year
 	{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         min-width: auto;
     }
 	

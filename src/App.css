@@ -8,34 +8,18 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
 }
 
 /* =====================================
-   Calendar Main Container Styling.
+   Calendar Container Styling.
 ======================================== */
 .calendar-container
 {
     width: 100%;
-
-    background: var(--secondary-bg);
-    border: 1px solid var(--subtle-gray);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-
-    transition: border-color var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
-}
-
-.calendar-container:hover
-{
-    border-color: var(--accent-gold);
-    box-shadow: var(--shadow-md);
+    gap: 1.25rem;
 }
 
 /* ==========================================
@@ -44,15 +28,16 @@
 .app-calendar-header
 {
     text-align: center;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--subtle-gray);
+    padding: 2rem 1rem 0 2.5rem;
+
+    animation: fadeIn 0.6s ease-out;
 }
 
 .app-calendar-title
 {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
@@ -61,11 +46,12 @@
 
 .app-calendar-subtitle
 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--neutral-gray);
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
     line-height: 1.6;
+    opacity: 0.85;
 }
 
 /* =======================
@@ -73,11 +59,6 @@
 ========================== */
 @media (max-width: 768px)
 {
-    .calendar-container
-    {
-        padding: 1.5rem;
-        gap: 1.5rem;
-    }
     .app-calendar-title
     {
         font-size: 2rem;
@@ -85,17 +66,12 @@
 
     .app-calendar-subtitle
     {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 480px)
 {
-    .calendar-container
-    {
-        padding: 1rem;
-    }
-
     .app-calendar-title
     {
         font-size: 1.7rem;

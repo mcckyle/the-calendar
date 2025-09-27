@@ -11,20 +11,21 @@
     transform: translate(-50%, -50%) scale(0.96);
     opacity: 0;
 
-    background: var(--secondary-bg);
+    background: #fff;
     border-radius: var(--border-radius);
-    padding: 2rem;
-    max-width: 680px;
-    width: 90%;
+    padding: 1.5rem;
+    max-width: 640px;
+    width: 92%;
 
     color: var(--text-color);
-    font-family: var(--body-font, sans-serif);
+    font-family: var(--body-font);
 
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
     z-index: 2000;
 
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
 }
 
 .event-panel[role="dialog"]
@@ -43,20 +44,17 @@
     box-shadow: none;
     position: relative;
     transform: none;
-    top: auto;
-    left: auto;
 }
 
 .no-event
 {
     font-size: 0.95rem;
     text-align: center;
-    padding: 1rem 1.25rem;
+    padding: 1rem;
     border-radius: var(--border-radius);
 
     background: rgba(248, 247, 244, 0.9);
-    color: #6b7280; /* Color: gray-600. */
-    font-family: var(--body-font, sans-serif);
+    color: var(--subtle-gray);
     box-shadow: var(--shadow-sm);
 }
 
@@ -67,10 +65,10 @@
 {
     position: fixed;
     inset: 0;
-    background: rgba(17, 24, 39, 0.55); /* Dark Slate With Transparency Effect. */
+    background: rgba(0, 0, 0, 0.45);
     z-index: 1500;
 
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeIn var(--transition-speed) ease forwards;
 }
 
 /* ====================
@@ -82,20 +80,19 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    font-family: var(--title-font, serif);
     margin: 0;
     color: var(--deep-blue);
-    letter-spacing: 0.2px;
+    font-family: var(--title-font);
 }
 
 /* =========================
@@ -105,9 +102,8 @@
 {
     background: transparent;
     border: none;
-    color: #4b5563;
-    font-size: 1.35rem;
-    line-height: 1;
+    color: var(--subtle-gray);
+    font-size: 1.3rem;
     cursor: pointer;
 
     padding: 0.4rem;
@@ -118,7 +114,7 @@
 
 .close-button:hover
 {
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.05);
     transform: scale(1.05);
 }
 
@@ -144,12 +140,12 @@
 {
     .event-panel
     {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .event-panel h2
     {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -157,13 +153,13 @@
 {
     .event-panel
     {
-        padding: 1.2rem;
+        padding: 1rem;
         width: 95%;
     }
 
     .event-panel h2
     {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 }
 
