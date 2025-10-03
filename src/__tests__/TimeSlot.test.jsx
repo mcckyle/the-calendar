@@ -1,7 +1,7 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 18 September 2025
-//Description: This file contains unit tests for the TimeSlot.jsx component.
+//Date: 1 October 2025
+//Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
@@ -72,8 +72,8 @@ describe('TimeSlot', () => {
     expect(mockOnEventClick).toHaveBeenCalledWith(mockEvents[0]);
   });
 
-  //Test #4: Renders "No Events!" placeholder when the events array is empty.
-  test('renders "No Events!" placeholder when the events array is empty.', () => {
+  //Test #4: Renders "-" placeholder when the events array is empty.
+  test('renders "-" placeholder when the events array is empty.', () => {
     render(
       <TimeSlot
         label="9:00 AM"
@@ -83,12 +83,11 @@ describe('TimeSlot', () => {
     );
 
     // Assert that the "No events" placeholder is rendered.
-    expect(screen.getByText('No Events!')).toBeInTheDocument();
+    expect(screen.getByText('-')).toBeInTheDocument();
   });
 
-  //Test #5: Section has aria-label based on the time label.
-  test('section has aria-label based on the time label.', () => {
-    const mockLabel = '10:00 AM';
+  //Test #5: Div has aria-label based on the time label.
+  test('div has aria-label based on the time label.', () => {
     render(
       <TimeSlot
         label="11:00 AM"
@@ -97,8 +96,8 @@ describe('TimeSlot', () => {
       />
     );
 
-    const section = screen.getByRole('region', { name: /Time Slot: 11:00 AM/i });
-    expect(section).toBeInTheDocument();
+    const div = screen.getByLabelText(/Time Slot: 11:00 AM/i);
+    expect(div).toBeInTheDocument();
   });
 
   //Test #6: Each event button has correct aria-label for accessibility purposes.
@@ -178,8 +177,8 @@ describe('TimeSlot', () => {
   });
 
 
-  //Test #10: Renders time label inside a header element.
-  test('renders time label inside a header element.', () => {
+  //Test #10: Renders time label inside a span element.
+  test('renders time label inside a span element.', () => {
     const label = '6:00 PM';
 
     render(
@@ -190,8 +189,8 @@ describe('TimeSlot', () => {
       />
     );
 
-    const header = screen.getByText(label).closest('h3');
-    expect(header).not.toBeNull();
+    const span = screen.getByText(label).closest('span');
+    expect(span).not.toBeNull();
   });
 
 

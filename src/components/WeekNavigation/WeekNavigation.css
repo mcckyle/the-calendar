@@ -8,11 +8,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 
     font-family: var(--title-font);
     color: #fff;
     padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    background: linear-gradient(90deg, var(--deep-blue), #001b44);
+
+    box-shadow: var(--shadow-sm);
 }
 
 /* ==================================
@@ -20,15 +24,15 @@
 ===================================== */
 .nav-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
 
     background: rgba(255, 255, 255, 0.15);
     border: none;
@@ -36,9 +40,9 @@
     color: #fff;
     cursor: pointer;
 
-    transition: background var(--transition-speed),
-                transform var(--transition-speed),
-                box-shadow var(--transition-speed);
+    transition: background var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 .nav-button:hover
@@ -59,25 +63,25 @@
 ===================================== */
 .month-year
 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
     text-align: center;
     min-width: 160px;
     position: relative;
 }
 
-/* Subtle Underline Accent. */
+/* Subtle Underline Accent Styling. */
 .month-year::after
 {
     content: "";
     display: block;
     margin: 0.3rem auto 0;
-    width: 40%;
+    width: 38%;
     height: 2px;
     background: linear-gradient(90deg, var(--accent-gold), #fff);
     border-radius: 2px;
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 /* ================================
@@ -87,8 +91,9 @@
 {
 	.week-navigation
 	{
-		flex-direction: column;
+        flex-direction: column;
         gap: 0.75rem;
+        padding: 0.75rem;
 	}
 
 	.month-year
@@ -101,6 +106,6 @@
 	{
         width: 2.2rem;
         height: 2.2rem;
-		font-size: 1.1rem;
+        font-size: 1.1rem;
 	}
 }

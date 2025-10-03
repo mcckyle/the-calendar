@@ -9,8 +9,8 @@
     justify-content: space-between;
     align-items: center;
 
-    background: #fff;
-    padding: 0.6rem 1rem;
+    background: var(--secondary-bg);
+    padding: 0.75rem 1rem;
 
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
@@ -44,9 +44,9 @@
     font-family: var(--title-font);
     text-align: center;
 
-    transition: background var(--transition-speed),
-                transform var(--transition-speed),
-                box-shadow var(--transition-speed);
+    transition: background var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 /* Hover Interaction. */
@@ -63,7 +63,6 @@
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     color: #fff;
-
     box-shadow: var(--shadow-md);
 }
 
@@ -81,7 +80,7 @@
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.35px;
+    letter-spacing: 0.4px;
     color: var(--deep-blue);
 }
 
@@ -89,7 +88,7 @@
 .dow-date
 {
     margin-top: 0.2rem;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: var(--accent-gold);
 }
@@ -107,6 +106,6 @@
 
     .dow-date
     {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 }
