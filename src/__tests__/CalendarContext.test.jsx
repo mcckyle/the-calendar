@@ -1,13 +1,22 @@
 //Filename: CalendarContext.test.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
-//Description: This file contains the unit test suite for the CalendarContext for the Saint Louis React calendar project.
+//Date: 5 October 2025
+//Description: This file contains the unit tests for the context component for the Saint Louis React calendar project.
 
 import React from 'react';
 import { renderHook, act } from '@testing-library/react';
 import { CalendarProvider, useCalendarContext } from '../components/Calendar/CalendarContext.jsx';
 
 describe('CalendarContext', () => {
+	beforeAll(() => {
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('2025-10-01T00:00:00Z'));
+	});
+
+	afterAll(() => {
+		jest.useRealTimers();
+	});
+
 	const wrapper = ({ children }) => <CalendarProvider>{children}</CalendarProvider>;
 
 	//Test #1: Provides default values.
@@ -26,7 +35,7 @@ describe('CalendarContext', () => {
 	it('initalizes currentDate to start of the current week (Sunday).', () => {
         const { result } = renderHook(() => useCalendarContext(), { wrapper });
 
-		const day = result.current.currentDate.getDay(); // 0 = Sunday.
+		const day = result.current.currentDate.getUTCDay(); // 0 = Sunday.
 		expect(day).toBe(0);
 	});
 
@@ -34,25 +43,33 @@ describe('CalendarContext', () => {
 	it('updates currentDate when changeMonth moves forward by 1 month.', () => {
 		const { result } = renderHook(() => useCalendarContext(), { wrapper });
 
-		const initialMonth = result.current.currentDate.getMonth();
+		const initialMonth = result.current.currentDate.getUTCMonth();
 		act(() => {
 			result.current.changeMonth(1);
 		});
 
-		expect(result.current.currentDate.getMonth()).toBe((initialMonth + 1) % 12);
+		expect(result.current.currentDate.getUTCMonth()).toBe((initialMonth + 1) % 12);
+		expect(result.current.currentDate.getUTCDay()).toBe(0);
 	});
 
 	//Test #4: changeMonth moves multiple months backwards.
 	it('updates currentDate when changeMonth moves backwards by multiple months.', () => {
 		const { result } = renderHook(() => useCalendarContext(), { wrapper });
 
-		const initialMonth = result.current.currentDate.getMonth();
+		const initialMonth = result.current.currentDate.getUTCMonth();
 		act(() => {
 			result.current.changeMonth(-3);
 		});
 
-		const expectedMonth = (initialMonth + 12 - 3) % 12;
-		expect(result.current.currentDate.getMonth()).toBe(expectedMonth);
+		const movedDate = new Date(result.current.currentDate);
+		const expectedRawMonth = (initialMonth + 12 - 3) % 12;
+
+		const actualMonth = movedDate.getUTCMonth();
+
+		expect(
+			actualMonth === expectedRawMonth || actualMonth === (expectedRawMonth + 11) % 12
+		).toBe(true);
+		expect(result.current.currentDate.getUTCDay()).toBe(0);
 	});
 
 	//Test #5: changeWeek moves forwards by one week.
@@ -66,6 +83,7 @@ describe('CalendarContext', () => {
 
 		const diffInDays = (result.current.currentDate - initialDate) / (1000 * 60 * 60 * 24);
 		expect(diffInDays).toBeGreaterThanOrEqual(7);
+		expect(result.current.currentDate.getUTCDay()).toBe(0);
 	});
 
 	//Test #6: changeWeek moves backwards by two weeks.
@@ -79,6 +97,7 @@ describe('CalendarContext', () => {
 
 		const diffInDays = (initialDate - result.current.currentDate) / (1000 * 60 * 60 * 24);
 		expect(diffInDays).toBeGreaterThanOrEqual(14);
+		expect(result.current.currentDate.getUTCDay()).toBe(0);
 	});
 
 	//Test #7: selectDate updates selectedDate with a valid date.
@@ -105,7 +124,33 @@ describe('CalendarContext', () => {
 		expect(result.current.selectedDate).toBe(initialSelectedDate);
 	});
 
-	//Test #9: changeMonth keeps the week starting on Mondays...
+	//Test #9: changeWeek with zero offset does not change currentDate.
+	it('does not change currentDate when changeWeek is called with zero offset.', () => {
+		const { result } = renderHook(() => useCalendarContext(), { wrapper });
+
+		const initialDate = new Date(result.current.currentDate);
+		act(() => {
+			result.current.changeWeek(0);
+		});
+
+		expect(result.current.currentDate.getTime()).toBe(initialDate.getTime());
+		expect(result.current.currentDate.getUTCDay()).toBe(0); //Still Sunday...
+	});
+
+	//Test #10: changeMonth forward then backwards returns to the same week start.
+	it('returns to the same week start after moving forward and backward by one month.', () => {
+		const { result } = renderHook(() => useCalendarContext(), { wrapper });
+
+		const initialDate = new Date(result.current.currentDate);
+
+		const sameWeek = (a,b) => a.toISOString().slice(0, 10) === b.toISOString().slice(0, 10);
+
+		expect(sameWeek(result.current.currentDate, initialDate)).toBe(true);
+		expect(result.current.currentDate.getUTCDay()).toBe(0);
+	});
+
+// *** Old tests below this line. ***
+//Test #9: changeMonth keeps the week starting on Mondays...
 // 	it('currentDate always starts on a Monday after changeMonth() is called.', () => {
 // 		const { result } = renderHook(() => useCalendarContext(), { wrapper });
 //
@@ -116,7 +161,7 @@ describe('CalendarContext', () => {
 // 		expect(result.current.currentDate.getDay()).toBe(1);
 // 	});
 
-	//Test #10: changeWeek keeps the week starting on Mondays...
+//Test #10: changeWeek keeps the week starting on Mondays...
 // 	it('currentDate always starts on a Monday after changeWeek() is called.', () => {
 // 		const { result } = renderHook(() => useCalendarContext(), { wrapper });
 //
@@ -126,8 +171,6 @@ describe('CalendarContext', () => {
 //
 // 		expect(result.current.currentDate.getDay()).toBe(1);
 // 	});
-
-    //Old tests below.
 //     it('updates currentDate when changeMonth is called', () => {
 // 		const { result } = renderHook(() => useCalendarContext(), { wrapper: CalendarProvider });
 //

@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 18 September 2025
+//Date: 4 October 2025
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -13,8 +13,8 @@ const WeekDayColumn = ({
   onEventClick,
   convertTo12HourFormat,
 }) => {
-    // Generate hours from 9 AM to 9 PM (13 slots total).
-    const hours = Array.from({ length: 13 }, (_, i) => i + 9);
+  // Generate hours from 9 AM to 9 PM (13 slots total).
+  const hours = Array.from({ length: 13 }, (_, i) => i + 9);
 
   return (
     <section

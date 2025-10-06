@@ -3,71 +3,70 @@
 /* ====================================
     Days Of Week Container Styling.
 ======================================= */
-.days-of-week-container
+.days-of-week
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.75rem;
 
     background: var(--secondary-bg);
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.2rem;
 
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
 
-    gap: 0.5rem;
     overflow-x: auto;
     scrollbar-width: none;
 }
 
-.days-of-week-container::-webkit-scrollbar
+.days-of-week::-webkit-scrollbar
 {
     display: none;
 }
 
 /* ===================================
-    Individual Day Header Styling.
+    Individual Day Styling.
 ====================================== */
-.days-of-week-item
+.day-item
 {
     flex: 1;
-    min-width: 64px;
+    min-width: 72px;
+
+    text-align: center;
+    font-family: var(--title-font);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 0.5rem 0.4rem;
+    padding: 0.6rem 0.5rem;
     border-radius: var(--border-radius);
+    background: transparent;
 
-    font-family: var(--title-font);
-    text-align: center;
-
-    transition: background var(--transition-speed) ease,
-                transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
 }
 
 /* Hover Interaction. */
-.days-of-week-item:hover
+.day-item:hover
 {
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 47, 108, 0.06);
     transform: translateY(-2px);
 }
 
 /* =============================
    Today Highlight Styling.
 ================================ */
-.days-of-week-item.today
+.day-item.today
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     color: #fff;
     box-shadow: var(--shadow-md);
 }
 
-.days-of-week-item.today .dow-label,
-.days-of-week-item.today .dow-date
+.day-item.today .day-label,
+.day-item.today .day-date
 {
     color: #fff;
 }
@@ -75,17 +74,16 @@
 /* =========================
    Weekday Label Styles.
 ============================ */
-.dow-label
+.day-label
 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    color: var(--deep-blue);
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-gold);
 }
 
 /* Date Label Styles. */
-.dow-date
+.day-date
 {
     margin-top: 0.2rem;
     font-size: 0.8rem;
@@ -99,12 +97,12 @@
 
 @media (max-width: 768px)
 {
-    .dow-label
+    .day-label
     {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
-    .dow-date
+    .day-date
     {
         font-size: 0.7rem;
     }

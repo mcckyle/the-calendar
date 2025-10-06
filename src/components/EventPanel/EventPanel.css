@@ -1,5 +1,19 @@
 /* Filename: EventPanel.css */
 
+/* ====================
+   Overlay Styling.
+======================= */
+.event-overlay
+{
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(6px);
+    z-index: 1500;
+
+    animation: fadeIn var(--transition-speed) ease forwards;
+}
+
 /* ================================================
     Event Panel (Modal-Like Container) Styling.
 =================================================== */
@@ -8,20 +22,19 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) scale(0.96);
     opacity: 0;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
-    max-width: 640px;
+    padding: 1.75rem;
     width: 92%;
+    max-width: 640px;
 
     color: var(--text-color);
     font-family: var(--body-font);
-
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(180%);
     z-index: 2000;
 
     transition: opacity var(--transition-speed) ease,
@@ -42,34 +55,20 @@
     background: transparent;
     padding: 0;
     box-shadow: none;
-    position: relative;
-    transform: none;
+    text-align: center;
 }
 
 .no-event
 {
-    font-size: 0.95rem;
-    text-align: center;
-    padding: 1rem;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: var(--border-radius);
 
-    background: rgba(248, 247, 244, 0.9);
+    background: rgba(248, 247, 244, 0.92);
     color: var(--subtle-gray);
     box-shadow: var(--shadow-sm);
     font-style: italic;
-}
-
-/* ====================
-   Overlay Styling.
-======================= */
-.event-overlay
-{
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1500;
-
-    animation: fadeIn var(--transition-speed) ease forwards;
 }
 
 /* ====================
@@ -81,19 +80,20 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.85rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     font-weight: 600;
-    margin: 0;
     color: var(--deep-blue);
+    margin: 0;
     font-family: var(--title-font);
+    letter-spacing: 0.3px;
 }
 
 /* =========================
@@ -104,20 +104,20 @@
     background: transparent;
     border: none;
     color: var(--subtle-gray);
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     cursor: pointer;
 
-    padding: 0.4rem;
+    padding: 0.35rem;
     border-radius: 50%;
 
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 .close-button:hover
 {
-    background: rgba(0, 0, 0, 0.06);
-    transform: rotate(90deg) scale(1.1);
+    background: rgba(0, 0, 0, 0.08);
     color: var(--deep-blue);
+    transform: rotate(90deg) scale(1.15);
 }
 
 .close-button:focus
@@ -143,11 +143,12 @@
     .event-panel
     {
         padding: 1.25rem;
+        width: 95%;
     }
 
     .event-panel h2
     {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -156,12 +157,11 @@
     .event-panel
     {
         padding: 1rem;
-        width: 95%;
     }
 
     .event-panel h2
     {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
     }
 }
 
