@@ -9,8 +9,9 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    background: var(--primary-bg);
-    padding: 3rem 1.5rem;
+    align-items: flex-start;
+    background: linear-gradient(180deg, #fdfcfb 0%, #f7f7f9 100%);
+    padding: 3.5rem 1.25rem;
     box-sizing: border-box;
 }
 
@@ -38,14 +39,16 @@
     flex-direction: column;
     align-items: center;
     gap: 0.65rem;
+    padding: 0 1rem;
 }
 
 .calendar-title
 {
-    font-size: 2.85rem;
+    font-size: 3rem;
     font-weight: 700;
     font-family: var(--title-font);
     letter-spacing: 0.3px;
+    text-align: center;
     margin: 0;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
@@ -55,11 +58,12 @@
 
 .calendar-tagline
 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--neutral-gray);
-    line-height: 1.6;
+    line-height: 1.7;
     opacity: 0.9;
-    max-width: 640px;
+    max-width: 720px;
+    text-align: center;
 }
 
 /* =======================
@@ -78,12 +82,12 @@
 {
     .calendar-title
     {
-        font-size: 2.2rem;
+        font-size: 2.25rem;
     }
 
     .calendar-tagline
     {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 }
 
@@ -91,6 +95,6 @@
 {
     .calendar-title
     {
-        font-size: 1.8rem;
+        font-size: 1.85rem;
     }
 }
