@@ -88,10 +88,12 @@
 .week-view
 {
     display: grid;
-    grid-template-columns: repeat(7, minmax(160px, 1fr));
-    gap: 1.25rem;
-
-    min-width: calc(7 * 160px + 6 * 1.25rem);
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .week-view > *
