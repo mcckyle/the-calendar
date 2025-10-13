@@ -1,7 +1,7 @@
 /* Filename: WeekNavigation.css */
 
 /* ========================================
-    Week Navigation Layout Styling.
+    Week Navigation Styling.
 =========================================== */
 .week-navigation
 {
@@ -10,22 +10,21 @@
     align-items: center;
     gap: 2rem;
 
-    background: linear-gradient(100deg, var(--deep-blue), #00397b);
+    background: linear-gradient(90deg, var(--deep-blue), #004d9b);
+    color: #fff;
     padding: 1rem 2rem;
     border-radius: var(--border-radius);
 
-    color: #fff;
     font-family: var(--title-font);
     font-weight: 600;
     box-shadow: var(--shadow-md);
 
-    transition: background 0.35s ease, transform 0.25s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .week-navigation:hover
 {
-    background: linear-gradient(100deg, #002c5a, #003973);
-    transform: translateY(-2px);
+    background: linear-gradient(90deg, #002b60, #0053a0);
 }
 
 /* ==================================
@@ -33,19 +32,19 @@
 ===================================== */
 .nav-button
 {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.4rem;
-    font-weight: 700;
 
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     color: #fff;
-    border: none;
-    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
     cursor: pointer;
 
     transition: all var(--transition-speed) ease;
@@ -55,8 +54,7 @@
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.1);
 }
 
 .nav-button:active
@@ -71,25 +69,23 @@
 {
     font-size: 1.6rem;
     font-weight: 700;
+    letter-spacing: 0.4px;
     text-align: center;
-    letter-spacing: 0.3px;
     position: relative;
-    line-height: 1.4;
     color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
-/* Subtle Underline Accent Styling. */
+/* Underline Accent Styling. */
 .month-year::after
 {
     content: "";
     display: block;
-    width: 38%;
+    width: 50%;
     height: 2px;
-    margin: 0.3rem auto 0;
+    margin: 0.4rem auto 0;
     background: linear-gradient(90deg, var(--accent-gold), #fff);
     border-radius: 1px;
-    opacity: 0.9;
 }
 
 /* ================================
@@ -111,8 +107,8 @@
 
 	.nav-button
 	{
-        width: 2.2rem;
-        height: 2.2rem;
-        font-size: 1.2rem;
+        width: 2.3rem;
+        height: 2.3rem;
+        font-size: 1.3rem;
     }
 }

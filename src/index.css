@@ -8,18 +8,17 @@
     --title-font: 'Playfair Display', serif;
     --body-font: 'Inter', sans-serif;
 
-    --primary-bg: #fdfcfb; /* Color: Soft-white Background. */
+    /* Colour Palette. */
+    --primary-bg: #fafafa; /* Color: Soft-white Background. */
     --secondary-bg: #ffffff; /* Color: Card/Container Background. */
     --deep-blue: #002f6c;
-
     --accent-gold: #ffb81c;
     --accent-red: #c8102e;
-    --neutral-gray: #4a4a4a;
+    --neutral-gray: #444;
     --subtle-gray: #e6e6e6;
 
-    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
-
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
     --border-radius: 14px;
     --transition-speed: 0.25s;
 }
@@ -30,10 +29,9 @@
 body,
 #root
 {
+    margin: 0;
     width: 100%;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
 
     font-family: var(--body-font);
     font-size: 16px;
@@ -70,29 +68,31 @@ p
 button
 {
     background: var(--deep-blue);
-    color: white;
+    color: #fff;
 
     border: none;
     border-radius: var(--border-radius);
-    padding: 0.65em 1.4em;
+    padding: 0.6em 1.4em;
 
     font-weight: 500;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
 
     transition: background var(--transition-speed),
-                transform var(--transition-speed);
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
 }
 
 button:hover
 {
     background: #00356f;
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
 button:active
 {
-    transform: none;
+    transform: scale(0.98);
 }
 
 /* ==================
@@ -108,11 +108,11 @@ a
 
 a:hover
 {
-    color: var(--accent-red);
+    color: var(--accent-gold);
 }
 
 /* =================================
-   Utility Container Styling.
+   Card Containers Styling.
 ==================================== */
 .container
 {

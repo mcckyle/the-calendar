@@ -1,11 +1,11 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 4 October 2025
+//Date: 7 October 2025
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
-import React from 'react';
-import TimeSlot from '../TimeSlot/TimeSlot.jsx';
-import './WeekDayColumn.css';
+import React from "react";
+import TimeSlot from "../TimeSlot/TimeSlot.jsx";
+import "./WeekDayColumn.css";
 
 const WeekDayColumn = ({
   day,

@@ -1,7 +1,7 @@
 /* Filename: Calendar.css */
 
 /* ================================
-    Calendar Card Styling.
+    Calendar Container Styling.
 =================================== */
 .calendar
 {
@@ -10,13 +10,12 @@
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--subtle-gray);
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.75rem;
     box-shadow: var(--shadow-md);
-    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 2rem;
 
     transition: box-shadow var(--transition-speed), transform var(--transition-speed);
     animation: fadeIn 0.5s ease-out forwards;
@@ -24,21 +23,21 @@
 
 .calendar:hover
 {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
 }
 
-/* ============================================
-    Calendar Header (Sticky Bar) Styling.
-=============================================== */
+/* =========================================
+    Calendar Header (Sticky Nav) Styling.
+============================================ */
 .calendar-header
 {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 0.85rem 1rem;
-    background: linear-gradient(90deg, var(--deep-blue) 0%, #001b44 100%);
+    padding: 1rem;
+    background: linear-gradient(90deg, var(--deep-blue), #001b44);
     border-radius: var(--border-radius);
     color: #fff;
 
@@ -81,18 +80,16 @@
 {
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: 0.75rem;
+    box-sizing: border-box;
 }
 
 .week-view
 {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(140px, 1fr));
     gap: 1rem;
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
     box-sizing: border-box;
 }
 
@@ -106,4 +103,28 @@
 {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
+}
+
+/* Prevent Overflow Columns on Small Screens. */
+@media (max-width: 1024px)
+{
+    .week-view
+    {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 768px)
+{
+    .calendar
+    {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .calendar-header
+    {
+        font-size: 0.95rem;
+        padding: 0.85rem;
+    }
 }

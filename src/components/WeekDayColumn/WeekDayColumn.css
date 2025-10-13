@@ -14,14 +14,14 @@
     min-height: 100%;
     overflow: hidden;
 
-    transition: box-shadow var(--transition-speed) ease,
-                transform var(--transition-speed) ease;
+    transition: transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 
 .weekday-column:hover
 {
-    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 /* ==================================
@@ -32,13 +32,13 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 1.25rem 1rem 1.4rem;
+    gap: 0.9rem;
+    padding: 1.2rem 1rem 1.4rem;
 
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.08)
+      rgba(255, 255, 255, 0.03),
+      rgba(0, 47, 108, 0.03)
     );
 
     overflow-y: auto;
@@ -57,7 +57,7 @@
     background: linear-gradient(
       180deg,
       var(--accent-gold),
-      rgba(201, 169, 75, 0.55)
+      rgba(201, 169, 75, 0.6)
     );
 
     border-radius: 6px;
@@ -68,6 +68,6 @@
     .time-slots
     {
         gap: 0.6rem;
-        padding: 1rem 0.7rem;
+        padding: 0.9rem 0.7rem;
     }
 }
