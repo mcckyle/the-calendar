@@ -1,8 +1,8 @@
 /* Filename: Calendar.css */
 
-/* ================================
+/* ====================================
     Calendar Container Styling.
-=================================== */
+======================================= */
 .calendar
 {
     width: 100%;
@@ -10,7 +10,7 @@
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--subtle-gray);
-    padding: 2rem 1.75rem;
+    padding: 2.25rem 1.75rem;
     box-shadow: var(--shadow-md);
 
     display: flex;
@@ -23,8 +23,8 @@
 
 .calendar:hover
 {
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
 /* =========================================
@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 1rem;
+    padding: 1rem 1.25rem;
     background: linear-gradient(90deg, var(--deep-blue), #001b44);
     border-radius: var(--border-radius);
     color: #fff;
@@ -48,12 +48,12 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
-/* ===================================
+/* ====================================
    Calendar Status Messages Styles.
-====================================== */
+======================================= */
 .calendar-status
 {
     text-align: center;
@@ -73,9 +73,9 @@
     font-weight: 600;
 }
 
-/* ========================================
+/* ====================================
     Calendar Body Grid Styling.
- ========================================== */
+======================================= */
 .calendar-body
 {
     width: 100%;
@@ -84,11 +84,33 @@
     box-sizing: border-box;
 }
 
+.calendar-grid
+{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+}
+
+/* Days Header Row Styles. */
+.days-of-week
+{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--subtle-gray);
+    text-align: center;
+    padding: 0.8rem 0.6rem;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* Main Week View Below The Headers Styles. */
 .week-view
 {
     display: grid;
-    grid-template-columns: repeat(7, minmax(140px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.8rem;
     width: 100%;
     box-sizing: border-box;
 }
@@ -105,26 +127,18 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Prevent Overflow Columns on Small Screens. */
-@media (max-width: 1024px)
+/* Horizontal Overflow Only For Narrow Screens. */
+@media (max-width: 900px)
 {
+    .calendar-body
+    {
+        overflow-x: auto;
+    }
+
+    .days-of-week,
     .week-view
     {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-}
-
-@media (max-width: 768px)
-{
-    .calendar
-    {
-        padding: 1.5rem;
-        gap: 1.5rem;
-    }
-
-    .calendar-header
-    {
-        font-size: 0.95rem;
-        padding: 0.85rem;
+        min-width: 900px;
+        grid-template-columns: repeat(7, 1fr);
     }
 }

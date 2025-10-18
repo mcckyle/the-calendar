@@ -1,6 +1,6 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 15 October 2025
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
@@ -25,10 +25,10 @@ describe("EventCard Component", () => {
   });
 
   //Test #2: Renders formatted date correctly.
-//   test("renders the formatted date.", () => {
-//     render(<EventCard {...validEvent} />);
-//     expect(screen.getByText(/Sunday, January 19, 2025/)).toBeInTheDocument();
-//   });
+  test("renders the formatted date.", () => {
+    render(<EventCard {...validEvent} />);
+    expect(screen.getByText(/Saturday, January 18, 2025/)).toBeInTheDocument();
+  });
 
   //Test #3: Displays formatted start time for non-all-day events.
   test("renders formatted start time when allDay is false.", () => {
@@ -78,91 +78,8 @@ describe("EventCard Component", () => {
   });
 
   //Test #10: Snapshot test for UI consistency purposes.
-//   test("matches snapshot.", () => {
-//     const { asFragment } = render(<EventCard {...validEvent} />);
-//     expect(asFragment()).toMatchSnapshot();
-//   });
-
-// *** OLD TESTS COMMENTED OUT BELOW. ***
-//	test("renders EventCard with all props", () => {
-//	  render(
-//		<EventCard
-//		  title={mockEvent.title}
-//		  date={mockEvent.date}
-//		  startTime={mockEvent.startTime}
-//		  endTime={mockEvent.endTime}
-//		  allDay={mockEvent.allDay}
-//		  description={mockEvent.description}
-//		/>
-//	  );
-//
-//	  expect(screen.getByRole("article")).toBeInTheDocument();
-//	  expect(screen.getByText("Sample Event")).toBeInTheDocument();
-//
-//	  // Match date and time more robustly
-//	  expect(screen.getByText("Sunday, January 19, 2025\nFrom 3:00 PM to 5:00 PM")).toBeInTheDocument();
-	  //expect(screen.getByText("From 3:00 PM to 5:00 PM")).toBeInTheDocument();
-
-//	  expect(
-//		screen.getByText("This is a test description for the event.")
-//	  ).toBeInTheDocument();
-//	});
-
-//  test("renders without description when not provided", () => {
- //   render(
-   //   <EventCard
-     //   title={mockEvent.title}
-       // date={mockEvent.date}
-       // time={mockEvent.time}
-        //description={null} // No description provided
-      ///>
-    //);
-
-    //expect(screen.getByText("Sample Event")).toBeInTheDocument();
-    //expect(screen.getByText("2025-01-19 at 3:00 PM")).toBeInTheDocument();
-    //expect(screen.queryByText("This is a test description for the event.")).toBeNull(); // Description shouldn't exist
-  //});
-
-//   test("sets aria-labelledby attribute correctly", () => {
-//     render(
-//       <EventCard
-//         title={mockEvent.title}
-//         date={mockEvent.date}
-//         time={mockEvent.time}
-//         description={mockEvent.description}
-//       />
-//     );
-//
-//     const article = screen.getByRole("article");
-//     expect(article).toHaveAttribute("aria-labelledby", mockEvent.title);
-//   });
-
-  //test("renders gracefully with missing title, date, or time", () => {
-   // render(
-     // <EventCard
-       // title={null} // Missing title
-        //date={null} // Missing date
-        //time={null} // Missing time
-        //description={mockEvent.description}
-      ///>
-    //);
-
-    //expect(screen.queryByText("Sample Event")).toBeNull(); // No title
-    //expect(screen.queryByText(/at/)).toBeNull(); // No date or time
-    //expect(screen.getByText("This is a test description for the event.")).toBeInTheDocument(); // Only description should render
-  //});
-
-  //test("doesn't render invalid date/time text", () => {
-    //render(
-      //<EventCard
-        //title={mockEvent.title}
-        //date={""} // Empty date
-        //time={""} // Empty time
-        //description={mockEvent.description}
-      ///>
-    //);
-
-    //expect(screen.getByText("Sample Event")).toBeInTheDocument();
-    //expect(screen.queryByText(/at/)).toBeNull(); // "at" shouldn't render for empty date/time
-  //});
+  test("matches snapshot.", () => {
+    const { asFragment } = render(<EventCard {...validEvent} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

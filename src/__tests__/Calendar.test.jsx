@@ -1,7 +1,7 @@
 //Filename: Calendar.test.jsx
 //Author: Kyle McColgan
-//Date: 15 September 2025
-//Description: This file contains unit tests for the Calendar.jsx component.
+//Date: 15 October 2025
+//Description: This file contains unit tests for the Calendar component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
@@ -128,14 +128,14 @@ describe('Calendar Component', () => {
   });
 
   //Test #9: Snapshot test for UI consistency.
-//   test('matches snapshot for default render.', () => {
-//     const { asFragment } = render(
-//       <CalendarProvider>
-//         <Calendar />
-//       </CalendarProvider>
-//     );
-//     expect(asFragment()).toMatchSnapshot();
-//   });
+  test('matches snapshot for default render.', () => {
+    const { asFragment } = render(
+      <CalendarProvider>
+        <Calendar />
+      </CalendarProvider>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 
   //Test #10: Accessibility - buttons have accessible roles.
   test('navigation buttons are accessible', () => {

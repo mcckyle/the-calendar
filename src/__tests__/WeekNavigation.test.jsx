@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.test.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 15 October 2025
 //Description: This file contains unit tests for the MonthNavigation.jsx component.
 
 import React from 'react';
@@ -33,11 +33,10 @@ describe('WeekNavigation Component', () => {
 	});
 
 	//Test #2: Displays the correct month and year.
-// 	it('displays the correct month and year based on currentDate.', () => {
-// 		render(<WeekNavigation />);
-// 		expect(screen.getByText('November')).toBeInTheDocument();
-// 		expect(screen.getByText('2024')).toBeInTheDocument();
-// 	});
+	it('displays the correct month and year based on currentDate.', () => {
+		render(<WeekNavigation />);
+		expect(screen.getByText('November 2024')).toBeInTheDocument();
+	});
 
 	//Test #3: Previous button calls changeWeek with -1.
 	it('calls changeWeek(-1) when the Previous week button is clicked.', () => {
@@ -62,15 +61,15 @@ describe('WeekNavigation Component', () => {
 	});
 
 	//Test #5: Both navigation buttons are visible and have correct classes.
-// 	it('renders both Previous and Next buttons with correct classes.', () => {
-// 		render(<WeekNavigation />);
-//
-// 		const prevButton = screen.getByLabelText('Previous week');
-// 		const nextButton = screen.getByLabelText('Next week');
-//
-// 		expect(prevButton).toHaveClass('prev-button');
-// 		expect(nextButton).toHaveClass('next-button');
-// 	});
+	it('renders both Previous and Next buttons with correct classes.', () => {
+		render(<WeekNavigation />);
+
+		const prevButton = screen.getByLabelText('Previous week');
+		const nextButton = screen.getByLabelText('Next week');
+
+		expect(prevButton).toHaveClass('nav-button');
+		expect(nextButton).toHaveClass('nav-button');
+	});
 
 	//Test #6: Aria attributes for accessibility are present.
 	it('component has proper aria-label on nav and aria-live on month-year.', () => {
@@ -92,49 +91,31 @@ describe('WeekNavigation Component', () => {
 	});
 
 	//Test #8: Renders the correct month text dynamically.
-// 	it('updates the displayed month when currentDate changes.', () => {
-// 		useCalendarContext.mockReturnValueOnce({
-// 			currentDate: new Date('2025-01-15'),
-// 			changeWeek: mockChangeWeek,
-// 		});
-//
-// 		render(<WeekNavigation />);
-// 		expect(screen.getByText('January')).toBeInTheDocument();
-// 	});
+	it('updates the displayed month when currentDate changes.', () => {
+		useCalendarContext.mockReturnValueOnce({
+			currentDate: new Date('2025-01-15'),
+			changeWeek: mockChangeWeek,
+		});
+
+		render(<WeekNavigation />);
+		expect(screen.getByText('January 2025')).toBeInTheDocument();
+	});
 
 	//Test #9: Renders the correct year dynamically.
-// 	it('updates the displayed year when currentDate changes.', () => {
-// 		useCalendarContext.mockReturnValueOnce({
-// 			currentDate: new Date('2026-07-10'),
-// 			changeWeek: mockChangeWeek,
-// 		});
-//
-// 		render(<WeekNavigation />);
-// 		expect(screen.getByText('2026')).toBeInTheDocument();
-// 	});
+	it('updates the displayed year when currentDate changes.', () => {
+		useCalendarContext.mockReturnValueOnce({
+			currentDate: new Date('2026-07-10'),
+			changeWeek: mockChangeWeek,
+		});
+
+		render(<WeekNavigation />);
+		expect(screen.getByText('July 2026')).toBeInTheDocument();
+	});
 
 	//Test #10: No unnecessary re-renders on click (state change triggers only function).
-// 	it('does not render month text incorrectly after click.', () => {
-// 		render(<WeekNavigation />);
-// 		fireEvent.click(screen.getByLabelText('Next week'));
-// 		expect(screen.getByText('November')).toBeInTheDocument(); // Month stays the same until context updates.
-// 	});
-
-    // *** OLD TESTS COMMENTED OUT BELOW THIS LINE. ***
-// 	it('renders the current month and year correctly', () => {
-// 		const mockCurrentDate = new Date('2024-11-01');
-//
-// 		useCalendarContext.mockReturnValue({
-// 			currentDate: mockCurrentDate,
-// 			changeMonth: jest.fn(),
-// 		});
-//
-// 		render(<MonthNavigation />);
-//
-// 		// Check if the current month and year are displayed correctly
-// 		expect(screen.getByText('November')).toBeInTheDocument();
-// 		expect(screen.getByText('2024')).toBeInTheDocument();
-// 	});
-
-
+	it('does not render month text incorrectly after click.', () => {
+		render(<WeekNavigation />);
+		fireEvent.click(screen.getByLabelText('Next week'));
+		expect(screen.getByText('November 2024')).toBeInTheDocument(); // Month stays the same until context updates.
+	});
 });

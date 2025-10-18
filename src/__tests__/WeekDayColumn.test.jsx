@@ -191,23 +191,4 @@ describe('WeekDayColumn', () => {
 
     expect(screen.getAllByTestId(/time-slot-/)).toHaveLength(13);
   });
-
-// *** OLD TESTS COMMENTED OUT BELOW THIS LINE. ***
-// 	test('passes events and calls onEventClick when an event is clicked', () => {
-// 	 render(
-// 		<WeekDayColumn
-// 		  day={mockDay}
-// 		  groupedEvents={mockGroupedEvents}
-// 		  onEventClick={mockOnEventClick}
-// 		  convertTo12HourFormat={mockConvertTo12HourFormat}
-// 		/>
-// 	  );
-//
-// 	  //Find an existing event button (hour 8, first event).
-// 	  const eventButton = screen.getByTestId('event-8-0');
-// 	  fireEvent.click(eventButton);
-//
-// 	  //Assert that onEventClick gets called with the correct event.
-// 	  expect(mockOnEventClick).toHaveBeenCalledWith(mockGroupedEvents[8][0]);
-// 	});
 });
