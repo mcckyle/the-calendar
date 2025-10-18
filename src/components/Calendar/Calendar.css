@@ -10,20 +10,20 @@
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--subtle-gray);
-    padding: 2.25rem 1.75rem;
+    padding: 2rem 1.5rem;
     box-shadow: var(--shadow-md);
 
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    transition: all var(--transition-speed);
     animation: fadeIn 0.5s ease-out forwards;
 }
 
 .calendar:hover
 {
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
@@ -36,8 +36,8 @@
     justify-content: center;
     align-items: center;
 
-    padding: 1rem 1.25rem;
-    background: linear-gradient(90deg, var(--deep-blue), #001b44);
+    padding: 0.85rem 1rem;
+    background: linear-gradient(90deg, var(--deep-blue), #003872);
     border-radius: var(--border-radius);
     color: #fff;
 
@@ -48,7 +48,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 /* ====================================
@@ -60,10 +60,10 @@
     font-size: 0.95rem;
     padding: 0.75rem 1rem;
     border-radius: var(--border-radius);
-    max-width: 420px;
-    margin: 0 auto;
+
     background: rgba(0, 0, 0, 0.03);
     color: var(--neutral-gray);
+    margin: 0 auto;
 }
 
 .calendar-status.error
@@ -81,7 +81,6 @@
     width: 100%;
     overflow-x: auto;
     padding-bottom: 0.75rem;
-    box-sizing: border-box;
 }
 
 .calendar-grid
@@ -96,10 +95,12 @@
 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--secondary-bg);
+    background: #fafafa;
     border-bottom: 2px solid var(--subtle-gray);
     text-align: center;
     padding: 0.8rem 0.6rem;
+    font-weight: 500;
+    color: #333;
     position: sticky;
     top: 0;
     z-index: 5;
@@ -112,13 +113,11 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 0.8rem;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .week-view > *
 {
-    transition: transform var(--transition-speed),
-                box-shadow var(--transition-speed);
+    transition: all var(--transition-speed);
 }
 
 .week-view > *:hover
@@ -127,7 +126,7 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Horizontal Overflow Only For Narrow Screens. */
+/* Prevent Stacking: Allow horizontal scroll when narrow. */
 @media (max-width: 900px)
 {
     .calendar-body

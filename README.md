@@ -1,14 +1,14 @@
 
 # Saint Louis Calendar
 
-The **Saint Louis Calendar** is a React-based calendar, with the aim of providing an interactive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific month, navigate between months, and display detailed events for selected days. Built using modern technologies like React, Vite, and CSS Grid/Flexbox.
+The **Saint Louis Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific month, navigate between months, and display detailed events for selected days. Built using modern technologies like React, Vite, and CSS Grid/Flexbox.
 
 > **Note**: This is a work-in-progress, and new features and enhancements are continuously being added!
 
 ## Features
 
 - **Interactive Calendar**: View and interact with a calendar of the current month.
-- **Month Navigation**: Seamlessly navigate between months using intuitive buttons.
+- **Week Navigation**: Seamlessly navigate between weeks using intuitive buttons.
 - **Event Display**: View events for specific days and see event markers on days with scheduled activities.
 - **Responsive Design**: The calendar adapts to different screen sizes using CSS Grid and Flexbox for a smooth user experience across devices.
 - **Event Management**: Events are displayed dynamically using a dedicated backend API, which automatically adds new events from throughout the area.

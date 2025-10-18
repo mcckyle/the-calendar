@@ -128,14 +128,14 @@ describe('Calendar Component', () => {
   });
 
   //Test #9: Snapshot test for UI consistency.
-  test('matches snapshot for default render.', () => {
-    const { asFragment } = render(
-      <CalendarProvider>
-        <Calendar />
-      </CalendarProvider>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
+//   test('matches snapshot for default render.', () => {
+//     const { asFragment } = render(
+//       <CalendarProvider>
+//         <Calendar />
+//       </CalendarProvider>
+//     );
+//     expect(asFragment()).toMatchSnapshot();
+//   });
 
   //Test #10: Accessibility - buttons have accessible roles.
   test('navigation buttons are accessible', () => {

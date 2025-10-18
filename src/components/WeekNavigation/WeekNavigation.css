@@ -1,39 +1,42 @@
 /* Filename: WeekNavigation.css */
 
-/* ========================================
+/* ====================================
     Week Navigation Styling.
-=========================================== */
+======================================= */
 .week-navigation
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.75rem;
 
-    background: linear-gradient(90deg, var(--deep-blue), #004d9b);
+    background: linear-gradient(90deg, var(--deep-blue), #003b85);
     color: #fff;
     padding: 1rem 2rem;
     border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
 
     font-family: var(--title-font);
     font-weight: 600;
-    box-shadow: var(--shadow-md);
+    letter-spacing: 0.3px;
 
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
 }
 
 .week-navigation:hover
 {
-    background: linear-gradient(90deg, #002b60, #0053a0);
+    background: linear-gradient(90deg, #002b60, #004b92);
+    transform: translateY(-1px);
 }
 
-/* ==================================
+/* ====================================
     Navigation Buttons Styling.
-===================================== */
+======================================= */
 .nav-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
     border: none;
     border-radius: 50%;
 
@@ -41,9 +44,9 @@
     justify-content: center;
     align-items: center;
 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 700;
     cursor: pointer;
 
@@ -54,26 +57,26 @@
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .nav-button:active
 {
-    transform: scale(0.9);
+    transform: scale(0.92);
 }
 
-/* ==================================
+/* ====================================
    Month-Year Text Label Styling.
-===================================== */
+======================================= */
 .month-year
 {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    letter-spacing: 0.4px;
     text-align: center;
-    position: relative;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    position: relative;
+
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Underline Accent Styling. */
@@ -81,11 +84,12 @@
 {
     content: "";
     display: block;
-    width: 50%;
+    width: 48%;
     height: 2px;
-    margin: 0.4rem auto 0;
+    margin: 0.35rem auto 0;
     background: linear-gradient(90deg, var(--accent-gold), #fff);
-    border-radius: 1px;
+    opacity: 0.9;
+    border-radius: 2px;
 }
 
 /* ================================
@@ -96,19 +100,19 @@
 	.week-navigation
 	{
         flex-direction: column;
-        gap: 0.75rem;
-        padding: 0.85rem 1rem;
+        gap: 0.7rem;
+        padding: 0.9rem 1rem;
 	}
 
 	.month-year
 	{
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
 	.nav-button
 	{
-        width: 2.3rem;
-        height: 2.3rem;
-        font-size: 1.3rem;
+        width: 2.1rem;
+        height: 2.1rem;
+        font-size: 1.25rem;
     }
 }

@@ -1,28 +1,28 @@
 /* Filename: EventPanel.css */
 
-/* ================================================
-   Overlay Styling (Backdrop).
-=================================================== */
+/* ====================================
+   Overlay / Backdrop Styling.
+======================================= */
 .event-overlay
 {
     position: fixed;
     inset: 0;
-    background: rgba(15, 15, 25, 0.55);
-    backdrop-filter: blur(12px) saturate(160%);
+    background: rgba(10, 15, 25, 0.55);
+    backdrop-filter: blur(10px) saturate(160%);
     z-index: 1500;
 
     animation: fadeIn var(--transition-speed) ease forwards;
 }
 
-/* ================================================
-    Event Panel Container (Dialog) Styling.
-=================================================== */
+/* ====================================
+   Modal Container Styling.
+======================================= */
 .event-panel
 {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -45%) scale(0.96);
+    transform: translate(-50%, -46%) scale(0.96);
     opacity: 0;
     z-index: 2000;
 
@@ -30,51 +30,49 @@
     max-width: 640px;
     padding: 2rem 2.25rem;
 
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.96);
     border-radius: var(--border-radius);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
 
     color: var(--text-color);
     font-family: var(--body-font);
     backdrop-filter: blur(18px) saturate(180%);
 
-    transition: opacity var(--transition-speed) ease,
-                transform var(--transition-speed) ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.event-panel[role="dialog"]
+.event-panel.visible
 {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* ================================
+/* ====================================
    Empty State Message Styling.
- =================================== */
+======================================= */
 .event-panel.empty
 {
-    background: none;
-    padding: 0;
-    box-shadow: none;
+    position: relative;
+    margin: 4rem auto;
+    padding: 1.5rem 2rem;
+
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
     text-align: center;
 }
 
 .no-event
 {
-    display: inline-block;
-    font-size: 1rem;
-    font-style: italic;
+    font-size: 0.95rem;
     color: var(--subtle-gray);
-    background: rgba(255, 255, 255, 0.85);
-
-    padding: 1rem 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
+    font-style: italic;
+    opacity: 0.8;
 }
 
-/* ====================
+/* ====================================
     Header Styling.
-======================= */
+======================================= */
 .event-panel-header
 {
     display: flex;
@@ -90,15 +88,15 @@
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: 1.65rem;
+    font-size: 1.55rem;
     color: var(--deep-blue);
     margin: 0;
     letter-spacing: 0.3px;
 }
 
-/* =========================
+/* ====================================
     Close Button Styles.
-============================ */
+======================================= */
 .close-button
 {
     background: transparent;
@@ -114,7 +112,7 @@
 
 .close-button:hover
 {
-    background: rgba(0, 0, 0, 0.07);
+    background: rgba(0, 0, 0, 0.08);
     color: var(--deep-blue);
     transform: rotate(90deg) scale(1.05);
 }
@@ -125,18 +123,18 @@
     outline-offset: 3px;
 }
 
-/* ===============================
+/* ====================================
    Animations Styles.
-================================== */
+======================================= */
 @keyframes fadeIn
 {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* ===============================
+/* ====================================
    Media Queries Styles.
-================================== */
+======================================= */
 @media (max-width: 768px)
 {
     .event-panel
@@ -147,7 +145,7 @@
 
     .event-panel-header h2
     {
-        font-size: 1.35rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -160,6 +158,6 @@
 
     .event-panel-header h2
     {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 }
