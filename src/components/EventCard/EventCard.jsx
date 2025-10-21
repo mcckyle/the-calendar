@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 16 September 2025
+//Date: 20 October 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -45,9 +45,10 @@ const EventCard = ({
 
 		if(!isNaN(startObj.getTime()))
 		{
-			formattedStartTime = startObj.toLocaleDateString("en-US", {
+			formattedStartTime = startObj.toLocaleTimeString("en-US", {
 				hour: "2-digit",
 				minute: "2-digit",
+				timeZone: "America/Chicago",
 			});
 		}
 	}
