@@ -1,7 +1,7 @@
 /* Filename: Calendar.css */
 
 /* ====================================
-    Calendar Container Styling.
+    Calendar Layout Styling.
 ======================================= */
 .calendar
 {
@@ -10,25 +10,26 @@
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--subtle-gray);
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem 2rem;
     box-shadow: var(--shadow-md);
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 
-    transition: all var(--transition-speed);
+    transition: box-shadow var(--transition-speed),
+                transform var(--transition-speed);
     animation: fadeIn 0.5s ease-out forwards;
 }
 
 .calendar:hover
 {
-    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================================
-    Calendar Header (Sticky Nav) Styling.
+   Sticky Week Navigation Header Styling.
 ============================================ */
 .calendar-header
 {
@@ -36,29 +37,26 @@
     justify-content: center;
     align-items: center;
 
-    padding: 0.85rem 1rem;
-    background: linear-gradient(90deg, var(--deep-blue), #003872);
+    background: linear-gradient(90deg, var(--deep-blue), #003b85);
     border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
     color: #fff;
-
-    font-family: var(--title-font);
-    font-size: 1.05rem;
-    font-weight: 600;
 
     position: sticky;
     top: 0;
-    z-index: 10;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
 }
 
 /* ====================================
-   Calendar Status Messages Styles.
+   Loading / Error Messages Styles.
 ======================================= */
 .calendar-status
 {
     text-align: center;
     font-size: 0.95rem;
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 1rem;
     border-radius: var(--border-radius);
 
     background: rgba(0, 0, 0, 0.03);
@@ -74,7 +72,7 @@
 }
 
 /* ====================================
-    Calendar Body Grid Styling.
+    Calendar Body and Grid Styling.
 ======================================= */
 .calendar-body
 {
@@ -88,9 +86,10 @@
     display: grid;
     grid-template-rows: auto 1fr;
     width: 100%;
+    gap: 0.75rem;
 }
 
-/* Days Header Row Styles. */
+/* Days of Week header aligns flush with WeekNavigation. */
 .days-of-week
 {
     display: grid;
@@ -110,23 +109,19 @@
 .week-view
 {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.8rem;
+    grid-template-columns: repeat(7, minmax(160px, 1fr));
+    gap: 0.75rem;
     width: 100%;
-}
 
-.week-view > *
-{
-    transition: all var(--transition-speed);
+    transition: transform var(--transition-speed);
 }
 
 .week-view > *:hover
 {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
-/* Prevent Stacking: Allow horizontal scroll when narrow. */
+/* Horizontal scroll safety on narrow viewports. */
 @media (max-width: 900px)
 {
     .calendar-body
@@ -134,10 +129,9 @@
         overflow-x: auto;
     }
 
-    .days-of-week,
-    .week-view
+    .week-view,
+    .days-of-week
     {
         min-width: 900px;
-        grid-template-columns: repeat(7, 1fr);
     }
 }

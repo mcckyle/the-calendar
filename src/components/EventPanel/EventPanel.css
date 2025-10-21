@@ -11,6 +11,7 @@
     backdrop-filter: blur(10px) saturate(160%);
     z-index: 1500;
 
+    transition: opacity var(--transition-speed) ease;
     animation: fadeIn var(--transition-speed) ease forwards;
 }
 
@@ -22,7 +23,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -46%) scale(0.96);
+    transform: translate(-50%, -48%) scale(0.95);
     opacity: 0;
     z-index: 2000;
 
@@ -30,44 +31,22 @@
     max-width: 640px;
     padding: 2rem 2.25rem;
 
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: var(--border-radius);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(22px) saturate(180%);
 
     color: var(--text-color);
     font-family: var(--body-font);
-    backdrop-filter: blur(18px) saturate(180%);
 
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.35s ease,
+                transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .event-panel.visible
 {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-}
-
-/* ====================================
-   Empty State Message Styling.
-======================================= */
-.event-panel.empty
-{
-    position: relative;
-    margin: 4rem auto;
-    padding: 1.5rem 2rem;
-
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-}
-
-.no-event
-{
-    font-size: 0.95rem;
-    color: var(--subtle-gray);
-    font-style: italic;
-    opacity: 0.8;
 }
 
 /* ====================================
@@ -79,48 +58,82 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: 1.55rem;
+    font-size: 1.6rem;
     color: var(--deep-blue);
     margin: 0;
     letter-spacing: 0.3px;
+
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* ====================================
-    Close Button Styles.
+    Close Button Styling.
 ======================================= */
 .close-button
 {
-    background: transparent;
-    border: none;
-    color: var(--subtle-gray);
-    font-size: 1.4rem;
-    cursor: pointer;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    padding: 0.35rem;
+    width: 2.25rem;
+    height: 2.25rem;
 
-    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--deep-blue);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transition: all var(--transition-speed) ease;
 }
 
 .close-button:hover
 {
-    background: rgba(0, 0, 0, 0.08);
-    color: var(--deep-blue);
-    transform: rotate(90deg) scale(1.05);
+    background: var(--accent-gold);
+    color: #fff;
+    transform: rotate(90deg) scale(1.1);
 }
 
 .close-button:focus
 {
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
+}
+
+/* ====================================
+   Empty State Message Styling.
+======================================= */
+.event-panel.empty
+{
+    position: relative;
+    margin: 4rem auto;
+    padding: 2rem 2.25rem;
+
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.no-event
+{
+    font-size: 1rem;
+    color: var(--subtle-gray);
+    font-style: italic;
+    opacity: 0.9;
 }
 
 /* ====================================
@@ -139,13 +152,20 @@
 {
     .event-panel
     {
-        padding: 1.4rem 1.2rem;
-        width: 95%;
+        width: 94%;
+        padding: 1.5rem 1.25rem;
     }
 
-    .event-panel-header h2
+    .event-panel h2
     {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
+    }
+
+    .close-button
+    {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -153,11 +173,18 @@
 {
     .event-panel
     {
-        padding: 1rem;
+        padding: 1.25rem;
+        border-radius: 1rem;
     }
 
-    .event-panel-header h2
+    .event-panel h2
     {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+    }
+
+    .close-button
+    {
+        width: 1.9rem;
+        height: 1.9rem;
     }
 }

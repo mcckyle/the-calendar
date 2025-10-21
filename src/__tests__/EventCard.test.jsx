@@ -1,6 +1,6 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
+//Date: 19 October 2025
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
@@ -11,9 +11,9 @@ import EventCard from '../components/EventCard/EventCard.jsx';
 describe("EventCard Component", () => {
   const validEvent = {
     title: "Sample Event",
-    date: "2025-01-19",
-    startTime: new Date("2025-01-19T15:00:00"), // 3:00 PM.
-    endTime: new Date("2025-01-19T17:00:00"), // 5:00 PM.
+    date: "2025-01-19T00:00:00-06:00", //Explicit CST Midnight.
+    startTime: new Date("2025-01-19T15:00:00-06:00"), // 3:00 PM.
+    endTime: new Date("2025-01-19T17:00:00-06:00"), // 5:00 PM.
     allDay: false,
     description: "This is a test description for the event.",
   };
@@ -27,7 +27,7 @@ describe("EventCard Component", () => {
   //Test #2: Renders formatted date correctly.
   test("renders the formatted date.", () => {
     render(<EventCard {...validEvent} />);
-    expect(screen.getByText(/Saturday, January 18, 2025/)).toBeInTheDocument();
+    expect(screen.getByText(/Sunday, January 19, 2025/)).toBeInTheDocument();
   });
 
   //Test #3: Displays formatted start time for non-all-day events.

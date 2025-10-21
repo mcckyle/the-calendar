@@ -10,9 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 5rem 1.5rem 3rem;
-    background: linear-gradient(180deg, #fefefe 0%, #f3f5f7 100%);
-    padding: 5rem 1.5rem 3rem;
+    padding: 4rem 1.25rem 3rem;
+    background: linear-gradient(180deg, #fdfdfd 0%, #f4f6f8 100%);
     box-sizing: border-box;
 }
 
@@ -26,7 +25,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3.25rem;
+    gap: 3rem;
 
     animation: fadeIn 0.6s ease-out;
 }
@@ -36,13 +35,10 @@
 ======================================= */
 .calendar-intro
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 0.6rem;
     text-align: center;
-    padding: 0 1rem;
+    padding: 2rem 1rem 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .calendar-title
@@ -50,10 +46,10 @@
     font-family: var(--title-font);
     font-size: clamp(2.2rem, 4.5vw, 3.25rem);
     font-weight: 700;
-    letter-spacing: 0.3px;
-    margin: 0;
+    letter-spacing: 0.25px;
+    margin-bottom: 0.5rem;
 
-    background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
+    background: linear-gradient(90deg, var(--deep-blue) 0%, var(--accent-gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -62,9 +58,10 @@
 {
     font-family: var(--body-font);
     font-size: 1.1rem;
-    color: #555;
-    line-height: 1.7;
+    color: #444;
+    line-height: 1.65;
     opacity: 0.9;
+    margin: 0 auto;
     max-width: 640px;
 }
 
@@ -84,12 +81,12 @@
 {
     .calendar-title
     {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .calendar-tagline
     {
-        font-size: 1.05rem;
+        font-size: 1rem;
         max-width: 90%;
     }
 }
@@ -98,6 +95,6 @@
 {
     .calendar-title
     {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
     }
 }
