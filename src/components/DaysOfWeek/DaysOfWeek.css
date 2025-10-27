@@ -8,18 +8,18 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
-    text-align: center;
+    justify-items: center;
 
     background: rgba(255, 255, 255, 0.9);
     border-radius: var(--border-radius);
-    padding: 0.9rem 0.6rem;
+    padding: 0.9rem 0.5rem;
     box-shadow: var(--shadow-sm);
     border-bottom: 2px solid var(--subtle-gray);
 
     position: sticky;
-    top: 4.25rem; /* Precise Alignment with WeekNavigation height. */
+    top: 0;
     z-index: 5;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
 }
 
 /* ====================================
@@ -32,11 +32,10 @@
     align-items: center;
     justify-content: center;
 
-    padding: 0.6rem 0.4rem;
-    border-radius: 10px;
+    padding: 0.5rem 0.25rem;
+    border-radius: 8px;
 
-    transition: background var(--transition-speed) ease,
-                transform var(--transition-speed) ease;
+    transition: all var(--transition-speed);
 }
 
 /* Hover Interaction. */
@@ -63,15 +62,14 @@
     color: #fff;
 }
 
-/* ==========================
+/* ====================================
    Weekday Label Styles.
-============================= */
+======================================= */
 .day-label
 {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--deep-blue);
-    letter-spacing: 0.3px;
 }
 
 /* Date Label Styles. */
@@ -80,7 +78,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--accent-gold);
-    margin-top: 0.1rem;
+    margin-top: 0.15rem;
 }
 
 /* ====================================
@@ -90,7 +88,7 @@
 {
     .days-of-week
     {
-        min-width: 900px;
+        min-width: 1400px;
     }
 }
 

@@ -6,13 +6,15 @@
 .week-navigation
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    position: relative;
 
-    background: transparent;
+    width: 100%;
+    max-width: min(720px, 90vw);
+    padding: 0.75rem 0;
+
     color: #fff;
-
     font-family: var(--title-font);
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -30,20 +32,20 @@
 ======================================= */
 .nav-button
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border: none;
     border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
     font-size: 1.4rem;
     font-weight: 700;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     transition: all var(--transition-speed);
 }
@@ -65,10 +67,15 @@
 ======================================= */
 .month-year
 {
-    font-size: 1.45rem;
-    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    position: relative;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    pointer-events: none;
 
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
@@ -78,34 +85,37 @@
 {
     content: "";
     display: block;
-    width: 40%;
+    width: 42%;
     height: 2px;
-    margin: 0.35rem auto 0;
+    margin: 0.4rem auto 0;
     background: linear-gradient(90deg, var(--accent-gold), #fff);
     opacity: 0.85;
     border-radius: 2px;
 }
 
-/* ================================
+/* ====================================
     Responsive Design Styling.
-=================================== */
+======================================= */
 @media (max-width: 768px)
 {
 	.week-navigation
 	{
-        flex-direction: column;
-        gap: 0.6rem;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
 	}
 
 	.month-year
 	{
-        font-size: 1.2rem;
+        position: static;
+        transform: none;
+        margin: 0 auto;
     }
 
 	.nav-button
 	{
-        width: 2.1rem;
-        height: 2.1rem;
+        width: 2.2rem;
+        height: 2.2rem;
         font-size: 1.2rem;
     }
 }

@@ -18,11 +18,11 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 - **React**: For building a dynamic and responsive user interface using functional components and React hooks.
 - **Vite**: A modern, fast build tool and development server that optimizes performance for React apps.
 - **CSS Grid & Flexbox**: For responsive layout design, ensuring the calendar looks great on all devices.
-- **JSON File**: Events data is fetched from a local JSON file, allowing easy updates and management of events.
+- **Ticketmaster API**: Events data is fetched from an API, allowing automatic updates and management of events.
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20251005_192137.png)
+![Calendar Screenshot](./public/images/Screenshot_20251027_181451.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 

@@ -7,23 +7,23 @@
 {
     display: flex;
     flex-direction: column;
-
-    background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-    flex: 1;
+    flex: 1 1 0;
     min-width: 160px;
+    max-width: 240px;
 
-    transition: transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+
+    transition: all 0.3s ease;
 }
 
 .weekday-column:hover
 {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    transform: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 /* ====================================
@@ -33,13 +33,13 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    padding: 1.1rem 0.8rem 1.3rem;
+    gap: 0.8rem;
+    padding: 1rem 0.8rem 1.2rem;
 
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.03),
-      rgba(0, 47, 108, 0.03)
+      rgba(255, 255, 255, 0.02),
+      rgba(0, 47, 108, 0.04)
     );
 
     overflow-y: auto;
@@ -64,11 +64,24 @@
     border-radius: 6px;
 }
 
+@media (max-width: 1024px)
+{
+    .weekday-column
+    {
+        flex: 0 0 180px;
+    }
+}
+
 @media (max-width: 768px)
 {
+    .weekday-column
+    {
+        flex: 0 0 160px;
+    }
+
     .time-slots
     {
         gap: 0.6rem;
-        padding: 0.9rem 0.6rem;
+        padding: 0.8rem 0.6rem;
     }
 }

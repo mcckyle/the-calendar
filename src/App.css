@@ -8,11 +8,11 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 4rem 1.25rem 3rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
     background: linear-gradient(180deg, #fdfdfd 0%, #f4f6f8 100%);
-    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* ====================================
@@ -21,13 +21,16 @@
 .calendar-wrapper
 {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3rem 3vw 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
+    box-sizing: border-box;
 
-    animation: fadeIn 0.6s ease-out;
+    animation: fadeIn 0.8s ease-out;
 }
 
 /* ====================================
@@ -36,33 +39,41 @@
 .calendar-intro
 {
     text-align: center;
-    padding: 2rem 1rem 0;
-    max-width: 800px;
+    padding: 1.5rem 1rem 0;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
     font-weight: 700;
-    letter-spacing: 0.25px;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.8rem;
 
-    background: linear-gradient(90deg, var(--deep-blue) 0%, var(--accent-gold) 100%);
+    background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-transform: capitalize;
 }
 
 .calendar-tagline
 {
     font-family: var(--body-font);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #444;
-    line-height: 1.65;
+    line-height: 1.7;
     opacity: 0.9;
     margin: 0 auto;
-    max-width: 640px;
+    max-width: 720px;
+
+    transition: opacity var(--transition-speed);
+}
+
+.calendar-tagline:hover
+{
+    opacity: 1;
 }
 
 /* ====================================
@@ -79,6 +90,12 @@
 ======================================= */
 @media (max-width: 768px)
 {
+    .calendar-wrapper
+    {
+        padding: 2rem 1.25rem;
+        gap: 1.5rem;
+    }
+
     .calendar-title
     {
         font-size: 2rem;
@@ -88,13 +105,5 @@
     {
         font-size: 1rem;
         max-width: 90%;
-    }
-}
-
-@media (max-width: 480px)
-{
-    .calendar-title
-    {
-        font-size: 1.75rem;
     }
 }

@@ -5,23 +5,24 @@
 ======================================= */
 .time-slot
 {
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: var(--border-radius);
-    padding: 0.8rem 1rem;
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(4px);
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(3px);
 
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     gap: 0.45rem;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .time-slot:hover
 {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    background: rgba(0, 59, 133, 0.03);
+    transform: translateY(-1px);
 }
 
 /* ====================================
@@ -30,13 +31,13 @@
 .time-label
 {
     font-family: var(--title-font);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--deep-blue);
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding-bottom: 0.25rem;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 /* ====================================
@@ -56,28 +57,22 @@
 {
     background: linear-gradient(135deg, var(--accent-gold), var(--deep-blue));
     color: #fff;
-    border: none;
-    border-radius: 9999px;
-    padding: 0.4rem 0.8rem;
+    border-radius: 1.5rem;
+    padding: 0.4rem 0.9rem;
     font-size: 0.8rem;
     font-weight: 500;
+    letter-spacing: 0.02rem;
     cursor: pointer;
     text-align: center;
     box-shadow: var(--shadow-sm);
 
-    transition: all var(--transition-speed) ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .event:hover
 {
-    background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-.event:active
-{
-    transform: scale(0.97);
+    opacity: 0.9;
 }
 
 .event:focus

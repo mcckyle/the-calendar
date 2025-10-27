@@ -1,8 +1,8 @@
 /* Filename: index.css */
 
-/* =============================
+/* ====================================
    Global CSS Variables Styles.
-================================ */
+======================================= */
 :root
 {
     --title-font: 'Playfair Display', serif;
@@ -23,9 +23,9 @@
     --transition-speed: 0.25s;
 }
 
-/* =========================
+/* ====================================
    Base Layout Styles.
-============================ */
+======================================= */
 body,
 #root
 {
@@ -42,8 +42,16 @@ body,
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-direction: column;
 
     -webkit-font-smoothing: antialiased;
+}
+
+html, body
+{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: var(--primary-bg);
 }
 
 /* Headings Styling. */
@@ -62,9 +70,9 @@ p
     max-width: 65ch;
 }
 
-/* ==================
+/* ====================================
    Buttons Styling.
-===================== */
+======================================= */
 button
 {
     background: var(--deep-blue);
@@ -95,9 +103,9 @@ button:active
     transform: scale(0.98);
 }
 
-/* ==================
+/* ====================================
    Links Styling.
-===================== */
+======================================= */
 a
 {
     color: var(--deep-blue);
@@ -111,9 +119,26 @@ a:hover
     color: var(--accent-gold);
 }
 
-/* =================================
+::-webkit-scrollbar
+{
+    height: 10px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: var(--deep-blue);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background: var(--accent-gold);
+}
+
+/* ====================================
    Card Containers Styling.
-==================================== */
+======================================= */
 .container
 {
     background: var(--secondary-bg);
