@@ -10,16 +10,16 @@
     align-items: center;
     justify-items: center;
 
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius);
-    padding: 0.9rem 0.5rem;
+    padding: 1rem 0.5rem;
     box-shadow: var(--shadow-sm);
     border-bottom: 2px solid var(--subtle-gray);
 
     position: sticky;
     top: 0;
-    z-index: 5;
-    backdrop-filter: blur(6px);
+    z-index: 10;
+    backdrop-filter: blur(8px);
 }
 
 /* ====================================
@@ -30,10 +30,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    padding: 0.5rem 0.25rem;
-    border-radius: 8px;
+    padding: 0.5rem;
+    border-radius: 10px;
 
     transition: all var(--transition-speed);
 }
@@ -42,7 +41,7 @@
 .day-item:hover
 {
     background: rgba(0, 47, 108, 0.06);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 /* ====================================
@@ -52,8 +51,8 @@
 {
     background: var(--deep-blue);
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .day-item.today .day-label,
@@ -67,7 +66,7 @@
 ======================================= */
 .day-label
 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--deep-blue);
 }
@@ -75,10 +74,10 @@
 /* Date Label Styles. */
 .day-date
 {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--accent-gold);
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
 }
 
 /* ====================================
@@ -96,11 +95,11 @@
 {
     .day-label
     {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     .day-date
     {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 }

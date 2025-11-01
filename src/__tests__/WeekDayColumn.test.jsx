@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.test.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 31 October 2025
 //Description: This file contains unit tests for the WeekDayColumn.jsx component.
 
 import React from 'react';
@@ -88,7 +88,7 @@ describe('WeekDayColumn', () => {
   });
 
   //Test #4: Passes correct label to the TimeSlot component via convertTo12HourFormat.
-  test('passes the convered label to the TimeSlot component.', () => {
+  test('passes the correct label to the TimeSlot component.', () => {
     render(
       <WeekDayColumn
         day={mockDay}
@@ -134,7 +134,7 @@ describe('WeekDayColumn', () => {
   });
 
   //Test #7: Handles case where groupedEvents is empty (renders empty TimeSlots).
-  test('calls convertTo12HourFormat for each generated hour.', () => {
+  test('renders empty time slots when groupedEvents is empty.', () => {
     render(
       <WeekDayColumn
         day={mockDay}
@@ -151,7 +151,7 @@ describe('WeekDayColumn', () => {
   });
 
   //Test #8: Handles case where groupedEvents has hours outside the 9-21 range (should ignore them).
-  test('calls convertTo12HourFormat for each generated hour.', () => {
+  test('ignores events outside the 9-21 hour range.', () => {
     render(
       <WeekDayColumn
         day={mockDay}
@@ -179,7 +179,7 @@ describe('WeekDayColumn', () => {
   });
 
   //Test #10: Each TimeSlot receives events array, even when empty.
-  test('calls convertTo12HourFormat for each generated hour.', () => {
+  test('each TimeSlot receives events array, even when it is empty.', () => {
     render(
       <WeekDayColumn
         day={mockDay}

@@ -8,9 +8,8 @@
     position: fixed;
     inset: 0;
     background: rgba(10, 15, 25, 0.55);
-    backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
     z-index: 1500;
-    opacity: 0;
 
     animation: fadeIn 0.5s ease forwards;
 }
@@ -27,7 +26,7 @@
     opacity: 0;
     z-index: 2000;
 
-    width: clamp(360px, 85%, 1200px);
+    width: min(100%, 1200px);
     max-height: 92vh;
     overflow-y: auto;
 
@@ -38,10 +37,11 @@
 
     color: var(--text-color);
     font-family: var(--body-font);
-    padding: 2.5rem 2.75rem;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    user-select: none;
 
-    transition: opacity 0.4s ease,
-                transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.45s ease,
+                transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .event-panel.visible
@@ -59,7 +59,7 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     padding-bottom: 1.25rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -68,10 +68,11 @@
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: 1.9rem;
+    font-size: clamp(1.5rem, 1.8vw, 1.9rem);
     color: var(--deep-blue);
     letter-spacing: 0.4px;
     margin: 0;
+    user-select: none;
 }
 
 /* ====================================
@@ -94,6 +95,7 @@
     color: var(--deep-blue);
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    user-select: none;
 
     transition: all 0.25s ease;
 }
@@ -149,20 +151,15 @@
 {
     .event-panel
     {
-        width: 90%;
-        padding: 2rem 1.75rem;
-    }
-
-    .event-panel h2
-    {
-        font-size: 1.6rem;
+        width: 94%;
+        padding: 2rem;
     }
 
     .close-button
     {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.2rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -170,8 +167,8 @@
 {
     .event-panel
     {
-        width: 94%;
-        padding: 1.4rem;
+        width: 96%;
+        padding: 1.25rem;
         border-radius: 1rem;
     }
 

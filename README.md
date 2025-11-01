@@ -1,13 +1,13 @@
 
 # Saint Louis Calendar
 
-The **Saint Louis Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific month, navigate between months, and display detailed events for selected days. Built using modern technologies like React, Vite, and CSS Grid/Flexbox.
+The **Saint Louis Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between week, and display event detailss. Built using modern technologies like React and Vite.
 
 > **Note**: This is a work-in-progress, and new features and enhancements are continuously being added!
 
 ## Features
 
-- **Interactive Calendar**: View and interact with a calendar of the current month.
+- **Interactive Calendar**: View and interact with a calendar of the current week.
 - **Week Navigation**: Seamlessly navigate between weeks using intuitive buttons.
 - **Event Display**: View events for specific days and see event markers on days with scheduled activities.
 - **Responsive Design**: The calendar adapts to different screen sizes using CSS Grid and Flexbox for a smooth user experience across devices.
@@ -51,6 +51,75 @@ To get the project running locally, follow these steps:
    ```
 
    The app will go live at `http://localhost:3000`.
+   
+## Project Structure
+
+```
+the-calendar/
+├── .git/                  # Git version control directory.
+├── .github/               
+│   └── workflows/
+│       └── main.yml
+│
+├── public/                # Demo screenshots folder.
+│   └── images/
+│
+├── src/                   # Source code for the React app.
+│   ├── components/        # Reusable UI components.
+│   │   ├── Calendar/
+│   │   │   ├── Calendar.jsx
+│   │   │   ├── Calendar.css
+│   │   │   └── CalendarContext.jsx
+│   │   ├── WeekNavigation/
+│   │   │   ├── WeekNavigation.jsx
+│   │   │   └── WeekNavigation.css
+│   │   ├── DaysOfWeek/
+│   │   │   ├── DaysOfWeek.jsx
+│   │   │   └── DaysOfWeek.css
+│   │   ├── WeekDayColumn/
+│   │   │   ├── WeekDayColumn.jsx
+│   │   │   └── WeekDayColumn.css
+│   │   ├── TimeSlot/
+│   │   │   ├── TimeSlot.jsx
+│   │   │   └── TimeSlot.css
+│   │   ├── EventPanel/
+│   │   │   ├── EventPanel.jsx
+│   │   │   └── EventPanel.css
+│   │   └── EventCard/
+│   │       ├── EventCard.jsx
+│   │       └── EventCard.css
+│   │
+│   ├── data/              # events.json data.
+│   ├── hooks/             # Custom hooks and API call.
+│   ├── utils/             # Calendar formatting helper functions.
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css          # Global styles.
+│
+├── __tests__/             # Unit tests.
+│   ├── Calendar.test.jsx
+│   ├── CalendarContext.test.jsx
+│   ├── WeekNavigation.test.jsx
+│   ├── DaysOfWeek.test.jsx
+│   ├── WeekDayColumn.test.jsx
+│   ├── TimeSlot.test.jsx
+│   ├── EventPanel.test.jsx
+│   └── EventCard.test.jsx
+│
+├── .gitignore            # Files and directories to ignore in Git.
+├── .babelrc
+├── eslint.config.js
+├── vite.config.js
+├── jest.config.cjs
+├── jest.setup.js
+├── setupTests.js
+├── index.html
+├── package-lock.json
+├── package.json          # Project metadata and dependencies.
+├── LICENSE
+└── README.md             # Project documentation.
+```
 
 ## Project Status & Roadmap
 

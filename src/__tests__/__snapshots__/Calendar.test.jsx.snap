@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar Component matches snapshot for default render. 1`] = `
+<DocumentFragment>
+  <section
+    aria-label="Weekly Event Calendar"
+    class="calendar"
+  >
+    <header
+      class="calendar-header"
+    >
+      <nav
+        aria-label="Week navigation"
+        class="week-navigation"
+      >
+        <button
+          aria-label="Previous week"
+          class="nav-button"
+        >
+          ‹
+        </button>
+        <time
+          aria-live="polite"
+          class="month-year"
+        >
+          October 2025
+        </time>
+        <button
+          aria-label="Next week"
+          class="nav-button"
+        >
+          ›
+        </button>
+      </nav>
+    </header>
+    <p
+      class="calendar-status error"
+    >
+      Error: fetch is not defined
+    </p>
+    <div
+      class="calendar-body"
+    >
+      <div
+        class="calendar-grid"
+      >
+        <div
+          class="days-of-week"
+          role="row"
+        >
+          <div
+            aria-label="Sunday, October 26"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Sun
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 26
+            </span>
+          </div>
+          <div
+            aria-label="Monday, October 27"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Mon
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 27
+            </span>
+          </div>
+          <div
+            aria-label="Tuesday, October 28"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Tue
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 28
+            </span>
+          </div>
+          <div
+            aria-label="Wednesday, October 29"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Wed
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 29
+            </span>
+          </div>
+          <div
+            aria-label="Thursday, October 30"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Thu
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 30
+            </span>
+          </div>
+          <div
+            aria-label="Friday, October 31"
+            class="day-item today"
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Fri
+            </span>
+            <span
+              class="day-date"
+            >
+              Oct 31
+            </span>
+          </div>
+          <div
+            aria-label="Saturday, November 1"
+            class="day-item "
+            role="columnheader"
+          >
+            <span
+              class="day-label"
+            >
+              Sat
+            </span>
+            <span
+              class="day-date"
+            >
+              Nov 1
+            </span>
+          </div>
+        </div>
+        <div
+          class="week-view"
+        >
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Sun Oct 26 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Mon Oct 27 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Tue Oct 28 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Wed Oct 29 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Thu Oct 30 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Fri Oct 31 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Sat Nov 01 2025
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;

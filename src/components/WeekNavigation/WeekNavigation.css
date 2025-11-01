@@ -8,23 +8,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-
     width: 100%;
     max-width: min(720px, 90vw);
-    padding: 0.75rem 0;
+    position: relative;
 
     color: #fff;
     font-family: var(--title-font);
     font-weight: 600;
     letter-spacing: 0.3px;
-
-    transition: transform var(--transition-speed);
-}
-
-.week-navigation:hover
-{
-    transform: translateY(-1px);
 }
 
 /* ====================================
@@ -32,8 +23,8 @@
 ======================================= */
 .nav-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
     border: none;
     border-radius: 50%;
 
@@ -54,7 +45,12 @@
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: scale(1.07);
+    transform: scale(1.08);
+}
+
+.nav-button:focus
+{
+    outline: none;
 }
 
 .nav-button:active
@@ -71,9 +67,8 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
     white-space: nowrap;
     pointer-events: none;
 
@@ -85,9 +80,9 @@
 {
     content: "";
     display: block;
-    width: 42%;
+    width: 40%;
     height: 2px;
-    margin: 0.4rem auto 0;
+    margin: 0.5rem auto 0;
     background: linear-gradient(90deg, var(--accent-gold), #fff);
     opacity: 0.85;
     border-radius: 2px;
@@ -110,6 +105,7 @@
         position: static;
         transform: none;
         margin: 0 auto;
+        font-size: 1.3rem;
     }
 
 	.nav-button

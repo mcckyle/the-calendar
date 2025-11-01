@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 11 October 2025
+//Date: 31 October 2025
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -192,25 +192,4 @@ describe('TimeSlot', () => {
     const span = screen.getByText(label).closest('span');
     expect(span).not.toBeNull();
   });
-
-
-//  *** OLD TESTS COMMENTED OUT BELOW. ***
-//   test('renders no duplicate keys for events', () => {
-//    const mockEvents = [
-//      { id: 1, title: 'Yoga' },
-//      { id: 1, title: 'Duplicate Key Test' }, // Duplicate id to test key handling.
-//     ];
-//     const { container } = render(
-//       <TimeSlot
-//         label="10:00 AM"
-//         events={mockEvents}
-//         onEventClick={mockOnEventClick}
-//       />
-//     );
-//
-//     //Assert that each event is rendered despite duplicate IDs.
-//     const eventDivs = container.querySelectorAll('.event');
-//     expect(eventDivs.length).toBe(2);
-//   });
-
 });

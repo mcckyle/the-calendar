@@ -80,8 +80,8 @@ describe("EventCard Component", () => {
   });
 
   //Test #10: Snapshot test for UI consistency purposes.
-//   test("matches snapshot.", () => {
-//     const { asFragment } = render(<EventCard {...validEvent} />);
-//     expect(asFragment()).toMatchSnapshot();
-//   });
+  test("matches snapshot.", () => {
+    const { asFragment } = render(<EventCard {...validEvent} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

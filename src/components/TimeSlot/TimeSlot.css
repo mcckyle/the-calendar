@@ -7,21 +7,20 @@
 {
     background: #fff;
     border-radius: 0.75rem;
-    padding: 0.9rem 1.1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(3px);
+    padding: 1rem 1.1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 0.45rem;
+    gap: 0.5rem;
 
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .time-slot:hover
 {
-    background: rgba(0, 59, 133, 0.03);
+    background: rgba(0, 59, 133, 0.04);
     transform: translateY(-1px);
 }
 
@@ -47,7 +46,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.45rem;
 }
 
 /* ====================================
@@ -58,20 +57,21 @@
     background: linear-gradient(135deg, var(--accent-gold), var(--deep-blue));
     color: #fff;
     border-radius: 1.5rem;
-    padding: 0.4rem 0.9rem;
+    padding: 0.45rem 0.9rem;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.02rem;
     cursor: pointer;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    user-select: none;
 
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .event:hover
 {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     opacity: 0.9;
 }
 
@@ -100,16 +100,17 @@
 {
     .time-slot
     {
-        padding: 0.7rem 0.8rem;
+        padding: 0.8rem 0.9rem;
     }
 
     .time-label
     {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     .event
     {
         font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
     }
 }

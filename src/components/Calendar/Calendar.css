@@ -7,44 +7,42 @@
 {
     width: 100%;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    background: linear-gradient(180deg, var(--secondary-bg) 0%, #f9fafc 100%);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 
-    transition: all 0.3s ease;
+    background: linear-gradient(180deg, var(--secondary-bg) 0%, #f7f9fb 100%);
+
+    transition: background var(--transition-speed);
 }
 
-/* =========================================
-   Sticky Calendar Header Styling.
-============================================ */
+/* ====================================
+   Sticky Header Styling.
+======================================= */
 .calendar-header
 {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 1rem;
-    background: linear-gradient(90deg, var(--deep-blue), #003b85);
+    padding: 1.25rem clamp(1rem, 4vw, 2rem);
 
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
 
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    background: linear-gradient(90deg, var(--deep-blue), #003b85);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(8px);
+    user-select: none;
+    z-index: 50;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 /* ====================================
-   Loading / Error Messages Styles.
+   Loading / Error States Styles.
 ======================================= */
 .calendar-status
 {
@@ -53,10 +51,11 @@
     padding: 0.8rem 1rem;
     border-radius: var(--border-radius);
 
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
     color: var(--neutral-gray);
-    margin: 0.25rem auto;
+    margin: 0.75rem auto;
     width: fit-content;
+    box-shadow: var(--shadow-sm);
 }
 
 .calendar-status.error
@@ -71,10 +70,11 @@
 ======================================= */
 .calendar-body
 {
+    flex: 1;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 1.25rem 0 2rem;
+    padding: 2rem 0 4rem;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -98,7 +98,10 @@
     display: grid;
     grid-template-rows: auto 1fr;
     width: 100%;
-    gap: 1rem;
+    max-width: 1800px;
+    gap: 1.5rem;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    box-sizing: border-box;
 }
 
 /* ====================================
@@ -108,14 +111,17 @@
 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0.75rem;
-    width: 100%;
-    box-sizing: border-box;
-    justify-items: stretch;
-    padding-bottom: 2rem;
+    gap: 1rem;
+
     align-items: start;
+    justify-items: stretch;
 
     transition: transform var(--transition-speed);
+}
+
+.week-view > *
+{
+    transition: transform 0.25s ease;
 }
 
 .week-view > *:hover
@@ -135,7 +141,7 @@
 
     .week-view
     {
-        min-width: 1800px;
+        min-width: 1600px;
     }
 }
 
@@ -143,7 +149,7 @@
 {
     .calendar-header
     {
-        padding: 0.8rem;
+        padding: 0.85rem 1rem;
     }
 
     .calendar-status
@@ -153,6 +159,6 @@
 
     .calendar-body
     {
-        padding: 1rem 0.5rem;
+        padding: 1.2rem 0.75rem 3rem;
     }
 }
