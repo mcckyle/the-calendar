@@ -24,6 +24,17 @@ jest.mock('../components/EventPanel/EventPanel.jsx', () => ({ selectedEvent, onC
   </div>
 ));
 
+// Return a fixed date so the snapshot test passes on GitHub.
+beforeAll(() => {
+  const fixedDate = new Date(2025, 9, 31);
+  jest.useFakeTimers();
+  jest.setSystemTime(fixedDate);
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
 describe('Calendar Component', () => {
   const renderCalendar = () => {
     render(
