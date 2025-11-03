@@ -9,9 +9,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(180deg, var(--secondary-bg) 0%, #f6f8fb 100%);
     overflow: hidden;
-
-    background: linear-gradient(180deg, var(--secondary-bg) 0%, #f7f9fb 100%);
 
     transition: background var(--transition-speed);
 }
@@ -24,21 +23,20 @@
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 1.25rem clamp(1rem, 4vw, 2rem);
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    background: linear-gradient(90deg, var(--deep-blue), #003b85);
+    color: #fff;
 
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
 
-    background: linear-gradient(90deg, var(--deep-blue), #003b85);
-    color: #fff;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 
     user-select: none;
-    z-index: 50;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    z-index: 100;
 }
 
 /* ====================================
@@ -49,11 +47,12 @@
     text-align: center;
     font-size: 0.95rem;
     padding: 0.8rem 1rem;
+    margin: 1rem auto;
     border-radius: var(--border-radius);
 
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--neutral-gray);
-    margin: 0.75rem auto;
+
     width: fit-content;
     box-shadow: var(--shadow-sm);
 }
@@ -71,13 +70,10 @@
 .calendar-body
 {
     flex: 1;
-    width: 100%;
     display: flex;
     justify-content: center;
-    padding: 2rem 0 4rem;
+    padding: clamp(1.5rem, 3vw, 3rem) 0 4rem;
     overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-gold) transparent;
 }
@@ -89,7 +85,7 @@
 
 .calendar-body::-webkit-scrollbar-thumb
 {
-    background: linear-gradient(90deg, var(--deep-blue), #003b85);
+    background: var(--deep-blue);
     border-radius: 6px;
 }
 
@@ -97,9 +93,10 @@
 {
     display: grid;
     grid-template-rows: auto 1fr;
+    gap: 1.25rem;
     width: 100%;
-    max-width: 1800px;
-    gap: 1.5rem;
+    max-width: 1900px;
+
     padding: 0 clamp(1rem, 3vw, 2rem);
     box-sizing: border-box;
 }
@@ -112,21 +109,11 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 1rem;
-
+    width: 100%;
     align-items: start;
-    justify-items: stretch;
+    justify-content: stretch;
 
     transition: transform var(--transition-speed);
-}
-
-.week-view > *
-{
-    transition: transform 0.25s ease;
-}
-
-.week-view > *:hover
-{
-    transform: translateY(-2px);
 }
 
 /* ====================================
@@ -137,11 +124,12 @@
     .calendar-body
     {
         overflow-x: scroll;
+        padding-bottom: 3rem;
     }
 
     .week-view
     {
-        min-width: 1600px;
+        min-width: 1400px;
     }
 }
 
@@ -149,7 +137,7 @@
 {
     .calendar-header
     {
-        padding: 0.85rem 1rem;
+        padding: 0.9rem 1rem;
     }
 
     .calendar-status
@@ -159,6 +147,11 @@
 
     .calendar-body
     {
-        padding: 1.2rem 0.75rem 3rem;
+        padding: 1rem 0.75rem 2.5rem;
+    }
+
+    .week-view
+    {
+        min-width: 1200px;
     }
 }

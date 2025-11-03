@@ -8,36 +8,36 @@
     position: fixed;
     inset: 0;
     background: rgba(10, 15, 25, 0.55);
-    backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
     z-index: 1500;
 
-    animation: fadeIn 0.5s ease forwards;
+    animation: fadeIn 0.4s ease forwards;
 }
 
 /* ====================================
-   Modal Container Styling.
+   Modal Panel Styling.
 ======================================= */
 .event-panel
 {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -48%) scale(0.97);
+    transform: translate(-50%, -46%) scale(0.97);
     opacity: 0;
     z-index: 2000;
 
-    width: min(100%, 1200px);
-    max-height: 92vh;
+    width: min(100%, 1100px);
+    max-height: 90vh;
     overflow-y: auto;
 
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     border-radius: 1.5rem;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(28px) saturate(200%);
+    padding: clamp(1.75rem, 3vw, 2.75rem);
 
     color: var(--text-color);
     font-family: var(--body-font);
-    padding: clamp(1.5rem, 3vw, 2.75rem);
     user-select: none;
 
     transition: opacity 0.45s ease,
@@ -68,11 +68,10 @@
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.5rem, 1.8vw, 1.9rem);
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
     color: var(--deep-blue);
     letter-spacing: 0.4px;
     margin: 0;
-    user-select: none;
 }
 
 /* ====================================
@@ -90,11 +89,11 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--deep-blue);
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     user-select: none;
 
     transition: all 0.25s ease;
@@ -118,18 +117,18 @@
 ======================================= */
 .event-panel.empty
 {
-    margin: 8vh auto;
-    background: rgba(255, 255, 255, 0.88);
+    margin: 10vh auto;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 1rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     padding: 2.5rem;
-    max-width: 520px;
+    max-width: 500px;
     text-align: center;
 }
 
 .no-event
 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--subtle-gray);
     opacity: 0.9;
     font-style: italic;
@@ -153,13 +152,6 @@
     {
         width: 94%;
         padding: 2rem;
-    }
-
-    .close-button
-    {
-        width: 2.25rem;
-        height: 2.25rem;
-        font-size: 1.25rem;
     }
 }
 
