@@ -5,22 +5,24 @@
 ======================================= */
 .time-slot
 {
-    background: #fff;
-    border-radius: 0.75rem;
-    padding: 1rem 1.1rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.7rem;
+    padding: 1rem 1.2rem;
+    background: #fff;
+    border-radius: 0.8rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition: background 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
 .time-slot:hover
 {
     background: rgba(0, 59, 133, 0.05);
     transform: translateY(-1px);
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* ====================================
@@ -29,50 +31,49 @@
 .time-label
 {
     font-family: var(--title-font);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--deep-blue);
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.35rem;
     opacity: 0.9;
 }
 
 /* ====================================
-   Events Section Styling.
+   Event Buttons Styling.
 ======================================= */
 .slot-events
 {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.5rem;
 }
 
-/* ====================================
-    Event Button Styling.
-======================================= */
 .event
 {
     background: linear-gradient(135deg, var(--accent-gold), var(--deep-blue));
     color: #fff;
     border: none;
     border-radius: 1.5rem;
-    padding: 0.45rem 0.9rem;
+    padding: 0.55rem 0.95rem;
     font-size: 0.8rem;
     font-weight: 500;
-    letter-spacing: 0.02rem;
-    cursor: pointer;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
     user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
 
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: transform 0.25s ease,
+                opacity 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
 .event:hover
 {
     transform: translateY(-2px);
-    opacity: 0.9;
+    opacity: 0.95;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .event:focus
@@ -90,7 +91,7 @@
     color: var(--subtle-gray);
     text-align: center;
     font-style: italic;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 /* ====================================
@@ -100,17 +101,17 @@
 {
     .time-slot
     {
-        padding: 0.8rem 0.9rem;
+        padding: 0.85rem 1rem;
     }
 
     .time-label
     {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     .event
     {
         font-size: 0.75rem;
-        padding: 0.35rem 0.75rem;
+        padding: 0.45rem 0.75rem;
     }
 }

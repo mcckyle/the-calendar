@@ -6,16 +6,17 @@
 .week-navigation
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 1.25rem;
     width: 100%;
-    max-width: min(720px, 90vw);
-    position: relative;
+    max-width: 580px;
+    margin: 0 auto;
 
-    color: #fff;
     font-family: var(--title-font);
     font-weight: 600;
     letter-spacing: 0.3px;
+    position: relative;
 }
 
 /* ====================================
@@ -23,39 +24,39 @@
 ======================================= */
 .nav-button
 {
-    width: 2.6rem;
-    height: 2.6rem;
-    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 700;
     cursor: pointer;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(4px);
 
-    transition: all var(--transition-speed);
+    transition: all 0.25s ease;
 }
 
-.nav-button:hover
+.nav-button:hover,
+.nav-button:focus-visible
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: scale(1.08);
-}
-
-.nav-button:focus
-{
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     outline: none;
 }
 
 .nav-button:active
 {
-    transform: scale(0.94);
+    transform: scale(0.95);
 }
 
 /* ====================================
@@ -63,16 +64,13 @@
 ======================================= */
 .month-year
 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    white-space: nowrap;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     pointer-events: none;
-
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    position: relative;
+    color: #fff;
 }
 
 /* Underline Accent Styling. */
@@ -80,12 +78,19 @@
 {
     content: "";
     display: block;
-    width: 40%;
+    width: 36%;
     height: 2px;
-    margin: 0.5rem auto 0;
-    background: linear-gradient(90deg, var(--accent-gold), #fff);
-    opacity: 0.85;
+    margin: 0.4rem auto 0;
+    background: var(--accent-gold);
     border-radius: 2px;
+    opacity: 0.85;
+
+    transition: width 0.3s ease;
+}
+
+.week-navigation:hover .month-year::after
+{
+    width: 54%;
 }
 
 /* ====================================
@@ -93,25 +98,20 @@
 ======================================= */
 @media (max-width: 768px)
 {
-	.week-navigation
-	{
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
-	}
+    .week-navigation
+    {
+        gap: 1rem;
+    }
 
-	.month-year
-	{
-        position: static;
-        transform: none;
-        margin: 0 auto;
+    .month-year
+    {
         font-size: 1.3rem;
     }
 
-	.nav-button
-	{
-        width: 2.2rem;
-        height: 2.2rem;
-        font-size: 1.2rem;
+    .nav-button
+    {
+        width: 2.1rem;
+        height: 2.1rem;
+        font-size: 1.15rem;
     }
 }

@@ -5,62 +5,52 @@
 ======================================= */
 :root
 {
+    color-scheme: light dark;
+
     --title-font: 'Playfair Display', serif;
     --body-font: 'Inter', sans-serif;
 
     /* Colour Palette. */
     --primary-bg: #fafafa; /* Color: Soft-white Background. */
     --secondary-bg: #ffffff; /* Color: Card/Container Background. */
-    --deep-blue: #002f6c;
+    --deep-blue: #003b73;
     --accent-gold: #ffb81c;
     --accent-red: #c8102e;
-    --neutral-gray: #444;
-    --subtle-gray: #e6e6e6;
+    --neutral-gray: #3a3a3a;
+    --subtle-gray: #e4e7eb;
 
-    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
     --border-radius: 14px;
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+
     --transition-speed: 0.25s;
 }
 
 /* ====================================
    Base Layout Styles.
 ======================================= */
-body,
-#root
+html, body, #root
 {
     margin: 0;
     width: 100%;
     min-height: 100vh;
 
-    font-family: var(--body-font);
-    font-size: 16px;
     background: var(--primary-bg);
     color: var(--neutral-gray);
-    line-height: 1.65;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    font-family: var(--body-font);
+    line-height: 1.6;
+    scroll-behavior: smooth;
 
     -webkit-font-smoothing: antialiased;
-}
-
-html, body
-{
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    background: var(--primary-bg);
 }
 
 /* Headings Styling. */
 h1, h2, h3
 {
+    margin: 0 0 0.6rem;
     font-family: var(--title-font);
     color: var(--deep-blue);
-    margin: 0 0 0.6rem;
-    line-height: 1.25;
+    line-height: 1.2;
 }
 
 /* Paragraphs Styles. */
@@ -75,27 +65,29 @@ p
 ======================================= */
 button
 {
-    background: var(--deep-blue);
-    color: #fff;
-
-    border: none;
     border-radius: var(--border-radius);
     padding: 0.6em 1.4em;
-
     font-weight: 500;
+    background: var(--deep-blue);
+    color: #fff;
+    border: none;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
 
-    transition: background var(--transition-speed),
-                transform var(--transition-speed),
-                box-shadow var(--transition-speed);
+    transition: all var(--transition-speed) ease;
 }
 
 button:hover
 {
-    background: #00356f;
+    background: #004184;
+    transform: translateY(-1px);
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+}
+
+button:focus-visible
+{
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
 }
 
 button:active
@@ -119,6 +111,9 @@ a:hover
     color: var(--accent-gold);
 }
 
+/* ====================================
+   Scrollbar Styling.
+======================================= */
 ::-webkit-scrollbar
 {
     height: 10px;
@@ -146,10 +141,11 @@ a:hover
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
 
-    transition: box-shadow var(--transition-speed);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
 }
 
 .container:hover
 {
     box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }

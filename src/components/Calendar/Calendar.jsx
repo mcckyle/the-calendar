@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 16 October 2025
+//Date: 06 November 2025
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from 'react';
@@ -81,24 +81,26 @@ const Calendar = ({ hours }) => {
         <WeekNavigation />
       </header>
 
-      {loading && <p className="calendar-status">Loading events...</p>}
-      {error && <p className="calendar-status error">Error: {error}</p>}
-      
-      <div className="calendar-body">
-        <div className="calendar-grid">
-          <DaysOfWeek weekDays={weekDays} />
-          <div className="week-view">
-            {weekDays.map((day) => (
-              <WeekDayColumn
-                key={day.toDateString()}
-                day={day}
-                groupedEvents={groupEventsByHour(day, normalizedEvents)}
-                onEventClick={handleEventClick}
-                convertTo12HourFormat={convertTo12HourFormat}
-              />
-            ))}
+      <div className="calendar-main">
+        {loading && <p className="calendar-status">Loading events...</p>}
+        {error && <p className="calendar-status error">Error: {error}</p>}
+
+        <div className="calendar-body">
+          <div className="calendar-grid">
+            <DaysOfWeek weekDays={weekDays} />
+            <div className="week-view">
+              {weekDays.map((day) => (
+                <WeekDayColumn
+                  key={day.toDateString()}
+                  day={day}
+                  groupedEvents={groupEventsByHour(day, normalizedEvents)}
+                  onEventClick={handleEventClick}
+                  convertTo12HourFormat={convertTo12HourFormat}
+                />
+              ))}
             </div>
           </div>
+        </div>
       </div>
 
       {/* Conditionally render the EventPanel */}
