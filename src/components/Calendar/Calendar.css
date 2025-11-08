@@ -9,8 +9,10 @@
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
+
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     color: var(--neutral-gray);
+    box-sizing: border-box;
 
     transition: background var(--transition-speed);
 }
@@ -25,18 +27,22 @@
     width: 100%;
     background: var(--deep-blue);
     color: #fff;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: clamp(0.75rem, 2vw, 1.25rem);
-    box-sizing: border-box;
+    padding: 0.85rem 1.25rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    user-select: none;
-
     z-index: 100;
+
+    box-sizing: border-box;
+    user-select: none;
 }
 
+/* ====================================
+   Calendar Main Body Stying.
+======================================= */
 .calendar-main
 {
     flex: 1;
@@ -62,6 +68,8 @@
     box-shadow: var(--shadow-sm);
     max-width: 420px;
     letter-spacing: 0.2px;
+
+    animation: fadeIn 0.4s ease-out;
 }
 
 .calendar-status.error
@@ -80,6 +88,7 @@
     display: flex;
     justify-content: center;
     overflow-x: auto;
+
     scrollbar-width: thin;
     scrollbar-color: var(--accent-gold) transparent;
 }
@@ -100,15 +109,15 @@
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 1.25rem;
+
     width: 100%;
     max-width: 1600px;
-
     padding: 0 clamp(1rem, 3vw, 2rem);
     box-sizing: border-box;
 }
 
 /* ====================================
-   Week View Columns Styling.
+   Week Columns Styling.
 ======================================= */
 .week-view
 {
@@ -133,19 +142,14 @@
 
 @media (max-width: 768px)
 {
-    .calendar-header
+    .calendar-main
     {
-        padding: 0.9rem 1rem;
+        padding: 1.5rem 0.75rem 3rem;
     }
 
     .calendar-status
     {
         font-size: 0.85rem;
-    }
-
-    .calendar-main
-    {
-        padding: 1.5rem 0.75rem 3rem;
     }
 
     .week-view

@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.25rem;
+
     width: 100%;
     max-width: 580px;
     margin: 0 auto;
@@ -16,7 +17,11 @@
     font-family: var(--title-font);
     font-weight: 600;
     letter-spacing: 0.3px;
+    color: #fff;
+
     position: relative;
+    text-align: center;
+    user-select: none;
 }
 
 /* ====================================
@@ -26,19 +31,23 @@
 {
     width: 2.5rem;
     height: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.35);
-
     background: rgba(255, 255, 255, 0.08);
+
     color: #fff;
     font-size: 1.35rem;
     font-weight: 700;
     cursor: pointer;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
+    user-select: none;
+    caret-color: transparent;
 
     transition: all 0.25s ease;
 }
@@ -56,7 +65,7 @@
 
 .nav-button:active
 {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 /* ====================================
@@ -66,11 +75,10 @@
 {
     font-size: 1.55rem;
     font-weight: 700;
-    text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    pointer-events: none;
     position: relative;
-    color: #fff;
+    pointer-events: none;
+    white-space: nowrap;
 }
 
 /* Underline Accent Styling. */
@@ -78,7 +86,7 @@
 {
     content: "";
     display: block;
-    width: 36%;
+    width: 34%;
     height: 2px;
     margin: 0.4rem auto 0;
     background: var(--accent-gold);

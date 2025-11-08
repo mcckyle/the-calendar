@@ -61,7 +61,7 @@ p
 }
 
 /* ====================================
-   Buttons Styling.
+   Buttons Styles.
 ======================================= */
 button
 {
@@ -95,8 +95,15 @@ button:active
     transform: scale(0.98);
 }
 
+/* Prevent Text Cursor on Buttons. */
+button, button *
+{
+    user-select: none;
+    caret-color: transparent;
+}
+
 /* ====================================
-   Links Styling.
+   Links Styles.
 ======================================= */
 a
 {
@@ -112,7 +119,7 @@ a:hover
 }
 
 /* ====================================
-   Scrollbar Styling.
+   Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar
 {
@@ -132,7 +139,7 @@ a:hover
 }
 
 /* ====================================
-   Card Containers Styling.
+   Card Containers Styles.
 ======================================= */
 .container
 {

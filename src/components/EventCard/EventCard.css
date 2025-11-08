@@ -5,17 +5,17 @@
 ======================================= */
 .event-card
 {
-    background: #fff;
+    background: #ffffff;
     border-radius: 1.15rem;
     padding: clamp(1.6rem, 3vw, 2.25rem);
     border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 
     color: var(--text-color);
     font-family: var(--body-font);
-    line-height: 1.7;
+    line-height: 1.65;
 
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .event-card:hover
@@ -54,12 +54,18 @@
     color: #6b7280; /* Color: Gray-500. */
 }
 
+.event-date
+{
+    font-weight: 600;
+    color: var(--deep-blue);
+}
+
 /* ====================================
    Event Description Styling.
 ======================================= */
 .event-card-description
 {
-    margin-top: 1.2rem;
+    margin-top: 1.25rem;
     font-size: 1rem;
     color: #374151; /* Color: Gray-700. */
     white-space: pre-line;
@@ -74,6 +80,7 @@
     margin-top: 1.4rem;
     font-size: 0.9rem;
     color: #4b5563; /* Color: Gray-600. */
+
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -82,7 +89,7 @@
 .venue-label
 {
     color: var(--accent-gold);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
 }
 
 /* ====================================
@@ -94,10 +101,11 @@
     margin-top: 1.4rem;
     font-size: 0.95rem;
     font-weight: 600;
+
     color: var(--accent-gold);
+    letter-spacing: 0.3px;
     text-decoration: none;
     position: relative;
-    letter-spacing: 0.3px;
 
     transition: color 0.25s ease;
 }
@@ -108,9 +116,12 @@
     position: absolute;
     left: 0;
     bottom: -2px;
-    height: 2px;
+
     width: 100%;
+    height: 2px;
+
     background: currentColor;
+    border-radius: 4px;
     transform: scaleX(0);
     transform-origin: left;
 

@@ -7,7 +7,7 @@
 {
     position: fixed;
     inset: 0;
-    background: rgba(10, 15, 35, 0.6);
+    background: rgba(12, 18, 32, 0.58);
     backdrop-filter: blur(18px) saturate(160%);
     z-index: 1500;
 
@@ -23,21 +23,22 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -48%) scale(0.96);
+
     width: min(92%, 820px);
     max-height: 88vh;
     overflow-y: auto;
 
-    background: rgba(255, 255, 255, 0.97);
+    background: #ffffff;
     border-radius: 1.25rem;
-    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(22px);
     padding: clamp(1.75rem, 3vw, 2.5rem);
-
     color: var(--text-color);
-    font-family: var(--body-font);
+
     opacity: 0;
     user-select: none;
     z-index: 2000;
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.22);
 
     transition:
       opacity 0.45s ease,
@@ -61,17 +62,16 @@
 
     margin-bottom: 1.75rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 /* Event Panel Title Styles. */
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.5rem, 2vw, 1.85rem);
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
     font-weight: 700;
     color: var(--deep-blue);
-    letter-spacing: 0.3px;
     margin: 0;
 }
 
@@ -105,10 +105,10 @@
 {
     background: var(--accent-gold);
     color: #fff;
-    transform: rotate(90deg) scale(1.08);
+    transform: rotate(90deg) scale(1.07);
 }
 
-.close-button:focus
+.close-button:focus-visible
 {
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
@@ -121,8 +121,9 @@
 {
     margin: 10vh auto;
     padding: 2rem 2.5rem;
-    background: rgba(255, 255, 255, 0.96);
+    background: #ffffff;
     border-radius: 1rem;
+
     box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
     max-width: 440px;
     text-align: center;
@@ -157,9 +158,10 @@
         border-radius: 1rem;
     }
 
-    .event-panel h2
+    .event-panel-header
     {
-        font-size: 1.25rem;
+        margin-bottom: 1.4rem;
+        padding-bottom: 0.85rem;
     }
 
     .close-button

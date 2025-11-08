@@ -7,11 +7,12 @@
 {
     display: flex;
     flex-direction: column;
-    background: #ffffff;
+    background: #fff;
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     overflow: hidden;
+    will-change: transform, box-shadow;
 
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
@@ -19,10 +20,12 @@
 .weekday-column:hover
 {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Internal Container Styles. */
+/* ====================================
+   Internal Wrapper Styling.
+======================================= */
 .weekday-inner
 {
     display: flex;
@@ -38,10 +41,10 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1.2rem 1rem 1.4rem;
+    padding: 1.25rem 1rem 1.4rem;
     background: linear-gradient(to bottom, #fff, rgba(0, 59, 133, 0.03));
-    overflow-y: auto;
     border-top: 1px solid rgba(0, 0, 0, 0.03);
+    overflow-y: auto;
 
     scrollbar-width: thin;
     scrollbar-color: var(--accent-gold) transparent;
@@ -85,6 +88,6 @@
     .time-slots
     {
         gap: 0.75rem;
-        padding: 1rem 0.75rem;
+        padding: 1rem 0.75rem 1.2rem;
     }
 }

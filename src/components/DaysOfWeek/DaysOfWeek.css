@@ -11,12 +11,13 @@
     justify-items: center;
 
     background: #fff;
-    border-radius: var(--border-radius);
-    padding: 0.75rem 0.25rem;
     border: 1px solid var(--subtle-gray);
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
-
     backdrop-filter: blur(4px);
+    padding: 0.75rem 0.25rem;
+
+    transition: all var(--transition-speed);
 }
 
 /* ====================================
@@ -27,10 +28,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.25rem;
 
-    padding: 0.45rem 0.25rem;
+    padding: 0.5rem 0.25rem;
     border-radius: 10px;
+    cursor: default;
 
     transition: all 0.25s ease;
 }
@@ -38,7 +40,7 @@
 /* Hover Interaction. */
 .day-item:hover
 {
-    background: rgba(0, 59, 115, 0.06);
+    background: rgba(0, 59, 115, 0.05);
     transform: translateY(-1px);
 }
 
@@ -48,11 +50,11 @@
 .day-item.today
 {
     background: var(--deep-blue);
-    color: #fff;
     border: 2px solid var(--accent-gold);
-    transform: scale(1.03);
+    color: #fff;
+    transform: scale(1.02);
 
-    box-shadow: 0 0 8px rgba(0, 59, 115, 0.25);
+    box-shadow: 0 0 10px rgba(0, 59, 115, 0.25);
 }
 
 .day-item.today .day-label,
@@ -62,7 +64,7 @@
 }
 
 /* ====================================
-   Weekday Label Styles.
+   Text Label Styles.
 ======================================= */
 .day-label
 {
