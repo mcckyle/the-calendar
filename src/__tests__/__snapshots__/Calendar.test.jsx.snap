@@ -33,7 +33,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </button>
       </nav>
     </header>
-    <div
+    <main
       class="calendar-main"
     >
       <p
@@ -219,7 +219,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </section>
 </DocumentFragment>
 `;

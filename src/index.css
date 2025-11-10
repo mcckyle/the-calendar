@@ -11,8 +11,8 @@
     --body-font: 'Inter', sans-serif;
 
     /* Colour Palette. */
-    --primary-bg: #fafafa; /* Color: Soft-white Background. */
-    --secondary-bg: #ffffff; /* Color: Card/Container Background. */
+    --primary-bg: #f9fafb;
+    --secondary-bg: #ffffff;
     --deep-blue: #003b73;
     --accent-gold: #ffb81c;
     --accent-red: #c8102e;
@@ -20,8 +20,8 @@
     --subtle-gray: #e4e7eb;
 
     --border-radius: 14px;
-    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
 
     --transition-speed: 0.25s;
 }
@@ -66,7 +66,7 @@ p
 button
 {
     border-radius: var(--border-radius);
-    padding: 0.6em 1.4em;
+    padding: 0.55em 1.35em;
     font-weight: 500;
     background: var(--deep-blue);
     color: #fff;
@@ -92,7 +92,7 @@ button:focus-visible
 
 button:active
 {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 /* Prevent Text Cursor on Buttons. */

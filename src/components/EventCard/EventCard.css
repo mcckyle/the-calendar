@@ -8,8 +8,8 @@
     background: #ffffff;
     border-radius: 1.15rem;
     padding: clamp(1.6rem, 3vw, 2.25rem);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
 
     color: var(--text-color);
     font-family: var(--body-font);
@@ -20,8 +20,8 @@
 
 .event-card:hover
 {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
 }
 
 /* ====================================
@@ -35,10 +35,11 @@
 .event-card-title
 {
     font-family: var(--title-font);
-    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    font-size: clamp(1.4rem, 2vw, 1.65rem);
     font-weight: 600;
     color: var(--deep-blue);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.3px;
 }
 
 /* ====================================
@@ -78,7 +79,7 @@
 .event-card-venue
 {
     margin-top: 1.4rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #4b5563; /* Color: Gray-600. */
 
     display: flex;
@@ -89,7 +90,7 @@
 .venue-label
 {
     color: var(--accent-gold);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
 }
 
 /* ====================================

@@ -11,12 +11,11 @@
     width: 100%;
     min-height: 100vh;
 
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
     padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem);
     box-sizing: border-box;
 
     animation: fadeIn 0.8s ease-out;
-    transition: background var(--transition-speed);
 }
 
 /* ====================================
@@ -37,26 +36,26 @@
     font-size: clamp(2.6rem, 5vw, 3.4rem);
     font-weight: 700;
     letter-spacing: 0.4px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .calendar-tagline
 {
     font-family: var(--body-font);
     font-size: clamp(1.05rem, 1.3vw, 1.15rem);
-    color: rgba(50, 50, 50, 0.9);
+    color: rgba(60, 60, 60, 0.85);
     line-height: 1.75;
     margin: 0 auto;
     max-width: 640px;
     opacity: 0.85;
 
-    transition: opacity var(--transition-speed);
+    transition: opacity 0.3s ease;
 }
 
 .calendar-tagline:hover
@@ -72,7 +71,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    transform: translateY(0);
+    align-items: flex-start
 
     animation: fadeIn 1s ease-out 0.2s both;
 }
@@ -99,7 +98,7 @@
 {
     .calendar-title
     {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
     }
 
     .calendar-tagline

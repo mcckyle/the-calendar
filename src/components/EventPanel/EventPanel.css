@@ -7,11 +7,11 @@
 {
     position: fixed;
     inset: 0;
-    background: rgba(12, 18, 32, 0.58);
-    backdrop-filter: blur(18px) saturate(160%);
+    background: rgba(15, 18, 35, 0.6);
+    backdrop-filter: blur(18px) saturate(180%);
     z-index: 1500;
 
-    animation: fadeIn 0.35s ease forwards;
+    animation: fadeIn 0.4s ease forwards;
 }
 
 /* ====================================
@@ -22,7 +22,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -48%) scale(0.96);
+    transform: translate(-50%, -46%) scale(0.96);
 
     width: min(92%, 820px);
     max-height: 88vh;
@@ -31,17 +31,16 @@
     background: #ffffff;
     border-radius: 1.25rem;
     border: 1px solid rgba(0, 0, 0, 0.04);
-    backdrop-filter: blur(22px);
+    box-shadow: 0 20px 64px rgba(0, 0, 0, 0.25);
     padding: clamp(1.75rem, 3vw, 2.5rem);
     color: var(--text-color);
 
     opacity: 0;
     user-select: none;
     z-index: 2000;
-    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.22);
 
     transition:
-      opacity 0.45s ease,
+      opacity 0.4s ease,
       transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -69,10 +68,11 @@
 .event-panel h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.45rem, 2vw, 1.85rem);
+    font-size: clamp(1.5rem, 2vw, 1.85rem);
     font-weight: 700;
     color: var(--deep-blue);
     margin: 0;
+    letter-spacing: 0.3px;
 }
 
 /* ====================================
@@ -83,8 +83,8 @@
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 50%;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
     display: flex;
     align-items: center;
@@ -94,18 +94,18 @@
     color: var(--deep-blue);
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 
-    transition: transform 0.25s ease,
-                background 0.25s ease,
-                color 0.25s ease;
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease,
 }
 
 .close-button:hover
 {
     background: var(--accent-gold);
     color: #fff;
-    transform: rotate(90deg) scale(1.07);
+    transform: rotate(90deg) scale(1.08);
 }
 
 .close-button:focus-visible
@@ -124,7 +124,7 @@
     background: #ffffff;
     border-radius: 1rem;
 
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 440px;
     text-align: center;
 }
@@ -133,7 +133,7 @@
 {
     font-size: 1rem;
     color: var(--subtle-gray);
-    opacity: 0.85;
+    opacity: 0.9;
     font-style: italic;
 }
 
