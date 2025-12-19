@@ -1,4 +1,4 @@
-/* Filename: index.css */
+/* Filename: src/index.css */
 
 /* ====================================
    Global CSS Variables Styles.
@@ -25,6 +25,8 @@
 
     --transition-speed: 0.25s;
 }
+
+*, *::before, *::after { box-sizing: border-box; }
 
 /* ====================================
    Base Layout Styles.
@@ -66,7 +68,7 @@ p
 button
 {
     border-radius: var(--border-radius);
-    padding: 0.55em 1.35em;
+    padding: 0.5em 1.25em;
     font-weight: 500;
     background: var(--deep-blue);
     color: #fff;
@@ -74,7 +76,9 @@ button
     cursor: pointer;
     box-shadow: var(--shadow-sm);
 
-    transition: all var(--transition-speed) ease;
+    transition: background var(--transition-speed),
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
 }
 
 button:hover
@@ -92,7 +96,7 @@ button:focus-visible
 
 button:active
 {
-    transform: scale(0.97);
+    transform: translateY(0);
 }
 
 /* Prevent Text Cursor on Buttons. */

@@ -1,6 +1,6 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 20 October 2025
+//Date: 19 December 2025
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
@@ -58,16 +58,17 @@ describe("EventCard Component", () => {
     expect(screen.queryByText(/This is a test description./)).toBeNull();
   });
 
-  //Test #7: Displays 'No Start Time' when startTime is invalid.
-//   test("renders fallback text if startTime is invalid.", () => {
-//     const invalidTimeEvent = { ...validEvent, startTime: "invalid-date"};
-//     render(<EventCard {...invalidTimeEvent} />);
-//     expect(screen.getByText(/No Start Time/i)).toBeInTheDocument();
-//   });
+  //Test #7: Does not render start time when startTime is invalid.
+  test("does not render start time if startTime is invalid.", () => {
+    const invalidTimeEvent = { ...validEvent, startTime: "invalid-date" };
+
+    render(<EventCard {...invalidTimeEvent} />);
+    expect(screen.queryByText(/AM|PM/)).toBeNull();
+  });
 
   //Test #8: Displays 'Invalid Date' if date prop is missing or is invalid.
   test("renders 'Invalid Date' for invalid or missing date.", () => {
-    const invalidDateEvent = { ...validEvent, date: ""};
+    const invalidDateEvent = { ...validEvent, date: "" };
     render(<EventCard {...invalidDateEvent} />);
     expect(screen.getByText(/Invalid Date/)).toBeInTheDocument();
   });

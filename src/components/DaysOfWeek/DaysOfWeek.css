@@ -1,4 +1,4 @@
-/* Filename: DaysOfWeek.css */
+/* Filename: src/components/DaysOfWeek/DaysOfWeek.css */
 
 /* ====================================
     Days Of Week Styling.
@@ -8,99 +8,70 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
-    justify-items: center;
 
-    background: #fff;
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+
+    background: #ffffff;
     border: 1px solid var(--subtle-gray);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(4px);
-    padding: 0.75rem 0.25rem;
 
-    transition: all var(--transition-speed);
+    box-sizing: border-box;
 }
 
 /* ====================================
-    Individual Day Styling.
+    Individual Day Cell Styling.
 ======================================= */
 .day-item
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.2rem;
 
-    padding: 0.5rem 0.25rem;
-    border-radius: 10px;
-    cursor: default;
+    padding: 0.45rem 0.25rem;
+    border-radius: 8px;
 
-    transition: all 0.25s ease;
+    text-align: center;
+    user-select: none;
+
+    transition: background 0.2s ease, color 0.2s ease;
 }
-
-/* Hover Interaction. */
-.day-item:hover
-{
-    background: rgba(0, 59, 115, 0.05);
-    transform: translateY(-1px);
-}
+.day-item:hover { background: rgba(0, 59, 115, 0.05); }
 
 /* ====================================
    Today Highlight Styling.
 ======================================= */
-.day-item.today
-{
-    background: var(--deep-blue);
-    border: 2px solid var(--accent-gold);
-    color: #fff;
-    transform: scale(1.02);
 
-    box-shadow: 0 0 10px rgba(0, 59, 115, 0.25);
-}
-
-.day-item.today .day-label,
-.day-item.today .day-date
-{
-    color: #fff;
-}
+.day-item.today { background: var(--deep-blue); color: #ffffff; }
+.day-item.today .day-label { color: #ffffff; }
+.day-item.today .day-date { color: var(--accent-gold); }
 
 /* ====================================
-   Text Label Styles.
+   Text Label Styling.
 ======================================= */
 .day-label
 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
+    letter-spacing: 0.2px;
     color: var(--deep-blue);
 }
 
-/* Date Label Styles. */
+/* Date Label Styling. */
 .day-date
 {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: var(--accent-gold);
 }
 
 /* ====================================
-    Responsive Design Styling.
+   Media Query Styling.
 ======================================= */
-@media (max-width: 900px)
-{
-    .days-of-week
-    {
-        min-width: 1400px;
-    }
-}
-
 @media (max-width: 768px)
 {
-    .day-label
-    {
-        font-size: 0.85rem;
-    }
-
-    .day-date
-    {
-        font-size: 0.75rem;
-    }
+    .day-label { font-size: 0.85rem; }
+    .day-date { font-size: 0.75rem; }
 }

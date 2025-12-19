@@ -1,4 +1,4 @@
-/* Filename: App.css */
+/* Filename: src/App.css */
 
 /* ====================================
    App Container Styling.
@@ -12,10 +12,8 @@
     min-height: 100vh;
 
     background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
-    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem);
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
     box-sizing: border-box;
-
-    animation: fadeIn 0.8s ease-out;
 }
 
 /* ====================================
@@ -24,43 +22,32 @@
 .calendar-intro
 {
     text-align: center;
-    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
     max-width: 880px;
-
-    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.6rem, 5vw, 3.4rem);
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
     font-weight: 700;
-    letter-spacing: 0.4px;
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .calendar-tagline
 {
     font-family: var(--body-font);
-    font-size: clamp(1.05rem, 1.3vw, 1.15rem);
-    color: rgba(60, 60, 60, 0.85);
-    line-height: 1.75;
-    margin: 0 auto;
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    line-height: 1.7;
+
+    color: rgba(60, 60, 60, 0.8);
     max-width: 640px;
-    opacity: 0.85;
-
-    transition: opacity 0.3s ease;
-}
-
-.calendar-tagline:hover
-{
-    opacity: 1;
+    margin: 0 auto;
 }
 
 /* ====================================
@@ -71,24 +58,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-start
-
-    animation: fadeIn 1s ease-out 0.2s both;
-}
-
-/* ====================================
-   Animations Styles.
-======================================= */
-@keyframes fadeIn
-{
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp
-{
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ====================================

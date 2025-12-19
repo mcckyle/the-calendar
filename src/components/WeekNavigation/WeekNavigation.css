@@ -1,25 +1,21 @@
-/* Filename: WeekNavigation.css */
+/* Filename: src/components/WeekNavigation/WeekNavigation.css */
 
-/* ====================================
-    Week Navigation Styling.
-======================================= */
+/* =========================================
+    Week Navigation Container Styling.
+============================================ */
 .week-navigation
 {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1.25rem;
+    justify-content: center;
+    gap: 1.5rem;
+
     width: 100%;
-    max-width: 600px;
+    max-width: 520px;
     margin: 0 auto;
 
     font-family: var(--title-font);
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #fff;
-
-    position: relative;
-    text-align: center;
+    color: #ffffff;
     user-select: none;
 }
 
@@ -28,27 +24,31 @@
 ======================================= */
 .nav-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
 
-    color: #fff;
-    font-size: 1.3rem;
+    color: #ffffff;
+    font-size: 1.25rem;
     font-weight: 700;
-    cursor: pointer;
+    line-height: 1;
 
-    backdrop-filter: blur(8px);
+    cursor: pointer;
     user-select: none;
     caret-color: transparent;
 
-    transition: all 0.25s ease;
+
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
 .nav-button:hover,
@@ -57,14 +57,14 @@
     background: var(--accent-gold);
     color: var(--deep-blue);
     border-color: var(--accent-gold);
-    transform: translateY(-2px);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     outline: none;
 }
 
 .nav-button:active
 {
-    transform: scale(0.96);
+    transform: scale(0.95);
 }
 
 /* ====================================
@@ -72,12 +72,13 @@
 ======================================= */
 .month-year
 {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+
     position: relative;
     pointer-events: none;
-    white-space: nowrap;
 }
 
 /* Underline Accent Styling. */
@@ -85,19 +86,20 @@
 {
     content: "";
     display: block;
-    width: 34%;
+    width: 40%;
     height: 2px;
-    margin: 0.4rem auto 0;
+    margin: 0.35rem auto 0;
+
     background: var(--accent-gold);
     border-radius: 2px;
-    opacity: 0.9;
+    opacity: 0.85;
 
     transition: width 0.3s ease;
 }
 
 .week-navigation:hover .month-year::after
 {
-    width: 54%;
+    width: 60%;
 }
 
 /* ====================================
@@ -105,20 +107,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation
-    {
-        gap: 1rem;
-    }
-
-    .month-year
-    {
-        font-size: 1.3rem;
-    }
-
-    .nav-button
-    {
-        width: 2.1rem;
-        height: 2.1rem;
-        font-size: 1.15rem;
-    }
+    .week-navigation { gap: 1.1rem; }
+    .month-year { font-size: 1.3rem; }
+    .nav-button { width: 2.1rem; height: 2.1rem; font-size: 1.1rem; }
 }

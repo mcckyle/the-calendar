@@ -1,10 +1,10 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 20 October 2025
+//Date: 16 December 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
-import React from 'react';
-import './EventCard.css';
+import React from "react";
+import "./EventCard.css";
 
 const EventCard = ({
 	title,
@@ -17,7 +17,7 @@ const EventCard = ({
 	venueAddress,
 	venueCity,
 	venueState,
-	url
+	url,
   }) => {
 
 	//Normalize the date...
@@ -39,7 +39,7 @@ const EventCard = ({
 
 	//Normalize the start time...
 	let formattedStartTime = "";
-	if ( (!allDay) && (startTime) )
+	if ( ( ! allDay) && (startTime) )
 	{
 		const startObj = startTime instanceof Date ? startTime : new Date(startTime);
 
@@ -54,17 +54,14 @@ const EventCard = ({
 	}
 
 	return (
-	  <article
-	    className="event-card"
-	    role="article"
-	    aria-labelledby={`event-${title}`}
-	  >
+	  <article className="event-card" aria-labelledby={`event-${title}`}>
 		<header className="event-card-header">
-		  <h3 id={`event-${title}`} className="event-card-title">
+		  <h3 id="event-title" className="event-card-title">
 		    {title}
 		  </h3>
+
 		  <p className="event-card-meta">
-		    <span className="event-date">{formattedDate}</span>
+		    <time className="event-date">{formattedDate}</time>
 		    {formattedStartTime && (
 				<span className="event-time"> • {formattedStartTime}</span>
 			)}
@@ -72,23 +69,27 @@ const EventCard = ({
 		</header>
 
 		{description && (
-			<section className="event-card-description">{description}</section>
+			<section className="event-card-description">
+			  {description}
+			</section>
 		)}
 
 		{(venueName || venueAddress || venueCity || venueState) && (
 		  <p className="event-card-venue">
 		    <span className="venue-label" aria-hidden="true">📍</span>
-		    {venueName}
-			{venueAddress && `, ${venueAddress}`}
-			{venueCity && `, ${venueCity}`}
-			{venueState && `, ${venueState}`}
+		    <span>
+				{venueName}
+				{venueAddress && `, ${venueAddress}`}
+				{venueCity && `, ${venueCity}`}
+				{venueState && `, ${venueState}`}
+			</span>
 		  </p>
 		)}
 
 		{url && (
 		  <p className="event-card-link">
 		    <a href={url} target="_blank" rel="noopener noreferrer">
-			  View Event →
+			  View offical event
 			</a>
 		  </p>
 		)}

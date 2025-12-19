@@ -1,33 +1,36 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 13 October 2025
+//Date: 16 December 2025
 //Description: This file contains the row of date labels for the Saint Louis React calendar project.
 
-import React from 'react';
-import './DaysOfWeek.css';
+import React from "react";
+import "./DaysOfWeek.css";
 
 const DaysOfWeek = ({ weekDays = [] }) => {
+  const todayString = new Date().toDateString();
+
   return (
     <div className="days-of-week" role="row">
-      {weekDays.map((day, index) => {
-        const isToday = day.toDateString() === new Date().toDateString();
-        const weekdayLabel = day.toLocaleDateString('en-US', { weekday: 'short' });
-        const dateLabel = day.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        const ariaLabel = day.toLocaleDateString('en-US', {
-          weekday: 'long',
-          month: 'long',
-          day: 'numeric',
-        });
+      {weekDays.map((day) => {
+        const isToday = day.toDateString() === todayString;
 
         return (
           <div
-            key={index}
-            className={`day-item ${isToday ? 'today' : ''}`}
+            key={day.toISOString()}
+            className={`day-item ${isToday ? " today" : ""}`}
             role="columnheader"
-            aria-label={ariaLabel}
+            aria-label={day.toLocaleDateString('en-US', {
+              weekday: 'long',
+              month: 'long',
+              day: 'numeric',
+            })}
           >
-            <span className="day-label">{weekdayLabel}</span>
-            <span className="day-date">{dateLabel}</span>
+            <span className="day-label">
+              {day.toLocaleDateString('en-US', { weekday: 'short' })}
+            </span>
+            <span className="day-date">
+              {day.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+            </span>
           </div>
         );
       })}

@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.test.jsx
 //Author: Kyle McColgan
-//Date: 31 October 2025
+//Date: 19 December 2025
 //Description: This file contains unit tests for the WeekDayColumn.jsx component.
 
 import React from 'react';
@@ -40,20 +40,21 @@ describe('WeekDayColumn', () => {
     jest.clearAllMocks();
   });
 
-  //Test #1: Renders the day header with the correct date.
-//   test('renders the day header with the correct date.', () => {
-//     render(
-//       <WeekDayColumn
-//         day={mockDay}
-//         groupedEvents={mockGroupedEvents}
-//         onEventClick={mockOnEventClick}
-//         convertTo12HourFormat={mockConvertTo12HourFormat}
-//       />
-//     );
-//
-//     // Assert the day header renders the correct date.
-//     expect(screen.getByText(mockDay.toDateString())).toBeInTheDocument();
-//   });
+  //Test #1: Renders the WeekDayColumn component without crashing.
+  test('renders the WeekDayColumn component successfully.', () => {
+    render(
+      <WeekDayColumn
+        day={mockDay}
+        groupedEvents={{}}
+        onEventClick={mockOnEventClick}
+        convertTo12HourFormat={mockConvertTo12HourFormat}
+      />
+    );
+
+    //The component should render exactly one section element.
+    const sections = document.querySelectorAll('section.weekday-column');
+    expect(sections).toHaveLength(1);
+  });
 
   //Test #2: Renders time slots for all hours from 9 AM to 9 PM.
   test('renders time slots for all hours from 9 AM to 9 PM.', () => {

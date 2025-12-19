@@ -32,7 +32,7 @@ To get the project running locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/saint-louis-calendar.git
+   git clone https://github.com/mcckyle/saint-louis-calendar.git
    ```
 
 2. Navigate into the project directory:
@@ -123,7 +123,7 @@ the-calendar/
 
 ## Project Status & Roadmap
 
-- **Current Status**: This project is in its early stages, with a fully functioning calendar interface, event viewing, and month navigation.
+- **Current Status**: This project is in its early stages, with a fully functioning calendar interface, event viewing, and week navigation.
 - **Upcoming Features**:
   - User authentication for adding/editing events.
   - Drag-and-drop event scheduling.

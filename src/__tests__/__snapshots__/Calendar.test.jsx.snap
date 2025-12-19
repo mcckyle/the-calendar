@@ -16,18 +16,21 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         <button
           aria-label="Previous week"
           class="nav-button"
+          type="button"
         >
           ‹
         </button>
         <time
           aria-live="polite"
           class="month-year"
+          datetime="2025-10-26T05:00:00.000Z"
         >
           October 2025
         </time>
         <button
           aria-label="Next week"
           class="nav-button"
+          type="button"
         >
           ›
         </button>
@@ -38,6 +41,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     >
       <p
         class="calendar-status error"
+        role="alert"
       >
         Error: fetch is not defined
       </p>
@@ -133,7 +137,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </div>
             <div
               aria-label="Friday, October 31"
-              class="day-item today"
+              class="day-item  today"
               role="columnheader"
             >
               <span
@@ -164,7 +168,8 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
           </div>
-          <div
+          <section
+            aria-label="Week view"
             class="week-view"
           >
             <div
@@ -216,7 +221,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 Sat Nov 01 2025
               </span>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>

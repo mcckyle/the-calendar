@@ -1,77 +1,67 @@
-/* Filename: Calendar.css */
+/* Filename: src/components/Calendar/Calendar.css */
 
 /* ====================================
-    Calendar Layout Styling.
+    Calendar Container Styling.
 ======================================= */
 .calendar
 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
 
     background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
     color: var(--neutral-gray);
-    overflow-x: hidden;
-    box-sizing: border-box;
-
-    transition: background var(--transition-speed);
 }
 
 /* ====================================
-   Header (Sticky Top Bar) Styling.
+   Sticky Header Styling.
 ======================================= */
 .calendar-header
 {
     position: sticky;
     top: 0;
-    width: 100%;
-    background: var(--deep-blue);
-    color: #fff;
+    z-index: 100;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.9rem 1.25rem;
+
+    padding: 0.85rem 1.25rem;
+    background: var(--deep-blue);
+    color: #fff;
 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    z-index: 50;
     user-select: none;
-    box-sizing: border-box;
 }
 
 /* ====================================
-   Calendar Main Body Stying.
+   Calendar Main Body Styling.
 ======================================= */
 .calendar-main
 {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    width: 100%;
-    padding: clamp(1.75rem, 3vw, 3rem) 1rem 4rem;
-    box-sizing: border-box;
+    padding: clamp(1.75rem, 3vw, 2.75rem) 1rem 3.25rem;
 }
 
 /* ====================================
-   Loading / Error States Stying.
+   Status Messages Styling.
 ======================================= */
 .calendar-status
 {
-    text-align: center;
-    font-size: 0.95rem;
-    padding: 0.9rem 1.2rem;
-    margin: 1.25rem auto;
-
-    border-radius: var(--border-radius);
-    background: #fff;
-    color: var(--neutral-gray);
-    box-shadow: var(--shadow-sm);
+    margin: 1.5rem auto;
+    padding: 0.85rem 1.2rem;
     max-width: 420px;
 
-    animation: fadeIn 0.4s ease-out;
+    font-size: 0.95rem;
+    text-align: center;
+
+    background: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
 }
 
 .calendar-status.error
@@ -82,7 +72,7 @@
 }
 
 /* ====================================
-    Calendar Body and Grid Styling.
+    Calendar Grid Wrapper Styling.
 ======================================= */
 .calendar-body
 {
@@ -90,32 +80,18 @@
     display: flex;
     justify-content: center;
     overflow-x: auto;
-
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-gold) transparent;
-}
-
-.calendar-body::-webkit-scrollbar
-{
-    height: 6px;
-}
-
-.calendar-body::-webkit-scrollbar-thumb
-{
-    background: var(--deep-blue);
-    border-radius: 6px;
 }
 
 .calendar-grid
 {
+    width: 100%;
+    max-width: 1500px;
+
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 1.25rem;
-    width: 100%;
-    max-width: 1600px;
 
     padding: 0 clamp(1rem, 3vw, 2rem);
-    box-sizing: border-box;
 }
 
 /* ====================================
@@ -124,11 +100,9 @@
 .week-view
 {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 1.25rem;
     align-items: start;
-
-    transition: transform var(--transition-speed);
 }
 
 /* ====================================
@@ -136,26 +110,11 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view
-    {
-        min-width: 1400px;
-    }
+    .week-view { min-width: 1320px; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-main
-    {
-        padding: 1.5rem 0.75rem 3rem;
-    }
-
-    .calendar-status
-    {
-        font-size: 0.85rem;
-    }
-
-    .week-view
-    {
-        min-width: 1200px;
-    }
+    .calendar-main { padding: 1.5rem 0.75rem 3rem; }
+    .week-view { min-width: 1200px; }
 }

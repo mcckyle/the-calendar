@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 31 October 2025
+//Date: 16 December 2025
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -82,8 +82,8 @@ describe('TimeSlot', () => {
       />
     );
 
-    // Assert that the "No events" placeholder is rendered.
-    expect(screen.getByText('No events!')).toBeInTheDocument();
+    // Assert that the placeholder is rendered successfully.
+    expect(screen.getByText('-')).toBeInTheDocument();
   });
 
   //Test #5: Div has aria-label based on the time label.
@@ -96,7 +96,7 @@ describe('TimeSlot', () => {
       />
     );
 
-    const div = screen.getByLabelText(/Time Slot: 11:00 AM/i);
+    const div = screen.getByLabelText(/Time slot at 11:00 AM/i);
     expect(div).toBeInTheDocument();
   });
 

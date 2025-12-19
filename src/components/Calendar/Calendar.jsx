@@ -1,30 +1,30 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 9 November 2025
+//Date: 16 December 2025
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
-import React, { useState, useEffect } from 'react';
-import { useCalendarContext } from './CalendarContext';
+import React, { useState, useEffect } from "react";
+import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
+
 import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
-import events from '../../data/events.json';
-import EventPanel from '../EventPanel/EventPanel.jsx';
-import WeekNavigation from '../WeekNavigation/WeekNavigation.jsx';
-import WeekDayColumn from '../WeekDayColumn/WeekDayColumn.jsx';
+import WeekNavigation from "../WeekNavigation/WeekNavigation.jsx";
+import WeekDayColumn from "../WeekDayColumn/WeekDayColumn.jsx";
+import EventPanel from "../EventPanel/EventPanel.jsx";
 
 import {
-	convertTo12HourFormat,
-	groupEventsByHour,
+  convertTo12HourFormat,
+  groupEventsByHour,
 } from "../../utils/eventUtils";
 
 import './Calendar.css';
 
 const Calendar = ({ hours }) => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [showEventPanel, setShowEventPanel] = useState(false);
-  const [weekDays, setWeekDays] = useState([]);
   const { currentDate } = useCalendarContext();
+
+  const [weekDays, setWeekDays] = useState([]);
   const [normalizedEvents, setNormalizedEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
@@ -35,45 +35,31 @@ const Calendar = ({ hours }) => {
   const weekEndISO = weekEnd.toISOString().split("T")[0];
 
   //Fetch the events...
-  const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
+  const { events, loading, error } = useEvents(
+    apiUrl,
+    weekStart,
+    weekEndISO
+  );
 
+  //Normalize the events...
   useEffect(() => {
-    if ( (events) && (events.length > 0) )
-    {
-      //const normalized = normalizeEvents(events);
-      console.log("Normalized Events from hook:", events); //For debugging purposes...
-      setNormalizedEvents(events);
-    }
-    else
-    {
-      setNormalizedEvents([]); //Clear if no events found...
-    }
+    setNormalizedEvents(events?.length ? events : []);
   }, [events]);
 
   //Generate the seven days of the week based on CalendarContext.jsx.
   useEffect(() => {
-    const generateWeekDays = () => {
-      const weekDaysArray = Array.from({ length: 7 }, (_, i) => {
-        const day = new Date(currentDate);
-        day.setDate(currentDate.getDate() + i);
-        return day;
-      });
-      setWeekDays(weekDaysArray);
-      console.log("Week Dates:", weekDaysArray); // Log to verify correct week days.
-    };
+    const days = Array.from({ length: 7 }, (_, i) => {
+      const day = new Date(currentDate);
+      day.setDate(currentDate.getDate() + i);
+      return day;
+    });
 
-    generateWeekDays();
+    setWeekDays(days);
+    console.log("Week Dates:", days); // Log to verify correct week days.
   }, [currentDate]);
 
-  const handleEventClick = (event) => {
-    setSelectedEvent(event);
-    setShowEventPanel(true); // Open the event panel.
-  };
-
-  const closeEventPanel = () => {
-    setShowEventPanel(false);
-    setSelectedEvent(null);
-  };
+  const handleEventClick = (event) => setSelectedEvent(event);
+  const closeEventPanel = () => setSelectedEvent(null);
 
   return (
     <section className="calendar" aria-label="Weekly Event Calendar">
@@ -82,13 +68,14 @@ const Calendar = ({ hours }) => {
       </header>
 
       <main className="calendar-main">
-        {loading && <p className="calendar-status">Loading events...</p>}
-        {error && <p className="calendar-status error">Error: {error}</p>}
+        {loading && <p className="calendar-status" role="status">Loading events...</p>}
+        {error && <p className="calendar-status error" role="alert">Error: {error}</p>}
 
         <div className="calendar-body">
           <div className="calendar-grid">
             <DaysOfWeek weekDays={weekDays} />
-            <div className="week-view">
+
+            <section className="week-view" aria-label="Week view">
               {weekDays.map((day) => (
                 <WeekDayColumn
                   key={day.toDateString()}
@@ -98,14 +85,17 @@ const Calendar = ({ hours }) => {
                   convertTo12HourFormat={convertTo12HourFormat}
                 />
               ))}
-            </div>
+            </section>
           </div>
         </div>
       </main>
 
       {/* Conditionally render the EventPanel */}
-      {showEventPanel && (
-        <EventPanel selectedEvent={selectedEvent} onClose={closeEventPanel} />
+      {selectedEvent && (
+        <EventPanel
+          selectedEvent={selectedEvent}
+          onClose={closeEventPanel}
+        />
       )}
     </section>
   );

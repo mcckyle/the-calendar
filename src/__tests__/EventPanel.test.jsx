@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
+//Date: 16 December 2025
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
@@ -38,7 +38,7 @@ describe("EventPanel Component", () => {
   //Test #1: Renders "No event selected" when selectedEvent is null.
   test("renders fallback message when no event is selected.", () => {
     render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
-    expect(screen.getByText(/No event selected/i)).toBeInTheDocument();
+    expect(screen.getByText(/Select an event to view details!/i)).toBeInTheDocument();
   });
 
   //Test #2: Does not render EventCard when no event is selected.
@@ -98,7 +98,7 @@ describe("EventPanel Component", () => {
 
     const dialog = screen.getByRole('dialog');
 
-    expect(dialog).toHaveAttribute('aria-labelledby', 'eventDetailsTitle');
+    expect(dialog).toHaveAttribute('aria-labelledby', 'event-panel-title');
   });
 
   //Test #9: Handles missing event details gracefully (renders defaults).
