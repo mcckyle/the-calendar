@@ -23,7 +23,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         <time
           aria-live="polite"
           class="month-year"
-          datetime="2025-10-26T05:00:00.000Z"
+          datetime="2025-10-26"
         >
           October 2025
         </time>
