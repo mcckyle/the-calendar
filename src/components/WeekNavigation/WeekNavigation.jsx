@@ -32,6 +32,7 @@ const WeekNavigation = () => {
         className="month-year"
         dateTime={dateISO}
         aria-live="polite"
+        aria-current="date"
       >
         {monthYearLabel}
       </time>

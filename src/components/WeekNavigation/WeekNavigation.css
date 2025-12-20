@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 
     width: 100%;
     max-width: 520px;
@@ -16,7 +16,6 @@
 
     font-family: var(--title-font);
     color: #ffffff;
-    user-select: none;
 }
 
 /* ====================================
@@ -24,29 +23,25 @@
 ======================================= */
 .nav-button
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.35rem;
+    height: 2.35rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
 
     color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
     line-height: 1;
 
     cursor: pointer;
-    user-select: none;
-    caret-color: transparent;
 
-
-    transition: background 0.25s ease,
-                color 0.25s ease,
+    transition: background var(--transition-speed),
+                color var(--transition-speed),
                 transform 0.2s ease,
                 box-shadow 0.2s ease;
 }
@@ -54,18 +49,13 @@
 .nav-button:hover,
 .nav-button:focus-visible
 {
-    background: var(--accent-gold);
-    color: var(--deep-blue);
-    border-color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--accent-gold);
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     outline: none;
 }
-
-.nav-button:active
-{
-    transform: scale(0.95);
-}
+.nav-button:active { transform: translateY(0); }
 
 /* ====================================
    Month / Year Text Label Styling.
@@ -74,10 +64,11 @@
 {
     font-size: 1.45rem;
     font-weight: 700;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.3px;
     white-space: nowrap;
 
     position: relative;
+    padding-bottom: 0.35rem;
     pointer-events: none;
 }
 
@@ -85,29 +76,28 @@
 .month-year::after
 {
     content: "";
-    display: block;
-    width: 40%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: 38%;
     height: 2px;
-    margin: 0.35rem auto 0;
+    transform: translateX(-50%);
 
     background: var(--accent-gold);
     border-radius: 2px;
     opacity: 0.85;
 
-    transition: width 0.3s ease;
+    transition: width 0.25s ease;
 }
-
-.week-navigation:hover .month-year::after
-{
-    width: 60%;
-}
+.week-navigation:hover .month-year::after { width: 55%; }
 
 /* ====================================
-    Responsive Design Styling.
+   Media Query Styling.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 1.1rem; }
-    .month-year { font-size: 1.3rem; }
-    .nav-button { width: 2.1rem; height: 2.1rem; font-size: 1.1rem; }
+    .week-navigation { gap: 1rem; }
+    .month-year { font-size: 1.25rem; }
+    .nav-button { width: 2.1rem; height: 2.1rem; font-size: 1.15rem; }
 }

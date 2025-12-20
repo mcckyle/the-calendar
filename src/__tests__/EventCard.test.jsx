@@ -77,7 +77,7 @@ describe("EventCard Component", () => {
   test("component has proper role and an accessible label.", () => {
     render(<EventCard {...validEvent} />);
     const article = screen.getByRole("article");
-    expect(article).toHaveAttribute("aria-labelledby", "event-Sample Event");
+    expect(article).toHaveAttribute("aria-labelledby", "event-card-title");
   });
 
   //Test #10: Snapshot test for UI consistency purposes.

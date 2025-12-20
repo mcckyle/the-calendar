@@ -11,7 +11,7 @@
     --body-font: 'Inter', sans-serif;
 
     /* Colour Palette. */
-    --primary-bg: #f9fafb;
+    --primary-bg: #f4f7fb;
     --secondary-bg: #ffffff;
     --deep-blue: #003b73;
     --accent-gold: #ffb81c;
@@ -19,9 +19,9 @@
     --neutral-gray: #3a3a3a;
     --subtle-gray: #e4e7eb;
 
-    --border-radius: 14px;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+    --border-radius: 16px;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
 
     --transition-speed: 0.25s;
 }
@@ -56,11 +56,7 @@ h1, h2, h3
 }
 
 /* Paragraphs Styles. */
-p
-{
-    margin: 0 0 1.25rem;
-    max-width: 65ch;
-}
+p { margin: 0 0 1.25rem; max-width: 65ch; }
 
 /* ====================================
    Buttons Styles.
@@ -68,7 +64,7 @@ p
 button
 {
     border-radius: var(--border-radius);
-    padding: 0.5em 1.25em;
+    padding: 0.55em 1.25em;
     font-weight: 500;
     background: var(--deep-blue);
     color: #fff;
@@ -93,18 +89,10 @@ button:focus-visible
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
 }
-
-button:active
-{
-    transform: translateY(0);
-}
+button:active { transform: translateY(0); }
 
 /* Prevent Text Cursor on Buttons. */
-button, button *
-{
-    user-select: none;
-    caret-color: transparent;
-}
+button, button * { user-select: none; caret-color: transparent; }
 
 /* ====================================
    Links Styles.
@@ -116,47 +104,11 @@ a
 
     transition: color var(--transition-speed);
 }
-
-a:hover
-{
-    color: var(--accent-gold);
-}
+a:hover { color: var(--accent-gold); }
 
 /* ====================================
    Scrollbars Styles.
 ======================================= */
-::-webkit-scrollbar
-{
-    height: 10px;
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb
-{
-    background: var(--deep-blue);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover
-{
-    background: var(--accent-gold);
-}
-
-/* ====================================
-   Card Containers Styles.
-======================================= */
-.container
-{
-    background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
-
-    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
-}
-
-.container:hover
-{
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-}
+::-webkit-scrollbar { height: 10px; width: 10px; }
+::-webkit-scrollbar-thumb { background: var(--deep-blue); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }

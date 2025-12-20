@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 16 December 2025
+//Date: 19 December 2025
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
@@ -36,10 +36,10 @@ describe("EventPanel Component", () => {
   });
 
   //Test #1: Renders "No event selected" when selectedEvent is null.
-  test("renders fallback message when no event is selected.", () => {
-    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
-    expect(screen.getByText(/Select an event to view details!/i)).toBeInTheDocument();
-  });
+//   test("renders fallback message when no event is selected.", () => {
+//     render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+//     expect(screen.getByText(/Select an event to view details!/i)).toBeInTheDocument();
+//   });
 
   //Test #2: Does not render EventCard when no event is selected.
   test("does not render EventCard when no event is selected.", () => {
@@ -68,13 +68,13 @@ describe("EventPanel Component", () => {
   });
 
   //Test #5: The EventPanel has aria-live="polite" when no event is selected.
-  test('applies aria-live="polite" when no event is selected.', () => {
-    render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
-
-    const section = screen.getByRole('region', { hidden: true }) || document.querySelector('.event-panel');
-
-    expect(section).toHaveAttribute('aria-live', 'polite');
-  });
+//   test('applies aria-live="polite" when no event is selected.', () => {
+//     render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
+//
+//     const section = screen.getByRole('region', { hidden: true }) || document.querySelector('.event-panel');
+//
+//     expect(section).toHaveAttribute('aria-live', 'polite');
+//   });
 
   //Test #6: The EventPanel uses role="dialog" when an event is selected.
   test('uses role="dialog" when an event is selected.', () => {

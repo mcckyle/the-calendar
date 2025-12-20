@@ -1,7 +1,7 @@
 /* Filename: src/App.css */
 
 /* ====================================
-   App Container Styling.
+   App Container Styles.
 ======================================= */
 .app
 {
@@ -11,25 +11,25 @@
     width: 100%;
     min-height: 100vh;
 
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
     padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
     box-sizing: border-box;
 }
 
 /* ====================================
-   Calendar Intro Section Styling.
+   Calendar Intro Section Styles.
 ======================================= */
 .calendar-intro
 {
     text-align: center;
-    margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
-    max-width: 880px;
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    max-width: 900px;
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.4rem, 5vw, 3.2rem);
+    font-size: clamp(2.6rem, 6vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 0.75rem;
     letter-spacing: 0.3px;
@@ -42,11 +42,11 @@
 .calendar-tagline
 {
     font-family: var(--body-font);
-    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
-    line-height: 1.7;
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    line-height: 1.8;
 
-    color: rgba(60, 60, 60, 0.8);
-    max-width: 640px;
+    color: rgba(60, 60, 60, 0.85);
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -58,6 +58,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
 /* ====================================
@@ -65,19 +69,8 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .calendar-title
-    {
-        font-size: 2.1rem;
-    }
-
-    .calendar-tagline
-    {
-        font-size: 1rem;
-        max-width: 90%;
-    }
-
-    .app
-    {
-        padding: 1.75rem 1rem 3rem;
-    }
+    .calendar-title { font-size: 2.2rem; }
+    .calendar-tagline { font-size: 1rem; max-width: 90%; }
+    .app { padding: 2rem 1rem 3rem; }
+    .calendar-wrapper { padding: 1rem; }
 }

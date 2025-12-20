@@ -21,6 +21,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           ‹
         </button>
         <time
+          aria-current="date"
           aria-live="polite"
           class="month-year"
           datetime="2025-10-26"
@@ -43,7 +44,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         class="calendar-status error"
         role="alert"
       >
-        Error: fetch is not defined
+        fetch is not defined
       </p>
       <div
         class="calendar-body"
@@ -136,6 +137,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
+              aria-current="date"
               aria-label="Friday, October 31"
               class="day-item  today"
               role="columnheader"

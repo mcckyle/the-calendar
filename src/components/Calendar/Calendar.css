@@ -9,8 +9,9 @@
     flex-direction: column;
     width: 100%;
 
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
     color: var(--neutral-gray);
+    font-family: var(--body-font);
 }
 
 /* ====================================
@@ -25,12 +26,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.85rem 1.5rem;
 
-    padding: 0.85rem 1.25rem;
     background: var(--deep-blue);
     color: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     user-select: none;
 }
 
@@ -44,7 +47,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(1.75rem, 3vw, 2.75rem) 1rem 3.25rem;
+    padding: clamp(1.75rem, 3vw, 2.75rem) 1rem 3.5rem;
 }
 
 /* ====================================
@@ -53,8 +56,8 @@
 .calendar-status
 {
     margin: 1.5rem auto;
-    padding: 0.85rem 1.2rem;
-    max-width: 420px;
+    padding: 1rem 1.25rem;
+    max-width: 440px;
 
     font-size: 0.95rem;
     text-align: center;
@@ -62,6 +65,7 @@
     background: #ffffff;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
+    color: var(--neutral-gray);
 }
 
 .calendar-status.error
@@ -80,6 +84,7 @@
     display: flex;
     justify-content: center;
     overflow-x: auto;
+    padding-bottom: 2rem;
 }
 
 .calendar-grid
@@ -89,7 +94,7 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
 
     padding: 0 clamp(1rem, 3vw, 2rem);
 }
@@ -101,20 +106,27 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
     align-items: start;
 }
+
+/* ====================================
+   Scrollbars Styles.
+======================================= */
+.calendar-body::-webkit-scrollbar { height: 10px; }
+.calendar-body::-webkit-scrollbar-thumb { background: var(--deep-blue); border-radius: 10px; }
+.calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================
    Media Queries Styling.
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view { min-width: 1320px; }
+    .week-view { min-width: 1400px; }
 }
 
 @media (max-width: 768px)
 {
     .calendar-main { padding: 1.5rem 0.75rem 3rem; }
-    .week-view { min-width: 1200px; }
+    .week-view { min-width: 1200px; gap: 1rem; }
 }

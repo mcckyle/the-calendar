@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 16 December 2025
+//Date: 19 December 2025
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -43,7 +43,7 @@ const EventCard = ({
 	{
 		const startObj = startTime instanceof Date ? startTime : new Date(startTime);
 
-		if(!isNaN(startObj.getTime()))
+		if ( !isNaN(startObj.getTime()))
 		{
 			formattedStartTime = startObj.toLocaleTimeString("en-US", {
 				hour: "2-digit",
@@ -54,16 +54,16 @@ const EventCard = ({
 	}
 
 	return (
-	  <article className="event-card" aria-labelledby={`event-${title}`}>
+	  <article className="event-card" aria-labelledby="event-card-title">
 		<header className="event-card-header">
-		  <h3 id="event-title" className="event-card-title">
+		  <h3 id="event-card-title" className="event-card-title">
 		    {title}
 		  </h3>
 
 		  <p className="event-card-meta">
 		    <time className="event-date">{formattedDate}</time>
 		    {formattedStartTime && (
-				<span className="event-time"> • {formattedStartTime}</span>
+				<span className="event-time">• {formattedStartTime}</span>
 			)}
 		  </p>
 		</header>
@@ -89,7 +89,7 @@ const EventCard = ({
 		{url && (
 		  <p className="event-card-link">
 		    <a href={url} target="_blank" rel="noopener noreferrer">
-			  View offical event
+			  View official event
 			</a>
 		  </p>
 		)}

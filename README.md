@@ -22,7 +22,7 @@ The **Saint Louis Calendar** is a React-based calendar, with the aim of providin
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20251027_181451.png)
+![Calendar Screenshot](./public/images/Screenshot_20251219_235252.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
