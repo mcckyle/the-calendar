@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 26 December 2025
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React from "react";

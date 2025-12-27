@@ -41,7 +41,6 @@ html, body, #root
     color: var(--neutral-gray);
     font-family: var(--body-font);
     line-height: 1.6;
-    scroll-behavior: smooth;
 
     -webkit-font-smoothing: antialiased;
 }
@@ -56,32 +55,18 @@ h1, h2, h3
 }
 
 /* Paragraphs Styles. */
-p { margin: 0 0 1.25rem; max-width: 65ch; }
+p { margin: 0; }
 
 /* ====================================
-   Buttons Styles.
+   Buttons (Base Only) Styles.
 ======================================= */
 button
 {
-    border-radius: var(--border-radius);
-    padding: 0.55em 1.25em;
-    font-weight: 500;
-    background: var(--deep-blue);
-    color: #fff;
+    font-family: inherit;
     border: none;
+    background: none;
+    padding: 0;
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
-
-    transition: background var(--transition-speed),
-                transform var(--transition-speed),
-                box-shadow var(--transition-speed);
-}
-
-button:hover
-{
-    background: #004184;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
 }
 
 button:focus-visible
@@ -89,7 +74,6 @@ button:focus-visible
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
 }
-button:active { transform: translateY(0); }
 
 /* Prevent Text Cursor on Buttons. */
 button, button * { user-select: none; caret-color: transparent; }

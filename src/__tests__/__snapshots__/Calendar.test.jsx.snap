@@ -139,7 +139,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             <div
               aria-current="date"
               aria-label="Friday, October 31"
-              class="day-item  today"
+              class="day-item today"
               role="columnheader"
             >
               <span

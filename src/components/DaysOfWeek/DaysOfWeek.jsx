@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 26 December 2025
 //Description: This file contains the row of date labels for the Saint Louis React calendar project.
 
 import React from "react";
@@ -17,20 +17,20 @@ const DaysOfWeek = ({ weekDays = [] }) => {
         return (
           <div
             key={day.toISOString()}
-            className={`day-item ${isToday ? " today" : ""}`}
+            className={`day-item ${isToday ? "today" : ""}`}
             role="columnheader"
             aria-current={isToday ? "date" : undefined}
-            aria-label={day.toLocaleDateString('en-US', {
-              weekday: 'long',
-              month: 'long',
-              day: 'numeric',
+            aria-label={day.toLocaleDateString("en-US", {
+              weekday: "long",
+              month: "long",
+              day: "numeric",
             })}
           >
             <span className="day-label">
-              {day.toLocaleDateString('en-US', { weekday: 'short' })}
+              {day.toLocaleDateString("en-US", { weekday: "short" })}
             </span>
             <span className="day-date">
-              {day.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              {day.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
             </span>
           </div>
         );
