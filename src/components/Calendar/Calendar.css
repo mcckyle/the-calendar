@@ -31,7 +31,7 @@
 
     background: var(--deep-blue);
     color: #ffffff;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
 
@@ -39,7 +39,7 @@
 }
 
 /* =========================================
-   Calendar Main Content Area Styling.
+   Calendar Main Content Styling.
 ============================================ */
 .calendar-main
 {
@@ -86,6 +86,7 @@
     justify-content: center;
     overflow-x: auto;
     padding-bottom: 1.75rem;
+    scroll-behavior: smooth;
 }
 
 /* ====================================

@@ -10,11 +10,12 @@
     align-items: center;
 
     width: 100%;
-    padding: 0.7rem 0.5rem;
+    padding: 0.8rem 0.5rem;
 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
+    gap: 0.25rem;
 }
 
 /* ====================================
@@ -25,25 +26,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.15rem;
+    gap: 0.1rem;
 
-    padding: 0.45rem 0.25rem;
-    border-radius: 10px;
+    padding: 0.5rem 0.3rem;
+    border-radius: 12px;
 
     text-align: center;
+    cursor: default;
     user-select: none;
 
-    transition: background var(--transition-speed), transform 0.15s ease;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
-.day-item:hover { background: rgba(0, 59, 115, 0.06); transform: translateY(-1px); }
+.day-item:hover { background: rgba(0, 59, 115, 0.08); transform: translateY(-2px); box-shadow: 0 2px 6px rgba(0, 59, 115, 0.12); }
 
 /* ====================================
    Today Highlight Styling.
 ======================================= */
 
-.day-item.today { background: rgba(0, 59, 115, 0.08); }
+.day-item.today { background: linear-gradient(135deg, rgba(0, 59, 115, 0.12), rgba(255, 184, 28, 0.08)); box-shadow: 0 4px 12px rgba(0, 59, 115, 0.15); }
 .day-item.today .day-label { color: var(--deep-blue); font-weight: 700; }
-.day-item.today .day-date { color: var(--accent-gold); font-weight: 600; }
+.day-item.today .day-date { color: var(--accent-gold); font-weight: 700; }
 
 /* ====================================
    Day Text Label Styling.
@@ -74,4 +76,5 @@
 {
     .day-label { font-size: 0.75rem; }
     .day-date { font-size: 0.72rem; }
+    .day-item { padding: 0.45rem 0.25rem; border-radius: 10px; }
 }

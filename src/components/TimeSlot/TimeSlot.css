@@ -7,16 +7,16 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    padding: 0.8rem 0.85rem;
+    gap: 0.6rem;
+    padding: 0.85rem 0.9rem;
 
     background: var(--secondary-bg);
-    border-radius: 0.85rem;
+    border-radius: 1rem;
     box-shadow: var(--shadow-sm);
 
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.time-slot:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+.time-slot:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09); }
 
 /* ====================================
     Time Label Styling.
@@ -27,10 +27,10 @@
     font-size: 0.825rem;
     font-weight: 600;
     color: var(--deep-blue);
-    opacity: 0.75;
+    opacity: 0.8;
 
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.035);
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba(0, 59, 115, 0.08);
     user-select: none;
 }
 
@@ -41,7 +41,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.5rem;
 }
 
 /* ====================================
@@ -66,16 +66,16 @@
     user-select: none;
     caret-color: transparent;
 
-    transition: transform 0.18s ease,
-                box-shadow 0.18s ease,
-                background 0.18s ease;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
 }
 
 .event:hover
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 .event:active { transform: scale(0.97); }
 
@@ -91,11 +91,9 @@
 .slot-empty
 {
     font-size: 0.85rem;
-    line-height: 1;
-
     text-align: center;
     color: var(--subtle-gray);
-    opacity: 0.35;
+    opacity: 0.4;
 
     user-select: none;
     pointer-events: none;
