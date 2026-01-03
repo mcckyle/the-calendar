@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 31 December 2025
 //Description: This file contains the event modal for the Saint Louis React calendar project.
 
 import React from "react";
@@ -41,21 +41,22 @@ const EventPanel = ({ selectedEvent, onClose }) => {
           </button>
         </header>
 
-
-        {/* Use EventCard to display the selected event */}
-        <EventCard
-          title={selectedEvent.title || "Untitled Event"}
-          date={selectedEvent.date}
-          startTime={selectedEvent.startTime}
-          endTime={selectedEvent.endTime}
-          allDay={selectedEvent.allDay}
-          description={selectedEvent.description}
-          venueName={selectedEvent.venueName}
-          venueAddress={selectedEvent.venueAddress}
-          venueCity={selectedEvent.venueCity}
-          venueState={selectedEvent.venueState}
-          url={selectedEvent.url}
-        />
+        <div className="event-panel-body">
+          {/* Use EventCard to display the selected event */}
+          <EventCard
+            title={selectedEvent.title || "Untitled Event"}
+            date={selectedEvent.date}
+            startTime={selectedEvent.startTime}
+            endTime={selectedEvent.endTime}
+            allDay={selectedEvent.allDay}
+            description={selectedEvent.description}
+            venueName={selectedEvent.venueName}
+            venueAddress={selectedEvent.venueAddress}
+            venueCity={selectedEvent.venueCity}
+            venueState={selectedEvent.venueState}
+            url={selectedEvent.url}
+          />
+        </div>
       </section>
     </div>
   );

@@ -15,7 +15,7 @@ exports[`EventCard Component matches snapshot. 1`] = `
       >
         Sample Event
       </h3>
-      <p
+      <div
         class="event-card-meta"
       >
         <time
@@ -28,7 +28,7 @@ exports[`EventCard Component matches snapshot. 1`] = `
         >
           • 03:00 PM
         </span>
-      </p>
+      </div>
     </header>
     <section
       class="event-card-description"

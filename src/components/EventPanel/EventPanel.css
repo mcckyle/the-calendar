@@ -1,7 +1,7 @@
 /* Filename: src/components/EventPanel/EventPanel.css */
 
 /* ====================================
-   Event Modal Root Container Styling.
+   Event Modal Root Styling.
 ======================================= */
 .event-modal-root
 {
@@ -9,9 +9,8 @@
     inset: 0;
     z-index: 2000;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 }
 
 /* ====================================
@@ -21,14 +20,15 @@
 {
     position: absolute;
     inset: 0;
-    background: rgba(15, 18, 35, 0.4);
-    backdrop-filter: blur(7px);
 
-    transition: opacity 0.3s ease;
+    background: rgba(10, 12, 25, 0.35);
+    backdrop-filter: blur(10px);
+
+    animation: fadeIn 0.25s ease;
 }
 
 /* ====================================
-   Modal Panel Styling.
+   Event Panel Styling.
 ======================================= */
 .event-panel
 {
@@ -38,18 +38,17 @@
     overflow-y: auto;
 
     background: var(--secondary-bg);
-    border-radius: 1.4rem;
+    border-radius: 1.5rem;
 
-    padding: clamp(1.5rem, 3vw, 2.4rem);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22), 0 4px 14px rgba(0, 0, 0, 0.08);
 
     opacity: 0;
-    transform: translateY(18px) scale(0.97);
-    pointer-events: auto;
+    transform: translateY(20px) scale(0.96);
 
     transition:
-      opacity 0.3s ease,
-      transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .event-panel.visible
@@ -64,23 +63,33 @@
 .event-panel-header
 {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
-    margin-bottom: 1.6rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Event Panel Title Styles. */
 .event-panel-header h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.5rem, 2vw, 1.75rem);
+    font-size: clamp(1.55rem, 2vw, 1.85rem);
     font-weight: 700;
+    letter-spacing: -0.015em;
     color: var(--deep-blue);
     margin: 0;
-    line-height: 1.2;
+}
+
+/* ====================================
+   Event Panel Body Styling.
+======================================= */
+.event-panel-body
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 }
 
 /* ====================================
@@ -88,35 +97,41 @@
 ======================================= */
 .close-button
 {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.03);
-
-    font-size: 1.35rem;
+    background: rgba(0, 0, 0, 0.04);
     color: var(--deep-blue);
+
+    font-size: 1.3rem;
+    line-height: 1;
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .close-button:hover
 {
-    background: rgba(255, 184, 28, 0.15);
-    transform: scale(1.12);
+    background: rgba(255, 184, 28, 0.18);
     color: var(--accent-gold);
+    transform: scale(1.1);
 }
 
 .close-button:focus-visible
 {
     outline: 2px solid var(--accent-gold);
-    outline-offset: 3px;
+    outline-offset: 4px;
+}
+
+@keyframes fadeIn
+{
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ====================================
@@ -124,7 +139,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-panel { width: 94%; padding: 1.5rem; border-radius: 1.2rem; }
-    .event-panel-header h2 { font-size: 1.4rem; }
-    .close-button { width: 2rem; height: 2rem; font-size: 1.25rem; }
+    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.25rem; }
+    .event-panel-header h2 { font-size: 1.45rem; }
+    .close-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
 }
