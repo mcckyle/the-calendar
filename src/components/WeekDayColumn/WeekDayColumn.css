@@ -8,11 +8,14 @@
     display: flex;
     flex-direction: column;
 
-    background: var(--secondary-bg);
+    background: linear-gradient(145deg, #ffffff, #f4f7fb);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
+.weekday-column:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
     Time Slots Container Styling.
@@ -23,20 +26,23 @@
     flex-direction: column;
     gap: 0.6rem;
 
-    padding: 0.9rem 0.75rem;
-    background: #ffffff;
+    padding: 1rem 0.75rem;
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
 
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+    scrollbar-color: rgba(0, 59, 115, 0.25) transparent;
+
+    transition: background 0.25s ease;
 }
 
 /* ====================================
    Scrollbar (WebKit) Styling.
 ======================================= */
 .time-slots::-webkit-scrollbar { width: 6px; }
-.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.25); border-radius: 8px; }
+.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; }
 .time-slots::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
 
 /* ====================================

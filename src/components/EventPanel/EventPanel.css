@@ -11,6 +11,7 @@
 
     display: grid;
     place-items: center;
+    font-family: var(--body-font);
 }
 
 /* ====================================
@@ -21,8 +22,10 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(10, 12, 25, 0.35);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 12, 25, 0.45);
+    backdrop-filter: blur(12px);
+
+    transition: opacity 0.3s ease;
 
     animation: fadeIn 0.25s ease;
 }
@@ -38,13 +41,13 @@
     overflow-y: auto;
 
     background: var(--secondary-bg);
-    border-radius: 1.5rem;
+    border-radius: 1.75rem;
 
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22), 0 4px 14px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.08);
 
     opacity: 0;
-    transform: translateY(20px) scale(0.96);
+    transform: translateY(24px) scale(0.96);
 
     transition:
       opacity 0.35s ease,
@@ -75,7 +78,7 @@
 .event-panel-header h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.55rem, 2vw, 1.85rem);
+    font-size: clamp(1.65rem, 2vw, 1.9rem);
     font-weight: 700;
     letter-spacing: -0.015em;
     color: var(--deep-blue);
@@ -89,7 +92,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 1.75rem;
 }
 
 /* ====================================
@@ -97,29 +100,30 @@
 ======================================= */
 .close-button
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.05);
     color: var(--deep-blue);
 
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     line-height: 1;
     cursor: pointer;
 
-    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .close-button:hover
 {
-    background: rgba(255, 184, 28, 0.18);
-    color: var(--accent-gold);
+    background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
+    color: #fff;
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .close-button:focus-visible
@@ -139,7 +143,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.25rem; }
-    .event-panel-header h2 { font-size: 1.45rem; }
+    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.4rem; }
+    .event-panel-header h2 { font-size: 1.5rem; }
     .close-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
 }

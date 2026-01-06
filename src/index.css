@@ -16,9 +16,9 @@
     --deep-blue: #003b73;
     --accent-gold: #ffb81c;
     --accent-red: #c8102e;
+
     --neutral-gray: #3a3a3a;
     --subtle-gray: #e5e7eb;
-    --text-color: var(--neutral-gray);
 
     --border-radius: 16px;
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.04);
@@ -49,10 +49,10 @@ html, body, #root
 /* Headings Styling. */
 h1, h2, h3
 {
-    margin: 0 0 0.6rem;
     font-family: var(--title-font);
     color: var(--deep-blue);
     line-height: 1.2;
+    margin: 0;
 }
 
 /* Paragraphs Styles. */
@@ -64,8 +64,8 @@ p { margin: 0; }
 button
 {
     font-family: inherit;
-    border: none;
     background: none;
+    border: none;
     padding: 0;
     cursor: pointer;
 
@@ -96,7 +96,7 @@ a:hover { color: var(--accent-gold); }
 /* ====================================
    Scrollbars Styles.
 ======================================= */
-::-webkit-scrollbar { height: 10px; width: 10px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.65); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
