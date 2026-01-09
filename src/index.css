@@ -50,9 +50,9 @@ html, body, #root
 h1, h2, h3
 {
     font-family: var(--title-font);
+    font-weight: 600;
     color: var(--deep-blue);
-    line-height: 1.2;
-    margin: 0;
+    line-height: 1.25;
 }
 
 /* Paragraphs Styles. */
@@ -70,6 +70,7 @@ button
     cursor: pointer;
 
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible
@@ -104,7 +105,7 @@ a:hover { color: var(--accent-gold); }
 {
 /*    :root
     {
-        --primary-bg: #0f172a;
+        --primary-bg: #0b1220;
         --secondary-bg: #020617;
         --neutral-gray: #e5e7eb;
         --subtle-gray: #334155;

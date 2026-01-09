@@ -5,6 +5,7 @@ exports[`EventCard Component matches snapshot. 1`] = `
   <article
     aria-labelledby="event-card-title"
     class="event-card"
+    tabindex="0"
   >
     <header
       class="event-card-header"

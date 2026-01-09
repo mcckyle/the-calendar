@@ -22,8 +22,8 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(10, 12, 25, 0.45);
-    backdrop-filter: blur(12px);
+    background: rgba(10, 12, 25, 0.55);
+    backdrop-filter: blur(16px);
 
     transition: opacity 0.3s ease;
 
@@ -36,18 +36,18 @@
 .event-panel
 {
     position: relative;
-    width: min(92%, 760px);
+    width: min(92%, 780px);
     max-height: 88vh;
     overflow-y: auto;
 
     background: var(--secondary-bg);
-    border-radius: 1.75rem;
+    border-radius: 2rem;
 
-    padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.22), 0 8px 28px rgba(0, 0, 0, 0.10);
 
     opacity: 0;
-    transform: translateY(24px) scale(0.96);
+    transform: translateY(28px) scale(0.96);
 
     transition:
       opacity 0.35s ease,
@@ -78,7 +78,7 @@
 .event-panel-header h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.65rem, 2vw, 1.9rem);
+    font-size: clamp(1.75rem, 2.2vw, 2rem);
     font-weight: 700;
     letter-spacing: -0.015em;
     color: var(--deep-blue);
@@ -92,7 +92,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 2rem;
 }
 
 /* ====================================
@@ -108,23 +108,24 @@
 
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.06);
     color: var(--deep-blue);
 
     font-size: 1.35rem;
     line-height: 1;
     cursor: pointer;
 
-    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.22s ease;
 }
 
 .close-button:hover
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     color: #fff;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
+.close-button:active { transform: scale(0.97); }
 
 .close-button:focus-visible
 {
@@ -143,7 +144,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.4rem; }
+    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.5rem; }
     .event-panel-header h2 { font-size: 1.5rem; }
     .close-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
 }

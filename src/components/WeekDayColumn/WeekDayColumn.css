@@ -8,14 +8,15 @@
     display: flex;
     flex-direction: column;
 
-    background: linear-gradient(145deg, #ffffff, #f4f7fb);
+    background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 
     transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
-.weekday-column:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12); }
+.weekday-column:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12); }
+.weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.06), rgba(255, 184, 28, 0.05)); box-shadow: 0 4px 18px rgba(0, 59, 115, 0.12); }
 
 /* ====================================
     Time Slots Container Styling.
@@ -24,11 +25,10 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.65rem;
 
     padding: 1rem 0.75rem;
-    background: var(--secondary-bg);
-    border-radius: var(--border-radius);
+    background: transparent;
 
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -56,5 +56,5 @@
 @media (max-width: 768px)
 {
     .weekday-column { flex: 0 0 155px; }
-    .time-slots { gap: 0.5rem; padding: 0.75rem 0.6rem 0.85rem; }
+    .time-slots { gap: 0.55rem; padding: 0.75rem 0.6rem 0.85rem; }
 }

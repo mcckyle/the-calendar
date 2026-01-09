@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 31 December 2025
+//Date: 8 January 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -54,7 +54,7 @@ const EventCard = ({
 	}
 
 	return (
-	  <article className="event-card" aria-labelledby="event-card-title">
+	  <article className="event-card" aria-labelledby="event-card-title" tabIndex={0}>
 		<header className="event-card-header">
 		  <h3 id="event-card-title" className="event-card-title">
 		    {title}

@@ -1,6 +1,6 @@
 //Filename: TimeSlot.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 8 January 2026
 //Description: This file contains the individual time slots for the Saint Louis React calendar project.
 
 import React from "react";
@@ -20,6 +20,7 @@ const TimeSlot = ({ label, events, onEventClick }) => {
               type="button"
               onClick={() => onEventClick(event)} //Notify parent when an event is clicked.
               aria-label={`View event: ${event.title}`}
+              title={event.title}
             >
               {event.title}
             </button>

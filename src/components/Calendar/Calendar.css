@@ -10,7 +10,7 @@
     width: 100%;
     min-height: 100vh;
 
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafd 55%, #f4f7fb 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 60%, var(--primary-bg) 100%);
     color: var(--neutral-gray);
     font-family: var(--body-font);
 }
@@ -27,16 +27,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.7rem 1.5rem;
+    padding: 0.65rem 1.25rem;
+    user-select: none;
 
-    background: linear-gradient(180deg, rgba(0, 59, 115, 0.96), rgba(0, 59, 115, 0.92));
+    background: linear-gradient(180deg, rgba(0, 59, 115, 0.92), rgba(0, 59, 115, 0.88));
     color: #ffffff;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 20px rgba(0, 0, 0, 0.12);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
-
-    user-select: none;
-    backdrop-filter: saturate(1.1) blur(3px);
+    backdrop-filter: saturate(1.05) blur(4px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================================
@@ -49,7 +48,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(2rem, 4vw, 3rem) 0 4rem;
+    padding: clamp(1.75rem, 4vw, 2.75rem) 0 3.5rem;
 }
 
 /* ====================================
@@ -57,17 +56,16 @@
 ======================================= */
 .calendar-status
 {
-    margin: 2rem auto;
-    padding: 0.9rem 1.5rem;
-    max-width: 440px;
+    margin: 1.75rem auto;
+    padding: 0.75rem 1.4rem;
+    max-width: 420px;
 
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     text-align: center;
 
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 999px;
     box-shadow: var(--shadow-sm);
-    color: var(--neutral-gray);
 }
 
 .calendar-status.error
@@ -87,8 +85,10 @@
     justify-content: center;
 
     overflow-x: auto;
-    padding-bottom: 2.5rem;
-    scroll-behavior: smooth;
+    padding-bottom: 2rem;
+
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
 }
 
 /* ====================================
@@ -101,7 +101,7 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
 
     padding: 0 clamp(1rem, 3vw, 2.25rem);
 }
@@ -113,7 +113,7 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1.35rem;
     align-items: start;
 }
 
@@ -129,11 +129,11 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view { min-width: 1320px; }
+    .week-view { min-width: 1300px; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-main { padding: 1.5rem 0 3rem; }
-    .week-view { min-width: 1180px; gap: 1rem; }
+    .calendar-main { padding: 1.4rem 0 3rem; }
+    .week-view { min-width: 1150px; gap: 1rem; }
 }

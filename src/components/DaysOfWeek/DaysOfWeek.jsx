@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 26 December 2025
+//Date: 8 January 2026
 //Description: This file contains the row of date labels for the Saint Louis React calendar project.
 
 import React from "react";
@@ -25,6 +25,7 @@ const DaysOfWeek = ({ weekDays = [] }) => {
               month: "long",
               day: "numeric",
             })}
+            title={isToday ? "Today" : undefined}
           >
             <span className="day-label">
               {day.toLocaleDateString("en-US", { weekday: "short" })}
