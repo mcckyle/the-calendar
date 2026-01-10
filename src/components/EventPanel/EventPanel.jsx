@@ -1,28 +1,41 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 8 January 2026
+//Date: 9 January 2026
 //Description: This file contains the event modal for the Saint Louis React calendar project.
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import EventCard from "../EventCard/EventCard.jsx";
 import "./EventPanel.css";
 
 const EventPanel = ({ selectedEvent, onClose }) => {
-  if (!selectedEvent)
+  const panelRef = useRef(null);
+
+  if ( ! selectedEvent)
   {
       return null;
   }
 
+  //Focus the panel when it opens for accessibility purposes...
+  useEffect(() => {
+    if (selectedEvent && panelRef.current)
+    {
+      panelRef.current.focus();
+    }
+  }, [selectedEvent]);
+
   //Render the EventCard component for the selected event...
   return (
     <div className="event-modal-root">
+      {/* Overlay / Backdrop. */}
       <div
         className="event-overlay"
         onClick={onClose}
         aria-hidden="true"
       />
 
+      {/* Panel. */}
       <section
+        ref={panelRef}
         className="event-panel visible"
         role="dialog"
         aria-modal="true"
@@ -44,19 +57,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
 
         <div className="event-panel-body">
           {/* Use EventCard to display the selected event */}
-          <EventCard
-            title={selectedEvent.title || "Untitled Event"}
-            date={selectedEvent.date}
-            startTime={selectedEvent.startTime}
-            endTime={selectedEvent.endTime}
-            allDay={selectedEvent.allDay}
-            description={selectedEvent.description}
-            venueName={selectedEvent.venueName}
-            venueAddress={selectedEvent.venueAddress}
-            venueCity={selectedEvent.venueCity}
-            venueState={selectedEvent.venueState}
-            url={selectedEvent.url}
-          />
+          <EventCard {...selectedEvent} />
         </div>
       </section>
     </div>

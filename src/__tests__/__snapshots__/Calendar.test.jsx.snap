@@ -48,12 +48,12 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         fetch is not defined
       </p>
-      <div
+      <section
+        aria-label="Calendar week grid"
         class="calendar-body"
       >
         <div
           class="calendar-grid"
-          role="presentation"
         >
           <div
             class="days-of-week"
@@ -63,6 +63,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Sunday, October 26"
               class="day-item "
               role="columnheader"
+              title="Sunday, October 26"
             >
               <span
                 class="day-label"
@@ -79,6 +80,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Monday, October 27"
               class="day-item "
               role="columnheader"
+              title="Monday, October 27"
             >
               <span
                 class="day-label"
@@ -95,6 +97,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Tuesday, October 28"
               class="day-item "
               role="columnheader"
+              title="Tuesday, October 28"
             >
               <span
                 class="day-label"
@@ -111,6 +114,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Wednesday, October 29"
               class="day-item "
               role="columnheader"
+              title="Wednesday, October 29"
             >
               <span
                 class="day-label"
@@ -127,6 +131,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Thursday, October 30"
               class="day-item "
               role="columnheader"
+              title="Thursday, October 30"
             >
               <span
                 class="day-label"
@@ -161,6 +166,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               aria-label="Saturday, November 1"
               class="day-item "
               role="columnheader"
+              title="Saturday, November 1"
             >
               <span
                 class="day-label"
@@ -229,7 +235,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </div>
           </section>
         </div>
-      </div>
+      </section>
     </main>
   </section>
 </DocumentFragment>

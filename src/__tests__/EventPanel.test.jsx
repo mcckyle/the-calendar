@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 9 January 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
@@ -103,10 +103,10 @@ describe("EventPanel Component", () => {
 
   //Test #9: Handles missing event details gracefully (renders defaults).
   test("renders default values if event details are missing.", () => {
-    const incompleteEvent = { title: "", date: "" }; //Test event is missing the time and description field values...
+    const incompleteEvent = { title: "", date: "" };
     render(<EventPanel selectedEvent={incompleteEvent} onClose={mockOnClose} />);
 
-    expect(screen.getByText(/Untitled Event/i)).toBeInTheDocument();
+    expect(screen.getByText(/No Start Time/i)).toBeInTheDocument();
   });
 
   //Test #10: Does not render the Close button when no event is selected.
