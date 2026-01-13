@@ -5,7 +5,7 @@
 ======================================= */
 .event-card
 {
-    background: linear-gradient(145deg, #ffffff, #f7faff);
+    background: linear-gradient(145deg, #ffffff, #f4f7fc);
     padding: 2rem 2.2rem;
     border-radius: 2rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -13,10 +13,11 @@
     font-family: var(--body-font);
     color: var(--neutral-gray);
     line-height: 1.75;
+    cursor: default;
 
-    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.25s ease;
 }
-.event-card:hover { transform: translateY(-3px); box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18), 0 10px 28px rgba(0, 0, 0, 0.12); }
+.event-card:hover { transform: translateY(-3px); box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18), 0 10px 28px rgba(0, 0, 0, 0.12); background: linear-gradient(145deg, #ffffff, #f0f5fb); }
 
 /* ====================================
     Header Styling.
@@ -117,6 +118,7 @@
     transition: transform 0.25s ease;
 }
 .event-card-link a:hover::after { transform: scaleX(1); }
+.event-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
 
 /* ====================================
    Media Queries Styling.

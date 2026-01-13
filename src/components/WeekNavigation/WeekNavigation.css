@@ -11,7 +11,7 @@
     gap: 1.5rem;
 
     width: 100%;
-    max-width: 480px;
+    max-width: 460px;
     margin: 0 auto;
 
     font-family: var(--title-font);
@@ -34,10 +34,10 @@
 
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15);
 
     color: #ffffff;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
@@ -49,11 +49,11 @@
 .nav-button:focus-visible
 {
     background: var(--accent-gold);
-    color: #001f44; /* High Contrast Text Color. */
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    color: var(--deep-blue);
+    transform: scale(1.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
 }
-.nav-button:active { transform: scale(0.95); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.nav-button:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
    Month / Year Text Label Styling.
@@ -70,7 +70,8 @@
 
     transition: color 0.25s ease, transform 0.25s ease;
 }
-.week-navigation:hover .month-year { color: var(--accent-gold); transform: scale(1.03); }
+.week-navigation:hover .month-year,
+.week-navigation:focus-within .month-year{ color: var(--accent-gold); transform: scale(1.03); }
 
 /* ====================================
    Media Query Styling.

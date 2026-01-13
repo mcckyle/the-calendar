@@ -10,7 +10,7 @@
     width: 100%;
     min-height: 100vh;
 
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 55%, #f2f5f9 100%);
+    background: transparent;
     color: var(--neutral-gray);
     font-family: var(--body-font);
 }
@@ -22,18 +22,19 @@
 {
     position: sticky;
     top: 0;
-    z-index: 90;
+    z-index: 80;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 1.25rem;
+
+    padding: 0.6rem 1.25rem;
     user-select: none;
 
-    background: linear-gradient(180deg, rgba(0, 59, 115, 0.94), rgba(0, 59, 115, 0.9));
-    color: #ffffff;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.14);
+    background: rgba(0, 59, 115, 0.92);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================================
@@ -46,7 +47,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(1.5rem, 3.5vw, 2.25rem) 0 3rem;
+    padding: clamp(1.75rem, 4vw, 2.5rem) 0 3rem;
 }
 
 /* ====================================
@@ -54,14 +55,14 @@
 ======================================= */
 .calendar-status
 {
-    margin: 1.75rem auto;
-    padding: 0.75rem 1.4rem;
+    margin: 1.5rem auto;
+    padding: 0.7rem 1.35rem;
     max-width: 420px;
 
     font-size: 0.85rem;
     text-align: center;
 
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--secondary-bg);
     border-radius: 999px;
     box-shadow: var(--shadow-sm);
 }
@@ -84,7 +85,7 @@
 
     overflow-x: auto;
     overflow-y: visible;
-    padding-bottom: 1.75rem;
+    padding-bottom: 2rem;
 
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
@@ -100,10 +101,9 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.25rem;
+    gap: 1.35rem;
 
     padding: 0 clamp(1rem, 3vw, 2rem);
-    box-sizing: border-box;
 }
 
 /* ====================================
@@ -113,7 +113,7 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1.2rem;
+    gap: 1.25rem;
     align-items: start;
 }
 
@@ -121,19 +121,19 @@
    Scrollbars Styling.
 ======================================= */
 .calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.16); border-radius: 999px; }
-.calendar-body::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.55); }
+.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.35); border-radius: 999px; }
+.calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================
    Media Queries Styling.
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view { min-width: 1220px; }
+    .week-view { min-width: 1200px; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-main { padding: 1.25rem 0 2.75rem; }
+    .calendar-main { padding: 1.4rem 0 2.75rem; }
     .week-view { min-width: 1100px; gap: 1rem; }
 }

@@ -10,7 +10,7 @@
     align-items: center;
     width: 100%;
 
-    padding: 0.8rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.25rem;
 
     padding: 0.55rem 0.35rem;
     border-radius: 16px;
@@ -38,7 +38,7 @@
 
     transition: background var(--transition-speed) ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow var(--transition-speed) ease;
 }
-.day-item:hover { background: rgba(0, 59, 115, 0.08); transform: translateY(-2px); box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08); }
+.day-item:hover { background: rgba(0, 59, 115, 0.07); transform: translateY(-1.5px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
 
 /* ====================================
    Today Highlight Styling.

@@ -24,10 +24,9 @@
 
     background: rgba(10, 12, 25, 0.55);
     backdrop-filter: blur(16px);
+    opacity: 0;
 
-    transition: opacity 0.3s ease;
-
-    animation: fadeIn 0.25s ease;
+    animation: fadeIn 0.25s forwards ease;
 }
 
 /* ====================================
@@ -44,7 +43,7 @@
     border-radius: 2rem;
 
     padding: clamp(1.75rem, 3vw, 2.75rem);
-    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.22), 0 8px 28px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.22), 0 8px 28px rgba(0, 0, 0, 0.1);
 
     opacity: 0;
     transform: translateY(28px) scale(0.96);
@@ -115,13 +114,13 @@
     line-height: 1;
     cursor: pointer;
 
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease;
 }
 
 .close-button:hover
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
-    color: #fff;
+    color: #ffffff;
     transform: scale(1.12);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }

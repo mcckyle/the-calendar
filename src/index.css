@@ -70,6 +70,9 @@ button
     padding: 0;
     cursor: pointer;
 
+    user-select: none;
+    caret-color: transparent;
+
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
@@ -79,9 +82,6 @@ button:focus-visible
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
 }
-
-/* Prevent Text Cursor on Buttons. */
-button, button * { user-select: none; caret-color: transparent; }
 
 /* ====================================
    Links Styles.
@@ -99,7 +99,7 @@ a:hover { color: var(--accent-gold); }
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.55); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.45); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 @media (prefers-color-scheme: dark)
