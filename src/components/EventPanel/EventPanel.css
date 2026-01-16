@@ -22,9 +22,11 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(10, 12, 25, 0.55);
-    backdrop-filter: blur(16px);
+    background: rgba(10, 12, 25, 0.45);
+    backdrop-filter: blur(12px);
     opacity: 0;
+
+    transition: opacity 0.25s ease;
 
     animation: fadeIn 0.25s forwards ease;
 }
@@ -40,17 +42,17 @@
     overflow-y: auto;
 
     background: var(--secondary-bg);
-    border-radius: 2rem;
+    border-radius: 1.75rem;
 
-    padding: clamp(1.75rem, 3vw, 2.75rem);
-    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.22), 0 8px 28px rgba(0, 0, 0, 0.1);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16), 0 6px 20px rgba(0, 0, 0, 0.08);
 
     opacity: 0;
-    transform: translateY(28px) scale(0.96);
+    transform: translateY(20px) scale(0.97);
 
     transition:
       opacity 0.35s ease,
-      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .event-panel.visible
@@ -68,16 +70,16 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-bottom: 1rem;
-    margin-bottom: 1.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 59, 115, 0.06);
 }
 
 /* Event Panel Title Styles. */
 .event-panel-header h2
 {
     font-family: var(--title-font);
-    font-size: clamp(1.75rem, 2.2vw, 2rem);
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
     font-weight: 700;
     letter-spacing: -0.015em;
     color: var(--deep-blue);
@@ -91,7 +93,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 /* ====================================
@@ -99,37 +101,37 @@
 ======================================= */
 .close-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.3rem;
+    height: 2.3rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.05);
     color: var(--deep-blue);
 
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     line-height: 1;
     cursor: pointer;
 
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .close-button:hover
 {
     background: linear-gradient(135deg, var(--deep-blue), var(--accent-gold));
     color: #ffffff;
-    transform: scale(1.12);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 .close-button:active { transform: scale(0.97); }
 
 .close-button:focus-visible
 {
     outline: 2px solid var(--accent-gold);
-    outline-offset: 4px;
+    outline-offset: 3px;
 }
 
 /* ====================================
@@ -146,7 +148,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-panel { width: 94%; padding: 1.6rem; border-radius: 1.5rem; }
-    .event-panel-header h2 { font-size: 1.5rem; }
-    .close-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
+    .event-panel { width: 94%; padding: 1.5rem; border-radius: 1.5rem; }
+    .event-panel-header h2 { font-size: 1.4rem; }
+    .close-button { width: 2rem; height: 2rem; font-size: 1.15rem; }
 }

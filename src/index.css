@@ -48,13 +48,14 @@ html, body, #root
 }
 
 /* Headings Styles. */
+h1 { font-weight: 700; }
 h1, h2, h3
 {
     font-family: var(--title-font);
-    font-weight: 600;
     color: var(--deep-blue);
     line-height: 1.25;
 }
+h2, h3 { font-weight: 600; }
 
 /* Paragraphs Styles. */
 p { margin: 0; }
@@ -82,6 +83,7 @@ button:focus-visible
     outline: 2px solid var(--accent-gold);
     outline-offset: 3px;
 }
+button, button * { caret-color: transparent; }
 
 /* ====================================
    Links Styles.
@@ -104,11 +106,17 @@ a:hover { color: var(--accent-gold); }
 
 @media (prefers-color-scheme: dark)
 {
-/*    :root
+    :root
     {
         --primary-bg: #0b1220;
         --secondary-bg: #020617;
         --neutral-gray: #e5e7eb;
         --subtle-gray: #334155;
-    }*/
+    }
+
+    .calendar-wrapper
+    {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    }
 }

@@ -50,7 +50,7 @@ To get the project running locally, follow these steps:
    npm run dev
    ```
 
-   The app will go live at `http://localhost:3000`.
+   The calendar will go live at `http://localhost:5173/the-calendar/`.
    
 ## Project Structure
 

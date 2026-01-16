@@ -10,13 +10,13 @@
 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
 
-    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, background 0.25s ease;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
 }
-.weekday-column:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12); }
-.weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.06), rgba(255, 184, 28, 0.05)); box-shadow: 0 4px 18px rgba(0, 59, 115, 0.12); }
+.weekday-column:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); }
+.weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.04), rgba(255, 184, 28, 0.06)); box-shadow: 0 4px 14px rgba(0, 59, 115, 0.08); }
 
 /* ====================================
     Time Slots Container Styling.
@@ -25,24 +25,22 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 0.55rem;
 
-    padding: 1rem 0.75rem;
+    padding: 0.85rem 0.6rem;
     background: transparent;
 
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 59, 115, 0.25) transparent;
-
-    transition: background 0.25s ease, gap 0.2s ease;
+    scrollbar-color: rgba(0, 59, 115, 0.2) transparent;
 }
 
 /* ====================================
    Scrollbar (WebKit) Styling.
 ======================================= */
 .time-slots::-webkit-scrollbar { width: 6px; }
-.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; transition: background 0.25s ease; }
+.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.2); border-radius: 8px; transition: background 0.25s ease; }
 .time-slots::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
 
 /* ====================================
@@ -50,11 +48,11 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .weekday-column { flex: 0 0 180px; }
+    .weekday-column { flex: 0 0 175px; }
 }
 
 @media (max-width: 768px)
 {
-    .weekday-column { flex: 0 0 155px; }
-    .time-slots { gap: 0.55rem; padding: 0.75rem 0.6rem 0.85rem; }
+    .weekday-column { flex: 0 0 150px; }
+    .time-slots { gap: 0.45rem; padding: 0.65rem 0.5rem 0.75rem; }
 }

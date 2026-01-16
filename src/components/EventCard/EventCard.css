@@ -5,33 +5,34 @@
 ======================================= */
 .event-card
 {
-    background: linear-gradient(145deg, #ffffff, #f4f7fc);
-    padding: 2rem 2.2rem;
-    border-radius: 2rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), 0 6px 18px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(145deg, #ffffff, #f8fafd);
+    padding: 1.8rem 2rem;
+    border-radius: 1.8rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.06);
 
     font-family: var(--body-font);
     color: var(--neutral-gray);
-    line-height: 1.75;
+    line-height: 1.65;
     cursor: default;
 
     transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.25s ease;
 }
-.event-card:hover { transform: translateY(-3px); box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18), 0 10px 28px rgba(0, 0, 0, 0.12); background: linear-gradient(145deg, #ffffff, #f0f5fb); }
+.event-card:hover { transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0, 0, 0, 0.16), 0 10px 28px rgba(0, 0, 0, 0.1); background: linear-gradient(145deg, #ffffff, #f2f8fc); }
+.event-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
 
 /* ====================================
     Header Styling.
 ======================================= */
-.event-card-header { margin-bottom: 1.8rem; }
+.event-card-header { margin-bottom: 1.4rem; }
 
 .event-card-title
 {
     font-family: var(--title-font);
-    font-size: clamp(1.65rem, 2vw, 1.95rem);
+    font-size: clamp(1.55rem, 2vw, 1.85rem);
     font-weight: 700;
 
     color: var(--deep-blue);
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.4rem;
 }
 
 /* ====================================
@@ -42,24 +43,24 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
 
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--subtle-gray);
 }
 .event-date { font-weight: 600; color: var(--deep-blue); }
-.event-time { opacity: 0.85; }
+.event-time { opacity: 0.8; }
 
 /* ====================================
    Event Description Styling.
 ======================================= */
 .event-card-description
 {
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     color: #374151; /* Color: Gray-700. */
     white-space: pre-line;
-    line-height: 1.65;
-    margin-top: 1.4rem;
+    line-height: 1.6;
+    margin-top: 1.2rem;
 }
 
 /* ====================================
@@ -69,31 +70,31 @@
 {
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
-    margin-top: 1.6rem;
+    gap: 0.55rem;
+    margin-top: 1.4rem;
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: #4b5563; /* Color: Gray-600. */
 }
 
 .venue-label
 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.2;
-    opacity: 0.85;
+    opacity: 0.8;
 }
-.venue-text { line-height: 1.55; }
+.venue-text { line-height: 1.5; }
 
 /* ====================================
    Event Links Styling.
 ======================================= */
-.event-card-link { margin-top: 1.8rem; }
+.event-card-link { margin-top: 1.6rem; }
 
 .event-card-link a
 {
     display: inline-block;
 
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--accent-gold);
     text-decoration: none;
@@ -118,15 +119,14 @@
     transition: transform 0.25s ease;
 }
 .event-card-link a:hover::after { transform: scaleX(1); }
-.event-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
 
 /* ====================================
    Media Queries Styling.
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-card { padding: 1.6rem 1.7rem; border-radius: 1.5rem; }
-    .event-card-title { font-size: 1.5rem; }
-    .event-card-description { font-size: 0.92rem; }
-    .event-card-meta { font-size: 0.85rem; }
+    .event-card { padding: 1.4rem 1.6rem; border-radius: 1.5rem; }
+    .event-card-title { font-size: 1.45rem; }
+    .event-card-description { font-size: 0.9rem; }
+    .event-card-meta { font-size: 0.82rem; }
 }

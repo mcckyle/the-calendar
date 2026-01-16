@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
 
     background: transparent;
     color: var(--neutral-gray);
@@ -31,10 +31,11 @@
     padding: 0.6rem 1.25rem;
     user-select: none;
 
-    background: rgba(0, 59, 115, 0.92);
+    background: rgba(0, 59, 115, 0.85);
     backdrop-filter: blur(10px);
 
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 14px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* =========================================
@@ -47,7 +48,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(1.75rem, 4vw, 2.5rem) 0 3rem;
+    padding: clamp(1.4rem, 3.5vw, 2.1rem) 0 3rem;
 }
 
 /* ====================================
@@ -62,9 +63,10 @@
     font-size: 0.85rem;
     text-align: center;
 
-    background: var(--secondary-bg);
+    background: color-mix(in srgb, var(--secondary-bg) 92%, transparent);
     border-radius: 999px;
-    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
 .calendar-status.error
@@ -89,6 +91,12 @@
 
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+
+    scroll-padding-left: 1.5rem;
+    scroll-padding-right: 1.5rem;
 }
 
 /* ====================================
@@ -101,7 +109,7 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.35rem;
+    gap: 1.1rem;
 
     padding: 0 clamp(1rem, 3vw, 2rem);
 }
@@ -113,7 +121,7 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 1.1rem;
     align-items: start;
 }
 
@@ -135,5 +143,5 @@
 @media (max-width: 768px)
 {
     .calendar-main { padding: 1.4rem 0 2.75rem; }
-    .week-view { min-width: 1100px; gap: 1rem; }
+    .week-view { min-width: 1100px; gap: 0.85rem; }
 }

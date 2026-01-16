@@ -12,7 +12,11 @@
     width: 100%;
     min-height: 100vh;
 
-    background: var(--primary-bg);
+    background: radial-gradient(
+        1200px 600px at top center,
+        rgba(0, 59, 115, 0.05),
+        transparent 60%),
+        var(--primary-bg);
     padding: clamp(2rem, 4vw, 3.25rem) 1.25rem;
 }
 
@@ -29,7 +33,7 @@
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.4rem, 5vw, 3.1rem);
+    font-size: clamp(2.2rem, 4.5vw, 2.85rem);
     font-weight: 700;
     letter-spacing: -0.02em;
 
@@ -40,10 +44,10 @@
 
 .calendar-tagline
 {
-    margin-top: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(60, 60, 60, 0.7);
+    max-width: 520px;
+    margin-top: 0.75rem auto 0;
+    font-size: 0.98rem;
+    color: rgba(60, 60, 60, 0.65);
 }
 
 /* ====================================
@@ -60,7 +64,8 @@
     background: var(--secondary-bg);
     border-radius: calc(var(--border-radius) + 6px);
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 /* ====================================
