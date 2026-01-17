@@ -10,11 +10,14 @@ import Calendar from '../components/Calendar/Calendar.jsx';
 import { CalendarProvider } from '../components/Calendar/CalendarContext';
 
 //Mock WeekDayColumn.jsx.
-jest.mock('../components/WeekDayColumn/WeekDayColumn.jsx', () => ({ day }) => (
-  <div data-testid="week-day-column">
-    <span>{day.toDateString()}</span>
-  </div>
-));
+jest.mock('../components/WeekDayColumn/WeekDayColumn.jsx', () => (props) => {
+  const { day } = props; //Properly destructure day.
+  return (
+    <div data-testid="week-day-column">
+      <span>{day.toDateString()}</span>
+    </div>
+  );
+});
 
 //Mock EventPanel.jsx.
 jest.mock('../components/EventPanel/EventPanel.jsx', () => ({ selectedEvent, onClose }) => (
@@ -24,15 +27,34 @@ jest.mock('../components/EventPanel/EventPanel.jsx', () => ({ selectedEvent, onC
   </div>
 ));
 
+//Mock the useEvents hook.
+const mockEvents = [];
+jest.mock('../hooks/useEvents', () => ({
+  useEvents: () => ({
+    events: mockEvents, //empty array of events, always the same.
+    loading: false, //make loading false so the calendar renders immediately.
+    error: null //no errors.
+  })
+}));
+
 // Return a fixed date so the snapshot test passes on GitHub.
 beforeAll(() => {
   const fixedDate = new Date(2025, 9, 31);
   jest.useFakeTimers();
   jest.setSystemTime(fixedDate);
+
+  //Mock global fetch...
+//   global.fetch = jest.fn(() =>
+//     Promise.resolve({
+//       ok: true,
+//       json: () => Promise.resolve([]), //Return an empty array of events.
+//     })
+//   );
 });
 
 afterAll(() => {
   jest.useRealTimers();
+  //global.fetch.mockRestore(); //Clean up.
 });
 
 describe('Calendar Component', () => {
@@ -55,34 +77,44 @@ describe('Calendar Component', () => {
   });
 
   //Test #2: Week view renders seven (7) weekday columns.
-//   test('renders week view with seven WeekDayColumn components.', () => {
-//     renderCalendar();
-//
-//     // Check that seven WeekDayColumn components are rendered.
-//     expect(screen.getAllByTestId('week-day-column').length).toBe(7);
-//   });
+  test('renders week view with seven WeekDayColumn components.', async () => {
+    renderCalendar();
+
+    // Check that seven WeekDayColumn components are rendered.
+    await waitFor(() => {
+      expect(screen.getAllByTestId('week-day-column')).toHaveLength(7);
+    });
+  });
 
   //Test #3: Clicking "Previous" keeps seven (7) columns but changes dates.
-//   test('navigates to the previous week when the "Previous" button is clicked.', () => {
-//     renderCalendar();
-//
-//     // Click on the "Next week" button using the accessible name.
-//     fireEvent.click(screen.getByRole('button', { name: /previous week/i }));
-//
-//     // Verify that the week updates.
-//     expect(screen.getAllByTestId('week-day-column').length).toBe(7); // Week view remains consistent.
-//   });
+  test('navigates to the previous week when the "Previous" button is clicked.', async () => {
+    renderCalendar();
+
+    const prevButton = screen.getByRole('button', { name: /previous week/i });
+
+    // Click on the "Next week" button using the accessible name.
+    fireEvent.click(prevButton);
+
+    // Check that seven WeekDayColumn components are rendered.
+    await waitFor(() => {
+      expect(screen.getAllByTestId('week-day-column')).toHaveLength(7);
+    });
+  });
 
   //Test #4: Clicking "Next" changes week dates.
-//   test('navigates to the next week when the "Next" button is clicked.', () => {
-//     renderCalendar();
-//
-//     // Click on the "Next week" button using the accessible name.
-//     fireEvent.click(screen.getByRole('button', { name: /next week/i }));
-//
-//     // Verify that the week updates.
-//     expect(screen.getAllByTestId('week-day-column').length).toBe(7); // Week view remains consistent.
-//   });
+  test('navigates to the next week when the "Next" button is clicked.', async () => {
+    renderCalendar();
+
+    const nextButton = screen.getByRole('button', { name: /next week/i });
+
+    // Click on the "Next week" button using the accessible name.
+    fireEvent.click(nextButton);
+
+    // Check that seven WeekDayColumn components are rendered.
+    await waitFor(() => {
+      expect(screen.getAllByTestId('week-day-column')).toHaveLength(7);
+    });
+  });
 
    //Test #5: Month text updates when navigating.
   test('updates the displayed month/year when navigating weeks.', () => {
@@ -130,13 +162,24 @@ describe('Calendar Component', () => {
   });
 
   //Test #8: Weekday column displays correct date format.
-//   test('displays weekday columns with readable date strings.', () => {
-//     renderCalendar();
-//     const columns = screen.getAllByTestId('week-day-column');
-//     columns.forEach(column => {
-//       expect(column.textContent).toMatch(/\w+\s\d{1,2}\s\d{4}/);
-//     });
-//   });
+  test('displays weekday columns with readable date strings.', async () => {
+    renderCalendar();
+
+    //Wait for the calendar to render columns...
+    await waitFor(() => {
+      const columns = screen.getAllByTestId('week-day-column');
+      expect(columns).toHaveLength(7);
+    });
+
+    const columns = screen.getAllByTestId('week-day-column');
+    for (const column of columns)
+    {
+      const text = column.textContent;
+      //Check that seven WeekDayColumn components are rendered.
+      //expect(text).toMatch(/^[A-Za-z]\s[A-Za-z]{3}\s\d{1,2}\s\d{4}$/);
+      expect(text).toMatch(/\w+\s\d{1,2}\s\d{4}/);
+    }
+  });
 
   //Test #9: Snapshot test for UI consistency.
   test('matches snapshot for default render.', () => {
