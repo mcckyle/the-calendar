@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 9 January 2026
+//Date: 16 January 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
@@ -35,11 +35,12 @@ describe("EventPanel Component", () => {
     jest.clearAllMocks();
   });
 
-  //Test #1: Renders "No event selected" when selectedEvent is null.
-//   test("renders fallback message when no event is selected.", () => {
-//     render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
-//     expect(screen.getByText(/Select an event to view details!/i)).toBeInTheDocument();
-//   });
+  //Test #1: Calls onClose() when the overlay is clicked.
+  test("calls onClose() when the overlay is clicked.", () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+    fireEvent.click(screen.getByRole('dialog').parentElement.querySelector('.event-overlay'));
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
 
   //Test #2: Does not render EventCard when no event is selected.
   test("does not render EventCard when no event is selected.", () => {
@@ -67,14 +68,12 @@ describe("EventPanel Component", () => {
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
-  //Test #5: The EventPanel has aria-live="polite" when no event is selected.
-//   test('applies aria-live="polite" when no event is selected.', () => {
-//     render(<EventPanel selectedEvent={null} onClose={mockOnClose} />);
-//
-//     const section = screen.getByRole('region', { hidden: true }) || document.querySelector('.event-panel');
-//
-//     expect(section).toHaveAttribute('aria-live', 'polite');
-//   });
+  //Test #5: Calls onClose() when the Escape key is pressed.
+  test("calls onClose() when the Escape key is pressed.", () => {
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
+    fireEvent.keyDown(window, { key: "Escape", code: "Escape", keyCode: 27 });
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
 
   //Test #6: The EventPanel uses role="dialog" when an event is selected.
   test('uses role="dialog" when an event is selected.', () => {
