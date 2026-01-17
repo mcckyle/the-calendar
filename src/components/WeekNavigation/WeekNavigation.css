@@ -18,7 +18,14 @@
     color: #ffffff;
     user-select: none;
 
-    transition: color var(--transition-speed) ease;
+    padding: 0.4rem 0.5rem;
+    border-radius: 1.5rem;
+
+    background: rgba(0, 59, 115, 0.75);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.25s ease;
 }
 
 /* ====================================
@@ -26,25 +33,25 @@
 ======================================= */
 .nav-button
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: none;
-    transform: none;
-
+    background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
 
-    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.22s ease,
+                background 0.22s ease,
+                color 0.22s ease;
 }
 
 .nav-button:hover,
@@ -52,10 +59,10 @@
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: translateY(-1px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+    transform: translateY(-1px) scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
-.nav-button:active { transform: translateY(0) scale(0.96); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.nav-button:active { transform: translateY(0) scale(0.95); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
    Month / Year Text Label Styling.
@@ -68,19 +75,22 @@
 
     white-space: nowrap;
     pointer-events: none;
-    color: #ffffff;
 
-    transition: color 0.25s ease, transform 0.25s ease;
+    background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    transition: transform 0.25s ease, color 0.25s ease;
 }
 .week-navigation:hover .month-year,
-.week-navigation:focus-within .month-year { color: var(--accent-gold); }
+.week-navigation:focus-within .month-year { transform: translateY(-1px); }
 
 /* ====================================
    Media Query Styling.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.85rem; }
+    .week-navigation { gap: 0.85rem; padding: 0.3rem 0.5rem; }
     .month-year { font-size: 1.15rem; }
     .nav-button { width: 2rem; height: 2rem; font-size: 1.1rem; }
 }

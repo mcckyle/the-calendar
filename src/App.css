@@ -13,11 +13,12 @@
     min-height: 100vh;
 
     background: radial-gradient(
-        1200px 600px at top center,
-        rgba(0, 59, 115, 0.05),
-        transparent 60%),
-        var(--primary-bg);
-    padding: clamp(2rem, 4vw, 3.25rem) 1.25rem;
+        900px 500px at top center,
+        rgba(0, 59, 115, 0.06),
+        transparent 65%
+    ),
+    var(--primary-bg);
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
 }
 
 /* ====================================
@@ -27,13 +28,13 @@
 {
     text-align: center;
     max-width: 720px;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.2rem, 4.5vw, 2.85rem);
+    font-size: clamp(2.1rem, 4vw, 2.7rem);
     font-weight: 700;
     letter-spacing: -0.02em;
 
@@ -44,9 +45,8 @@
 
 .calendar-tagline
 {
-    max-width: 520px;
-    margin-top: 0.75rem auto 0;
-    font-size: 0.98rem;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
     color: rgba(60, 60, 60, 0.65);
 }
 
@@ -63,8 +63,8 @@
 
     background: var(--secondary-bg);
     border-radius: calc(var(--border-radius) + 6px);
-    padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    padding: clamp(1.6rem, 3vw, 2.3rem);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
@@ -73,7 +73,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .calendar-title { font-size: 2.1rem; }
-    .calendar-tagline { font-size: 0.95rem; }
-    .calendar-wrapper { padding: 1.1rem; }
+    .calendar-title { font-size: 2rem; }
+    .calendar-tagline { font-size: 0.92rem; }
+    .calendar-wrapper { padding: 1.05rem; }
 }

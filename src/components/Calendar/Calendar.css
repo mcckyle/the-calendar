@@ -28,13 +28,13 @@
     justify-content: center;
     align-items: center;
 
-    padding: 0.6rem 1.25rem;
+    padding: 0.55rem 1.25rem;
     user-select: none;
 
-    background: rgba(0, 59, 115, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 59, 115, 0.78);
+    backdrop-filter: blur(12px);
 
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 14px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -47,8 +47,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    min-height: calc(100vh - 72px); /* Header Height Buffer Styles. */
     padding: clamp(1.4rem, 3.5vw, 2.1rem) 0 3rem;
+}
+
+.calendar-content
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ====================================
@@ -56,16 +64,17 @@
 ======================================= */
 .calendar-status
 {
-    margin: 1.5rem auto;
-    padding: 0.7rem 1.35rem;
+    margin: 1.75rem auto 2.25rem;
+    padding: 0.75rem 1.5rem;
     max-width: 420px;
 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.01em;
     text-align: center;
 
-    background: color-mix(in srgb, var(--secondary-bg) 92%, transparent);
+    background: color-mix(in srgb, var(--secondary-bg) 94%, transparent);
     border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: none;
 }
 
@@ -91,6 +100,7 @@
 
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+    scrollbar-gutter: stable both-edges;
 
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
@@ -109,7 +119,7 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.1rem;
+    gap: clamp(0.9rem, 2vw, 1.1rem);
 
     padding: 0 clamp(1rem, 3vw, 2rem);
 }
@@ -129,7 +139,7 @@
    Scrollbars Styling.
 ======================================= */
 .calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.35); border-radius: 999px; }
+.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.28); border-radius: 999px; }
 .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================

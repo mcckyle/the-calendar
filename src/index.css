@@ -18,7 +18,7 @@
     --accent-red: #c8102e;
 
     --neutral-gray: #2f2f2f;
-    --subtle-gray: #e5e7eb;
+    --subtle-gray: #d1d5db;
 
     --border-radius: 16px;
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.04);
@@ -48,13 +48,13 @@ html, body, #root
 }
 
 /* Headings Styles. */
-h1 { font-weight: 700; }
 h1, h2, h3
 {
     font-family: var(--title-font);
     color: var(--deep-blue);
     line-height: 1.25;
 }
+h1 { font-weight: 700; }
 h2, h3 { font-weight: 600; }
 
 /* Paragraphs Styles. */
@@ -73,7 +73,6 @@ button
 
     user-select: none;
     caret-color: transparent;
-
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
@@ -100,8 +99,8 @@ a:hover { color: var(--accent-gold); }
 /* ====================================
    Scrollbars Styles.
 ======================================= */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.45); border-radius: 10px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.35); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 @media (prefers-color-scheme: dark)

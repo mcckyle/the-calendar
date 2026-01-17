@@ -15,6 +15,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <button
           aria-label="Previous week"
+          aria-live="polite"
           class="nav-button"
           title="Previous week"
           type="button"
@@ -31,6 +32,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </time>
         <button
           aria-label="Next week"
+          aria-live="polite"
           class="nav-button"
           title="Next week"
           type="button"
@@ -42,199 +44,16 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     <main
       class="calendar-main"
     >
-      <p
-        class="calendar-status error"
-        role="alert"
-      >
-        fetch is not defined
-      </p>
       <section
-        aria-label="Calendar week grid"
-        class="calendar-body"
+        aria-live="polite"
+        class="calendar-content"
       >
-        <div
-          class="calendar-grid"
+        <p
+          class="calendar-status error"
+          role="alert"
         >
-          <div
-            class="days-of-week"
-            role="row"
-          >
-            <div
-              aria-label="Sunday, October 26"
-              class="day-item "
-              role="columnheader"
-              title="Sunday, October 26"
-            >
-              <span
-                class="day-label"
-              >
-                Sun
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 26
-              </span>
-            </div>
-            <div
-              aria-label="Monday, October 27"
-              class="day-item "
-              role="columnheader"
-              title="Monday, October 27"
-            >
-              <span
-                class="day-label"
-              >
-                Mon
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 27
-              </span>
-            </div>
-            <div
-              aria-label="Tuesday, October 28"
-              class="day-item "
-              role="columnheader"
-              title="Tuesday, October 28"
-            >
-              <span
-                class="day-label"
-              >
-                Tue
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 28
-              </span>
-            </div>
-            <div
-              aria-label="Wednesday, October 29"
-              class="day-item "
-              role="columnheader"
-              title="Wednesday, October 29"
-            >
-              <span
-                class="day-label"
-              >
-                Wed
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 29
-              </span>
-            </div>
-            <div
-              aria-label="Thursday, October 30"
-              class="day-item "
-              role="columnheader"
-              title="Thursday, October 30"
-            >
-              <span
-                class="day-label"
-              >
-                Thu
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 30
-              </span>
-            </div>
-            <div
-              aria-current="date"
-              aria-label="Friday, October 31"
-              class="day-item today"
-              role="columnheader"
-              title="Today"
-            >
-              <span
-                class="day-label"
-              >
-                Fri
-              </span>
-              <span
-                class="day-date"
-              >
-                Oct 31
-              </span>
-            </div>
-            <div
-              aria-label="Saturday, November 1"
-              class="day-item "
-              role="columnheader"
-              title="Saturday, November 1"
-            >
-              <span
-                class="day-label"
-              >
-                Sat
-              </span>
-              <span
-                class="day-date"
-              >
-                Nov 1
-              </span>
-            </div>
-          </div>
-          <section
-            aria-label="Week view"
-            class="week-view"
-          >
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Sun Oct 26 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Mon Oct 27 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Tue Oct 28 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Wed Oct 29 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Thu Oct 30 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Fri Oct 31 2025
-              </span>
-            </div>
-            <div
-              data-testid="week-day-column"
-            >
-              <span>
-                Sat Nov 01 2025
-              </span>
-            </div>
-          </section>
-        </div>
+          fetch is not defined
+        </p>
       </section>
     </main>
   </section>

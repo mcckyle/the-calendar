@@ -10,13 +10,14 @@
     align-items: center;
     width: 100%;
 
-    padding: 0.65rem 0.5rem;
-    background: transparent;
-    border-radius: var(--border-radius);
-    box-shadow: none;
-    gap: 0.4rem;
+    padding: 0.6rem 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    gap: 0.45rem;
 
-    transition: box-shadow var(--transition-speed) ease, background var(--transition-speed) ease;
+    transition: box-shadow 0.25s ease, background 0.25s ease;
 }
 
 /* ====================================
@@ -29,16 +30,17 @@
     align-items: center;
     gap: 0.25rem;
 
-    padding: 0.55rem 0.35rem;
-    border-radius: 16px;
+    padding: 0.55rem 0.4rem;
+    border-radius: 1rem;
 
     text-align: center;
     cursor: default;
     user-select: none;
+    background: transparent;
 
-    transition: background var(--transition-speed) ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow var(--transition-speed) ease;
+    transition: background 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
 }
-.day-item:hover { background: rgba(0, 59, 115, 0.06); }
+.day-item:hover, .day-item:focus-visible { background: rgba(0, 59, 115, 0.08); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
 
 /* ====================================
    Today Highlight Styling.
@@ -46,10 +48,11 @@
 .day-item.today
 {
     background: linear-gradient(145deg, rgba(0, 59, 115, 0.14), rgba(255, 184, 28, 0.16));
-    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.25);
+    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
 }
-.day-item.today .day-label { font-weight: 700; opacity: 1; }
-.day-item.today .day-date { font-weight: 600; }
+.day-item.today .day-label { font-weight: 700; opacity: 1; color: var(--deep-blue); }
+.day-item.today .day-date { font-weight: 600; color: var(--accent-gold); }
 
 /* ====================================
    Day Text Label Styling.
@@ -64,7 +67,7 @@
     color: var(--deep-blue);
     opacity: 0.75;
 
-    transition: color var(--transition-speed) ease, transform 0.2s ease;
+    transition: color 0.22s ease, transform 0.22s ease;
 }
 
 /* Date Label Styling. */
@@ -75,7 +78,7 @@
     color: var(--neutral-gray);
     opacity: 0.7;
 
-    transition: color var(--transition-speed) ease;
+    transition: color 0.22s ease;
 }
 
 /* ====================================
@@ -83,7 +86,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .days-of-week { gap: 0.3rem; }
-    .day-item { padding: 0.35rem 0.25rem; border-radius: 12px; }
+    .days-of-week { gap: 0.35rem; }
+    .day-item { padding: 0.35rem 0.3rem; border-radius: 12px; }
     .day-label, .day-date { font-size: 0.7rem; }
 }

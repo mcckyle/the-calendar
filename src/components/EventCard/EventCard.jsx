@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 9 January 2026
+//Date: 16 January 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -19,39 +19,27 @@ const EventCard = ({
 	venueState,
 	url,
   }) => {
+	const dateObj = date ? new Date(date) : null;
 
 	//Normalize the date...
-	let formattedDate = "Invalid Date";
-	if (date)
-	{
-		const dateObj = date instanceof Date ? date : new Date(date);
-
-		if (!isNaN(dateObj.getTime()))
-		{
-			formattedDate = dateObj.toLocaleDateString("en-US", {
-				weekday: "long",
-				month: "long",
-				day: "numeric",
-				year: "numeric",
-			});
-		}
-	}
+	const formattedDate = dateObj && !isNaN(dateObj)
+		? dateObj.toLocaleDateString("en-US", {
+			weekday: "long",
+			month: "long",
+			day: "numeric",
+			year: "numeric",
+		})
+	    : "Invalid Date";
 
 	//Normalize the start time...
-	let formattedStartTime = "";
-	if ( ( ! allDay) && (startTime) )
-	{
-		const startObj = startTime instanceof Date ? startTime : new Date(startTime);
-
-		if ( !isNaN(startObj.getTime()))
-		{
-			formattedStartTime = startObj.toLocaleTimeString("en-US", {
-				hour: "2-digit",
-				minute: "2-digit",
-				timeZone: "America/Chicago",
-			});
-		}
-	}
+	const startObj = startTime && !allDay ? new Date(startTime) : null;
+	let formattedStartTime = startObj && !isNaN(startObj)
+		? startObj.toLocaleTimeString("en-US", {
+			hour: "2-digit",
+			minute: "2-digit",
+			timeZone: "America/Chicago",
+		})
+		: "";
 
 	return (
 	  <article className="event-card" aria-labelledby="event-card-title" tabIndex={0}>

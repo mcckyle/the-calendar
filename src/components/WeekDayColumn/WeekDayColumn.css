@@ -9,14 +9,14 @@
     flex-direction: column;
 
     background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     overflow: hidden;
 
-    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
-.weekday-column:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); }
-.weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.04), rgba(255, 184, 28, 0.06)); box-shadow: 0 4px 14px rgba(0, 59, 115, 0.08); }
+.weekday-column:hover, .weekday-column:focus-visible { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
+.weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.06), rgba(255, 184, 28, 0.08)); box-shadow: 0 6px 22px rgba(0, 59, 115, 0.08); }
 
 /* ====================================
     Time Slots Container Styling.
@@ -25,22 +25,23 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.6rem;
 
-    padding: 0.85rem 0.6rem;
+    padding: 0.9rem 0.65rem;
     background: transparent;
 
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 59, 115, 0.2) transparent;
+    scrollbar-color: rgba(0, 59, 115, 0.25) transparent;
+    scroll-behavior: smooth;
 }
 
 /* ====================================
    Scrollbar (WebKit) Styling.
 ======================================= */
 .time-slots::-webkit-scrollbar { width: 6px; }
-.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.2); border-radius: 8px; transition: background 0.25s ease; }
+.time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; transition: background 0.25s ease; }
 .time-slots::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
 
 /* ====================================
