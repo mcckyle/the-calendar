@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 16 January 2026
+//Date: 19 January 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -33,6 +33,7 @@ const EventCard = ({
 
 	//Normalize the start time...
 	const startObj = startTime && !allDay ? new Date(startTime) : null;
+	const endObj = endTime && !allDay ? new Date(endTime) : null;
 	let formattedStartTime = startObj && !isNaN(startObj)
 		? startObj.toLocaleTimeString("en-US", {
 			hour: "2-digit",
@@ -40,6 +41,13 @@ const EventCard = ({
 			timeZone: "America/Chicago",
 		})
 		: "";
+	let formattedEndTime = endObj && !isNaN(endObj)
+	? endObj.toLocaleTimeString("en-US", {
+		hour: "2-digit",
+		minute: "2-digit",
+		timeZone: "America/Chicago",
+	})
+	: "";
 
 	return (
 	  <article className="event-card" aria-labelledby="event-card-title" tabIndex={0}>
@@ -50,8 +58,9 @@ const EventCard = ({
 
 		  <div className="event-card-meta">
 		    <time className="event-date">{formattedDate}</time>
-		    {formattedStartTime && (
-				<span className="event-time">• {formattedStartTime}</span>
+		    {allDay && <span className="event-time">• All Day</span>}
+		    { ! allDay && formattedStartTime && (
+				<span className="event-time">• {formattedStartTime}{formattedEndTime ? ` - ${formattedEndTime}` : ""}</span>
 			)}
 		  </div>
 		</header>
@@ -63,7 +72,7 @@ const EventCard = ({
 		)}
 
 		{(venueName || venueAddress || venueCity || venueState) && (
-		  <div className="event-card-venue">
+		  <address className="event-card-venue">
 		    <span className="venue-label" aria-hidden="true">📍</span>
 		    <span className="venue-text">
 				{venueName}
@@ -71,7 +80,7 @@ const EventCard = ({
 				{venueCity && `, ${venueCity}`}
 				{venueState && `, ${venueState}`}
 			</span>
-		  </div>
+		  </address>
 		)}
 
 		{url && (

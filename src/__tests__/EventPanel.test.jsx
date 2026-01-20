@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 16 January 2026
+//Date: 19 January 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from 'react';
@@ -71,7 +71,12 @@ describe("EventPanel Component", () => {
   //Test #5: Calls onClose() when the Escape key is pressed.
   test("calls onClose() when the Escape key is pressed.", () => {
     render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
-    fireEvent.keyDown(window, { key: "Escape", code: "Escape", keyCode: 27 });
+
+    //Focus the EventPanel.
+    const panel = screen.getByRole("dialog");
+    panel.focus();
+
+    fireEvent.keyDown(panel, { key: "Escape", code: "Escape", keyCode: 27 });
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 

@@ -12,12 +12,7 @@
     width: 100%;
     min-height: 100vh;
 
-    background: radial-gradient(
-        900px 500px at top center,
-        rgba(0, 59, 115, 0.06),
-        transparent 65%
-    ),
-    var(--primary-bg);
+    background: var(--primary-bg);
     padding: clamp(2rem, 4vw, 3rem) 1.25rem;
 }
 
@@ -28,15 +23,15 @@
 {
     text-align: center;
     max-width: 720px;
-    margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
+    margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.1rem, 4vw, 2.7rem);
+    font-size: clamp(2.1rem, 4vw, 2.6rem);
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;
@@ -47,7 +42,7 @@
 {
     margin-top: 0.75rem;
     font-size: 0.95rem;
-    color: rgba(60, 60, 60, 0.65);
+    color: color-mix(in srgb, var(--neutral-gray), transparent 35%);
 }
 
 /* ====================================
@@ -62,10 +57,9 @@
     justify-content: center;
 
     background: var(--secondary-bg);
-    border-radius: calc(var(--border-radius) + 6px);
-    padding: clamp(1.6rem, 3vw, 2.3rem);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: calc(var(--border-radius) + 4px);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-md);
 }
 
 /* ====================================

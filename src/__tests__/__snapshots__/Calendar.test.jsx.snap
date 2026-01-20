@@ -15,7 +15,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <button
           aria-label="Previous week"
-          aria-live="polite"
           class="nav-button"
           title="Previous week"
           type="button"
@@ -32,7 +31,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </time>
         <button
           aria-label="Next week"
-          aria-live="polite"
           class="nav-button"
           title="Next week"
           type="button"

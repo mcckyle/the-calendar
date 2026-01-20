@@ -9,10 +9,8 @@
     flex-direction: column;
     width: 100%;
     min-height: 100%;
-
-    background: transparent;
-    color: var(--neutral-gray);
     font-family: var(--body-font);
+    color: var(--neutral-gray);
 }
 
 /* ====================================
@@ -22,33 +20,34 @@
 {
     position: sticky;
     top: 0;
-    z-index: 80;
+    z-index: 100;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.75rem 1.25rem;
 
-    padding: 0.55rem 1.25rem;
-    user-select: none;
+    background: rgba(0, 59, 115, 0.85);
+    backdrop-filter: blur(10px);
 
-    background: rgba(0, 59, 115, 0.78);
-    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.3s ease;
 }
 
 /* =========================================
-   Main Calendar Content Styling.
+   Main Calendar Area Styling.
 ============================================ */
 .calendar-main
 {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+
     min-height: calc(100vh - 72px); /* Header Height Buffer Styles. */
-    padding: clamp(1.4rem, 3.5vw, 2.1rem) 0 3rem;
+    padding: clamp(1.5rem, 3.5vw, 2.2rem) 0 3rem;
 }
 
 .calendar-content
@@ -64,18 +63,17 @@
 ======================================= */
 .calendar-status
 {
-    margin: 1.75rem auto 2.25rem;
+    margin: 2rem auto;
     padding: 0.75rem 1.5rem;
-    max-width: 420px;
+    max-width: 400px;
 
-    font-size: 0.82rem;
-    letter-spacing: 0.01em;
+    font-size: 0.85rem;
     text-align: center;
+    letter-spacing: 0.01em;
 
-    background: color-mix(in srgb, var(--secondary-bg) 94%, transparent);
+    background: color-mix(in srgb, var(--secondary-bg) 95%, transparent);
     border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .calendar-status.error
@@ -93,20 +91,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
     overflow-x: auto;
-    overflow-y: visible;
     padding-bottom: 2rem;
 
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
-    scrollbar-gutter: stable both-edges;
+    scroll-padding: 1.5rem;
 
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
-
-    scroll-padding-left: 1.5rem;
-    scroll-padding-right: 1.5rem;
 }
 
 /* ====================================
@@ -114,13 +107,12 @@
 ======================================= */
 .calendar-grid
 {
-    width: 100%;
-    max-width: 1500px;
-
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: clamp(0.9rem, 2vw, 1.1rem);
+    gap: clamp(0.9rem, 2vw, 1rem);
 
+    width: 100%;
+    max-width: 1500px;
     padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
@@ -131,8 +123,9 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1.1rem;
+    gap: 1rem;
     align-items: start;
+    scroll-snap-align: start;
 }
 
 /* ====================================
@@ -152,6 +145,17 @@
 
 @media (max-width: 768px)
 {
-    .calendar-main { padding: 1.4rem 0 2.75rem; }
-    .week-view { min-width: 1100px; gap: 0.85rem; }
+    .calendar-main { padding: 1.25rem 0 2.5rem; }
+    .week-view { min-width: 1100px; gap: 0.8rem; }
+}
+
+/* ====================================
+   Calendar Dark Mode Media Query Styles.
+======================================= */
+@media (prefers-color-scheme: dark)
+{
+    .calendar { color: var(--neutral-gray); }
+    .calendar-header{ background: rgba(0, 59, 115, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.45); }
+    .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 }

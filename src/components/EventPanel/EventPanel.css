@@ -22,11 +22,11 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(10, 12, 25, 0.55);
-    backdrop-filter: blur(16px);
+    background: rgba(10, 12, 25, 0.6);
+    backdrop-filter: blur(18px);
     opacity: 0;
 
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s ease;
 
     animation: fadeIn 0.25s forwards ease;
 }
@@ -45,7 +45,7 @@
     border-radius: 2rem;
 
     padding: clamp(1.5rem, 3vw, 2.5rem);
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 28px 64px rgba(0, 0, 0, 0.18), 0 10px 24px rgba(0, 0, 0, 0.12);
 
     opacity: 0;
     transform: translateY(20px) scale(0.97);
@@ -150,4 +150,14 @@
     .event-panel { width: 94%; padding: 1.5rem; border-radius: 1.5rem; }
     .event-panel-header h2 { font-size: 1.45rem; }
     .close-button { width: 2rem; height: 2rem; font-size: 1.2rem; }
+}
+
+/* ====================================
+   EventPanel Dark Mode Media Query Styles.
+======================================= */
+@media (prefers-color-scheme: dark)
+{
+    .event-panel { background: #020617; box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.25); }
+    .event-overlay { background: rgba(0, 0, 0, 0.65); }
+    .close-button { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
 }
