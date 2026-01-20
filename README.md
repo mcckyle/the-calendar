@@ -1,7 +1,6 @@
+# The Calendar
 
-# Saint Louis Calendar
-
-The **Saint Louis Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between week, and display event detailss. Built using modern technologies like React and Vite.
+The **Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between week, and display event detailss. Built using modern technologies like React and Vite.
 
 > **Note**: This is a work-in-progress, and new features and enhancements are continuously being added!
 
@@ -32,12 +31,12 @@ To get the project running locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mcckyle/saint-louis-calendar.git
+   git clone https://github.com/mcckyle/the-calendar.git
    ```
 
 2. Navigate into the project directory:
    ```bash
-   cd saint-louis-calendar
+   cd the-calendar
    ```
 
 3. Install the dependencies:
