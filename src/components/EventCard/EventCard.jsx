@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 19 January 2026
+//Date: 23 January 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -34,20 +34,20 @@ const EventCard = ({
 	//Normalize the start time...
 	const startObj = startTime && !allDay ? new Date(startTime) : null;
 	const endObj = endTime && !allDay ? new Date(endTime) : null;
-	let formattedStartTime = startObj && !isNaN(startObj)
+	const formattedStartTime = startObj && !isNaN(startObj)
 		? startObj.toLocaleTimeString("en-US", {
 			hour: "2-digit",
 			minute: "2-digit",
 			timeZone: "America/Chicago",
 		})
 		: "";
-	let formattedEndTime = endObj && !isNaN(endObj)
-	? endObj.toLocaleTimeString("en-US", {
-		hour: "2-digit",
-		minute: "2-digit",
-		timeZone: "America/Chicago",
-	})
-	: "";
+	const formattedEndTime = endObj && !isNaN(endObj)
+	    ? endObj.toLocaleTimeString("en-US", {
+		    hour: "2-digit",
+		    minute: "2-digit",
+		    timeZone: "America/Chicago",
+	      })
+	    : "";
 
 	return (
 	  <article className="event-card" aria-labelledby="event-card-title" tabIndex={0}>
@@ -60,7 +60,9 @@ const EventCard = ({
 		    <time className="event-date">{formattedDate}</time>
 		    {allDay && <span className="event-time">• All Day</span>}
 		    { ! allDay && formattedStartTime && (
-				<span className="event-time">• {formattedStartTime}{formattedEndTime ? ` - ${formattedEndTime}` : ""}</span>
+				<span className="event-time">
+				  • {formattedStartTime}{formattedEndTime ? ` - ${formattedEndTime}` : ""}
+				</span>
 			)}
 		  </div>
 		</header>

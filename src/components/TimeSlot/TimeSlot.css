@@ -1,25 +1,25 @@
 /* Filename: src/components/TimeSlot/TimeSlot.css */
 
 /* ====================================
-    Time Slot Container Styling.
+    Time Slot Container Styles.
 ======================================= */
 .time-slot
 {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
-    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+    padding: 0.7rem 0.85rem;
 
     background: var(--secondary-bg);
-    border-radius: 1.5rem;
-    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+    border-radius: 1.75rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 
     transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
-.time-slot:hover, .time-slot:focus-within { background: rgba(0, 59, 115, 0.05); box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08); transform: translateY(-1px); }
+.time-slot:hover, .time-slot:focus-within { background: rgba(0, 59, 115, 0.05); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1); transform: translateY(-1px); }
 
 /* ====================================
-    Time Label Styling.
+    Time Label Styles.
 ======================================= */
 .time-label
 {
@@ -37,17 +37,17 @@
 }
 
 /* ====================================
-   Events Container Styling.
+   Events Container Styles.
 ======================================= */
 .slot-events
 {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 /* ====================================
-   Events Button Styling.
+   Event Buttons Styles.
 ======================================= */
 .event
 {
@@ -57,7 +57,7 @@
 
     border: none;
     border-radius: 999px;
-    padding: 0.38rem 0.85rem;
+    padding: 0.4rem 0.85rem;
 
     font-size: 0.72rem;
     font-weight: 500;
@@ -77,9 +77,9 @@
 
 .event:hover
 {
-    filter: brightness(1.07);
+    filter: brightness(1.08);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 .event:active { filter: brightness(1); transform: translateY(0); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
 
@@ -90,7 +90,7 @@
 }
 
 /* ====================================
-   Empty Slot Indicator Styling.
+   Empty Slot Indicator Styles.
 ======================================= */
 .slot-empty
 {
@@ -99,25 +99,25 @@
 
     text-align: center;
     color: var(--subtle-gray);
-    opacity: 0.3;
+    opacity: 0.35;
 
     user-select: none;
     pointer-events: none;
 }
 
 /* ====================================
-   Media Query Styling.
+   Media Query Styles.
 ======================================= */
 @media (max-width: 1024px)
 {
-    .time-slot { padding: 0.55rem 0.65rem; }
+    .time-slot { padding: 0.6rem 0.7rem; }
     .time-label { font-size: 0.7rem; }
-    .event { font-size: 0.68rem; padding: 0.34rem 0.75rem; }
+    .event { font-size: 0.68rem; padding: 0.35rem 0.75rem; }
 }
 
 @media (max-width: 768px)
 {
-    .time-slot { padding: 0.45rem 0.55rem; border-radius: 1.25rem; }
+    .time-slot { padding: 0.5rem 0.6rem; border-radius: 1.5rem; }
     .time-label { font-size: 0.65rem; }
     .event { font-size: 0.62rem; padding: 0.3rem 0.65rem; }
 }
@@ -127,12 +127,12 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .time-slot { background: #020617; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4); }
+    .time-slot { background: #020617; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35); }
     .time-slot:hover,
     .time-slot:focus-within
     {
         background: rgba(255, 255, 255, 0.04);
-        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
     }
     .event { background: linear-gradient(135deg, rgba(0, 59, 115, 0.85), var(--accent-gold)); }
     .slot-empty { color: rgba(255, 255, 255, 0.3); }

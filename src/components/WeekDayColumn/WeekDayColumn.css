@@ -1,7 +1,7 @@
 /* Filename: src/components/WeekDayColumn/WeekDayColumn.css */
 
 /* =========================================
-    WeekDay Column Container Styling.
+    WeekDay Column Container Styles.
 ============================================ */
 .weekday-column
 {
@@ -15,18 +15,17 @@
 
     transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
-.weekday-column:hover, .weekday-column:focus-visible { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12); transform: translateY(-2px); }
+.weekday-column:hover, .weekday-column:focus-within { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12); transform: translateY(-2px); }
 .weekday-column.today { background: linear-gradient(145deg, rgba(0, 59, 115, 0.08), rgba(255, 184, 28, 0.12)); box-shadow: 0 8px 28px rgba(0, 59, 115, 0.08); }
 
 /* ====================================
-    Time Slots Container Styling.
+    Time Slots Container Styles.
 ======================================= */
 .time-slots
 {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-
     padding: 1rem 0.7rem;
     background: transparent;
 
@@ -38,14 +37,14 @@
 }
 
 /* ====================================
-   Scrollbars (WebKit) Styling.
+   Scrollbars (WebKit) Styles.
 ======================================= */
 .time-slots::-webkit-scrollbar { width: 6px; }
 .time-slots::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; transition: background 0.25s ease; }
 .time-slots::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
 
 /* ====================================
-   Media Queries Styling.
+   Media Queries Styles.
 ======================================= */
 @media (max-width: 1024px)
 {

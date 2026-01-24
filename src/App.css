@@ -9,21 +9,21 @@
     flex-direction: column;
     align-items: center;
 
-    width: 100%;
     min-height: 100vh;
+    width: 100%;
 
     background: var(--primary-bg);
     padding: clamp(2rem, 4vw, 3rem) 1.25rem;
 }
 
 /* ====================================
-   Calendar Intro Section Styles.
+   Calendar Intro / Header Styles.
 ======================================= */
 .calendar-intro
 {
     text-align: center;
     max-width: 720px;
-    margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .calendar-title
@@ -31,7 +31,7 @@
     font-family: var(--title-font);
     font-size: clamp(2.1rem, 4vw, 2.6rem);
     font-weight: 700;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
 
     background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
     -webkit-background-clip: text;

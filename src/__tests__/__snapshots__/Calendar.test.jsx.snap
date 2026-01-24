@@ -3,7 +3,7 @@
 exports[`Calendar Component matches snapshot for default render. 1`] = `
 <DocumentFragment>
   <section
-    aria-label="Weekly Event Calendar"
+    aria-label="Weekly events calendar"
     class="calendar"
   >
     <header
@@ -27,7 +27,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="month-year"
           datetime="2025-10-26"
         >
-          October 2025
+          <span>
+            October 2025
+          </span>
         </time>
         <button
           aria-label="Next week"
@@ -42,7 +44,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     <main
       class="calendar-main"
     >
-      <section
+      <div
         aria-live="polite"
         class="calendar-content"
       >
@@ -241,7 +243,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </section>
           </div>
         </section>
-      </section>
+      </div>
     </main>
   </section>
 </DocumentFragment>

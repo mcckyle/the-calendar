@@ -1,7 +1,7 @@
 /* Filename: src/components/EventCard/EventCard.css */
 
 /* ====================================
-    Event Card Container Styling.
+    EventCard Container Styles.
 ======================================= */
 .event-card
 {
@@ -21,7 +21,7 @@
 .event-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
 
 /* ====================================
-    Header Styling.
+    EventCard Header Styles.
 ======================================= */
 .event-card-header { margin-bottom: 1.6rem; }
 
@@ -36,7 +36,7 @@
 }
 
 /* ====================================
-    Meta Information Styling.
+    EventCard Meta Information Styles.
 ======================================= */
 .event-card-meta
 {
@@ -52,7 +52,7 @@
 .event-time { opacity: 0.85; }
 
 /* ====================================
-   Event Description Styling.
+   EventCard Description Styles.
 ======================================= */
 .event-card-description
 {
@@ -64,7 +64,7 @@
 }
 
 /* ====================================
-   Event Venue Styling.
+   EventCard Venue Styles.
 ======================================= */
 .event-card-venue
 {
@@ -86,7 +86,7 @@
 .venue-text { line-height: 1.55; }
 
 /* ====================================
-   Event Links Styling.
+   EventCard Links Styles.
 ======================================= */
 .event-card-link { margin-top: 1.8rem; }
 
@@ -121,7 +121,7 @@
 .event-card-link a:hover::after { transform: scaleX(1); }
 
 /* ====================================
-   Media Queries Styling.
+   EventCard Media Queries Styles.
 ======================================= */
 @media (max-width: 768px)
 {

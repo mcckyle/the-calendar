@@ -10,11 +10,11 @@
     align-items: center;
     width: 100%;
 
-    padding: 0.75rem 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 2rem;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
     gap: 0.5rem;
 
     transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -40,16 +40,16 @@
 
     transition: background 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
 }
-.day-item:hover, .day-item:focus-visible { background: rgba(0, 59, 115, 0.12); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
+.day-item:hover, .day-item:focus-visible { background: rgba(0, 59, 115, 0.12); transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
    Today Highlight Styling.
 ======================================= */
 .day-item.today
 {
-    background: linear-gradient(145deg, rgba(0, 59, 115, 0.15), rgba(255, 184, 28, 0.2));
-    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.3), 0 4px 12px rgba(0, 0, 0, 0.12);
-    transform: scale(1.05);
+    background: linear-gradient(145deg, rgba(0, 59, 115, 0.18), rgba(255, 184, 28, 0.22));
+    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.28), 0 4px 14px rgba(0, 0, 0, 0.14);
+    transform: scale(1.06);
 }
 .day-item.today .day-label { font-weight: 700; color: var(--deep-blue); opacity: 1; }
 .day-item.today .day-date { font-weight: 600; color: var(--accent-gold); }
@@ -59,13 +59,13 @@
 ======================================= */
 .day-label
 {
-    font-size: 0.85rem;
+    font-size: 0.87rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.35px;
 
     color: var(--deep-blue);
-    opacity: 0.8;
+    opacity: 0.85;
 
     transition: color 0.22s ease, transform 0.22s ease;
 }
@@ -86,7 +86,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .days-of-week { gap: 0.35rem; padding: 0.5rem 0.25rem; }
+    .days-of-week { gap: 0.35rem; padding: 0.55rem 0.25rem; }
     .day-item { padding: 0.45rem 0.3rem; border-radius: 1rem; }
     .day-label, .day-date { font-size: 0.7rem; }
 }
@@ -96,9 +96,9 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .days-of-week { background: rgba(255, 255, 255, 0.06); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); }
+    .days-of-week { background: rgba(255, 255, 255, 0.06); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.42); }
     .day-item.today .day-label { color: #d1e0ff; }
     .day-item.today .day-date { color: #ffdd7f; }
-    .day-label { color: #cfd8f1; }
     .day-label { color: #e0e0e0; }
+    .day-date { color: #cfd8f1; }
 }

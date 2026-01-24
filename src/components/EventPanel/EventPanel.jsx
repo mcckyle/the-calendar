@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 19 January 2026
+//Date: 23 January 2026
 //Description: This file contains the event modal for the Saint Louis React calendar project.
 
 import React, { useEffect, useRef } from "react";
@@ -15,7 +15,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
       return null;
   }
 
-  //Focus the panel when it opens for accessibility purposes...
+  //Focus the panel when it opens...
   useEffect(() => {
     panelRef.current?.focus();
   }, [selectedEvent]);

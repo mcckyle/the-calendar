@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 19 January 2026
+//Date: 23 January 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect } from "react";
@@ -37,12 +37,12 @@ const Calendar = () => {
   //Fetch the events...
   const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
 
-  //Normalize the events...
+  //Normalize events once fetched...
   useEffect(() => {
-    setNormalizedEvents(events || []);
+    setNormalizedEvents(events ?? []);
   }, [events]);
 
-  //Generate the seven days of the week based on CalendarContext.jsx.
+  //Generate week days based on CalendarContext.jsx.
   useEffect(() => {
     const days = Array.from({ length: 7 }, (_, i) => {
       const day = new Date(currentDate);
@@ -57,13 +57,13 @@ const Calendar = () => {
   const closeEventPanel = () => setSelectedEvent(null);
 
   return (
-    <section className="calendar" aria-label="Weekly Event Calendar">
+    <section className="calendar" aria-label="Weekly events calendar">
       <header className="calendar-header">
         <WeekNavigation />
       </header>
 
       <main className="calendar-main">
-       <section className="calendar-content" aria-live="polite">
+       <div className="calendar-content" aria-live="polite">
         {loading && <p className="calendar-status" role="status">Loading events…</p>}
         {error && <p className="calendar-status error" role="alert">{error}</p>}
 
@@ -86,7 +86,7 @@ const Calendar = () => {
           </div>
         </section>
         )}
-       </section>
+       </div>
       </main>
 
       {/* Conditionally render the EventPanel. */}
