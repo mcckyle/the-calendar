@@ -1,9 +1,9 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 23 January 2026
+//Date: 26 January 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
 
@@ -23,26 +23,25 @@ const Calendar = () => {
   const { currentDate } = useCalendarContext();
 
   const [weekDays, setWeekDays] = useState([]);
-  const [normalizedEvents, setNormalizedEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
-  //Compute the start + end of the current week from CalendarContext.jsx.
-  const weekStart = currentDate.toISOString().split("T")[0];
-  const weekEnd = new Date(currentDate);
-  weekEnd.setDate(currentDate.getDate() + 6); // Sunday + 6 == Saturday.
-  const weekEndISO = weekEnd.toISOString().split("T")[0];
+  //Compute the start + end of the current week from the CalendarContext.
+  const weekStart = useMemo(
+    () => currentDate.toISOString().split("T")[0],
+    [currentDate]
+  );
+  const weekEndISO = useMemo(() => {
+    const end = new Date(currentDate);
+    end.setDate(currentDate.getDate() + 6);
+    return end.toISOString().split("T")[0];
+  }, [currentDate]);
 
   //Fetch the events...
-  const { events, loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
+  const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEndISO);
 
-  //Normalize events once fetched...
-  useEffect(() => {
-    setNormalizedEvents(events ?? []);
-  }, [events]);
-
-  //Generate week days based on CalendarContext.jsx.
+  //Generate week days based on the CalendarContext.
   useEffect(() => {
     const days = Array.from({ length: 7 }, (_, i) => {
       const day = new Date(currentDate);
@@ -63,11 +62,23 @@ const Calendar = () => {
       </header>
 
       <main className="calendar-main">
-       <div className="calendar-content" aria-live="polite">
-        {loading && <p className="calendar-status" role="status">Loading events…</p>}
-        {error && <p className="calendar-status error" role="alert">{error}</p>}
+       <div className="calendar-content">
+        {( (loading) || (error) ) && (
+          <div className="calendar-feedback" aria-live="polite">
+            {loading && (
+              <p className="calendar-status" role="status">
+                Loading events…
+              </p>
+            )}
+            {error && (
+              <p className="calendar-status error" role="alert">
+                {error}
+              </p>
+            )}
+       </div>
+        )}
 
-        { ! loading && ! error && (
+        { ( ! loading) && ( ! error) && (
         <section className="calendar-body" aria-label="Calendar week grid">
           <div className="calendar-grid">
             <DaysOfWeek weekDays={weekDays} />
@@ -77,7 +88,7 @@ const Calendar = () => {
                 <WeekDayColumn
                   key={day.toDateString()}
                   day={day}
-                  groupedEvents={groupEventsByHour(day, normalizedEvents)}
+                  groupedEvents={groupEventsByHour(day, events)}
                   onEventClick={handleEventClick}
                   convertTo12HourFormat={convertTo12HourFormat}
                 />

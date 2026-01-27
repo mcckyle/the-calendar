@@ -10,6 +10,7 @@
     width: 100%;
     min-height: 100%;
     font-family: var(--body-font);
+    background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
     color: var(--neutral-gray);
 }
 
@@ -27,8 +28,8 @@
     align-items: center;
     padding: 0.75rem 1.25rem;
 
-    background: color-mix(in srgb, var(--deep-blue) 92%, transparent);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--deep-blue) 88%, transparent);
+    backdrop-filter: blur(12px) saturate(120%);
 
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -52,6 +53,7 @@
 /* ====================================
    Status Messages Styling.
 ======================================= */
+.calendar-feedback { display: flex; justify-content: center; margin-top: 2.5rem; }
 .calendar-status
 {
     margin: 2rem auto;
@@ -102,10 +104,11 @@
     display: grid;
     grid-template-rows: auto 1fr;
     gap: clamp(0.85rem, 2vw, 1rem);
-
+    background: color-mix(in srgb, var(--secondary-bg) 96%, transparent);
+    border-radius: 16px;
     width: 100%;
     max-width: 1500px;
-    padding-inline: clamp(1rem, 3vw, 2rem);
+    padding-block: clamp(1.25rem, 2vw, 1.75rem);
 }
 
 /* ====================================
@@ -115,7 +118,7 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1rem;
+    gap: clamp(0.75rem, 1.5vw, 1rem);
     align-items: start;
     scroll-snap-align: start;
 }
@@ -123,8 +126,8 @@
 /* ====================================
    Scrollbars Styling.
 ======================================= */
-.calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.28); border-radius: 999px; }
+.calendar-body::-webkit-scrollbar { height: 5px; }
+.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.22); border-radius: 999px; }
 .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================
@@ -138,6 +141,8 @@
 @media (max-width: 768px)
 {
     .calendar-main { padding: 1.25rem 0 2.5rem; }
+    .calendar-grid { border-radius: 12px; }
+    .calendar-status { font-size: 0.8rem; }
     .week-view { min-width: 1100px; gap: 0.8rem; }
 }
 

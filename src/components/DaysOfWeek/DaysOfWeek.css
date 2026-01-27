@@ -1,7 +1,7 @@
 /* Filename: src/components/DaysOfWeek/DaysOfWeek.css */
 
 /* ====================================
-    Days Of Week Container Styling.
+    DaysOfWeek Container Styling.
 ======================================= */
 .days-of-week
 {
@@ -10,11 +10,11 @@
     align-items: center;
     width: 100%;
 
-    padding: 0.8rem 0.5rem;
-    background: rgba(255, 255, 255, 0.08);
+    padding: 0.9rem 0.6rem;
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 2rem;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
     gap: 0.5rem;
 
     transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -28,10 +28,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
 
-    padding: 0.65rem 0.4rem;
-    border-radius: 1.25rem;
+    padding: 0.65rem 0.5rem;
+    border-radius: 1.5rem;
 
     text-align: center;
     cursor: default;
@@ -40,15 +40,15 @@
 
     transition: background 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
 }
-.day-item:hover, .day-item:focus-visible { background: rgba(0, 59, 115, 0.12); transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
+.day-item:hover, .day-item:focus-visible { background: rgba(0, 59, 115, 0.12); transform: translateY(-2px) scale(1.04); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
    Today Highlight Styling.
 ======================================= */
 .day-item.today
 {
-    background: linear-gradient(145deg, rgba(0, 59, 115, 0.18), rgba(255, 184, 28, 0.22));
-    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.28), 0 4px 14px rgba(0, 0, 0, 0.14);
+    background: linear-gradient(145deg, rgba(0, 59, 115, 0.18), rgba(255, 184, 28, 0.2));
+    box-shadow: inset 0 0 0 1px rgba(0, 59, 115, 0.28), 0 4px 16px rgba(0, 0, 0, 0.14);
     transform: scale(1.06);
 }
 .day-item.today .day-label { font-weight: 700; color: var(--deep-blue); opacity: 1; }
@@ -59,7 +59,7 @@
 ======================================= */
 .day-label
 {
-    font-size: 0.87rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.35px;
@@ -73,7 +73,7 @@
 /* Date Label Styling. */
 .day-date
 {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--neutral-gray);
     opacity: 0.75;
@@ -86,9 +86,9 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .days-of-week { gap: 0.35rem; padding: 0.55rem 0.25rem; }
-    .day-item { padding: 0.45rem 0.3rem; border-radius: 1rem; }
-    .day-label, .day-date { font-size: 0.7rem; }
+    .days-of-week { gap: 0.35rem; padding: 0.6rem 0.3rem; }
+    .day-item { padding: 0.45rem 0.35rem; border-radius: 1.25rem; }
+    .day-label, .day-date { font-size: 0.72rem; }
 }
 
 /* ====================================
@@ -96,7 +96,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .days-of-week { background: rgba(255, 255, 255, 0.06); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.42); }
+    .days-of-week { background: rgba(255, 255, 255, 0.04); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.42); }
     .day-item.today .day-label { color: #d1e0ff; }
     .day-item.today .day-date { color: #ffdd7f; }
     .day-label { color: #e0e0e0; }

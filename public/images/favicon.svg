@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#003b73"></rect>
+
+  <!-- Gateway Arch -->
+  <path d="M16 44 C20 22, 44 22, 48 44" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Event dot -->
+  <circle cx="32" cy="48" r="3" fill="#ffffff"></circle>
+</svg>

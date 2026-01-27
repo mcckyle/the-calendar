@@ -45,7 +45,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       class="calendar-main"
     >
       <div
-        aria-live="polite"
         class="calendar-content"
       >
         <section

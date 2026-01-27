@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 23 January 2026
+//Date: 26 January 2026
 //Description: This file contains the event modal for the Saint Louis React calendar project.
 
 import React, { useEffect, useRef } from "react";
@@ -28,12 +28,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
   //Render the EventCard component for the selected event...
   return (
     <div className="event-modal-root">
-      {/* Overlay / Backdrop. */}
-      <div
-        className="event-overlay"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+      <div className="event-overlay" onClick={onClose} aria-hidden="true" />
 
       {/* Panel. */}
       <section
@@ -59,7 +54,6 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         </header>
 
         <div id="event-panel-body" className="event-panel-body">
-          {/* Use EventCard to display the selected event */}
           <EventCard {...selectedEvent} />
         </div>
       </section>

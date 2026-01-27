@@ -20,11 +20,11 @@
     padding: 0.5rem 0.75rem;
     border-radius: 2rem;
 
-    background: rgba(0, 59, 115, 0.72);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background: rgba(0, 59, 115, 0.65);
+    backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
 }
 
 /* ====================================
@@ -40,7 +40,7 @@
 
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
     font-size: 1.5rem;
     font-weight: 600;
@@ -78,7 +78,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 .week-navigation:hover .month-year span,
 .week-navigation:focus-within .month-year span { transform: translateY(-1px); opacity: 0.95; }
@@ -88,8 +88,8 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.8rem; padding: 0.35rem 0.5rem; }
-    .month-year { font-size: 1.25rem; }
+    .week-navigation { gap: 0.7rem; padding: 0.35rem 0.5rem; }
+    .month-year span { font-size: 1.25rem; }
     .nav-button { width: 2rem; height: 2rem; font-size: 1.2rem; }
 }
 
@@ -98,6 +98,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .week-navigation { background: rgba(0, 59, 115, 0.84); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45); }
-    .nav-button { background: rgba(255, 255, 255, 0.12); }
+    .week-navigation { background: rgba(0, 59, 115, 0.82); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45); }
+    .nav-button { background: rgba(255, 255, 255, 0.1); }
 }
