@@ -8,13 +8,14 @@
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    padding: 0.8rem 0.9rem;
+    padding: 0.85rem 1rem;
 
-    background: var(--secondary-bg);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 1.8rem;
     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(12px) saturate(120%);
 
-    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    transition: background 0.28s ease, box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .time-slot:hover, .time-slot:focus-within { background: rgba(0, 59, 115, 0.06); box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1); transform: translateY(-1px); }
 
@@ -33,7 +34,7 @@
     border-bottom: 1px solid rgba(0, 59, 115, 0.08);
     user-select: none;
 
-    transition: color var(--transition-speed) ease;
+    transition: color 0.22s ease;
 }
 
 /* ====================================
@@ -71,7 +72,7 @@
     user-select: none;
     caret-color: transparent;
 
-    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
 .event:hover

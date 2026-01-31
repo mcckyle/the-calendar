@@ -1,7 +1,7 @@
 /* Filename: src/components/WeekNavigation/WeekNavigation.css */
 
 /* =========================================
-    Week Navigation Container Styles.
+    WeekNavigation Container Styles.
 ============================================ */
 .week-navigation
 {
@@ -14,21 +14,21 @@
     margin: 0 auto;
 
     font-family: var(--title-font);
-    color: #fff;
     user-select: none;
 
     padding: 0.5rem 0.75rem;
     border-radius: 2rem;
 
     background: rgba(0, 59, 115, 0.65);
-    backdrop-filter: blur(14px) saturate(120%);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(16px) saturate(120%);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
 
-    transition: all 0.3s ease;
+    transition: all 0.28s ease;
 }
+.week-navigation:hover, .week-navigation:focus-within { transform: translateY(-1px); }
 
 /* ====================================
-    Navigation Buttons Styles.
+    WeekNavigation Navigation Buttons Styles.
 ======================================= */
 .nav-button
 {
@@ -41,7 +41,7 @@
     border-radius: 50%;
     border: none;
     background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    color: #fff;
     font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
@@ -58,16 +58,16 @@
     background: var(--accent-gold);
     color: var(--deep-blue);
     transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 .nav-button:active { transform: translateY(0) scale(0.95); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
-   Month / Year Text Label Styles.
+   WeekNavigation Month / Year Text Label Styles.
 ======================================= */
 .month-year span
 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: 700;
     letter-spacing: 0.15px;
 
@@ -98,6 +98,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .week-navigation { background: rgba(0, 59, 115, 0.82); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45); }
+    .week-navigation { background: rgba(0, 59, 115, 0.82); box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45); }
     .nav-button { background: rgba(255, 255, 255, 0.1); }
 }

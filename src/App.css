@@ -14,6 +14,8 @@
 
     background: var(--primary-bg);
     padding: clamp(2rem, 4vw, 3.25rem) 1.25rem;
+
+    transition: background 0.28s ease;
 }
 
 /* ====================================
@@ -22,24 +24,27 @@
 .calendar-intro
 {
     text-align: center;
-    max-width: 640px;
-    margin-bottom: clamp(2rem, 4vw, 2.75rem);
+    max-width: var(--content-narrow-width);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 .calendar-title
 {
     font-family: var(--title-font);
-    font-size: clamp(2.1rem, 4vw, 2.6rem);
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
     font-weight: 700;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     color: var(--deep-blue);
 }
 
 .calendar-tagline
 {
-    margin-top: 0.75rem;
-    font-size: 0.95rem;
-    color: color-mix(in srgb, var(--neutral-gray), transparent 40%);
+    font-size: clamp(0.92rem, 1.2vw, 1rem);
+    color: color-mix(in srgb, var(--neutral-gray), transparent 35%);
+    line-height: 1.5;
 }
 
 /* ====================================
@@ -48,22 +53,29 @@
 .calendar-wrapper
 {
     width: 100%;
-    max-width: 1440px;
+    max-width: var(--content-max-width);
 
     display: flex;
     justify-content: center;
 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     box-shadow: var(--shadow-sm);
+
+    transition: background 0.28s ease, box-shadow 0.28s ease;
 }
 
 /* ====================================
    Media Query Styles.
 ======================================= */
+@media (max-width: 1024px)
+{
+    .calendar-wrapper { padding: 1.25rem; }
+}
+
 @media (max-width: 768px)
 {
     .calendar-title { font-size: 2rem; }
-    .calendar-wrapper { padding: 1.1rem; }
+    .calendar-wrapper { padding: 1rem; }
 }

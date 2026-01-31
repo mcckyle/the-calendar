@@ -20,11 +20,11 @@
     --neutral-gray: #2f2f2f;
     --subtle-gray: #d1d5db;
 
-    --border-radius: 16px;
-    --shadow-sm: 0 1px 6px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --border-radius: 1.5rem;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 16px 48px rgba(0, 0, 0, 0.08);
 
-    --content-max-width: 1400px;
+    --content-max-width: 1440px;
     --content-narrow-width: 640px;
 
     --transition-speed: 0.25s;
@@ -76,9 +76,7 @@ button
     cursor: pointer;
     user-select: none;
     caret-color: transparent;
-
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
 }
 button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
 

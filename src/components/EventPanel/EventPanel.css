@@ -22,13 +22,13 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(0, 0, 25, 0.6);
-    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 25, 0.55);
+    backdrop-filter: blur(20px) saturate(120%);
     opacity: 0;
 
     transition: opacity 0.35s ease;
 
-    animation: fadeIn 0.25s forwards ease;
+    animation: fadeIn 0.28s forwards ease;
 }
 
 /* ====================================
@@ -41,7 +41,8 @@
     max-height: 88vh;
     overflow-y: auto;
 
-    background: var(--secondary-bg);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px) saturate(120%);
     border-radius: 2rem;
 
     padding: clamp(1.5rem, 3vw, 2.5rem);
@@ -81,6 +82,8 @@
     letter-spacing: -0.015em;
     color: var(--deep-blue);
     margin: 0;
+
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 /* ====================================
@@ -154,7 +157,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-panel { background: #020617; box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35), 0 12px 28px rgba(0, 0, 0, 0.25); }
+    .event-panel { background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(18px) saturate(120%); box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35), 0 12px 28px rgba(0, 0, 0, 0.25); }
     .event-overlay { background: rgba(0, 0, 0, 0.65); }
     .close-button { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
 }
