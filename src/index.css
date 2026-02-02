@@ -21,8 +21,8 @@
     --subtle-gray: #d1d5db;
 
     --border-radius: 1.5rem;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 16px 48px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 20px 52px rgba(0, 0, 0, 0.1);
 
     --content-max-width: 1440px;
     --content-narrow-width: 640px;
@@ -96,7 +96,7 @@ a:hover { color: var(--accent-gold); }
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.35); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.3); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================
@@ -111,5 +111,5 @@ a:hover { color: var(--accent-gold); }
         --neutral-gray: #e5e7eb;
         --subtle-gray: #334155;
     }
-    .calendar-wrapper { box-shadow: 0 18px 48px rgba(0, 0, 0, 0.7); }
+    .calendar-wrapper { box-shadow: 0 20px 52px rgba(0, 0, 0, 0.65); }
 }

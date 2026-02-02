@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 23 January 2026
+//Date: 2 February 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -29,51 +29,58 @@ const EventCard = ({
 			day: "numeric",
 			year: "numeric",
 		})
-	    : "Invalid Date";
+	    : null;
 
 	//Normalize the start time...
 	const startObj = startTime && !allDay ? new Date(startTime) : null;
 	const endObj = endTime && !allDay ? new Date(endTime) : null;
 	const formattedStartTime = startObj && !isNaN(startObj)
 		? startObj.toLocaleTimeString("en-US", {
-			hour: "2-digit",
+			hour: "numeric",
 			minute: "2-digit",
 			timeZone: "America/Chicago",
 		})
-		: "";
+		: null;
 	const formattedEndTime = endObj && !isNaN(endObj)
 	    ? endObj.toLocaleTimeString("en-US", {
-		    hour: "2-digit",
+		    hour: "numeric",
 		    minute: "2-digit",
 		    timeZone: "America/Chicago",
 	      })
-	    : "";
+	    : null;
 
 	return (
-	  <article className="event-card" aria-labelledby="event-card-title" tabIndex={0}>
+	  <article className="event-card" aria-labelledby="event-title" tabIndex={0}>
 		<header className="event-card-header">
-		  <h3 id="event-card-title" className="event-card-title">
+		  <h3 id="event-title" className="event-card-title">
 		    {title}
 		  </h3>
 
+		  {( (formattedDate) || (formattedStartTime) || (allDay) ) && (
 		  <div className="event-card-meta">
-		    <time className="event-date">{formattedDate}</time>
-		    {allDay && <span className="event-time">• All Day</span>}
-		    { ! allDay && formattedStartTime && (
+		   {formattedDate && (
+		    <time className="event-date" dateTime={date}>
+		      {formattedDate}
+			</time>
+			)}
+
+		    {allDay && <span className="event-time">All Day</span>}
+
+		    { ( ! allDay) && (formattedStartTime) && (
 				<span className="event-time">
-				  • {formattedStartTime}{formattedEndTime ? ` - ${formattedEndTime}` : ""}
+				  {formattedStartTime}
+				  {formattedEndTime && ` - ${formattedEndTime}`}
 				</span>
 			)}
 		  </div>
+		  )}
 		</header>
 
 		{description && (
-			<section className="event-card-description">
-			  {description}
-			</section>
+			<p className="event-card-description">{description}</p>
 		)}
 
-		{(venueName || venueAddress || venueCity || venueState) && (
+		{( (venueName) || (venueAddress) || (venueCity) || (venueState) ) && (
 		  <address className="event-card-venue">
 		    <span className="venue-label" aria-hidden="true">📍</span>
 		    <span className="venue-text">
@@ -86,11 +93,11 @@ const EventCard = ({
 		)}
 
 		{url && (
-		  <div className="event-card-link">
+		  <footer className="event-card-link">
 		    <a href={url} target="_blank" rel="noopener noreferrer">
-			  View official event
+			  View official event →
 			</a>
-		  </div>
+		  </footer>
 		)}
 	  </article>
 	);

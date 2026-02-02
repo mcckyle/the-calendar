@@ -14,27 +14,22 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         class="week-navigation"
       >
         <button
-          aria-label="Previous week"
+          aria-label="Go to previous week"
           class="nav-button"
-          title="Previous week"
           type="button"
         >
           ‹
         </button>
         <time
-          aria-current="date"
           aria-live="polite"
           class="month-year"
           datetime="2025-10-26"
         >
-          <span>
-            October 2025
-          </span>
+          October 2025
         </time>
         <button
-          aria-label="Next week"
+          aria-label="Go to next week"
           class="nav-button"
-          title="Next week"
           type="button"
         >
           ›
@@ -55,15 +50,14 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             class="calendar-grid"
           >
             <div
+              aria-label="Days of the week"
               class="days-of-week"
-              role="row"
+              role="grid"
             >
               <div
-                aria-label="Sunday, October 26"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Sunday, October 26"
               >
                 <span
                   class="day-label"
@@ -77,11 +71,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 </span>
               </div>
               <div
-                aria-label="Monday, October 27"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Monday, October 27"
               >
                 <span
                   class="day-label"
@@ -95,11 +87,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 </span>
               </div>
               <div
-                aria-label="Tuesday, October 28"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Tuesday, October 28"
               >
                 <span
                   class="day-label"
@@ -113,11 +103,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 </span>
               </div>
               <div
-                aria-label="Wednesday, October 29"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Wednesday, October 29"
               >
                 <span
                   class="day-label"
@@ -131,11 +119,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 </span>
               </div>
               <div
-                aria-label="Thursday, October 30"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Thursday, October 30"
               >
                 <span
                   class="day-label"
@@ -150,11 +136,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </div>
               <div
                 aria-current="date"
-                aria-label="Friday, October 31"
                 class="day-item today"
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Today"
               >
                 <span
                   class="day-label"
@@ -168,11 +152,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 </span>
               </div>
               <div
-                aria-label="Saturday, November 1"
                 class="day-item "
-                role="columnheader"
+                role="gridcell"
                 tabindex="0"
-                title="Saturday, November 1"
               >
                 <span
                   class="day-label"

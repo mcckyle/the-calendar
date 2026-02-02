@@ -1,55 +1,66 @@
 /* Filename: src/components/WeekNavigation/WeekNavigation.css */
 
 /* =========================================
+   WeekNavigation Design Tokens.
+============================================ */
+.week-navigation
+{
+    --nav-bg: rgba(0, 59, 115, 0.6);
+    --nav-bg-dark: rgba(0, 59, 115, 0.82);
+    --nav-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    --nav-radius: 2rem;
+    --motion-fast: 0.2s ease;
+    --motion-smooth: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================
     WeekNavigation Container Styles.
 ============================================ */
 .week-navigation
 {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
+    gap: 1rem;
 
-    max-width: 440px;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--nav-radius);
     margin: 0 auto;
 
     font-family: var(--title-font);
     user-select: none;
 
-    padding: 0.5rem 0.75rem;
-    border-radius: 2rem;
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px) saturate(115%);
+    box-shadow: var(--nav-shadow);
 
-    background: rgba(0, 59, 115, 0.65);
-    backdrop-filter: blur(16px) saturate(120%);
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
-
-    transition: all 0.28s ease;
+    transition: box-shadow var(--motion-fast), background var(--motion-fast);
 }
-.week-navigation:hover, .week-navigation:focus-within { transform: translateY(-1px); }
+.week-navigation:focus-within { box-shadow: 0 0 0 2px rgba(255, 215, 128, 0.35), var(--nav-shadow); }
 
 /* ====================================
     WeekNavigation Navigation Buttons Styles.
 ======================================= */
 .nav-button
 {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
     border: none;
+
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 600;
     cursor: pointer;
 
-    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.22s ease,
-                background 0.22s ease,
-                color 0.22s ease;
+    transition: transform var(--motion-smooth),
+                background var(--motion-fast),
+                color var(--motion-fast),
+                box-shadow var(--motion-fast);
 }
 
 .nav-button:hover,
@@ -57,20 +68,18 @@
 {
     background: var(--accent-gold);
     color: var(--deep-blue);
-    transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
 }
-.nav-button:active { transform: translateY(0) scale(0.95); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.nav-button:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
    WeekNavigation Month / Year Text Label Styles.
 ======================================= */
-.month-year span
+.month-year
 {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    letter-spacing: 0.15px;
-
     white-space: nowrap;
     pointer-events: none;
 
@@ -78,19 +87,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: opacity var(--motion-fast), transform var(--motion-fast);
 }
-.week-navigation:hover .month-year span,
-.week-navigation:focus-within .month-year span { transform: translateY(-1px); opacity: 0.95; }
+.week-navigation:focus-within .month-year { opacity: 0.95; }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.7rem; padding: 0.35rem 0.5rem; }
-    .month-year span { font-size: 1.25rem; }
-    .nav-button { width: 2rem; height: 2rem; font-size: 1.2rem; }
+    .week-navigation { gap: 0.6rem; padding: 0.35rem 0.5rem; }
+    .month-year { font-size: 1.25rem; }
+    .nav-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
 }
 
 /* ====================================
@@ -98,6 +106,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .week-navigation { background: rgba(0, 59, 115, 0.82); box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45); }
+    .week-navigation { background: var(--nav-bg-dark) box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); }
     .nav-button { background: rgba(255, 255, 255, 0.1); }
 }

@@ -3,7 +3,7 @@
 exports[`EventCard Component matches snapshot. 1`] = `
 <DocumentFragment>
   <article
-    aria-labelledby="event-card-title"
+    aria-labelledby="event-title"
     class="event-card"
     tabindex="0"
   >
@@ -12,7 +12,7 @@ exports[`EventCard Component matches snapshot. 1`] = `
     >
       <h3
         class="event-card-title"
-        id="event-card-title"
+        id="event-title"
       >
         Sample Event
       </h3>
@@ -21,21 +21,22 @@ exports[`EventCard Component matches snapshot. 1`] = `
       >
         <time
           class="event-date"
+          datetime="2025-01-19T00:00:00-06:00"
         >
           Sunday, January 19, 2025
         </time>
         <span
           class="event-time"
         >
-          • 03:00 PM - 05:00 PM
+          3:00 PM - 5:00 PM
         </span>
       </div>
     </header>
-    <section
+    <p
       class="event-card-description"
     >
       This is a test description for the event.
-    </section>
+    </p>
   </article>
 </DocumentFragment>
 `;

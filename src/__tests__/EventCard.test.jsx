@@ -1,6 +1,6 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 2 February 2026
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
@@ -66,18 +66,18 @@ describe("EventCard Component", () => {
     expect(screen.queryByText(/AM|PM/)).toBeNull();
   });
 
-  //Test #8: Displays 'Invalid Date' if date prop is missing or is invalid.
-  test("renders 'Invalid Date' for invalid or missing date.", () => {
+  //Test #8: Renders nothing if date prop is missing or is invalid.
+  test("Does not render invalid or missing dates.", () => {
     const invalidDateEvent = { ...validEvent, date: "" };
     render(<EventCard {...invalidDateEvent} />);
-    expect(screen.getByText(/Invalid Date/)).toBeInTheDocument();
+    expect(screen.queryByText(/Invalid Date/)).toBeNull();
   });
 
   //Test #9: EventCard has proper role and aria-labelledby.
   test("component has proper role and an accessible label.", () => {
     render(<EventCard {...validEvent} />);
     const article = screen.getByRole("article");
-    expect(article).toHaveAttribute("aria-labelledby", "event-card-title");
+    expect(article).toHaveAttribute("aria-labelledby", "event-title");
   });
 
   //Test #10: Snapshot test for UI consistency purposes.
