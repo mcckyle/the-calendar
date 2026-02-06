@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.test.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 February 2026
 //Description: This file contains unit tests for the Days Of Week component.
 
 import React from "react";
@@ -13,7 +13,7 @@ describe("DaysOfWeek Component", () => {
     //Test #1: Renders without crashing.
     it("renders the component without errors.", () => {
        render(<DaysOfWeek weekDays={[]}/>);
-       expect(screen.getByRole("grid")).toBeInTheDocument();
+       expect(screen.getByRole("row")).toBeInTheDocument();
     });
 
     //Test #2: Renders all seven days of the week.
@@ -21,7 +21,7 @@ describe("DaysOfWeek Component", () => {
         const mockWeekDays = Array.from({ length: 7 }, (_, i) => new Date(Date.UTC(2025, 7, i + 1))); //July 1-7, 2025.
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
-        const days = screen.getAllByRole('gridcell');
+        const days = screen.getAllByRole('columnheader');
         expect(days).toHaveLength(7);
     });
 
@@ -78,15 +78,15 @@ describe("DaysOfWeek Component", () => {
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
 
-        const todayCell = screen.getByRole("gridcell");
+        const todayCell = screen.getByRole("columnheader");
         expect(todayCell).toHaveAttribute("aria-current", "date");
         expect(todayCell).toHaveClass("today");
     });
 
     //Test #7: Parent container has correct role and class.
-    it('parent container has role="grid" and the correct class.', () => {
+    it('parent container has role="row" and the correct class.', () => {
         render(<DaysOfWeek weekDays={[]}/>);
-        const container = screen.getByRole("grid");
+        const container = screen.getByRole("row");
         expect(container).toHaveClass("days-of-week");
     });
 
@@ -95,7 +95,7 @@ describe("DaysOfWeek Component", () => {
         const mockWeekDays = Array.from({ length: 7 }, (_, i) => new Date(Date.UTC(2025, 7, i + 1))); //July 1-7, 2025.
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
-        const dayCells = screen.getAllByRole("gridcell");
+        const dayCells = screen.getAllByRole("columnheader");
         dayCells.forEach(cell => {
             expect(cell).toHaveClass('day-item');
         });
@@ -106,7 +106,7 @@ describe("DaysOfWeek Component", () => {
         const mockWeekDays = Array.from({ length: 7 }, (_, i) => new Date(Date.UTC(2025, 7, i + 1))); //July 1-7, 2025.
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
-        const container = screen.getByRole("grid");
+        const container = screen.getByRole("row");
         expect(container.children.length).toBe(7);
     });
 
@@ -115,7 +115,7 @@ describe("DaysOfWeek Component", () => {
         const mockWeekDays = Array.from({ length: 7 }, (_, i) => new Date(Date.UTC(2025, 7, i + 1))); //July 1-7, 2025.
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
-        const dayCells = screen.getAllByRole("gridcell");
+        const dayCells = screen.getAllByRole("columnheader");
 
         dayCells.forEach(cell => {
             expect(cell.tagName.toLowerCase()).toBe("div");

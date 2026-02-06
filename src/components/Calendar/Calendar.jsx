@@ -1,14 +1,14 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect, useMemo } from "react";
 import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
 
-import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
 import WeekNavigation from "../WeekNavigation/WeekNavigation.jsx";
+import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
 import WeekDayColumn from "../WeekDayColumn/WeekDayColumn.jsx";
 import EventPanel from "../EventPanel/EventPanel.jsx";
 
@@ -62,7 +62,6 @@ const Calendar = () => {
       </header>
 
       <main className="calendar-main">
-       <div className="calendar-content">
         {( (loading) || (error) ) && (
           <div className="calendar-feedback" aria-live="polite">
             {loading && (
@@ -75,7 +74,7 @@ const Calendar = () => {
                 {error}
               </p>
             )}
-       </div>
+          </div>
         )}
 
         { ( ! loading) && ( ! error) && (
@@ -83,7 +82,7 @@ const Calendar = () => {
           <div className="calendar-grid">
             <DaysOfWeek weekDays={weekDays} />
 
-            <section className="week-view" aria-label="Week view">
+            <div className="week-view" aria-label="Week view">
               {weekDays.map((day) => (
                 <WeekDayColumn
                   key={day.toDateString()}
@@ -93,11 +92,10 @@ const Calendar = () => {
                   convertTo12HourFormat={convertTo12HourFormat}
                 />
               ))}
-            </section>
+            </div>
           </div>
         </section>
         )}
-       </div>
       </main>
 
       {/* Conditionally render the EventPanel. */}

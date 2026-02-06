@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 February 2026
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React, { useMemo } from "react";
@@ -13,7 +13,7 @@ const WeekDayColumn = ({
   onEventClick,
   convertTo12HourFormat,
 }) => {
-  // Generate hours from 9 AM to 9 PM (13 slots total).
+  // Generate hours from 9 AM to 9 PM.
   const hours = useMemo(() => Array.from({ length: 13 }, (_, i) => i + 9), []);
   const todayString = useMemo(() => new Date().toDateString(), []);
   const isToday = day.toDateString() === todayString;
@@ -22,7 +22,11 @@ const WeekDayColumn = ({
     <section
       className={`weekday-column ${isToday ? "today" : ""}`}
       role="region"
-      aria-label={`Schedule for ${day.toDateString()}`}
+      aria-label={`Events for ${day.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      })}`}
       aria-current={isToday ? "date" : undefined}
       tabIndex={0}
     >

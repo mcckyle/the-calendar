@@ -1,6 +1,6 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 February 2026
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
@@ -77,7 +77,7 @@ describe("EventCard Component", () => {
   test("component has proper role and an accessible label.", () => {
     render(<EventCard {...validEvent} />);
     const article = screen.getByRole("article");
-    expect(article).toHaveAttribute("aria-labelledby", "event-title");
+    expect(article).toHaveAttribute("aria-labelledby", "event-card-title");
   });
 
   //Test #10: Snapshot test for UI consistency purposes.

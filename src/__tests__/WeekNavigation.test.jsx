@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.test.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 February 2026
 //Description: This file contains unit tests for the MonthNavigation.jsx component.
 
 import React from 'react';
@@ -43,7 +43,7 @@ describe('WeekNavigation Component', () => {
 	  render(<WeekNavigation />);
 
 	  // Simulate click on previous week button.
-	  fireEvent.click(screen.getByLabelText('Go to previous week'));
+	  fireEvent.click(screen.getByLabelText('Previous week'));
 
 	  // Check if changeWeek is called with -1.
 	  expect(mockChangeWeek).toHaveBeenCalledWith(-1);
@@ -54,7 +54,7 @@ describe('WeekNavigation Component', () => {
 		render(<WeekNavigation />);
 
 		// Simulate click on next week button.
-		fireEvent.click(screen.getByLabelText('Go to next week'));
+		fireEvent.click(screen.getByLabelText('Next week'));
 
 		// Check if changeWeek is called with 1.
 		expect(mockChangeWeek).toHaveBeenCalledWith(1);
@@ -64,8 +64,8 @@ describe('WeekNavigation Component', () => {
 	it('renders both Previous and Next buttons with correct classes.', () => {
 		render(<WeekNavigation />);
 
-		const prevButton = screen.getByLabelText('Go to previous week');
-		const nextButton = screen.getByLabelText('Go to next week');
+		const prevButton = screen.getByLabelText('Previous week');
+		const nextButton = screen.getByLabelText('Next week');
 
 		expect(prevButton).toHaveClass('nav-button');
 		expect(nextButton).toHaveClass('nav-button');
@@ -115,7 +115,7 @@ describe('WeekNavigation Component', () => {
 	//Test #10: No unnecessary re-renders on click (state change triggers only function).
 	it('does not render month text incorrectly after click.', () => {
 		render(<WeekNavigation />);
-		fireEvent.click(screen.getByLabelText('Go to next week'));
+		fireEvent.click(screen.getByLabelText('Next week'));
 		expect(screen.getByText('November 2024')).toBeInTheDocument(); // Month stays the same until context updates.
 	});
 });

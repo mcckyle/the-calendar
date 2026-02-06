@@ -1,104 +1,75 @@
 /* Filename: src/components/WeekNavigation/WeekNavigation.css */
 
 /* =========================================
-   WeekNavigation Design Tokens.
-============================================ */
-.week-navigation
-{
-    --nav-bg: rgba(0, 59, 115, 0.6);
-    --nav-bg-dark: rgba(0, 59, 115, 0.82);
-    --nav-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
-    --nav-radius: 2rem;
-    --motion-fast: 0.2s ease;
-    --motion-smooth: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* =========================================
     WeekNavigation Container Styles.
 ============================================ */
 .week-navigation
 {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
 
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--nav-radius);
-    margin: 0 auto;
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+
+    background: var(--secondary-bg);
+    box-shadow: var(--shadow-sm);
 
     font-family: var(--title-font);
     user-select: none;
-
-    background: var(--nav-bg);
-    backdrop-filter: blur(14px) saturate(115%);
-    box-shadow: var(--nav-shadow);
-
-    transition: box-shadow var(--motion-fast), background var(--motion-fast);
 }
-.week-navigation:focus-within { box-shadow: 0 0 0 2px rgba(255, 215, 128, 0.35), var(--nav-shadow); }
 
 /* ====================================
     WeekNavigation Navigation Buttons Styles.
 ======================================= */
 .nav-button
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
-    border: none;
+    background: transparent;
 
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    cursor: pointer;
+    color: var(--deep-blue);
 
-    transition: transform var(--motion-smooth),
-                background var(--motion-fast),
-                color var(--motion-fast),
-                box-shadow var(--motion-fast);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav-button:hover,
 .nav-button:focus-visible
 {
-    background: var(--accent-gold);
-    color: var(--deep-blue);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    background: rgba(0, 59, 115, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
 }
-.nav-button:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.nav-button:active { transform: translateY(0); box-shadow: none; }
 
 /* ====================================
    WeekNavigation Month / Year Text Label Styles.
 ======================================= */
 .month-year
 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
     white-space: nowrap;
     pointer-events: none;
 
-    background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    transition: opacity var(--motion-fast), transform var(--motion-fast);
+    color: var(--deep-blue);
 }
-.week-navigation:focus-within .month-year { opacity: 0.95; }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.6rem; padding: 0.35rem 0.5rem; }
-    .month-year { font-size: 1.25rem; }
-    .nav-button { width: 2.1rem; height: 2.1rem; font-size: 1.2rem; }
+    .week-navigation { gap: 0.5rem; padding: 0.3rem 0.45rem; }
+    .month-year { font-size: 1.15rem; }
+    .nav-button { width: 2rem; height: 2rem; font-size: 1.2rem; }
 }
 
 /* ====================================
@@ -106,6 +77,11 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .week-navigation { background: var(--nav-bg-dark) box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); }
-    .nav-button { background: rgba(255, 255, 255, 0.1); }
+    .week-navigation { background: var(--secondary-bg); }
+    .nav-button { color: var(--neutral-gray); }
+    .nav-button:hover,
+    .nav-button:focus-visible
+    {
+        background: rgba(255, 255, 255, 0.08);
+    }
 }

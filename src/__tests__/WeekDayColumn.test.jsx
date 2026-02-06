@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.test.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 5 February 2026
 //Description: This file contains unit tests for the WeekDayColumn.jsx component.
 
 import React from 'react';
@@ -176,7 +176,11 @@ describe('WeekDayColumn', () => {
       />
     );
 
-    expect(screen.getByLabelText(`Schedule for ${mockDay.toDateString()}`)).toBeInTheDocument();
+    expect(screen.getByLabelText(`Events for ${mockDay.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      })}`)).toBeInTheDocument();
   });
 
   //Test #10: Each TimeSlot receives events array, even when empty.
