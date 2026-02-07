@@ -3,6 +3,7 @@
 exports[`Calendar Component matches snapshot for default render. 1`] = `
 <DocumentFragment>
   <section
+    aria-busy="false"
     aria-label="Weekly events calendar"
     class="calendar"
   >

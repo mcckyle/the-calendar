@@ -13,7 +13,7 @@
     width: 100%;
 
     background: var(--primary-bg);
-    padding: clamp(2.5rem, 5vw, 4rem) 1.25rem;
+    padding: clamp(3rem, 6vw, 4.5rem) 1.25rem;
 }
 
 /* ====================================
@@ -23,24 +23,24 @@
 {
     max-width: var(--content-narrow-width);
     text-align: center;
-    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: clamp(3rem, 6vw, 4rem);
 
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 1rem;
 }
 
 .calendar-title
 {
-    font-size: clamp(2.4rem, 4vw, 3rem);
-    letter-spacing: -0.025em;
+    font-size: clamp(2.6rem, 5vw, 3.2rem);
+    letter-spacing: -0.03em;
 }
 
 .calendar-tagline
 {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: color-mix(in srgb, var(--neutral-gray), transparent 45%);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--neutral-gray), transparent 50%);
 }
 
 /* ====================================
@@ -52,8 +52,8 @@
     max-width: var(--content-max-width);
 
     background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    padding: clamp(1.75rem, 3vw, 2.75rem);
+    border-radius: calc(var(--border-radius) - 0.25rem);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
     box-shadow: var(--shadow-sm);
 }
 
@@ -62,6 +62,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .calendar-title { font-size: 2rem; }
+    .calendar-title { font-size: 2.1rem; }
     .calendar-wrapper { padding: 1.25rem; }
 }

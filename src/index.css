@@ -18,7 +18,7 @@
     --accent-gold: #ffb81c;
     --accent-red: #c8102e;
 
-    --neutral-gray: #2f2f2f;
+    --neutral-gray: #1f2933;
     --subtle-gray: #cbd5e1;
 
     --border-radius: 1.5rem;
@@ -105,9 +105,10 @@ a:hover { color: var(--accent-gold); }
 {
     :root
     {
-        --primary-bg: #0b1220;
+        --primary-bg: #0a0f1c;
         --secondary-bg: #020617;
-        --neutral-gray: #e5e7eb;
+        --neutral-gray: #e2e8f0;
         --subtle-gray: #334155;
+        --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.45);
     }
 }

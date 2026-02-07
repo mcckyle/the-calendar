@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 5 February 2026
+//Date: 6 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -54,9 +54,14 @@ const Calendar = () => {
 
   const handleEventClick = (event) => setSelectedEvent(event);
   const closeEventPanel = () => setSelectedEvent(null);
+  const isIdle = ( ! loading) && ( ! error);
 
   return (
-    <section className="calendar" aria-label="Weekly events calendar">
+    <section
+      className="calendar"
+      aria-label="Weekly events calendar"
+      aria-busy={loading}
+    >
       <header className="calendar-header">
         <WeekNavigation />
       </header>
@@ -77,24 +82,24 @@ const Calendar = () => {
           </div>
         )}
 
-        { ( ! loading) && ( ! error) && (
-        <section className="calendar-body" aria-label="Calendar week grid">
-          <div className="calendar-grid">
-            <DaysOfWeek weekDays={weekDays} />
+        {isIdle && (
+          <section className="calendar-body" aria-label="Calendar week grid">
+            <div className="calendar-grid">
+              <DaysOfWeek weekDays={weekDays} />
 
-            <div className="week-view" aria-label="Week view">
-              {weekDays.map((day) => (
-                <WeekDayColumn
-                  key={day.toDateString()}
-                  day={day}
-                  groupedEvents={groupEventsByHour(day, events)}
-                  onEventClick={handleEventClick}
-                  convertTo12HourFormat={convertTo12HourFormat}
-                />
-              ))}
+              <div className="week-view" aria-label="Week view">
+                {weekDays.map((day) => (
+                  <WeekDayColumn
+                    key={day.toDateString()}
+                    day={day}
+                    groupedEvents={groupEventsByHour(day, events)}
+                    onEventClick={handleEventClick}
+                    convertTo12HourFormat={convertTo12HourFormat}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
         )}
       </main>
 
