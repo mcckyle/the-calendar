@@ -8,14 +8,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100%;
-
-    background: var(--primary-bg);
     color: var(--neutral-gray);
 }
 
 /* ====================================
-   Calendar Sticky Header Styling.
+   Calendar Header Styling.
 ======================================= */
 .calendar-header
 {
@@ -25,11 +22,9 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 0.85rem 1.5rem;
+    padding: 0.75rem 1.25rem;
 
-    background: color-mix(in srgb, var(--secondary-bg) 96%, transparent);
-    backdrop-filter: blur(12px);
+    background: transparent;
     border-bottom: 1px solid rgba(0, 59, 115, 0.06);
 }
 
@@ -41,24 +36,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    width: 100%;
-    min-height: calc(100vh - 72px); /* Header Height. */
-    padding: clamp(1.5rem, 3vw, 2.75rem) 0 3rem;
+    padding: clamp(1.25rem, 3vw, 2.5rem) 0 3rem;
 }
 
 /* ====================================
    Calendar Status Messages Styling.
 ======================================= */
-.calendar-feedback { display: flex; justify-content: center; margin-top: 2.75rem; }
+.calendar-feedback { margin-top: 2.5rem; }
 .calendar-status
 {
-    padding: 0.7rem 1.6rem;
+    padding: 0.65rem 1.5rem;
     font-size: 0.85rem;
-    text-align: center;
-
-    background: var(--secondary-bg);
     border-radius: 999px;
+    background: var(--secondary-bg);
     box-shadow: var(--shadow-sm);
 }
 
@@ -77,14 +67,11 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
     overflow-x: auto;
     padding-bottom: 2.25rem;
 
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
-
-    padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
 }
 
 /* ====================================
@@ -94,15 +81,17 @@
 {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: clamp(1rem, 2vw, 1.4rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
 
     width: 100%;
     max-width: 1500px;
-    padding: clamp(1.4rem, 2.5vw, 2rem);
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
+
+    animation: calendarFadeIn 0.35s ease-out both;
 }
 
 /* ====================================
@@ -112,18 +101,25 @@
 {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: clamp(0.75rem, 1.4vw, 1rem);
-
     align-items: start;
-    scroll-snap-align: start;
+    gap: clamp(0.75rem, 1.25vw, 1rem);
 }
 
 /* ====================================
    Calendar Horizontal Scrollbar Styling.
 ======================================= */
 .calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.28); border-radius: 999px; }
+.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 999px; }
 .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+
+/* ====================================
+   Calendar Animations Styling.
+======================================= */
+@keyframes calendarFadeIn
+{
+    from { opacity: 0; transform: translateY(6px) }
+    to { opacity: 1; transform: none; }
+}
 
 /* ====================================
    Calendar Media Queries Styling.
@@ -135,9 +131,8 @@
 
 @media (max-width: 768px)
 {
-    .calendar-main { padding: 1.25rem 0 2rem; }
-    .calendar-grid { border-radius: 12px; }
-    .week-view { min-width: 1100px; gap: 0.7rem; }
+    .calendar-grid { border-radius: 12px; padding: 1.25rem; }
+    .week-view { min-width: 1100px; gap: 0.65rem; }
 }
 
 /* ====================================
@@ -145,6 +140,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .calendar-header { background: rgba(2, 6, 23, 0.92); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-    .calendar-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.25); }
+    .calendar-header { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .calendar-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.22); }
 }

@@ -17,8 +17,7 @@
 ======================================= */
 .time-label
 {
-    font-family: var(--body-font);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 500;
 
     color: var(--subtle-gray);
@@ -45,10 +44,10 @@
 {
     appearance: none;
     border: none;
-    background: rgba(0, 59, 115, 0.92);
+    background: rgba(0, 59, 115, 0.88);
     color: #fff;
 
-    border-radius: 0.5rem;
+    border-radius: 0.55rem;
     padding: 0.35rem 0.55rem;
 
     font-size: 0.72rem;
@@ -61,7 +60,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
-    transition: background 0.2s ease, transform 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .event:hover
@@ -87,7 +86,7 @@
     text-align: center;
 
     color: var(--subtle-gray);
-    opacity: 0.25;
+    opacity: 0.22;
     user-select: none;
     pointer-events: none;
 }
@@ -97,7 +96,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: auto 1fr; padding: 0.3rem 0.15rem; }
+    .time-slot { padding: 0.3rem 0.15rem; }
     .event { font-size: 0.68rem; padding: 0.3rem 0.5rem; }
 }
 
@@ -107,7 +106,7 @@
 @media (prefers-color-scheme: dark)
 {
     .time-label { color: rgba(255, 255, 255, 0.45); }
-    .event { background: rgba(0, 59, 115, 0.85); }
+    .event { background: rgba(0, 59, 115, 0.82); }
     .event:hover { background: var(--accent-gold); color: #020617; }
     .slot-empty { color: rgba(255, 255, 255, 0.35); }
 }

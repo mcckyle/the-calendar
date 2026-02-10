@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 6 February 2026
+//Date: 9 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -48,12 +48,9 @@ const Calendar = () => {
       day.setDate(currentDate.getDate() + i);
       return day;
     });
-
     setWeekDays(days);
   }, [currentDate]);
 
-  const handleEventClick = (event) => setSelectedEvent(event);
-  const closeEventPanel = () => setSelectedEvent(null);
   const isIdle = ( ! loading) && ( ! error);
 
   return (
@@ -70,10 +67,7 @@ const Calendar = () => {
         {( (loading) || (error) ) && (
           <div className="calendar-feedback" aria-live="polite">
             {loading && (
-              <p className="calendar-status" role="status">
-                Loading events…
-              </p>
-            )}
+              <p className="calendar-status">Loading events…</p>)}
             {error && (
               <p className="calendar-status error" role="alert">
                 {error}
@@ -83,17 +77,17 @@ const Calendar = () => {
         )}
 
         {isIdle && (
-          <section className="calendar-body" aria-label="Calendar week grid">
+          <section className="calendar-body">
             <div className="calendar-grid">
               <DaysOfWeek weekDays={weekDays} />
 
-              <div className="week-view" aria-label="Week view">
+              <div className="week-view">
                 {weekDays.map((day) => (
                   <WeekDayColumn
                     key={day.toDateString()}
                     day={day}
                     groupedEvents={groupEventsByHour(day, events)}
-                    onEventClick={handleEventClick}
+                    onEventClick={setSelectedEvent}
                     convertTo12HourFormat={convertTo12HourFormat}
                   />
                 ))}
@@ -105,7 +99,10 @@ const Calendar = () => {
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (
-        <EventPanel selectedEvent={selectedEvent} onClose={closeEventPanel} />
+        <EventPanel
+          selectedEvent={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
       )}
     </section>
   );

@@ -41,7 +41,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       class="calendar-main"
     >
       <section
-        aria-label="Calendar week grid"
         class="calendar-body"
       >
         <div
@@ -53,7 +52,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             role="row"
           >
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -69,7 +68,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -85,7 +84,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -101,7 +100,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -117,7 +116,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -150,7 +149,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </span>
             </div>
             <div
-              class="day-item "
+              class="day-item"
               role="columnheader"
               tabindex="0"
             >
@@ -167,7 +166,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </div>
           </div>
           <div
-            aria-label="Week view"
             class="week-view"
           >
             <div

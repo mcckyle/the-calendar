@@ -23,7 +23,7 @@
 
     --border-radius: 1.5rem;
 
-    --shadow-sm: 0 8px 28px rgba(0, 0, 0, 0.06);
+    --shadow-sm: 0 10px 32px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 24px 60px rgba(0, 0, 0, 0.12);
 
     --content-max-width: 1440px;
@@ -60,8 +60,6 @@ h1, h2, h3
     line-height: 1.25;
     margin: 0;
 }
-h1 { font-weight: 700; }
-h2, h3 { font-weight: 600; }
 
 /* Paragraphs Styles. */
 p { margin: 0; }
@@ -96,7 +94,7 @@ a:hover { color: var(--accent-gold); }
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.35); border-radius: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.3); border-radius: 8px; }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -105,10 +103,10 @@ a:hover { color: var(--accent-gold); }
 {
     :root
     {
-        --primary-bg: #0a0f1c;
+        --primary-bg: #0b1020;
         --secondary-bg: #020617;
         --neutral-gray: #e2e8f0;
         --subtle-gray: #334155;
-        --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.45);
+        --shadow-sm: 0 14px 40px rgba(0, 0, 0, 0.5);
     }
 }
