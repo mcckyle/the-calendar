@@ -24,8 +24,9 @@
     justify-content: center;
     padding: 0.75rem 1.25rem;
 
-    background: transparent;
+    background: var(--secondary-bg);
     border-bottom: 1px solid rgba(0, 59, 115, 0.06);
+    backdrop-filter: blur(6px);
 }
 
 /* =========================================
@@ -36,13 +37,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(1.25rem, 3vw, 2.5rem) 0 3rem;
+    padding: clamp(1rem, 3vw, 2rem) 0 3rem;
 }
 
 /* ====================================
    Calendar Status Messages Styling.
 ======================================= */
-.calendar-feedback { margin-top: 2.5rem; }
+.calendar-feedback { margin-top: 2.5rem; display: flex; justify-content: center; }
 .calendar-status
 {
     padding: 0.65rem 1.5rem;
@@ -50,6 +51,8 @@
     border-radius: 999px;
     background: var(--secondary-bg);
     box-shadow: var(--shadow-sm);
+
+    transition: background 0.25s ease;
 }
 
 .calendar-status.error
@@ -68,7 +71,7 @@
     display: flex;
     justify-content: center;
     overflow-x: auto;
-    padding-bottom: 2.25rem;
+    padding-bottom: 2rem;
 
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
@@ -109,7 +112,7 @@
    Calendar Horizontal Scrollbar Styling.
 ======================================= */
 .calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 999px; }
+.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 999px; transition: background 0.25s ease; }
 .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================

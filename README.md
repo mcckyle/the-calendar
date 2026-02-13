@@ -1,6 +1,6 @@
 # The Calendar
 
-The **Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between week, and display event detailss. Built using modern technologies like React and Vite.
+The **Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between weeks, and display event details.
 
 > **Note**: This is a work-in-progress, and new features and enhancements are continuously being added!
 
@@ -69,21 +69,27 @@ the-calendar/
 │   │   │   ├── Calendar.jsx
 │   │   │   ├── Calendar.css
 │   │   │   └── CalendarContext.jsx
+│   │   │
 │   │   ├── WeekNavigation/
 │   │   │   ├── WeekNavigation.jsx
 │   │   │   └── WeekNavigation.css
+│   │   │
 │   │   ├── DaysOfWeek/
 │   │   │   ├── DaysOfWeek.jsx
 │   │   │   └── DaysOfWeek.css
+│   │   │
 │   │   ├── WeekDayColumn/
 │   │   │   ├── WeekDayColumn.jsx
 │   │   │   └── WeekDayColumn.css
+│   │   │
 │   │   ├── TimeSlot/
 │   │   │   ├── TimeSlot.jsx
 │   │   │   └── TimeSlot.css
+│   │   │
 │   │   ├── EventPanel/
 │   │   │   ├── EventPanel.jsx
 │   │   │   └── EventPanel.css
+│   │   │
 │   │   └── EventCard/
 │   │       ├── EventCard.jsx
 │   │       └── EventCard.css

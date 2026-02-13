@@ -1,6 +1,6 @@
 //Filename: App.jsx
 //Author: Kyle McColgan
-//Date: 9 February 2026
+//Date: 11 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React from "react";
@@ -16,7 +16,7 @@ const App = () => {
         <header className="app-header">
           <h1 className="app-title">Saint Louis Events</h1>
           <p className="app-tagline">
-            A curated weekly calendar of music, art, festivals, and community life.
+            Curated weekly events in music, art, festivals, and community life.
           </p>
         </header>
 
