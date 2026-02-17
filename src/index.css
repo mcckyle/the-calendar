@@ -50,6 +50,7 @@ html, body, #root
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
 }
 
 /* Headings Styles. */
@@ -63,6 +64,18 @@ h1, h2, h3
 
 /* Paragraphs Styles. */
 p { margin: 0; }
+
+/* ====================================
+   Links Styles.
+======================================= */
+a
+{
+    color: var(--deep-blue);
+    text-decoration: none;
+
+    transition: color var(--transition-speed);
+}
+a:hover { color: var(--accent-gold); }
 
 /* ====================================
    Buttons (Base Only) Styles.
@@ -79,22 +92,11 @@ button
 button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
 
 /* ====================================
-   Links Styles.
-======================================= */
-a
-{
-    color: var(--deep-blue);
-    text-decoration: none;
-
-    transition: color var(--transition-speed);
-}
-a:hover { color: var(--accent-gold); }
-
-/* ====================================
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.3); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.45); }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -108,5 +110,8 @@ a:hover { color: var(--accent-gold); }
         --neutral-gray: #e2e8f0;
         --subtle-gray: #334155;
         --shadow-sm: 0 14px 40px rgba(0, 0, 0, 0.5);
+        --shadow-md: 0 28px 70px rgba(0, 0, 0, 0.6);
     }
+    a { color: var(--accent-gold); }
+    a:hover { color: var(--deep-blue); }
 }

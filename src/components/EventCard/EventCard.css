@@ -14,7 +14,10 @@
     line-height: 1.65;
 
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+.event-card:hover { transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12); }
 
 /* ====================================
     EventCard Header Styles.
@@ -71,20 +74,13 @@
     font-size: 0.9rem;
     color: var(--subtle-gray);
 }
-
-.venue-label
-{
-    font-size: 1.1rem;
-    line-height: 1.2;
-    opacity: 0.75;
-}
+.venue-label { font-size: 1.2rem; opacity: 0.75; }
 .venue-text { line-height: 1.5; }
 
 /* ====================================
    EventCard Footer Link Styles.
 ======================================= */
 .event-card-footer { margin-top: 2.2rem; }
-
 .event-card-footer a
 {
     font-size: 0.9rem;
@@ -130,4 +126,5 @@
     .event-card-meta { color: rgba(255, 255, 255, 0.6); }
     .event-card-description { color: rgba(255, 255, 255, 0.85); }
     .event-card-venue { color: rgba(255, 255, 255, 0.6); }
+    .event-card-footer a { color: var(--accent-gold); }
 }

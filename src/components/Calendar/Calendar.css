@@ -18,15 +18,16 @@
 {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 50;
 
     display: flex;
     justify-content: center;
-    padding: 0.75rem 1.25rem;
+    align-items: center;
+    padding: 0.65rem 1rem;
 
-    background: var(--secondary-bg);
-    border-bottom: 1px solid rgba(0, 59, 115, 0.06);
-    backdrop-filter: blur(6px);
+    background: color-mix(in srgb, var(--secondary-bg), transparent 10%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid color-mix(in srgb, var(--deep-blue), transparent 92%);
 }
 
 /* =========================================
@@ -37,22 +38,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(1rem, 3vw, 2rem) 0 3rem;
+    padding: clamp(0.75rem, 2vw, 1.5rem) 0 2.5rem;
 }
 
 /* ====================================
    Calendar Status Messages Styling.
 ======================================= */
-.calendar-feedback { margin-top: 2.5rem; display: flex; justify-content: center; }
+.calendar-feedback { margin-top: 2.25rem; display: flex; justify-content: center; }
 .calendar-status
 {
-    padding: 0.65rem 1.5rem;
+    padding: 0.6rem 1.4rem;
     font-size: 0.85rem;
     border-radius: 999px;
+
     background: var(--secondary-bg);
     box-shadow: var(--shadow-sm);
-
-    transition: background 0.25s ease;
 }
 
 .calendar-status.error
@@ -70,11 +70,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    overflow-x: auto;
-    padding-bottom: 2rem;
 
-    scroll-snap-type: x mandatory;
+    overflow-x: auto;
     overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 1.75rem;
 }
 
 /* ====================================
@@ -84,17 +85,13 @@
 {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(0.85rem, 1.8vw, 1.25rem);
 
     width: 100%;
-    max-width: 1500px;
-    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+    max-width: 1400px;
+    padding-inline: clamp(0.75rem, 2vw, 1.25rem);
 
-    background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-
-    animation: calendarFadeIn 0.35s ease-out both;
+    animation: calendarFadeIn 0.3s ease-out both;
 }
 
 /* ====================================
@@ -105,14 +102,14 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
-    gap: clamp(0.75rem, 1.25vw, 1rem);
+    gap: clamp(0.65rem, 1.1vw, 0.9rem);
 }
 
 /* ====================================
    Calendar Horizontal Scrollbar Styling.
 ======================================= */
 .calendar-body::-webkit-scrollbar { height: 6px; }
-.calendar-body::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 999px; transition: background 0.25s ease; }
+.calendar-body::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--deep-blue), transparent 70%); border-radius: 999px; }
 .calendar-body::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ====================================
@@ -129,13 +126,12 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view { min-width: 1200px; }
+    .week-view { min-width: 1180px; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-grid { border-radius: 12px; padding: 1.25rem; }
-    .week-view { min-width: 1100px; gap: 0.65rem; }
+    .week-view { min-width: 1080px; gap: 0.55rem; }
 }
 
 /* ====================================

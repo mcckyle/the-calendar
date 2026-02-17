@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 11 February 2026
+//Date: 16 February 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";

@@ -12,17 +12,17 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     >
       <nav
         aria-label="Week navigation"
+        aria-live="polite"
         class="week-navigation"
       >
         <button
           aria-label="Previous week"
-          class="nav-button"
+          class="nav-button prev-week"
           type="button"
         >
           ‹
         </button>
         <time
-          aria-live="polite"
           class="month-year"
           datetime="2025-10-26"
         >
@@ -30,7 +30,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </time>
         <button
           aria-label="Next week"
-          class="nav-button"
+          class="nav-button next-week"
           type="button"
         >
           ›
@@ -40,7 +40,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     <main
       class="calendar-main"
     >
-      <section
+      <div
         class="calendar-body"
       >
         <div
@@ -219,7 +219,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   </section>
 </DocumentFragment>
