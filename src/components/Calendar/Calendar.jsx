@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 16 February 2026
+//Date: 17 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -60,7 +60,7 @@ const Calendar = () => {
 
       <main className="calendar-main">
         {loading && (
-          <div className="calendar-feedback" aria-live="polite">
+          <div className="calendar-feedback" role="status" aria-live="polite">
             <p className="calendar-status">Loading events…</p>
           </div>
         )}
@@ -75,19 +75,21 @@ const Calendar = () => {
 
         {showCalendar && (
           <div className="calendar-body">
-            <div className="calendar-grid">
-              <DaysOfWeek weekDays={weekDays} />
+            <div className="calendar-body-inner">
+              <div className="calendar-grid">
+                <DaysOfWeek weekDays={weekDays} />
 
-              <div className="week-view">
-                {weekDays.map((day) => (
-                  <WeekDayColumn
-                    key={day.toDateString()}
-                    day={day}
-                    groupedEvents={groupEventsByHour(day, events)}
-                    onEventClick={setSelectedEvent}
-                    convertTo12HourFormat={convertTo12HourFormat}
-                  />
-                ))}
+                <div className="week-view">
+                  {weekDays.map((day) => (
+                    <WeekDayColumn
+                      key={day.toDateString()}
+                      day={day}
+                      groupedEvents={groupEventsByHour(day, events)}
+                      onEventClick={setSelectedEvent}
+                      convertTo12HourFormat={convertTo12HourFormat}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

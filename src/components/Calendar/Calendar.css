@@ -18,15 +18,15 @@
 {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 40;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.65rem 1rem;
+    padding: 0.7rem 1rem;
 
-    background: color-mix(in srgb, var(--secondary-bg), transparent 10%);
-    backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--secondary-bg), transparent 8%);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid color-mix(in srgb, var(--deep-blue), transparent 92%);
 }
 
@@ -38,21 +38,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(0.75rem, 2vw, 1.5rem) 0 2.5rem;
+    padding: clamp(0.85rem, 2vw, 1.6rem) 0 2.75rem;
 }
 
 /* ====================================
    Calendar Status Messages Styling.
 ======================================= */
-.calendar-feedback { margin-top: 2.25rem; display: flex; justify-content: center; }
+.calendar-feedback { margin-top: 2.5rem; display: flex; justify-content: center; }
 .calendar-status
 {
-    padding: 0.6rem 1.4rem;
+    padding: 0.65rem 1.5rem;
     font-size: 0.85rem;
     border-radius: 999px;
 
     background: var(--secondary-bg);
     box-shadow: var(--shadow-sm);
+    letter-spacing: 0.02em;
 }
 
 .calendar-status.error
@@ -68,15 +69,13 @@
 .calendar-body
 {
     width: 100%;
-    display: flex;
-    justify-content: center;
-
     overflow-x: auto;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
 
     padding-bottom: 1.75rem;
 }
+.calendar-body-inner { display: flex; justify-content: center; width: 100%; }
 
 /* ====================================
    Calendar Grid Wrapper Styling.
@@ -85,13 +84,13 @@
 {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: clamp(0.85rem, 1.8vw, 1.25rem);
+    gap: clamp(0.9rem, 1.8vw, 1.25rem);
 
     width: 100%;
     max-width: 1400px;
     padding-inline: clamp(0.75rem, 2vw, 1.25rem);
 
-    animation: calendarFadeIn 0.3s ease-out both;
+    animation: calendarFadeIn 0.28s ease-out both;
 }
 
 /* ====================================

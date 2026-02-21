@@ -12,14 +12,14 @@
     <meta name="robots" content="index, follow" />
     <meta
       name="description"
-      content="A curated weekly calendar of music, art, festivals, and community life in Saint Louis."
+      content="A curated weekly calendar of music, art, festivals, and community life across Saint Louis."
     />
 
     <!-- Open Graph. -->
     <meta property="og:title" content="Saint Louis Events" />
     <meta
       property="og:description"
-      content="Discover Saint Louis through a thoughtful weekly events calendar."
+      content="Discover Saint Louis through a thoughtfully curated weekly events calendar."
     />
     <meta property="og:site_name" content="Saint Louis Events" />
     <meta property="og:type" content="website" />
@@ -38,6 +38,12 @@
     <!-- External Font Imports. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+	  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+	  rel="stylesheet"
+    />
 	<link
 	  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
 	  rel="stylesheet"
@@ -47,6 +53,7 @@
   </head>
 
   <body>
+    <noscript>This calendar requires JavaScript to run.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

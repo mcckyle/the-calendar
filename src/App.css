@@ -8,12 +8,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     min-height: 100vh;
     width: 100%;
 
-    padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem 3rem;
-    background: var(--primary-bg);
+    padding: clamp(3rem, 6vw, 5rem) 1.25rem 3.5rem;
+    background: linear-gradient(to bottom, rgba(0, 59, 115, 0.06), var(--primary-bg));
 
     transition: background var(--transition-speed);
 }
@@ -25,25 +24,26 @@
 {
     max-width: var(--content-narrow-width);
     text-align: center;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
 
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 1rem;
 }
 
 .app-title
 {
-    font-size: clamp(2.4rem, 4.5vw, 3.2rem);
-    letter-spacing: -0.035em;
+    font-size: clamp(2.5rem, 4.8vw, 3.4rem);
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .app-tagline
 {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: color-mix(in srgb, var(--neutral-gray), transparent 45%);
-    max-width: 38rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--neutral-gray), transparent 55%);
+    max-width: 40rem;
     margin-inline: auto;
 }
 
@@ -56,9 +56,12 @@
     max-width: var(--content-max-width);
 
     background: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    padding: clamp(1.6rem, 3vw, 2.5rem);
-    box-shadow: var(--shadow-sm);
+    border-radius: 2rem;
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    box-shadow: 0 16px 48px rgba(0, 59, 115, 0.12);
+    backdrop-filter: blur(8px);
+
+    transition: all var(--transition-speed);
 }
 
 /* ====================================
@@ -66,7 +69,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding-top: 2.25rem; }
-    .app-title { font-size: 2rem; }
-    .calendar-shell { padding: 1.25rem; border-radius: 1.25rem; }
+    .app { padding-top: 2.5rem; }
+    .app-title { font-size: 2.2rem; }
+    .calendar-shell { padding: 1.5rem; border-radius: 1.8rem; }
 }

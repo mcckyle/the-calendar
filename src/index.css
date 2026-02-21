@@ -19,7 +19,7 @@
     --accent-red: #c8102e;
 
     --neutral-gray: #1f2933;
-    --subtle-gray: #cbd5e1;
+    --subtle-gray: #94a3b8;
 
     --border-radius: 1.5rem;
 
@@ -95,8 +95,8 @@ button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3p
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.3); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.45); }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.28); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.42); }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -108,7 +108,7 @@ button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3p
         --primary-bg: #0b1020;
         --secondary-bg: #020617;
         --neutral-gray: #e2e8f0;
-        --subtle-gray: #334155;
+        --subtle-gray: #475569;
         --shadow-sm: 0 14px 40px rgba(0, 0, 0, 0.5);
         --shadow-md: 0 28px 70px rgba(0, 0, 0, 0.6);
     }
