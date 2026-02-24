@@ -21,7 +21,7 @@
     font-size: 0.72rem;
     font-weight: 500;
 
-    color: var(--subtle-gray);
+    color: color-mix(in srgb, var(--deep-blue), transparent 45%);
     white-space: nowrap;
     user-select: none;
 
@@ -35,7 +35,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.45rem;
 }
 
 /* ====================================
@@ -44,18 +44,17 @@
 .event
 {
     appearance: none;
-    border: none;
+    border: 1px solid rgba(0, 59, 115, 0.08);
 
-    background: rgba(0, 59, 115, 0.08);
-    backdrop-filter: blur(6px);
+    background: #ffffff;
     color: var(--deep-blue);
 
-    border-radius: 0.8rem;
-    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.7rem;
 
     font-size: 0.75rem;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.35;
     text-align: left;
 
     white-space: nowrap;
@@ -63,22 +62,11 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
-    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    transition: background 0.15s ease, border-color 0.15s ease;
 }
-
-.event:hover
-{
-    background: rgba(0, 59, 115, 0.14);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(0, 59, 115, 0.12);
-}
-.event:active { transform: translateY(0); box-shadow: none; }
-
-.event:focus-visible
-{
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 2px;
-}
+.event:hover { background: rgba(0, 59, 115, 0.05); border-color: rgba(0, 59, 115, 0.15); }
+.event:active { background: rgba(0, 59, 115, 0.08); }
+.event:focus-visible { outline: 2px solid rgba(0, 59, 115, 0.35); outline-offset: 2px; }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
@@ -87,10 +75,8 @@
 {
     font-size: 0.72rem;
     line-height: 1.1;
-    text-align: left;
 
-    color: var(--subtle-gray);
-    opacity: 0.25;
+    color: color-mix(in srgb, var(--deep-blue), transparent 70%);
     user-select: none;
     pointer-events: none;
 }
@@ -111,7 +97,9 @@
 @media (prefers-color-scheme: dark)
 {
     .time-label { color: rgba(255, 255, 255, 0.45); }
-    .event { background: rgba(255, 255, 255, 0.06); color: #f8fafc; }
-    .event:hover { background: rgba(255, 255, 255, 0.12); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35); }
-    .slot-empty { color: rgba(255, 255, 255, 0.4); }
+    .event { background: #1e293b; border: 1px solid rgba(255, 255, 255, 0.08); color: #f8fafc; }
+    .event:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.15); }
+    .event:active { background: rgba(255, 255, 255, 0.12); }
+    .event:focus-visible { outline: 2px solid rgba(255, 255, 255, 0.35); }
+    .slot-empty { color: rgba(255, 255, 255, 0.3); }
 }
