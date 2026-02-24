@@ -20,7 +20,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="nav-button prev-week"
           type="button"
         >
-          ‹
+          <span
+            aria-hidden="true"
+          >
+            ‹
+          </span>
         </button>
         <time
           class="month-year"
@@ -33,7 +37,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="nav-button next-week"
           type="button"
         >
-          ›
+          <span
+            aria-hidden="true"
+          >
+            ›
+          </span>
         </button>
       </nav>
     </header>
