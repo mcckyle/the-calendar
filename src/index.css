@@ -11,7 +11,7 @@
     --body-font: "Inter", sans-serif;
 
     /* Colour Palette. */
-    --primary-bg: #f4f7fb;
+    --primary-bg: #f6f8fc;
     --secondary-bg: #ffffff;
 
     --deep-blue: #003b73;
@@ -19,14 +19,14 @@
     --accent-red: #c8102e;
 
     --neutral-gray: #1f2933;
-    --subtle-gray: #94a3b8;
+    --subtle-gray: #64748b;
 
     --border-radius: 1.5rem;
 
-    --shadow-sm: 0 10px 32px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 24px 60px rgba(0, 0, 0, 0.12);
+    --shadow-sm: 0 12px 30px rgba(0, 59, 115, 0.08);
+    --shadow-md: 0 28px 60px rgba(0, 59, 115, 0.14);
 
-    --content-max-width: 1440px;
+    --content-max-width: 1200px;
     --content-narrow-width: 640px;
 
     --transition-speed: 0.25s;
@@ -46,11 +46,10 @@ html, body, #root
     background: var(--primary-bg);
     color: var(--neutral-gray);
     font-family: var(--body-font);
-    line-height: 1.6;
+    line-height: 1.65;
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
 }
 
 /* Headings Styles. */
@@ -58,12 +57,10 @@ h1, h2, h3
 {
     font-family: var(--title-font);
     color: var(--deep-blue);
-    line-height: 1.25;
+    line-height: 1.2;
     margin: 0;
 }
-
-/* Paragraphs Styles. */
-p { margin: 0; }
+p { margin: 0; /* Paragraphs Styles. */ }
 
 /* ====================================
    Links Styles.
@@ -95,8 +92,8 @@ button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3p
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.28); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.42); }
+::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.4); }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -106,12 +103,12 @@ button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3p
     :root
     {
         --primary-bg: #0b1020;
-        --secondary-bg: #020617;
+        --secondary-bg: #111827;
+
         --neutral-gray: #e2e8f0;
         --subtle-gray: #475569;
-        --shadow-sm: 0 14px 40px rgba(0, 0, 0, 0.5);
-        --shadow-md: 0 28px 70px rgba(0, 0, 0, 0.6);
+
+        --shadow-sm: 0 18px 50px rgba(0, 0, 0, 0.5);
+        --shadow-md: 0 36px 80px rgba(0, 0, 0, 0.6);
     }
-    a { color: var(--accent-gold); }
-    a:hover { color: var(--deep-blue); }
 }

@@ -18,16 +18,16 @@
 {
     position: sticky;
     top: 0;
-    z-index: 40;
+    z-index: 50;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1.25rem;
 
-    background: color-mix(in srgb, var(--secondary-bg), transparent 8%);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid color-mix(in srgb, var(--deep-blue), transparent 92%);
+    background: color-mix(in srgb, var(--secondary-bg), transparent 10%);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid color-mix(in srgb, var(--deep-blue), transparent 85%);
 }
 
 /* =========================================
@@ -38,24 +38,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(0.85rem, 2vw, 1.6rem) 0 2.75rem;
+    padding: clamp(1rem, 2vw, 2rem) 0 3rem;
 }
 
 /* ====================================
-   Calendar Status Messages Styling.
+   Calendar Feedback Messages Styling.
 ======================================= */
 .calendar-feedback { margin-top: 2.5rem; display: flex; justify-content: center; }
 .calendar-status
 {
-    padding: 0.65rem 1.5rem;
-    font-size: 0.85rem;
+    padding: 0.75rem 1.75rem;
+    font-size: 0.875rem;
     border-radius: 999px;
 
     background: var(--secondary-bg);
     box-shadow: var(--shadow-sm);
     letter-spacing: 0.02em;
 }
-
+.calendar-status.info { color: var(--subtle-gray); font-weight: 500; }
 .calendar-status.error
 {
     background: rgba(200, 16, 46, 0.12); /* Color: Flag Red. */
@@ -73,9 +73,9 @@
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
 
-    padding-bottom: 1.75rem;
+    padding-bottom: 2rem;
 }
-.calendar-body-inner { display: flex; justify-content: center; width: 100%; }
+.calendar-inner { display: flex; justify-content: center; width: 100%; }
 
 /* ====================================
    Calendar Grid Wrapper Styling.
@@ -84,13 +84,13 @@
 {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: clamp(0.9rem, 1.8vw, 1.25rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
 
     width: 100%;
-    max-width: 1400px;
-    padding-inline: clamp(0.75rem, 2vw, 1.25rem);
+    max-width: var(--content-max-width);
+    padding-inline: clamp(1rem, 2vw, 1.5rem);
 
-    animation: calendarFadeIn 0.28s ease-out both;
+    animation: calendarFadeIn 0.3s ease-out both;
 }
 
 /* ====================================
@@ -101,7 +101,7 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
-    gap: clamp(0.65rem, 1.1vw, 0.9rem);
+    gap: clamp(0.75rem, 1.2vw, 1rem);
 }
 
 /* ====================================
@@ -116,7 +116,7 @@
 ======================================= */
 @keyframes calendarFadeIn
 {
-    from { opacity: 0; transform: translateY(6px) }
+    from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: none; }
 }
 
@@ -130,7 +130,7 @@
 
 @media (max-width: 768px)
 {
-    .week-view { min-width: 1080px; gap: 0.55rem; }
+    .week-view { min-width: 1080px; gap: 0.6rem; }
 }
 
 /* ====================================

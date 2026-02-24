@@ -44,7 +44,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         class="calendar-body"
       >
         <div
-          class="calendar-body-inner"
+          class="calendar-inner"
         >
           <div
             class="calendar-grid"
