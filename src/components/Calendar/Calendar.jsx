@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 23 February 2026
+//Date: 26 February 2026
 //Description: This file contains the parent component for the Saint Louis calendar project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -58,7 +58,7 @@ const Calendar = () => {
         <WeekNavigation />
       </header>
 
-      <main className="calendar-main">
+      <div className="calendar-main">
         {loading && (
           <div className="calendar-feedback" role="status" aria-live="polite">
             <p className="calendar-status info">Loading events…</p>
@@ -74,27 +74,23 @@ const Calendar = () => {
         )}
 
         {showCalendar && (
-          <div className="calendar-body">
-            <div className="calendar-inner">
-              <div className="calendar-grid">
-                <DaysOfWeek weekDays={weekDays} />
+          <div className="calendar-grid">
+            <DaysOfWeek weekDays={weekDays} />
 
-                <div className="week-view">
-                  {weekDays.map((day) => (
-                    <WeekDayColumn
-                      key={day.toDateString()}
-                      day={day}
-                      groupedEvents={groupEventsByHour(day, events)}
-                      onEventClick={setSelectedEvent}
-                      convertTo12HourFormat={convertTo12HourFormat}
-                    />
-                  ))}
-                </div>
-              </div>
+            <div className="week-view">
+              {weekDays.map((day) => (
+                <WeekDayColumn
+                  key={day.toDateString()}
+                  day={day}
+                  groupedEvents={groupEventsByHour(day, events)}
+                  onEventClick={setSelectedEvent}
+                  convertTo12HourFormat={convertTo12HourFormat}
+                />
+              ))}
             </div>
           </div>
         )}
-      </main>
+      </div>
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (

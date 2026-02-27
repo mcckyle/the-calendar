@@ -40,11 +40,12 @@
     background: #ffffff;
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
     animation: panelEnter 0.25s ease forwards;
 }
 .event-panel::-webkit-scrollbar { width: 6px; /* Removes harsh scrollbars. */ }
-.event-panel::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 999px; }
+.event-panel::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 999px; }
 
 /* ====================================
     EventPanel Header Styles.
@@ -57,7 +58,7 @@
 
     padding-bottom: 0.9rem;
     margin-bottom: 1.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* ====================================
@@ -70,7 +71,7 @@
     font-weight: 600;
     letter-spacing: -0.01em;
 
-    color: var(--deep-blue);
+    color: #0f172a;
     margin: 0;
 }
 
@@ -99,16 +100,16 @@
     border: 1px solid rgba(0, 0, 0, 0.08);
 
     background: transparent;
-    color: var(--deep-blue);
+    color: #0f172a;
 
     font-size: 1rem;
     cursor: pointer;
 
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
 }
-.close-button:hover { background: rgba(0, 59, 115, 0.06); border-color: rgba(0, 59, 115, 0.15); }
-.close-button:active { background: rgba(0, 59, 115, 0.1); }
-.close-button:focus-visible { outline: 2px solid rgba(0, 59, 115, 0.35); outline-offset: 2px; }
+.close-button:hover { background: rgba(0, 59, 115, 0.06); transform: translateY(-1px); }
+.close-button:active { background: rgba(0, 59, 115, 0.1); transform: translateY(0); }
+.close-button:focus-visible { outline: 2px solid rgba(59, 130, 246, 0.5); outline-offset: 2px; }
 
 /* ====================================
    EventPanel Animations Styles.
@@ -140,8 +141,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-overlay { background: rgba(0, 0, 0, 0.65); }
-    .event-panel { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08); }
+    .event-panel { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
     .event-panel-header { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
     .event-panel-header h2 { color: #f8fafc; }
     .close-button { border: 1px solid rgba(255, 255, 255, 0.08); color: #f8fafc; }

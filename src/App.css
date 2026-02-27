@@ -6,22 +6,12 @@
 .app
 {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
 
-    padding: clamp(3rem, 6vw, 6rem) 1.5rem 4rem;
-    background: radial-gradient(1200px circle at 50% -10%, rgba(0, 59, 115, 0.06), transparent 60%), var(--primary-bg);
-
-    transition: background var(--transition-speed);
-}
-
-.app-container
-{
-    width: 100%;
-    max-width: var(--content-max-width);
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: clamp(3rem, 6vw, 5rem) 1.5rem 4rem;
 }
 
 /* ====================================
@@ -29,27 +19,15 @@
 ======================================= */
 .app-header
 {
+    width: 100%;
     max-width: var(--content-narrow-width);
+
     text-align: center;
-    margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
-
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
-
-.app-title
-{
-    font-size: clamp(2.6rem, 5vw, 3.6rem);
-    letter-spacing: -0.035em;
-}
-
-.app-tagline
-{
-    font-size: 1.125rem;
-    line-height: 1.75;
-    color: color-mix(in srgb, var(--neutral-gray), transparent 60%);
-}
+.app-header-inner { display: flex; flex-direction: column; gap: 1.25rem; }
+.app-title { font-size: clamp(2.5rem, 5vw, 3.25rem); }
+.app-tagline { font-size: 1.05rem; line-height: 1.75; }
 
 /* ====================================
    Calendar Shell Styles.
@@ -57,13 +35,15 @@
 .calendar-shell
 {
     width: 100%;
-    background: var(--secondary-bg);
-    border-radius: 1.75rem;
+    max-width: var(--content-max-width);
 
-    padding: clamp(2rem, 4vw, 3rem);
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+
+    padding: clamp(1.75rem, 3vw, 2.75rem);
     box-shadow: var(--shadow-sm);
 
-    transition: box-shadow var(--transition-speed);
+    transition: box-shadow var(--transition);
 }
 .calendar-shell:hover { box-shadow: var(--shadow-md); }
 
@@ -73,6 +53,6 @@
 @media (max-width: 768px)
 {
     .app { padding-top: 2.5rem; }
-    .app-title { font-size: 2.2rem; }
-    .calendar-shell { padding: 1.5rem; border-radius: 1.4rem; }
+    .app-title { font-size: 2.1rem; }
+    .calendar-shell { padding: 1.5rem; border-radius: var(--radius-md); }
 }

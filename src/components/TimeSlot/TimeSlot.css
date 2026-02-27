@@ -6,10 +6,10 @@
 .time-slot
 {
     display: grid;
-    grid-template-columns: 3rem 1fr;
-    column-gap: 0.75rem;
+    grid-template-columns: 3.2rem 1fr;
+    column-gap: 0.85rem;
 
-    padding: 0.5rem 0.25rem;
+    padding: 0.55rem 0.3rem;
     align-items: start;
 }
 
@@ -21,11 +21,12 @@
     font-size: 0.72rem;
     font-weight: 500;
 
-    color: color-mix(in srgb, var(--deep-blue), transparent 45%);
+    color: rgba(15, 23, 42, 0.5);
     white-space: nowrap;
     user-select: none;
 
-    padding-top: 0.25rem;
+    padding-top: 0.3rem;
+    letter-spacing: 0.02em;
 }
 
 /* ====================================
@@ -35,24 +36,24 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.55rem;
 }
 
 /* ====================================
-   TimeSlot Event Buttons Styles.
+   TimeSlot Event Card Styles.
 ======================================= */
-.event
+.event-card
 {
     appearance: none;
-    border: 1px solid rgba(0, 59, 115, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 
     background: #ffffff;
-    color: var(--deep-blue);
+    color: #0f172a;
 
-    border-radius: 0.75rem;
-    padding: 0.5rem 0.7rem;
+    border-radius: 0.9rem;
+    padding: 0.6rem 0.85rem;
 
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 500;
     line-height: 1.35;
     text-align: left;
@@ -62,11 +63,11 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background 140ms ease, border-color 140ms ease, transform 120ms ease, box-shadow 140ms ease;
 }
-.event:hover { background: rgba(0, 59, 115, 0.05); border-color: rgba(0, 59, 115, 0.15); }
-.event:active { background: rgba(0, 59, 115, 0.08); }
-.event:focus-visible { outline: 2px solid rgba(0, 59, 115, 0.35); outline-offset: 2px; }
+.event-card:hover { background: rgba(0, 0, 0, 0.03); transform: translateY(-1px);  }
+.event-card:active { background: rgba(0, 0, 0, 0.06); transform: translateY(0); }
+.event-card:focus-visible { outline: 2px solid rgba(59, 130, 246, 0.5); outline-offset: 2px; }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
@@ -74,9 +75,8 @@
 .slot-empty
 {
     font-size: 0.72rem;
-    line-height: 1.1;
+    color: rgba(15, 23, 42, 0.35);
 
-    color: color-mix(in srgb, var(--deep-blue), transparent 70%);
     user-select: none;
     pointer-events: none;
 }
@@ -86,8 +86,8 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2.6rem 1fr; column-gap: 0.6rem; padding: 0.45rem 0.2rem; }
-    .event { font-size: 0.7rem; padding: 0.45rem 0.6rem; }
+    .time-slot { grid-template-columns: 2.8rem 1fr; column-gap: 0.65rem; padding: 0.5rem 0.2rem; }
+    .event-card { font-size: 0.74rem; padding: 0.55rem 0.75rem; }
     .time-label { font-size: 0.68rem; }
 }
 

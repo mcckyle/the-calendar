@@ -10,41 +10,44 @@
     --title-font: "Playfair Display", serif;
     --body-font: "Inter", sans-serif;
 
-    /* Colour Palette. */
-    --primary-bg: #f6f8fc;
-    --secondary-bg: #ffffff;
-
-    --deep-blue: #003b73;
-    --accent-gold: #ffb81c;
-    --accent-red: #c8102e;
-
-    --neutral-gray: #1f2933;
-    --subtle-gray: #64748b;
-
-    --border-radius: 1.5rem;
-
-    --shadow-sm: 0 12px 30px rgba(0, 59, 115, 0.08);
-    --shadow-md: 0 28px 60px rgba(0, 59, 115, 0.14);
-
+    /* Layout. */
     --content-max-width: 1200px;
     --content-narrow-width: 640px;
 
-    --transition-speed: 0.25s;
+    /* Radius. */
+    --radius-sm: 0.75rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.25rem;
+
+    /* Light Theme. */
+    --bg-primary: #f5f7fb;
+    --bg-surface: #ffffff;
+
+    --text-primary: #111827;
+    --text-secondary: #64748b;
+
+    --brand: #003b73;
+    --accent: #ffb81c;
+
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 20px 50px rgba(0, 0, 0, 0.08);
+
+    --transition: 0.2s ease;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
 
 /* ====================================
-   Base Layout Styles.
+   Reset & Base Styles.
 ======================================= */
+*, *::before, *::after { box-sizing: border-box; }
 html, body, #root
 {
     margin: 0;
     min-height: 100%;
     width: 100%;
 
-    background: var(--primary-bg);
-    color: var(--neutral-gray);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     font-family: var(--body-font);
     line-height: 1.65;
 
@@ -56,23 +59,24 @@ html, body, #root
 h1, h2, h3
 {
     font-family: var(--title-font);
-    color: var(--deep-blue);
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     margin: 0;
+    color: var(--brand);
 }
-p { margin: 0; /* Paragraphs Styles. */ }
+p { margin: 0; color: var(--text-secondary); /* Paragraphs Styles. */ }
 
 /* ====================================
    Links Styles.
 ======================================= */
 a
 {
-    color: var(--deep-blue);
+    color: var(--brand);
     text-decoration: none;
 
-    transition: color var(--transition-speed);
+    transition: color var(--transition);
 }
-a:hover { color: var(--accent-gold); }
+a:hover { color: var(--accent); }
 
 /* ====================================
    Buttons (Base Only) Styles.
@@ -86,14 +90,13 @@ button
 
     cursor: pointer;
 }
-button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ====================================
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(0, 59, 115, 0.25); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 59, 115, 0.4); }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 8px; }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -102,13 +105,14 @@ button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3p
 {
     :root
     {
-        --primary-bg: #0b1020;
-        --secondary-bg: #111827;
+        --bg-primary: #0b1020;
+        --bg-surface: #111827;
 
-        --neutral-gray: #e2e8f0;
-        --subtle-gray: #475569;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
 
-        --shadow-sm: 0 18px 50px rgba(0, 0, 0, 0.5);
-        --shadow-md: 0 36px 80px rgba(0, 0, 0, 0.6);
+        --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 24px 60px rgba(0, 0, 0, 0.55);
     }
+    h1, h2, h3 { color: #ffffff; }
 }

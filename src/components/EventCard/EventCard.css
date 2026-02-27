@@ -5,19 +5,19 @@
 ======================================= */
 .event-card
 {
-    background: var(--secondary-bg);
+    background: #ffffff;
     padding: clamp(1.5rem, 3vw, 2rem);
     border-radius: 1rem;
 
     font-family: var(--body-font);
-    color: var(--neutral-gray);
+    color: var(--text-primary);
     line-height: 1.6;
 
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 
     transition: background 0.2s ease transform 0.15s ease;
 }
-.event-card:hover { background: rgba(0, 59, 115, 0.03); transform: translateY(-1px); }
+.event-card:hover { background: rgba(0, 59, 115, 0.03); transform: translateY(-2px); }
 
 /* ====================================
     EventCard Header Styles.
@@ -31,7 +31,7 @@
     font-weight: 600;
     letter-spacing: -0.01em;
 
-    color: var(--deep-blue);
+    color: var(--text-primary);
     margin: 0 0 0.35rem;
 }
 
@@ -45,9 +45,9 @@
     gap: 0.5rem;
 
     font-size: 0.875rem;
-    color: var(--subtle-gray);
+    color: var(--text-secondary);
 }
-.event-date { font-weight: 600; color: var(--deep-blue); }
+.event-date { font-weight: 600; color: #003b73; }
 .event-time { opacity: 0.85; }
 
 /* ====================================
@@ -57,7 +57,7 @@
 {
     margin-top: 1.2rem;
     font-size: 0.95rem;
-    color: var(--neutral-gray);
+    color: var(--text-secondary);
     white-space: pre-line;
 }
 
@@ -72,7 +72,7 @@
 
     margin-top: 1.5rem;
     font-size: 0.875rem;
-    color: var(--subtle-gray);
+    color: var(--text-secondary);
 }
 .venue-label { font-size: 1.1rem; opacity: 0.7; }
 .venue-text { line-height: 1.4; }
@@ -85,7 +85,7 @@
 {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--accent-gold);
+    color: #bfa158;
     text-decoration: none;
     position: relative;
 
@@ -122,10 +122,10 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-card { background: #0f172a; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); }
+    .event-card { background: #0f172a; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); color: #f8fafc; }
     .event-card-title { color: #f8fafc; }
     .event-card-meta { color: rgba(255, 255, 255, 0.6); }
     .event-card-description { color: rgba(255, 255, 255, 0.85); }
     .event-card-venue { color: rgba(255, 255, 255, 0.6); }
-    .event-card-footer a { color: var(--accent-gold); }
+    .event-card-footer a { color: #bfa158; }
 }
