@@ -7,63 +7,55 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.75rem;
 
-    padding: 0.4rem;
     user-select: none;
 }
-
-/* ====================================
-    WeekNavigation Navigation Buttons Styles.
-======================================= */
-.nav-button
-{
-    width: 2.25rem;
-    height: 2.25rem;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-    background: transparent;
-
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-
-    transition: background var(--transition), transform 0.1s ease, color var(--transition);
-}
-.nav-button:hover,
-.nav-button:focus-visible { background: rgba(0, 0, 0, 0.06); color: var(--text-primary); }
-.nav-button:active { transform: scale(0.95); }
 
 /* ====================================
    WeekNavigation Month / Year Text Label Styles.
 ======================================= */
 .month-year
 {
-    font-family: var(--body-font);
-    font-size: 1.1rem;
+    font-family: var(--title-font);
+    font-size: 1.4rem;
     font-weight: 600;
 
     color: var(--text-primary);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     white-space: nowrap;
 }
+
+/* ====================================
+    WeekNavigation Navigation Controls Styles.
+======================================= */
+.nav-control
+{
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    padding: 0.25rem 0.5rem;
+
+    transition: color var(--transition);
+}
+.nav-control:hover,
+.nav-control:focus-visible { color: var(--text-primary); }
+.nav-control:focus-visible { outline: none; border-bottom: 2px solid var(--accent); }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.75rem; }
-    .month-year { font-size: 1rem; }
-    .nav-button { width: 2rem; height: 2rem; font-size: 1.1rem; }
+    .week-navigation { gap: 1.25rem; }
+    .month-year { font-size: 1.2rem; }
+    .nav-control { font-size: 1.4rem; }
 }
 
 /* ====================================
    WeekNavigation Dark Mode Media Query Styles.
 ======================================= */
-@media (prefers-color-scheme: dark)
+/*@media (prefers-color-scheme: dark)
 {
     .nav-button:hover, .nav-button:focus-visible { background: rgba(255, 255, 255, 0.08); }
-}
+}*/

@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.test.jsx
 //Author: Kyle McColgan
-//Date: 16 February 2026
+//Date: 1 March 2026
 //Description: This file contains unit tests for the MonthNavigation.jsx component.
 
 import React from 'react';
@@ -67,8 +67,8 @@ describe('WeekNavigation Component', () => {
 		const prevButton = screen.getByLabelText('Previous week');
 		const nextButton = screen.getByLabelText('Next week');
 
-		expect(prevButton).toHaveClass('nav-button');
-		expect(nextButton).toHaveClass('nav-button');
+		expect(prevButton).toHaveClass('nav-control');
+		expect(nextButton).toHaveClass('nav-control');
 	});
 
 	//Test #6: Aria attributes for accessibility are present.

@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.test.jsx
 //Author: Kyle McColgan
-//Date: 5 February 2026
+//Date: 1 March 2026
 //Description: This file contains unit tests for the Days Of Week component.
 
 import React from "react";
@@ -80,7 +80,7 @@ describe("DaysOfWeek Component", () => {
 
         const todayCell = screen.getByRole("columnheader");
         expect(todayCell).toHaveAttribute("aria-current", "date");
-        expect(todayCell).toHaveClass("today");
+        expect(todayCell).toHaveClass("is-today");
     });
 
     //Test #7: Parent container has correct role and class.

@@ -6,28 +6,28 @@
 .days-of-week
 {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    align-items: center;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    align-items: end;
 
     width: 100%;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ====================================
-    DaysOfWeek Individual Day Cell Styling.
+    DaysOfWeek Individual Day Column Header Styling.
 ======================================= */
 .day-item
 {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
+    gap: 0.35rem;
 
-    padding: 0.5rem 0.25rem;
-    text-align: center;
-    user-select: none;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-subtle);
 }
+.day-item:first-child { border-left: none; padding-left: 0; }
 
 /* ====================================
    DaysOfWeek Weekday Label (MON, TUE, etc.) Styling.
@@ -36,7 +36,7 @@
 {
     font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 
     color: var(--text-secondary);
@@ -47,24 +47,30 @@
  ======================================= */
 .day-date
 {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-family: var(--title-font);
+    font-size: 1.05rem;
+    font-weight: 600;
+
     color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 /* ====================================
    DaysOfWeek Today Highlight Styling.
  ======================================= */
-.day-item.today .day-label { color: var(--accent); }
-.day-item.today .day-date { font-weight: 600; color: var(--text-primary); }
-.day-item.today::after /* DaysOfWeek Simple Underline Indicator for Today. */
+.day-item.is-today .day-label { color: var(--accent); }
+.day-item.is-today .day-date { color: var(--text-primary); position: relative; }
+.day-item.is-today .day-date::before /* DaysOfWeek Simple Indicator for Today. */
 {
     content: "";
-    margin-top: 0.35rem;
-    width: 1.25rem;
-    height: 2px;
-    border-radius: 2px;
+    position: absolute;
+    left: -1rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+
+    width: 3px;
     background: var(--accent);
+    border-radius: 2px;
 }
 
 /* ====================================
@@ -72,15 +78,15 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .days-of-week { padding: 0.6rem;}
-    .day-label { font-size: 0.65rem; }
-    .day-date { font-size: 0.8rem; }
+    .days-of-week { padding-bottom: 1rem;}
+    .day-item { padding-left: 0.75rem; }
+    .day-date { font-size: 0.95rem; }
 }
 
 /* ====================================
    DaysOfWeek Dark Mode Media Query Styling.
 ======================================= */
-@media (prefers-color-scheme: dark)
+/*@media (prefers-color-scheme: dark)
 {
     .days-of-week { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-}
+}*/

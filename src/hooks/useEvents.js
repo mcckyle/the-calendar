@@ -1,17 +1,27 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 30 January 2026
+//Date: 1 March 2026
 //Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar.
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function useEvents(apiUrl, weekStart, weekEnd) {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const currentController = useRef(null); //Keep a ref to the current controller.
 
   useEffect(() => {
+    if ( ( ! apiUrl) || ( ! weekStart) || ( ! weekEnd))
+    {
+      return;
+    }
+
+    //Abort previous fetch, if any.
+    currentController.current?.abort();
+
     const controller = new AbortController();
+    currentController.current = controller;
     const { signal } = controller;
 
     async function fetchEvents()
@@ -27,51 +37,63 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
                 end: weekEnd,
             });
 
-            const response = await fetch(`${apiUrl}/api/events?${parameters.toString()}`, { signal });
+            const response = await fetch(`${apiUrl}/api/events?${parameters}`, { signal });
 
             if ( ! response.ok)
             {
-                throw new Error("Failed to fetch events!");
+                throw new Error(`Event request failed (${response.status})`);
             }
 
             const data = await response.json();
-            const embedded = data._embedded?.events ?? [];
+            const rawEvents = data._embedded?.events ?? [];
 
-            const normalized = embedded
-              .map(event => {
-                const venue = event._embedded?.venues?.[0] || {};
-                const dateTimeStr = event.dates?.start?.dateTime;
-                const startTime = dateTimeStr ? new Date(dateTimeStr) : null;
+            const normalized = rawEvents
+              .map((event) => {
+                const venue = event?._embedded?.venues?.[0] || {};
+                const startISO = event?.dates?.start?.dateTime;
+                const endISO = event?.dates?.end?.dateTime;
 
-                return startTime
-                  ? {
-                      id: event.id,
-                      title: event.name,
-                      startTime,
-                      date: startTime.toDateString(),
-                      time: startTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit"}),
-                      allDay: false,
-                      description: event.info || event.pleaseNote || "",
-                      venueName: venue.name || "Unknown venue",
-                      venueAddress: venue.address?.line1 || "",
-                      venueCity: venue.city?.name || "",
-                      venueState: venue.state?.stateCode || "",
-                      url: event.url || "",
-                    }
-                  : null;
-                }).filter(Boolean);
+                if ( ! startISO)
+                {
+                  return null;
+                }
+
+                return {
+                  id: event.id,
+                  title: event.name ?? "Untitled Event",
+                  date: startISO,
+                  startTime: new Date(startISO),
+                  endTime: endISO ? new Date(endISO) : null,
+                  allDay: event?.dates?.start?.noSpecificTime ?? false,
+                  description: event.info || event.pleaseNote || "",
+                  venueName: venue?.name ?? "",
+                  venueAddress: venue?.address?.line1 ?? "",
+                  venueCity: venue?.city?.name ?? "",
+                  venueState: venue?.state?.stateCode ?? "",
+                  url: event.url ?? "",
+                };
+              })
+              .filter(Boolean)
+              .sort(
+                 (a, b) =>
+                   new Date(a.startTime).getTime() -
+                   new Date(b.startTime).getTime()
+              );
             setEvents(normalized);
       }
       catch (error)
       {
         if (error.name !== "AbortError")
         {
-          setError(error.message);
+          setError(error.message || "Unable to load events!");
         }
       }
       finally
       {
+        if ( ! signal.aborted)
+        {
           setLoading(false);
+        }
       }
     }
 

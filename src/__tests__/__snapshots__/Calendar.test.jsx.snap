@@ -17,14 +17,10 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <button
           aria-label="Previous week"
-          class="nav-button"
+          class="nav-control"
           type="button"
         >
-          <span
-            aria-hidden="true"
-          >
-            ‹
-          </span>
+          ‹
         </button>
         <time
           class="month-year"
@@ -34,187 +30,186 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </time>
         <button
           aria-label="Next week"
-          class="nav-button"
+          class="nav-control"
           type="button"
         >
-          <span
-            aria-hidden="true"
-          >
-            ›
-          </span>
+          ›
         </button>
       </nav>
     </header>
     <div
-      class="calendar-main"
+      class="calendar-grid"
     >
       <div
-        class="calendar-grid"
+        aria-label="Days of the week"
+        class="days-of-week"
+        role="row"
       >
         <div
-          aria-label="Days of the week"
-          class="days-of-week"
-          role="row"
+          class="day-item"
+          role="columnheader"
         >
-          <div
-            class="day-item"
-            role="columnheader"
+          <span
+            class="day-label"
           >
-            <span
-              class="day-label"
-            >
-              Sun
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 26
-            </span>
-          </div>
-          <div
-            class="day-item"
-            role="columnheader"
+            Sun
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-26,05:00:00.000Z"
           >
-            <span
-              class="day-label"
-            >
-              Mon
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 27
-            </span>
-          </div>
-          <div
-            class="day-item"
-            role="columnheader"
-          >
-            <span
-              class="day-label"
-            >
-              Tue
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 28
-            </span>
-          </div>
-          <div
-            class="day-item"
-            role="columnheader"
-          >
-            <span
-              class="day-label"
-            >
-              Wed
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 29
-            </span>
-          </div>
-          <div
-            class="day-item"
-            role="columnheader"
-          >
-            <span
-              class="day-label"
-            >
-              Thu
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 30
-            </span>
-          </div>
-          <div
-            aria-current="date"
-            class="day-item today"
-            role="columnheader"
-          >
-            <span
-              class="day-label"
-            >
-              Fri
-            </span>
-            <span
-              class="day-date"
-            >
-              Oct 31
-            </span>
-          </div>
-          <div
-            class="day-item"
-            role="columnheader"
-          >
-            <span
-              class="day-label"
-            >
-              Sat
-            </span>
-            <span
-              class="day-date"
-            >
-              Nov 1
-            </span>
-          </div>
+            Oct 26
+          </time>
         </div>
         <div
-          class="week-view"
+          class="day-item"
+          role="columnheader"
         >
-          <div
-            data-testid="week-day-column"
+          <span
+            class="day-label"
           >
-            <span>
-              Sun Oct 26 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Mon
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-27,05:00:00.000Z"
           >
-            <span>
-              Mon Oct 27 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Oct 27
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
           >
-            <span>
-              Tue Oct 28 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Tue
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-28,05:00:00.000Z"
           >
-            <span>
-              Wed Oct 29 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Oct 28
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
           >
-            <span>
-              Thu Oct 30 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Wed
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-29,05:00:00.000Z"
           >
-            <span>
-              Fri Oct 31 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
+            Oct 29
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
           >
-            <span>
-              Sat Nov 01 2025
-            </span>
-          </div>
+            Thu
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-30,05:00:00.000Z"
+          >
+            Oct 30
+          </time>
+        </div>
+        <div
+          aria-current="date"
+          class="day-item is-today"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Fri
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-10-31,05:00:00.000Z"
+          >
+            Oct 31
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Sat
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-11-01,05:00:00.000Z"
+          >
+            Nov 1
+          </time>
+        </div>
+      </div>
+      <div
+        class="week-view"
+      >
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sun Oct 26 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Mon Oct 27 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Tue Oct 28 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Wed Oct 29 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Thu Oct 30 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Fri Oct 31 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sat Nov 01 2025
+          </span>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 26 February 2026
-//Description: This file contains the parent component for the Saint Louis calendar project.
+//Date: 1 March 2026
+//Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useEffect, useMemo } from "react";
 import { convertTo12HourFormat, groupEventsByHour } from "../../utils/eventUtils";
@@ -46,8 +46,6 @@ const Calendar = () => {
     setWeekDays(days);
   }, [currentDate]);
 
-  const showCalendar = ( ! loading) && ( ! error);
-
   return (
     <section
       className="calendar"
@@ -58,39 +56,35 @@ const Calendar = () => {
         <WeekNavigation />
       </header>
 
-      <div className="calendar-main">
-        {loading && (
-          <div className="calendar-feedback" role="status" aria-live="polite">
-            <p className="calendar-status info">Loading events…</p>
-          </div>
-        )}
+      {loading && (
+        <div className="calendar-feedback" role="status" aria-live="polite">
+          Loading events…
+        </div>
+      )}
 
-        {error && (
-          <div className="calendar-feedback" aria-live="assertive">
-            <p className="calendar-status error" role="alert">
-            {error}
-            </p>
-          </div>
-        )}
+      {error && (
+        <div className="calendar-feedback error" role="alert">
+          {error}
+        </div>
+      )}
 
-        {showCalendar && (
-          <div className="calendar-grid">
-            <DaysOfWeek weekDays={weekDays} />
+      {(! loading) && ( ! error) && (
+        <div className="calendar-grid">
+          <DaysOfWeek weekDays={weekDays} />
 
-            <div className="week-view">
-              {weekDays.map((day) => (
-                <WeekDayColumn
-                  key={day.toDateString()}
-                  day={day}
-                  groupedEvents={groupEventsByHour(day, events)}
-                  onEventClick={setSelectedEvent}
-                  convertTo12HourFormat={convertTo12HourFormat}
-                />
-              ))}
-            </div>
+          <div className="week-view">
+            {weekDays.map((day) => (
+              <WeekDayColumn
+                key={day.toDateString()}
+                day={day}
+                groupedEvents={groupEventsByHour(day, events)}
+                onEventClick={setSelectedEvent}
+                convertTo12HourFormat={convertTo12HourFormat}
+              />
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (
