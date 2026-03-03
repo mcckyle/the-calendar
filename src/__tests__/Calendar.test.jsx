@@ -13,16 +13,23 @@ import { CalendarProvider } from '../components/Calendar/CalendarContext';
 jest.mock('../components/WeekDayColumn/WeekDayColumn.jsx', () => (props) => {
   const { day } = props; //Properly destructure day.
 
-  //Construct a UTC-safe Date object and format it like "Fri Oct 31 2025".
+  //Construct a UTC-safe Date object.
   const utcDate = new Date(Date.UTC(
     day.getUTCFullYear(),
     day.getUTCMonth(),
     day.getUTCDate()
   ));
 
+  //Manually format as "Day Mon DD YYYY" to match tests using regex (Test #8).
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  const utcReadable = `${weekdays[utcDate.getUTCDay()]} ${months[utcDate.getUTCMonth()]} ${utcDate.getUTCDate()} ${utcDate.getUTCFullYear()}`;
+
   return (
     <div data-testid="week-day-column">
-      <span>{utcDate.toDateString()}</span>
+      <span>{utcReadable}</span>
     </div>
   );
 });
@@ -47,7 +54,7 @@ jest.mock('../hooks/useEvents', () => ({
 
 // Return a fixed UTC date (2025-10-31T00:00:00Z) so the Calendar snapshot test passes on GitHub Actions.
 beforeAll(() => {
-  const fixedDate = new Date(Date.UTC(2025, 9, 31));
+  const fixedDate = new Date(Date.UTC(2025, 9, 31)); //October 31st, 2025.
   jest.useFakeTimers();
   jest.setSystemTime(fixedDate);
 });
