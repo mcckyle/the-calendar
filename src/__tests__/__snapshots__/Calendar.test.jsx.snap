@@ -24,7 +24,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </button>
         <time
           class="month-year"
-          datetime="2025-10-26"
+          datetime="2025-10-31"
         >
           October 2025
         </time>
@@ -46,70 +46,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         role="row"
       >
         <div
-          class="day-item"
-          role="columnheader"
-        >
-          <span
-            class="day-label"
-          >
-            Sun
-          </span>
-          <time
-            class="day-date"
-            datetime="2025-10-26,05:00:00.000Z"
-          >
-            Oct 26
-          </time>
-        </div>
-        <div
-          class="day-item"
-          role="columnheader"
-        >
-          <span
-            class="day-label"
-          >
-            Mon
-          </span>
-          <time
-            class="day-date"
-            datetime="2025-10-27,05:00:00.000Z"
-          >
-            Oct 27
-          </time>
-        </div>
-        <div
-          class="day-item"
-          role="columnheader"
-        >
-          <span
-            class="day-label"
-          >
-            Tue
-          </span>
-          <time
-            class="day-date"
-            datetime="2025-10-28,05:00:00.000Z"
-          >
-            Oct 28
-          </time>
-        </div>
-        <div
-          class="day-item"
-          role="columnheader"
-        >
-          <span
-            class="day-label"
-          >
-            Wed
-          </span>
-          <time
-            class="day-date"
-            datetime="2025-10-29,05:00:00.000Z"
-          >
-            Oct 29
-          </time>
-        </div>
-        <div
           aria-current="date"
           class="day-item is-today"
           role="columnheader"
@@ -121,7 +57,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </span>
           <time
             class="day-date"
-            datetime="2025-10-30,05:00:00.000Z"
+            datetime="2025-10-31,00:00:00.000Z"
           >
             Oct 30
           </time>
@@ -137,7 +73,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </span>
           <time
             class="day-date"
-            datetime="2025-10-31,05:00:00.000Z"
+            datetime="2025-11-01,00:00:00.000Z"
           >
             Oct 31
           </time>
@@ -153,43 +89,79 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </span>
           <time
             class="day-date"
-            datetime="2025-11-01,05:00:00.000Z"
+            datetime="2025-11-02,00:00:00.000Z"
           >
             Nov 1
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Sun
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-11-03,01:00:00.000Z"
+          >
+            Nov 2
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Mon
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-11-04,01:00:00.000Z"
+          >
+            Nov 3
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Tue
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-11-05,01:00:00.000Z"
+          >
+            Nov 4
+          </time>
+        </div>
+        <div
+          class="day-item"
+          role="columnheader"
+        >
+          <span
+            class="day-label"
+          >
+            Wed
+          </span>
+          <time
+            class="day-date"
+            datetime="2025-11-06,01:00:00.000Z"
+          >
+            Nov 5
           </time>
         </div>
       </div>
       <div
         class="week-view"
       >
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Sun Oct 26 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Mon Oct 27 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Tue Oct 28 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Wed Oct 29 2025
-          </span>
-        </div>
         <div
           data-testid="week-day-column"
         >
@@ -209,6 +181,34 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         >
           <span>
             Sat Nov 01 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sun Nov 02 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Mon Nov 03 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Tue Nov 04 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Wed Nov 05 2025
           </span>
         </div>
       </div>

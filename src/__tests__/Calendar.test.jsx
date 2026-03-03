@@ -174,8 +174,10 @@ describe('Calendar Component', () => {
 
   //Test #9: Snapshot test for UI consistency.
   test('matches snapshot for default render.', () => {
+    const fixedDate = new Date(Date.UTC(2025, 9, 31)); //October 31st, 2025.
+
     const { asFragment } = render(
-      <CalendarProvider>
+      <CalendarProvider initialDate={fixedDate}>
         <Calendar />
       </CalendarProvider>
     );
