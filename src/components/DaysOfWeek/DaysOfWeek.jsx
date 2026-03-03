@@ -1,24 +1,27 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 1 March 2026
+//Date: 2 March 2026
 //Description: This file contains the row of date labels for the Saint Louis calendar React project.
 
 import React, { useMemo } from "react";
 import "./DaysOfWeek.css";
 
 const DaysOfWeek = ({ weekDays = [] }) => {
-  const todayString = useMemo(() => new Date().toDateString(), []);
+  const todayString = useMemo(() => new Date().toISOString().split("T")[0], []);
 
   return (
     <div className="days-of-week" role="row" aria-label="Days of the week">
       {weekDays.map((day) => {
-        const isToday = day.toDateString() === todayString;
+        const dayString = day.toISOString().split("T")[0];
+        const isToday = dayString === todayString;
 
-        const weekday = day.toLocaleDateString("en-US", { weekday: "short" });
-        const date = day.toLocaleDateString("en-US", {
-          month: "short",
+        //Use UTC for labels.
+        const weekday = day.toUTCString().split(",")[0]; //"Fri".
+        const date = new Intl.DateTimeFormat("en-US", {
+          month: "long",
           day: "numeric",
-        });
+          timeZone: "UTC",
+        }).format(day);
 
         return (
           <div
@@ -30,7 +33,7 @@ const DaysOfWeek = ({ weekDays = [] }) => {
             <span className="day-label">{weekday}</span>
             <time
               className="day-date"
-              dateTime={day.toISOString().split("T"[0])}
+              dateTime={day.toISOString().split("T")[0]}
             >
               {date}
             </time>

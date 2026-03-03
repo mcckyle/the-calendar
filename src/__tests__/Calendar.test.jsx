@@ -64,7 +64,11 @@ describe('Calendar Component', () => {
     // Check for navigation buttons and month/year display.
     expect(screen.getByRole('button', { name: /previous week/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /next week/i })).toBeInTheDocument();
-    expect(screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/)).toBeInTheDocument();
+
+    //Query by class name (month-year) to avoid multiple matches.
+    const monthYear = document.querySelector('.month-year');
+    expect(monthYear).toBeInTheDocument();
+    expect(monthYear.textContent).toMatch(/January|February|March|April|May|June|July|August|September|October|November|December/);
   });
 
   //Test #2: Week view renders seven (7) weekday columns.
@@ -107,18 +111,21 @@ describe('Calendar Component', () => {
     });
   });
 
-   //Test #5: Month text updates when navigating.
+  //Test #5: Month text updates when navigating.
   test('updates the displayed month/year when navigating weeks.', () => {
     renderCalendar();
-    const monthBefore = screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/).textContent;
 
-    for(let i = 0; i < 5; i ++ )
+    const getMonthYearText = () => document.querySelector('.month-year').textContent;
+    const monthBefore = getMonthYearText();
+
+    //Click "Next Week" five times.
+    for (let i = 0; i < 5; i ++ )
     {
         // Click on the "Next week" button using the accessible name.
         fireEvent.click(screen.getByRole('button', { name: /next week/i }));
     }
 
-    const monthAfter = screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/).textContent;
+    const monthAfter = getMonthYearText();
 
     expect(monthBefore).not.toEqual(monthAfter);
   });
