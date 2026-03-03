@@ -110,7 +110,8 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </time>
         </div>
         <div
-          class="day-item"
+          aria-current="date"
+          class="day-item is-today"
           role="columnheader"
         >
           <span
@@ -126,8 +127,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </time>
         </div>
         <div
-          aria-current="date"
-          class="day-item is-today"
+          class="day-item"
           role="columnheader"
         >
           <span

@@ -1,6 +1,6 @@
 //Filename: Calendar.test.jsx
 //Author: Kyle McColgan
-//Date: 16 January 2026
+//Date: 2 March 2026
 //Description: This file contains unit tests for the Calendar component.
 
 import React from 'react';
@@ -37,24 +37,15 @@ jest.mock('../hooks/useEvents', () => ({
   })
 }));
 
-// Return a fixed date so the snapshot test passes on GitHub.
+// Return a fixed UTC date (2025-10-31T00:00:00Z) so the Calendar snapshot test passes on GitHub Actions.
 beforeAll(() => {
-  const fixedDate = new Date(2025, 9, 31);
+  const fixedDate = new Date(Date.UTC(2025, 9, 31));
   jest.useFakeTimers();
   jest.setSystemTime(fixedDate);
-
-  //Mock global fetch...
-//   global.fetch = jest.fn(() =>
-//     Promise.resolve({
-//       ok: true,
-//       json: () => Promise.resolve([]), //Return an empty array of events.
-//     })
-//   );
 });
 
 afterAll(() => {
   jest.useRealTimers();
-  //global.fetch.mockRestore(); //Clean up.
 });
 
 describe('Calendar Component', () => {
