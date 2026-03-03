@@ -12,9 +12,17 @@ import { CalendarProvider } from '../components/Calendar/CalendarContext';
 //Mock WeekDayColumn.jsx.
 jest.mock('../components/WeekDayColumn/WeekDayColumn.jsx', () => (props) => {
   const { day } = props; //Properly destructure day.
+
+  //Construct a UTC-safe Date object and format it like "Fri Oct 31 2025".
+  const utcDate = new Date(Date.UTC(
+    day.getUTCFullYear(),
+    day.getUTCMonth(),
+    day.getUTCDate()
+  ));
+
   return (
     <div data-testid="week-day-column">
-      <span>{day.toDateString()}</span>
+      <span>{utcDate.toDateString()}</span>
     </div>
   );
 });
