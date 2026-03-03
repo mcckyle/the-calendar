@@ -8,28 +8,28 @@ import React, { createContext, useContext, useState } from 'react';
 export const CalendarContext = createContext();
 export const useCalendarContext = () => useContext(CalendarContext);
 
-const getStartOfWeek = (date) => {
+const getStartOfWeekUTC = (date) => {
   const newDate = new Date(date);
-  const day = newDate.getDay(); //Sunday == 0, Monday == 1, etc.
-  newDate.setDate(newDate.getDate() - day); //Backup to Sunday.
-  newDate.setHours(0, 0, 0, 0);
+  const day = newDate.getUTCDay(); //Sunday == 0, Monday == 1, etc.
+  newDate.setUTCDate(newDate.getUTCDate() - day); //Backup to Sunday.
+  newDate.setUTCHours(0, 0, 0, 0);
   return newDate;
 };
 
 export const CalendarProvider = ({ children, initialDate }) => {
-  const [currentDate, setCurrentDate] = useState(initialDate ?? getStartOfWeek(new Date()));
+  const [currentDate, setCurrentDate] = useState(initialDate ?? getStartOfWeekUTC(new Date()));
   const [selectedDate, setSelectedDate] = useState(null);
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + offset);
-    setCurrentDate(getStartOfWeek(newDate));
+    setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
   const changeWeek = (offset) => {
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate() + offset * 7);
-    setCurrentDate(getStartOfWeek(newDate));
+    setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
   const selectDate = (date) => {
