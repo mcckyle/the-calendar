@@ -1,7 +1,7 @@
 /* Filename: src/index.css */
 
 /* ====================================
-   Global CSS Variables Styles.
+   Design Tokens Styles.
 ======================================= */
 :root
 {
@@ -19,19 +19,19 @@
     --radius-md: 1rem;
     --radius-lg: 1.25rem;
 
-    --brand: #003b73;
-    --accent: #ffb81c;
+    --brand: #0f2f56;
+    --accent: #f59e0b;
 
     /* Light Theme. */
-    --bg-primary: #f6f8fc;
+    --bg-primary: #f3f5f9;
     --bg-surface: #ffffff;
 
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --border-subtle: rgba(15, 23, 42, 0.06);
 
-    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 20px 50px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 30px 70px rgba(15, 23, 42, 0.08);
 
     --transition: 0.2s ease;
 }
@@ -51,6 +51,7 @@ html, body, #root
     color: var(--text-primary);
     font-family: var(--body-font);
     line-height: 1.7;
+    letter-spacing: -0.01em;
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -113,8 +114,8 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
         --text-secondary: #94a3b8;
         --border-subtle: rgba(255, 255, 255, 0.06);
 
-        --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.4);
-        --shadow-md: 0 24px 60px rgba(0, 0, 0, 0.55);
+        --shadow-sm: 0 10px 35px rgba(0, 0, 0, 0.45);
+        --shadow-md: 0 30px 70px rgba(0, 0, 0, 0.6);
     }
     h1, h2, h3 { color: #ffffff; }
 }

@@ -6,6 +6,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     aria-busy="false"
     aria-label="Weekly events calendar"
     class="calendar"
+    role="region"
   >
     <header
       class="calendar-header"

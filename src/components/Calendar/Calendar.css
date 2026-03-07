@@ -8,7 +8,14 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+
+    transition: box-shadow var(--transition), transform var(--transition);
 }
+.calendar:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
 /* ====================================
    Calendar Sticky Week Navigation Styling.
@@ -21,9 +28,11 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 1rem 1.5rem;
 
     background: var(--bg-surface);
+    backdrop-filter: saturate(120%) blur(6px);
     border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -44,10 +53,11 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
     padding: 2rem 1.5rem 3rem;
+    overflow-x: auto;
 
-    animation: calendarFadeIn 0.2s ease-out both;
+    animation: calendarFadeIn 0.25s ease-out both;
 }
 
 /* ====================================
@@ -58,7 +68,7 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 .week-view > * { border-left: 1px solid var(--border-subtle); padding-left: 1rem; }
 .week-view > *:first-child { border-left: none; padding-left: 0; }
@@ -68,7 +78,7 @@
 ======================================= */
 @keyframes calendarFadeIn
 {
-    from { opacity: 0; transform: translateY(3px); }
+    from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: none; }
 }
 
@@ -77,13 +87,13 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .calendar-grid { overflow-x: auto; /* Fixes columns exceeding the Calendar Container to the right on narrow viewport sizes. */ }
-    .week-view { min-width: 1050px; }
+    .calendar-grid { min-width: 100%; overflow-x: auto; /* Fixes columns exceeding the Calendar Container to the right on narrow viewport sizes. */ }
+    .week-view { min-width: 1050px; gap: 1rem; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-grid { padding: 1.75rem 1.25rem 2.5rem; }
+    .calendar-grid { padding: 1.5rem 1rem 2rem; }
     .week-view { gap: 0.75rem; }
 }
 
@@ -92,7 +102,8 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .calendar-header { border-bottom: 1px solid var(--border-subtle); }
+    .calendar { background: var(--bg-surface); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+    .calendar-header { border-bottom: 1px solid var(--border-subtle); backdrop-filter: blur(120%) blur(6px); }
     .calendar-feedback.error { color: #ff6b81; }
 }
 
