@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(4rem, 8vw, 7rem) 1.5rem 5rem;
+    padding: clamp(3rem, 7vw, 6rem) 1.5rem 4rem;
 }
 
 /* ====================================
@@ -23,12 +23,12 @@
     max-width: var(--content-narrow-width);
 
     text-align: center;
-    margin-bottom: clamp(3.5rem, 6vw, 4.5rem);
+    margin-bottom: clamp(3rem, 6vw, 4rem);
 }
-.app-header-inner { display: flex; flex-direction: column; gap: 1.5rem; }
-.app-title { font-size: clamp(3rem, 5vw, 3.75rem); letter-spacing: -0.035em; }
-.app-title-accent { color: var(--text-primary); }
-.app-tagline { font-size: 1.05rem; line-height: 1.8; max-width: 38rem; margin: 0 auto; }
+.header-inner { display: flex; flex-direction: column; gap: 1.35rem; }
+.title { font-size: clamp(2.8rem, 5vw, 3.6rem); letter-spacing: -0.035em; }
+.title-accent { color: var(--text-primary); }
+.tagline { font-size: 1.05rem; line-height: 1.75; max-width: 38rem; margin: 0 auto; }
 
 /* ====================================
    Calendar Shell Styles.
@@ -38,7 +38,7 @@
     width: 100%;
     max-width: var(--content-max-width);
 
-    padding: clamp(2.25rem, 3vw, 3rem);
+    padding: clamp(2rem, 3vw, 2.75rem);
 
     border-radius: var(--radius-lg);
     background: var(--bg-surface);
@@ -53,7 +53,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding-top: 2.5rem; }
-    .app-title { font-size: 2.4rem; }
-    .calendar-shell { padding: 1.75rem; border-radius: var(--radius-md); }
+    .app { padding-top: 2.25rem; }
+    .title { font-size: 2.3rem; }
+    .calendar-shell { padding: 1.6rem; border-radius: var(--radius-md); }
 }

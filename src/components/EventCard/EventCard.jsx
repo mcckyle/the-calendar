@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 9 March 2026
 //Description: This file contains the contained Event details for the Saint Louis React calendar project.
 
 import React from "react";
@@ -19,40 +19,51 @@ const EventCard = ({
 	venueState,
 	url,
   }) => {
+	const isValidDate = (d) => d instanceof Date && !isNaN(d);
 	const dateObj = date ? new Date(date) : null;
 
 	//Normalize the date...
-	const formattedDate = dateObj && !isNaN(dateObj)
-		? dateObj.toLocaleDateString("en-US", {
+	const formattedDate =
+        isValidDate(dateObj) &&
+		dateObj.toLocaleDateString("en-US", {
 			weekday: "long",
 			month: "long",
 			day: "numeric",
 			year: "numeric",
 			timeZone: "UTC",
-          })
-	    : null;
+		});
 
 	//Normalize the start time...
 	const startObj = startTime && !allDay ? new Date(startTime) : null;
 	const endObj = endTime && !allDay ? new Date(endTime) : null;
 
-    const formattedStartTime = startObj && !isNaN(startObj)
-		? startObj.toLocaleTimeString("en-US", {
+	const formatTime = (d) =>
+	  isValidDate(d)
+		? d.toLocaleTimeString("en-US", {
 			hour: "numeric",
 			minute: "2-digit",
 			timeZone: "America/Chicago",
-          })
+		})
 		: null;
-	const formattedEndTime = endObj && !isNaN(endObj)
-	    ? endObj.toLocaleTimeString("en-US", {
-		    hour: "numeric",
-		    minute: "2-digit",
-		    timeZone: "America/Chicago",
-	      })
-	    : null;
 
-    const hasMeta = ( (formattedDate) || (formattedStartTime) || (allDay) );
-    const hasVenue = ( (venueName) || (venueAddress) || (venueCity) || (venueState) );
+    const formattedStartTime = formatTime(startObj);
+	const formattedEndTime = formatTime(endObj);
+
+	const timeRange =
+	  formattedStartTime &&
+      (formattedEndTime
+        ? `${formattedStartTime} - ${formattedEndTime}`
+        : formattedStartTime);
+
+    const hasMeta = ( (formattedDate) || (timeRange) || (allDay) );
+    const venueParts = [
+		venueName,
+		venueAddress,
+		venueCity,
+		venueState,
+	].filter(Boolean);
+
+	const venueString = venueParts.join(", ");
 
 	return (
 	  <article className="event-card" aria-labelledby="event-card-title">
@@ -71,11 +82,8 @@ const EventCard = ({
 
               {allDay && <span className="event-time">All Day</span>}
 
-              { ( ! allDay) && (formattedStartTime) && (
-				<span className="event-time">
-				  {formattedStartTime}
-				  {formattedEndTime && ` - ${formattedEndTime}`}
-				</span>
+              { ( ! allDay) && (timeRange) && (
+				<span className="event-time">{timeRange}</span>
               )}
             </div>
           )}
@@ -85,15 +93,10 @@ const EventCard = ({
           <p className="event-card-description">{description}</p>
         )}
 
-        {hasVenue && (
+        {venueString && (
 		  <address className="event-card-venue">
-		    <span className="venue-label" aria-hidden="true">📍</span>
-		    <span className="venue-text">
-				{venueName}
-				{venueAddress && `, ${venueAddress}`}
-				{venueCity && `, ${venueCity}`}
-				{venueState && `, ${venueState}`}
-			</span>
+		    <span className="venue-icon" aria-hidden="true">📍</span>
+		    <span className="venue-text">{venueString}</span>
 		  </address>
 		)}
 

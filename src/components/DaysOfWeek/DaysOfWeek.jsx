@@ -1,41 +1,47 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 9 March 2026
 //Description: This file contains the row of date labels for the Saint Louis calendar React project.
 
 import React, { useMemo } from "react";
 import "./DaysOfWeek.css";
 
+const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
+  weekday: "short",
+  timeZone: "UTC",
+});
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
 const DaysOfWeek = ({ weekDays = [] }) => {
-  const todayString = useMemo(() => new Date().toISOString().split("T")[0], []);
+  const todayISO = useMemo(
+    () => new Date().toISOString().split("T")[0],
+    []
+  );
 
   return (
     <div className="days-of-week" role="row" aria-label="Days of the week">
       {weekDays.map((day) => {
-        const dayString = day.toISOString().split("T")[0];
-        const isToday = dayString === todayString;
-
-        //Use UTC for labels.
-        const weekday = day.toUTCString().split(",")[0]; //"Fri".
-        const date = new Intl.DateTimeFormat("en-US", {
-          month: "long",
-          day: "numeric",
-          timeZone: "UTC",
-        }).format(day);
+        const iso = day.toISOString().split("T")[0];
+        const isToday = iso === todayISO;
 
         return (
           <div
-            key={day.toISOString()}
+            key={iso}
             className={`day-item${isToday ? " is-today" : ""}`}
             role="columnheader"
             aria-current={isToday ? "date" : undefined}
           >
-            <span className="day-label">{weekday}</span>
+            <span className="day-label">{weekdayFormatter.format(day)}</span>
             <time
               className="day-date"
-              dateTime={day.toISOString().split("T")[0]}
+              dateTime={iso}
             >
-              {date}
+              {dateFormatter.format(day)}
             </time>
           </div>
         );

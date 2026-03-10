@@ -7,7 +7,7 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 1.75rem;
+    gap: 1.5rem;
 
     user-select: none;
 }
@@ -15,10 +15,10 @@
 /* ====================================
    WeekNavigation Month / Year Text Label Styles.
 ======================================= */
-.month-year
+.week-nav-label
 {
     font-family: var(--title-font);
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 600;
 
     color: var(--text-primary);
@@ -27,29 +27,33 @@
 }
 
 /* ====================================
-    WeekNavigation Navigation Controls Styles.
+    WeekNavigation Navigation Buttons Styles.
 ======================================= */
-.nav-control
+.week-nav-button
 {
-    font-size: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5rem;
     line-height: 1;
     color: var(--text-secondary);
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.45rem;
+    border-radius: var(--radius-sm);
 
-    transition: color var(--transition);
+    transition: color var(--transition), background var(--transition);
 }
-.nav-control:hover,
-.nav-control:focus-visible { color: var(--text-primary); }
-.nav-control:focus-visible { outline: none; border-bottom: 2px solid var(--accent); }
+.week-nav-button:hover,
+.week-nav-button:focus-visible { color: var(--text-primary); background: var(--border-subtle); }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 1.25rem; }
-    .month-year { font-size: 1.2rem; }
-    .nav-control { font-size: 1.4rem; }
+    .week-navigation { gap: 1.1rem; }
+    .week-nav-label { font-size: 1.15rem; }
+    .week-nav-button { font-size: 1.35rem; }
 }
 
 /* ====================================

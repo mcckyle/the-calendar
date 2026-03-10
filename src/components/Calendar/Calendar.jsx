@@ -1,9 +1,9 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 3 March 2026
+//Date: 9 March 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { convertTo12HourFormat, groupEventsByHour } from "../../utils/eventUtils";
 import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
@@ -17,34 +17,31 @@ import "./Calendar.css";
 
 const Calendar = () => {
   const { currentDate } = useCalendarContext();
-  const [weekDays, setWeekDays] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
-  //Compute the start + end of the current week from the CalendarContext.
-  const weekStart = useMemo(
-    () => currentDate.toISOString().split("T")[0],
-    [currentDate]
-  );
-  const weekEnd = useMemo(() => {
-    const end = new Date(currentDate);
-    end.setDate(end.getDate() + 6);
-    return end.toISOString().split("T")[0];
-  }, [currentDate]);
-
-  //Fetch the events...
-  const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
-
   //Generate week days based on the CalendarContext.
-  useEffect(() => {
-    const days = Array.from({ length: 7 }, (_, i) => {
+  const weekDays = useMemo(() => {
+    return Array.from({ length: 7 }, (_, i) => {
       const day = new Date(currentDate);
       day.setUTCDate(currentDate.getUTCDate() + i);
       return day;
     });
-    setWeekDays(days);
   }, [currentDate]);
+
+  //Compute the start + end of the current week from the CalendarContext.
+  const weekStart = useMemo(
+    () => currentDate.toISOString().split("T")[0],
+    [weekDays]
+  );
+  const weekEnd = useMemo(
+    () => weekDays[6].toISOString().split("T")[0],
+    [weekDays]
+  );
+
+  //Fetch the events...
+  const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
 
   return (
     <section

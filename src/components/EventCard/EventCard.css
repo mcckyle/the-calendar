@@ -6,28 +6,27 @@
 .event-card
 {
     background: #ffffff;
-    padding: clamp(1.75rem, 3vw, 2.25rem);
+    padding: clamp(1.7rem, 3vw, 2.2rem);
     border-radius: 1.25rem;
 
     font-family: var(--body-font);
     color: #0f172a;
     line-height: 1.65;
-    border: 1px solid rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 /* ====================================
     EventCard Header Styles.
 ======================================= */
-.event-card-header { margin-bottom: 1.75rem; }
-
+.event-card-header { margin-bottom: 1.5rem; }
 .event-card-title
 {
     font-family: var(--title-font);
-    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    font-size: clamp(1.55rem, 2.2vw, 1.9rem);
     font-weight: 600;
     letter-spacing: -0.02em;
 
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.55rem;
     color: inherit;
 }
 
@@ -43,17 +42,17 @@
     font-size: 0.9rem;
     color: rgba(15, 23, 42, 0.65);
 }
-.event-date { font-weight: 600; color: #fff; }
-.event-time { opacity: 0.8; }
+.event-date { font-weight: 600; }
+.event-time { opacity: 0.85; }
 
 /* ====================================
    EventCard Description Styles.
 ======================================= */
 .event-card-description
 {
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    color: rgba(15, 23, 42, 0.8);
+    margin-top: 1.35rem;
+    font-size: 0.98rem;
+    color: rgba(15, 23, 42, 0.82);
     white-space: pre-line;
 }
 
@@ -64,19 +63,19 @@
 {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
+    gap: 0.55rem;
 
-    margin-top: 1.75rem;
+    margin-top: 1.6rem;
     font-size: 0.9rem;
-    color: rgba(15, 23, 42, 0.65);
+    color: rgba(15, 23, 42, 0.68);
 }
-.venue-label { font-size: 1rem; opacity: 0.6; line-height: 1.2; }
+.venue-icon { opacity: 0.65; line-height: 1.2; }
 .venue-text { line-height: 1.5; }
 
 /* ====================================
    EventCard Footer Link Styles.
 ======================================= */
-.event-card-footer { margin-top: 2rem; }
+.event-card-footer { margin-top: 1.9rem; }
 .event-card-footer a
 {
     font-size: 0.9rem;
@@ -110,7 +109,7 @@
 @media (max-width: 768px)
 {
     .event-card { padding: 1.5rem; border-radius: 1rem; }
-    .event-card-title { font-size: 1.5rem; }
+    .event-card-title { font-size: 1.45rem; }
     .event-card-meta, .event-card-venue { font-size: 0.85rem; }
 }
 

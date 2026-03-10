@@ -12,26 +12,25 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       class="calendar-header"
     >
       <nav
-        aria-label="Week navigation"
-        aria-live="polite"
+        aria-label="Calendar week navigation"
         class="week-navigation"
       >
         <button
           aria-label="Previous week"
-          class="nav-control"
+          class="week-nav-button"
           type="button"
         >
           ‹
         </button>
         <time
-          class="month-year"
+          class="week-nav-label"
           datetime="2025-10-31"
         >
           October 2025
         </time>
         <button
           aria-label="Next week"
-          class="nav-control"
+          class="week-nav-button"
           type="button"
         >
           ›

@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 9 March 2026
 //Description: This file contains the week navigation functionality for the Saint Louis Events project.
 
 import React from "react";
@@ -10,36 +10,32 @@ import "./WeekNavigation.css";
 const WeekNavigation = () => {
   const { currentDate, changeWeek } = useCalendarContext();
 
-  const monthYearLabel = currentDate.toLocaleDateString("en-US", {
+  const monthYear = currentDate.toLocaleDateString("en-US", {
     month: "long",
     year: "numeric",
     timeZone: "UTC", //Explicitly force UTC.
   });
 
-  const dateISO = currentDate.toISOString().split("T")[0];
+  const isoDate = currentDate.toISOString().split("T")[0];
 
   return (
-    <nav
-      className="week-navigation"
-      aria-label="Week navigation"
-      aria-live="polite"
-    >
+    <nav className="week-navigation" aria-label="Calendar week navigation">
       <button
         type="button"
-        className="nav-control"
+        className="week-nav-button"
         aria-label="Previous week"
         onClick={() => changeWeek(-1)}
       >
         ‹
       </button>
 
-      <time className="month-year" dateTime={dateISO}>
-        {monthYearLabel}
+      <time className="week-nav-label" dateTime={isoDate}>
+        {monthYear}
       </time>
 
       <button
         type="button"
-        className="nav-control"
+        className="week-nav-button"
         aria-label="Next week"
         onClick={() => changeWeek(1)}
       >

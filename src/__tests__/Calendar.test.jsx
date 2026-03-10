@@ -1,6 +1,6 @@
 //Filename: Calendar.test.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 9 March 2026
 //Description: This file contains unit tests for the Calendar component.
 
 import React from 'react';
@@ -81,7 +81,7 @@ describe('Calendar Component', () => {
     expect(screen.getByRole('button', { name: /next week/i })).toBeInTheDocument();
 
     //Query by class name (month-year) to avoid multiple matches.
-    const monthYear = document.querySelector('.month-year');
+    const monthYear = document.querySelector('.week-nav-label');
     expect(monthYear).toBeInTheDocument();
     expect(monthYear.textContent).toMatch(/January|February|March|April|May|June|July|August|September|October|November|December/);
   });
@@ -130,7 +130,7 @@ describe('Calendar Component', () => {
   test('updates the displayed month/year when navigating weeks.', () => {
     renderCalendar();
 
-    const getMonthYearText = () => document.querySelector('.month-year').textContent;
+    const getMonthYearText = () => document.querySelector('.week-nav-label').textContent;
     const monthBefore = getMonthYearText();
 
     //Click "Next Week" five times.
