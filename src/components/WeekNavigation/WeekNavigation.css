@@ -7,7 +7,7 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.4rem;
 
     user-select: none;
 }
@@ -21,8 +21,8 @@
     font-size: 1.35rem;
     font-weight: 600;
 
-    color: var(--text-primary);
     letter-spacing: -0.02em;
+    color: var(--text-primary);
     white-space: nowrap;
 }
 
@@ -35,25 +35,30 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 1.5rem;
+    min-width: 2rem;
+    height: 2rem;
+
+    font-size: 1.45rem;
     line-height: 1;
     color: var(--text-secondary);
-    padding: 0.25rem 0.45rem;
     border-radius: var(--radius-sm);
 
-    transition: color var(--transition), background var(--transition);
+    transition: color var(--transition),
+                background var(--transition),
+                transform var(--transition);
 }
-.week-nav-button:hover,
-.week-nav-button:focus-visible { color: var(--text-primary); background: var(--border-subtle); }
+.week-nav-button:hover { color: var(--text-primary); background: var(--border-subtle); }
+.week-nav-button:active { transform: translateY(1px); }
+.week-nav-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 1.1rem; }
+    .week-navigation { gap: 1rem; }
     .week-nav-label { font-size: 1.15rem; }
-    .week-nav-button { font-size: 1.35rem; }
+    .week-nav-button { font-size: 1.3rem; min-width: 1.9rem; height: 1.9rem; }
 }
 
 /* ====================================
