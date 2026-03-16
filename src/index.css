@@ -19,6 +19,7 @@
     --radius-md: 1rem;
     --radius-lg: 1.35rem;
 
+    /* Brand. */
     --brand: #0f2f56;
     --accent: #f59e0b;
 
@@ -44,11 +45,12 @@
 html, body, #root
 {
     margin: 0;
-    min-height: 100%;
     width: 100%;
+    min-height: 100%;
 
     background: var(--bg-primary);
     color: var(--text-primary);
+
     font-family: var(--body-font);
     line-height: 1.7;
     letter-spacing: -0.01em;
@@ -60,10 +62,11 @@ html, body, #root
 /* Headings Styles. */
 h1, h2, h3
 {
+    margin: 0;
+
     font-family: var(--title-font);
     line-height: 1.15;
     letter-spacing: -0.025em;
-    margin: 0;
     color: var(--brand);
 }
 p { margin: 0; color: var(--text-secondary); /* Paragraphs Styles. */ }
@@ -98,7 +101,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.18); border-radius: 999px; }
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.

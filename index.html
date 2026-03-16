@@ -11,7 +11,7 @@
     <meta name="author" content="Saint Louis Events" />
     <meta
       name="description"
-      content="A thoughtfully curated weekly calendar highlighting music, art, festivals, and community life across Saint Louis."
+      content="Discover music, art, festivals, and community life through a curated weekly events calendar for Saint Louis."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://mcckyle.github.io/the-calendar/" />
@@ -20,15 +20,16 @@
     <meta property="og:title" content="Saint Louis Events — Weekly Cultural Calendar" />
     <meta
       property="og:description"
-      content="Discover Saint Louis through a thoughtfully curated weekly cultural events calendar." />
+      content="Explore music, art, festivals, and community life across Saint Louis with a curated weekly events calendar." />
+      <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Saint Louis Events" />
-    <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="/og-preview.png" />
+    <meta property="og:image" content="https://mcckyle.github.io/the-calendar/og-preview.png" />
 
     <!-- Theme. -->
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0f2f56" />
+    <meta name="theme-color" content="#0f2f56" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
 
     <!-- iOS. -->
     <meta name="apple-mobile-web-app-title" content="STL Events" />
@@ -37,7 +38,12 @@
     <!-- External Font Imports. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
@@ -46,7 +52,11 @@
   </head>
 
   <body>
-    <noscript>This calendar requires JavaScript to run.</noscript>
+    <noscript>
+      <p style="padding:2rem;font-family:system-ui;">
+        This calendar requires JavaScript to display events.
+      </p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

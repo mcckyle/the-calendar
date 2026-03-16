@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(3rem, 7vw, 6rem) 1.5rem 4rem;
+    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem 3.5rem;
 }
 
 /* ====================================
@@ -23,10 +23,10 @@
     max-width: var(--content-narrow-width);
 
     text-align: center;
-    margin-bottom: clamp(3rem, 6vw, 4rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
-.header-inner { display: flex; flex-direction: column; gap: 1.35rem; }
-.title { font-size: clamp(2.8rem, 5vw, 3.6rem); letter-spacing: -0.035em; }
+.header-inner { display: flex; flex-direction: column; gap: 1.25rem; }
+.title { font-size: clamp(2.6rem, 5vw, 3.5rem); letter-spacing: -0.035em; }
 .title-accent { color: var(--text-primary); }
 .tagline { font-size: 1.05rem; line-height: 1.75; max-width: 38rem; margin: 0 auto; }
 
@@ -38,13 +38,13 @@
     width: 100%;
     max-width: var(--content-max-width);
 
-    padding: clamp(2rem, 3vw, 2.75rem);
+    padding: clamp(1.8rem, 3vw, 2.6rem);
 
     border-radius: var(--radius-lg);
     background: var(--bg-surface);
     box-shadow: var(--shadow-sm);
 
-    transition: box-shadow var(--transition);
+    transition: box-shadow var(--transition), transform var(--transition);
 }
 .calendar-shell:hover { box-shadow: var(--shadow-md); }
 
@@ -53,7 +53,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding-top: 2.25rem; }
-    .title { font-size: 2.3rem; }
+    .app { padding-top: 2rem; }
+    .title { font-size: 2.25rem; }
     .calendar-shell { padding: 1.6rem; border-radius: var(--radius-md); }
 }

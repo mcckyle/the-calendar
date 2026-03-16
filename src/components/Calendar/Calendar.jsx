@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 9 March 2026
+//Date: 16 March 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo } from "react";
@@ -21,7 +21,7 @@ const Calendar = () => {
 
   const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
-  //Generate week days based on the CalendarContext.
+  //Generate the seven days of the current week based on CalendarContext.
   const weekDays = useMemo(() => {
     return Array.from({ length: 7 }, (_, i) => {
       const day = new Date(currentDate);
@@ -30,25 +30,25 @@ const Calendar = () => {
     });
   }, [currentDate]);
 
-  //Compute the start + end of the current week from the CalendarContext.
+  //Compute API query bounds based on CalendarContext.
   const weekStart = useMemo(
     () => currentDate.toISOString().split("T")[0],
-    [weekDays]
+    [currentDate]
   );
   const weekEnd = useMemo(
     () => weekDays[6].toISOString().split("T")[0],
     [weekDays]
   );
 
-  //Fetch the events...
+  //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
+  const showCalendar = (!loading) && (!error);
 
   return (
     <section
       className="calendar"
-      aria-label="Weekly events calendar"
+      aria-label="Weekly Saint Louis events calendar"
       aria-busy={loading}
-      role="region"
     >
       <header className="calendar-header">
         <WeekNavigation />
@@ -66,7 +66,7 @@ const Calendar = () => {
         </div>
       )}
 
-      {(! loading) && ( ! error) && (
+      {showCalendar && (
         <div className="calendar-grid">
           <DaysOfWeek weekDays={weekDays} />
 

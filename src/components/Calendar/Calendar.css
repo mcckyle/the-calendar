@@ -21,13 +21,13 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
 
-    padding-bottom: 1.25rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.6rem;
 
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(4px);
 }
 
 /* ====================================
@@ -60,7 +60,9 @@
     align-items: start;
     gap: 1.25rem;
 }
-.week-view > * { padding-left: 1rem; border-left: 1px solid var(--border-subtle);  }
+
+/* Calendar Column Separators Styling. */
+.week-view > * { border-left: 1px solid var(--border-subtle); padding-left: 1rem; }
 .week-view > *:first-child { border-left: none; padding-left: 0; }
 
 /* ====================================
@@ -78,7 +80,7 @@
 @media (max-width: 1024px)
 {
     .calendar-grid { overflow-x: auto; /* Fixes columns exceeding the Calendar Container to the right on narrow viewport sizes. */ }
-    .week-view { min-width: 1050px; gap: 1rem; }
+    .week-view { min-width: 1040px; gap: 1rem; }
 }
 
 @media (max-width: 768px)
