@@ -20,7 +20,6 @@ exports[`EventCard Component matches snapshot. 1`] = `
       >
         <time
           class="event-date"
-          datetime="2025-01-19T00:00:00-06:00"
         >
           Sunday, January 19, 2025
         </time>

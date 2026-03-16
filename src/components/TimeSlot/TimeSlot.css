@@ -47,11 +47,10 @@
 {
     appearance: none;
     border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
 
     background: var(--bg-surface);
     color: var(--text-primary);
-
-    border-radius: var(--radius-md);
     padding: 0.65rem 0.85rem;
 
     font-size: 0.82rem;
@@ -64,11 +63,14 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
-    transition: background var(--transition), border-color var(--transition), transform 120ms ease, box-shadow var(--transition);
+    transition: background var(--transition),
+                border-color var(--transition),
+                transform 120ms ease,
+                box-shadow var(--transition);
 }
-.event-card:hover { background: rgba(15, 23, 42, 0.03); border-color: rgba(15, 23, 42, 0.12); transform: translateY(-1px); box-shadow: var(--shadow-sm);  }
-.event-card:active { transform: translateY(0); }
-.event-card:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+.event-chip:hover { background: rgba(15, 23, 42, 0.03); border-color: rgba(15, 23, 42, 0.12); transform: translateY(-1px); box-shadow: var(--shadow-sm);  }
+.event-chip:active { transform: translateY(0); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.

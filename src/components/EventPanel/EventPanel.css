@@ -22,6 +22,7 @@
     position: absolute;
     inset: 0;
     background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
 
     animation: overlayFade 180ms ease forwards;
 }
@@ -32,15 +33,15 @@
 .event-panel
 {
     position: relative;
-    width: min(100%, 700px);
+    width: min(100%, 680px);
     max-height: 88vh;
     overflow-y: auto;
 
-    padding: clamp(1.75rem, 3vw, 2.4rem);
+    padding: clamp(1.7rem, 3vw, 2.3rem);
 
-    background: #ffffff;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(15, 23, 42, 0.05);
+    background: var(--bg-surface);
+    border-radius: 1.2rem;
+    border: 1px solid var(--border-subtle);
     box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10), 0 2px 8px rgba(15, 23, 42, 0.05);
 
     animation: panelEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -55,9 +56,9 @@
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.6rem;
     padding-bottom: 0.9rem;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ====================================
@@ -65,13 +66,12 @@
 ======================================= */
 .event-panel-header h2
 {
+    margin: 0;
+
     font-family: var(--title-font);
-    font-size: clamp(1.35rem, 2vw, 1.6rem);
+    font-size: clamp(1.3rem, 2vw, 1.55rem);
     font-weight: 600;
     letter-spacing: -0.015em;
-
-    color: #0f172a;
-    margin: 0;
 }
 
 /* ====================================
@@ -81,7 +81,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.6rem;
 }
 
 /* ====================================
@@ -89,26 +89,27 @@
 ======================================= */
 .close-button
 {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.1rem;
+    height: 2.1rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 999px;
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--border-subtle);
 
     background: transparent;
-    color: #0f172a;
-
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
 
-    transition: background 160ms ease, border-color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+    transition: background var(--transition),
+                border-color var(--transition),
+                transform 120ms ease,
+                box-shadow var(--transition);
 }
-.close-button:hover { background: rgba(15, 23, 42, 0.04); border-color: rgba(15, 23, 42, 0.14); transform: translateY(-1px); }
+.close-button:hover { background: rgba(15, 23, 42, 0.04); transform: translateY(-1px); }
 .close-button:active { transform: translateY(0); }
-.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35); }
+.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
 
 /* ====================================
    EventPanel Animations Styles.
@@ -121,7 +122,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(12px) scale(0.985); }
+    from { opacity: 0; transform: translateY(10px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -131,15 +132,14 @@
 @media (max-width: 768px)
 {
     .event-panel { padding: 1.5rem; border-radius: 1rem; }
-    .event-panel-header { margin-bottom: 1.4rem; }
-    .event-panel-header h2 { font-size: 1.3rem; }
+    .event-panel-header { margin-bottom: 1.3rem; }
     .close-button { width: 2rem; height: 2rem; }
 }
 
 /* ====================================
    EventPanel Dark Mode Media Query Styles.
 ======================================= */
-@media (prefers-color-scheme: dark)
+/*@media (prefers-color-scheme: dark)
 {
     .event-overlay { background: rgba(0, 0, 0, 0.65); }
     .event-panel { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
@@ -147,9 +147,4 @@
     .event-panel-header h2 { color: #f8fafc; }
     .close-button { border: 1px solid rgba(255, 255, 255, 0.1); color: #f8fafc; }
     .close-button:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
-}
-
-/*
-.event-panel::-webkit-scrollbar { width: 6px; }
-.event-panel::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.12); border-radius: 999px; }
-/*
+}*/

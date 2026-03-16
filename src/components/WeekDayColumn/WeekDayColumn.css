@@ -16,15 +16,13 @@
 .weekday-column.is-today { background: rgba(15, 47, 86, 0.035); border-radius: var(--radius-sm); }
 
 /* ====================================
-    Time Slots Wrapper Styles.
+    Time Slots Stack Styles.
 ======================================= */
 .time-slots
 {
     display: flex;
     flex-direction: column;
-
     gap: 0.75rem;
-    height: 100%;
 }
 
 /* ====================================

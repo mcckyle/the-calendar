@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 9 March 2026
+//Date: 16 March 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
 
   //Focus the panel when it opens & handle Escape key...
   useEffect(() => {
-    if ( ! selectedEvent)
+    if (!selectedEvent)
     {
       return;
     }
@@ -29,7 +29,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [selectedEvent, onClose]);
 
-  if ( ! selectedEvent)
+  if (!selectedEvent)
   {
     return null;
   }

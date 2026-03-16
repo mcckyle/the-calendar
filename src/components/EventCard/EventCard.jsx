@@ -33,29 +33,27 @@ const EventCard = ({
 			timeZone: "UTC",
 		});
 
-	//Normalize the start time...
-	const startObj = startTime && !allDay ? new Date(startTime) : null;
-	const endObj = endTime && !allDay ? new Date(endTime) : null;
+    const formatTime = (value) => {
+		const d = value ? new Date(value) : null;
 
-	const formatTime = (d) =>
-	  isValidDate(d)
-		? d.toLocaleTimeString("en-US", {
+		if (!isValidDate(d))
+		{
+			return null;
+		}
+        return d.toLocaleTimeString("en-US", {
 			hour: "numeric",
 			minute: "2-digit",
 			timeZone: "America/Chicago",
-		})
-		: null;
+        });
+    };
 
-    const formattedStartTime = formatTime(startObj);
-	const formattedEndTime = formatTime(endObj);
+	//Normalize the start time...
+	const start = !allDay ? formatTime(startTime) : null;
+	const end = !allDay ? formatTime(endTime) : null;
 
 	const timeRange =
-	  formattedStartTime &&
-      (formattedEndTime
-        ? `${formattedStartTime} - ${formattedEndTime}`
-        : formattedStartTime);
+      start && (end ? `${start} - ${end}` : start);
 
-    const hasMeta = ( (formattedDate) || (timeRange) || (allDay) );
     const venueParts = [
 		venueName,
 		venueAddress,
@@ -64,8 +62,9 @@ const EventCard = ({
 	].filter(Boolean);
 
 	const venueString = venueParts.join(", ");
+	const hasMeta = ((formattedDate) || (timeRange) || (allDay));
 
-	return (
+    return (
 	  <article className="event-card" aria-labelledby="event-card-title">
 		<header className="event-card-header">
 		  <h3 id="event-card-title" className="event-card-title">
@@ -75,14 +74,14 @@ const EventCard = ({
 		  {hasMeta && (
             <div className="event-card-meta">
               {formattedDate && (
-                <time className="event-date" dateTime={date}>
+                <time className="event-date">
                   {formattedDate}
                 </time>
               )}
 
               {allDay && <span className="event-time">All Day</span>}
 
-              { ( ! allDay) && (timeRange) && (
+              {(!allDay) && (timeRange) && (
 				<span className="event-time">{timeRange}</span>
               )}
             </div>
@@ -108,7 +107,7 @@ const EventCard = ({
 		  </footer>
 		)}
 	  </article>
-	);
+    );
 };
 
 export default EventCard;
