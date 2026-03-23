@@ -7,50 +7,52 @@
 {
     color-scheme: light dark;
 
-    --title-font: "Playfair Display", serif;
-    --body-font: "Inter", system-ui, sans-serif;
+    --title-font: "Playfair Display", Georgia, serif;
+    --body-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     /* Layout. */
     --content-max-width: 1120px;
-    --content-narrow-width: 640px;
+    --content-narrow-width: 680px;
 
     /* Radius. */
     --radius-sm: 0.7rem;
     --radius-md: 1rem;
-    --radius-lg: 1.35rem;
+    --radius-lg: 1.4rem;
 
     /* Brand. */
     --brand: #0f2f56;
     --accent: #f59e0b;
 
     /* Light Theme. */
-    --bg-primary: #f4f6fa;
+    --bg-primary: #f4f7fb;
     --bg-surface: #ffffff;
 
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --border-subtle: rgba(15, 23, 42, 0.06);
 
-    --shadow-sm: 0 8px 30px rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 30px 70px rgba(15, 23, 42, 0.08);
+    --border-subtle: rgba(15, 23, 42, 0.08);
+    --border-subtle: rgba(15, 23, 42, 0.14);
 
-    --transition: 0.2s ease;
+    --shadow-sm: 0 12px 36px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 26px 72px rgba(15, 23, 42, 0.10);
+
+    --transition: 180ms ease;
 }
-
 
 /* ====================================
    Reset & Base Styles.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html, body, #root
+html { min-height: 100%; scroll-behavior: smooth; }
+body, #root { min-height: 100%; }
+body
 {
     margin: 0;
     width: 100%;
-    min-height: 100%;
 
-    background: var(--bg-primary);
+    background: radial-gradient(circle at top, rgba(15, 47, 86, 0.05), transparent 36%), var(--bg-primary);
+
     color: var(--text-primary);
-
     font-family: var(--body-font);
     line-height: 1.7;
     letter-spacing: -0.01em;
@@ -65,11 +67,12 @@ h1, h2, h3
     margin: 0;
 
     font-family: var(--title-font);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
     color: var(--brand);
 }
 p { margin: 0; color: var(--text-secondary); /* Paragraphs Styles. */ }
+img, picture, svg, canvas { display: block; max-width: 100%; }
 
 /* ====================================
    Links Styles.
@@ -88,20 +91,32 @@ a:hover { color: var(--accent); }
 ======================================= */
 button
 {
-    font-family: inherit;
+    font: inherit;
+    color: inherit;
     background: none;
     border: none;
     padding: 0;
-
     cursor: pointer;
 }
-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: rgba(245, 158, 11, 0.22); }
 
 /* ====================================
    Scrollbars Styles.
 ======================================= */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.18); border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce)
+{
+    html { scroll-behavior: auto; }
+    *, *::before, *::after
+    {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 
 /* ====================================
    Calendar Dark Mode Media Query Styles.
@@ -115,11 +130,14 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
         --text-primary: #f1f5f9;
         --text-secondary: #94a3b8;
-        --border-subtle: rgba(255, 255, 255, 0.06);
 
-        --shadow-sm: 0 10px 35px rgba(0, 0, 0, 0.45);
-        --shadow-md: 0 30px 70px rgba(0, 0, 0, 0.6);
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+
+        --shadow-sm: 0 14px 40px rgba(0, 0, 0, 0.42);
+        --shadow-md: 0 26px 72px rgba(0, 0, 0, 0.58);
     }
+    body { background: radial-gradient(circle at top, rgba(96, 165, 250, 0.08), transparent 34%), var(--bg-primary); }
     h1, h2, h3 { color: #ffffff; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); }
 }

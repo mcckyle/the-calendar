@@ -11,7 +11,7 @@
 
     display: grid;
     place-items: center;
-    padding: 1.5rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 /* ====================================
@@ -21,8 +21,8 @@
 {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(8px);
 
     animation: overlayFade 180ms ease forwards;
 }
@@ -33,16 +33,17 @@
 .event-panel
 {
     position: relative;
-    width: min(100%, 680px);
-    max-height: 88vh;
+    z-index: 1;
+    width: min(100%, 720px);
+    max-height: min(88vh, 900px);
     overflow-y: auto;
 
-    padding: clamp(1.7rem, 3vw, 2.3rem);
+    padding: clamp(1.2rem, 2vw, 1.5rem);
 
     background: var(--bg-surface);
-    border-radius: 1.2rem;
     border: 1px solid var(--border-subtle);
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10), 0 2px 8px rgba(15, 23, 42, 0.05);
+    border-radius: calc(var(--radius-lg) + 0.1rem);
+    box-shadow: var(--shadow-md);
 
     animation: panelEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -55,8 +56,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.9rem;
     border-bottom: 1px solid var(--border-subtle);
 }
@@ -64,52 +66,48 @@
 /* ====================================
    EventPanel Title Styles.
 ======================================= */
-.event-panel-header h2
+.event-panel-title
 {
     margin: 0;
-
-    font-family: var(--title-font);
-    font-size: clamp(1.3rem, 2vw, 1.55rem);
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
     font-weight: 600;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 /* ====================================
    EventPanel Body Styles.
 ======================================= */
-.event-panel-body
-{
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-}
+.event-panel-body { min-width: 0; }
 
 /* ====================================
     EventPanel Close Button Styles.
 ======================================= */
 .close-button
 {
-    width: 2.1rem;
-    height: 2.1rem;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
 
     display: grid;
     place-items: center;
 
-    border-radius: 999px;
     border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    background: var(--bg-surface);
 
-    background: transparent;
     font-size: 0.95rem;
-    cursor: pointer;
+    line-height: 1;
 
     transition: background var(--transition),
+                color var(--transition),
                 border-color var(--transition),
                 transform 120ms ease,
                 box-shadow var(--transition);
 }
-.close-button:hover { background: rgba(15, 23, 42, 0.04); transform: translateY(-1px); }
+.close-button:hover { background: rgba(15, 23, 42, 0.04); color: var(--text-primary); border-color: rgba(15, 23, 42, 0.1); transform: translateY(-1px); }
 .close-button:active { transform: translateY(0); }
-.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent); }
 
 /* ====================================
    EventPanel Animations Styles.
@@ -122,7 +120,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(10px) scale(0.985); }
+    from { opacity: 0; transform: translateY(12px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -131,9 +129,10 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-panel { padding: 1.5rem; border-radius: 1rem; }
-    .event-panel-header { margin-bottom: 1.3rem; }
-    .close-button { width: 2rem; height: 2rem; }
+    .event-modal-root { padding: 0.85rem; }
+    .event-panel { width: 100%; max-height: 92vh; padding: 1rem; border-radius: var(--radius-md); }
+    .event-panel-header { margin-bottom: 0.85rem; padding-bottom: 0.8rem; }
+    .close-button { width: 2.1rem; height: 2.1rem; }
 }
 
 /* ====================================

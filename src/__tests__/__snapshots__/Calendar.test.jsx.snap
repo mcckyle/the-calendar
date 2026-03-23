@@ -19,7 +19,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="week-nav-button"
           type="button"
         >
-          ‹
+          <span
+            aria-hidden="true"
+          >
+            ‹
+          </span>
         </button>
         <time
           aria-live="polite"
@@ -33,7 +37,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="week-nav-button"
           type="button"
         >
-          ›
+          <span
+            aria-hidden="true"
+          >
+            ›
+          </span>
         </button>
       </nav>
     </header>
@@ -160,56 +168,62 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
         </div>
       </div>
       <div
-        class="week-view"
+        class="calendar-scroll-shell"
       >
         <div
-          data-testid="week-day-column"
+          aria-label="Weekly event columns"
+          class="week-view"
+          role="list"
         >
-          <span>
-            Fri Oct 31 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Sat Nov 1 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Sun Nov 2 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Mon Nov 3 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Tue Nov 4 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Wed Nov 5 2025
-          </span>
-        </div>
-        <div
-          data-testid="week-day-column"
-        >
-          <span>
-            Thu Nov 6 2025
-          </span>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Fri Oct 31 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Sat Nov 1 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Sun Nov 2 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Mon Nov 3 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Tue Nov 4 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Wed Nov 5 2025
+            </span>
+          </div>
+          <div
+            data-testid="week-day-column"
+          >
+            <span>
+              Thu Nov 6 2025
+            </span>
+          </div>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 0;
 }
 
 /* ====================================
@@ -17,24 +18,41 @@
 {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    padding-bottom: 1.2rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0 1.15rem;
 
-    background: var(--bg-surface);
+    background: color-mix(in srgb, var(--bg-surface) 88%, transparent);
     border-bottom: 1px solid var(--border-subtle);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 /* ====================================
    Calendar Feedback Messages Styling.
 ======================================= */
-.calendar-feedback { margin: 3rem auto; font-size: 0.95rem; text-align: center; color: var(--text-secondary); }
-.calendar-feedback.error { font-weight: 500; color: #c8102e; }
+.calendar-feedback
+{
+    width: min(100%, 34rem);
+    margin: 2.5rem auto 0;
+    padding: 1rem 1.25rem;
+
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+
+    font-size: 0.95rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+.calendar-feedback.error { color: #c8102e; font-weight: 600; border-color: rgba(200, 16, 46, 0.14); background: color-mix(in srgb, #c8102e 4%, var(--bg-surface)); }
 
 /* ====================================
    Calendar Grid Wrapper Styling.
@@ -45,9 +63,22 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
 
-    animation: calendarFadeIn 0.25s ease-out both;
+    animation: calendarFadeIn 220ms ease-out both;
+}
+
+/* ====================================
+   Calendar Horizontal Scroll Shell Styling.
+======================================= */
+.calendar-scroll-shell
+{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 0.2rem;
+    scrollbar-gutter: stable both-edges;
 }
 
 /* ====================================
@@ -55,6 +86,8 @@
 ======================================= */
 .week-view
 {
+    width: 100%;
+
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
@@ -62,8 +95,8 @@
 }
 
 /* Calendar Column Separators Styling. */
-.week-view > * { border-left: 1px solid var(--border-subtle); padding-left: 1rem; }
-.week-view > *:first-child { border-left: none; padding-left: 0; }
+.week-view > * { min-width: 0; padding-left: 1rem; border-left: 1px solid var(--border-subtle); }
+.week-view > *:first-child { padding-left: 0; border-left: none; }
 
 /* ====================================
    Calendar Animations Styling.
@@ -79,14 +112,17 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .calendar-grid { overflow-x: auto; /* Fixes columns exceeding the Calendar Container to the right on narrow viewport sizes. */ }
+    .calendar-grid { gap: 1.5rem; }
     .week-view { min-width: 1040px; gap: 1rem; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar-grid { gap: 1.5rem; }
-    .week-view { gap: 0.75rem; }
+    .calendar-header { margin-bottom: 1.25rem; padding-bottom: 1rem; }
+    .calendar-grid { gap: 1.25rem; }
+    .week-view { gap: 0.75rem; min-width: 980px; }
+    .week-view > * { padding-left: 0.75rem; }
+    .calendar-feedback { margin-top: 2rem; padding: 0.9rem 1rem; font-size: 0.92rem; }
 }
 
 /* ====================================

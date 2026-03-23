@@ -22,7 +22,10 @@ const EventPanel = ({ selectedEvent, onClose }) => {
 
     //Close on Escape key...
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape")
+      {
+        onClose();
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -50,7 +53,9 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <header className="event-panel-header">
-          <h2 id="event-panel-title">Event Details</h2>
+          <h2 id="event-panel-title" className="event-panel-title">
+            Event Details
+          </h2>
           <button
             type="button"
             className="close-button"

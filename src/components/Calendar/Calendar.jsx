@@ -1,9 +1,9 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 16 March 2026
+//Date: 23 March 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { convertTo12HourFormat, groupEventsByHour } from "../../utils/eventUtils";
 import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
@@ -23,9 +23,9 @@ const Calendar = () => {
 
   //Generate the seven days of the current week based on CalendarContext.
   const weekDays = useMemo(() => {
-    return Array.from({ length: 7 }, (_, i) => {
+    return Array.from({ length: 7 }, (_, index) => {
       const day = new Date(currentDate);
-      day.setUTCDate(currentDate.getUTCDate() + i);
+      day.setUTCDate(currentDate.getUTCDate() + index);
       return day;
     });
   }, [currentDate]);
@@ -43,6 +43,7 @@ const Calendar = () => {
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
   const showCalendar = (!loading) && (!error);
+  const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
 
   return (
     <section
@@ -56,7 +57,7 @@ const Calendar = () => {
 
       {loading && (
         <div className="calendar-feedback" role="status" aria-live="polite">
-          Loading events…
+          Loading this week's events…
         </div>
       )}
 
@@ -70,16 +71,18 @@ const Calendar = () => {
         <div className="calendar-grid">
           <DaysOfWeek weekDays={weekDays} />
 
-          <div className="week-view">
-            {weekDays.map((day) => (
-              <WeekDayColumn
-                key={day.toDateString()}
-                day={day}
-                groupedEvents={groupEventsByHour(day, events)}
-                onEventClick={setSelectedEvent}
-                convertTo12HourFormat={convertTo12HourFormat}
-              />
-            ))}
+          <div className="calendar-scroll-shell">
+            <div className="week-view" role="list" aria-label="Weekly event columns">
+              {weekDays.map((day) => (
+                <WeekDayColumn
+                  key={day.toISOString()}
+                  day={day}
+                  groupedEvents={groupEventsByHour(day, events)}
+                  onEventClick={setSelectedEvent}
+                  convertTo12HourFormat={convertTo12HourFormat}
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -88,7 +91,7 @@ const Calendar = () => {
       {selectedEvent && (
         <EventPanel
           selectedEvent={selectedEvent}
-          onClose={() => setSelectedEvent(null)}
+          onClose={closeEventPanel}
         />
       )}
     </section>

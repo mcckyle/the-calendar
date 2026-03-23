@@ -6,12 +6,13 @@
 .app
 {
     min-height: 100vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem 3.5rem;
+    padding: clamp(2.25rem, 5vw, 4.75rem) 1.25rem 3.5rem;
 }
 
 /* ====================================
@@ -22,13 +23,14 @@
     width: 100%;
     max-width: var(--content-narrow-width);
 
+    margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
     text-align: center;
-    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
-.header-inner { display: flex; flex-direction: column; gap: 1.25rem; }
-.title { font-size: clamp(2.6rem, 5vw, 3.5rem); letter-spacing: -0.035em; }
+.header-inner { display: flex; flex-direction: column; gap: 1rem; }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+.title { font-size: clamp(2.65rem, 5vw, 4rem); letter-spacing: -0.05em; text-wrap: balance; }
 .title-accent { color: var(--text-primary); }
-.tagline { font-size: 1.05rem; line-height: 1.75; max-width: 38rem; margin: 0 auto; }
+.tagline { max-width: 40rem; margin: 0 auto; font-size: 1.02rem; line-height: 1.8; text-wrap: pretty; }
 
 /* ====================================
    Calendar Shell Styles.
@@ -38,22 +40,27 @@
     width: 100%;
     max-width: var(--content-max-width);
 
-    padding: clamp(1.8rem, 3vw, 2.6rem);
+    padding: clamp(1.6rem, 3vw, 2.5rem);
 
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    background: var(--bg-surface);
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.96));
+    background-color: var(--bg-surface);
     box-shadow: var(--shadow-sm);
 
-    transition: box-shadow var(--transition), transform var(--transition);
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
 }
-.calendar-shell:hover { box-shadow: var(--shadow-md); }
+.calendar-shell:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
 
 /* ====================================
    App Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding-top: 2rem; }
-    .title { font-size: 2.25rem; }
-    .calendar-shell { padding: 1.6rem; border-radius: var(--radius-md); }
+    .app { padding: 1.75rem 1rem 2.75rem; }
+    .app-header { margin-bottom: 2rem; }
+    .title { font-size: 2.3rem; }
+    .tagline { font-size: 0.98rem; line-height: 1.75; }
+    .calendar-shell { padding: 1.15rem; border-radius: var(--radius-md); }
 }

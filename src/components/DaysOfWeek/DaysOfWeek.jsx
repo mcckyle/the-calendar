@@ -18,9 +18,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 const DaysOfWeek = ({ weekDays = [] }) => {
-  const todayISO = useMemo(() => {
-    return new Date().toISOString().split("T")[0];
-  }, []);
+  const todayISO = useMemo(() => new Date().toISOString().split("T")[0], []);
 
   return (
     <div className="days-of-week" role="row" aria-label="Days of the week">

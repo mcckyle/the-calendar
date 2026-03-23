@@ -6,11 +6,13 @@
 .time-slot
 {
     display: grid;
-    grid-template-columns: 3.25rem 1fr;
-    column-gap: 0.9rem;
-
-    padding: 0.7rem 0.4rem;
+    grid-template-columns: 3.1rem minmax(0, 1fr);
+    column-gap: 0.85rem;
     align-items: start;
+
+    min-width: 0;
+    padding: 0.55rem 0.4rem;
+    border-radius: var(--radius-sm);
 }
 
 /* ====================================
@@ -18,15 +20,16 @@
 ======================================= */
 .time-label
 {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    padding-top: 0.45rem;
 
-    color: var(--text-secondary);
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
     white-space: nowrap;
     user-select: none;
 
-    padding-top: 0.35rem;
+    color: var(--text-secondary);
 }
 
 /* ====================================
@@ -36,7 +39,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
     min-width: 0; /* Temporary mitigation to address events overflowing the columns. */
 }
 
@@ -45,40 +48,50 @@
 ======================================= */
 .event-chip
 {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
     appearance: none;
+    padding: 0.7rem 0.8rem;
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
+    border-radius: calc(var(--radius-md) - 0.1rem);
 
     background: var(--bg-surface);
     color: var(--text-primary);
-    padding: 0.65rem 0.85rem;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
 
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 500;
     line-height: 1.35;
     text-align: left;
 
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     cursor: pointer;
 
     transition: background var(--transition),
                 border-color var(--transition),
-                transform 120ms ease,
-                box-shadow var(--transition);
+                box-shadow var(--transition),
+                transform 120ms ease;
+
 }
-.event-chip:hover { background: rgba(15, 23, 42, 0.03); border-color: rgba(15, 23, 42, 0.12); transform: translateY(-1px); box-shadow: var(--shadow-sm);  }
+.event-title { display: block; min-width: 0; overflow: hidden;  white-space: nowrap; text-overflow: ellipsis; }
+.event-chip:hover { background: rgba(15, 23, 42, 0.025); border-color: rgba(15, 23, 42, 0.12); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
 .event-chip:active { transform: translateY(0); }
-.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent); }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
 ======================================= */
 .slot-empty
 {
-    font-size: 0.72rem;
-    color: rgba(15, 23, 42, 0.3);
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.4rem;
+
+    font-size: 0.78rem;
+    color: rgba(15, 23, 42, 0.28);
 
     user-select: none;
     pointer-events: none;
@@ -89,9 +102,10 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 3rem 1fr; column-gap: 0.75rem; padding: 0.6rem 0.35rem; }
-    .event-chip { font-size: 0.78rem; padding: 0.6rem 0.75rem; }
-    .time-label { font-size: 0.68rem; }
+    .time-slot { grid-template-columns: 2.8rem minmax(0, 1fr); column-gap: 0.7rem; padding: 0.5rem 0.3rem; }
+    .time-label { padding-top: 0.4rem; font-size: 0.64rem; }
+    .event-chip { padding: 0.62rem 0.72rem; font-size: 0.77rem; }
+    .slot-empty { min-height: 2.2rem; font-size: 0.72rem; }
 }
 
 /* ====================================
@@ -99,6 +113,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
+    .event-chip { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03); }
     .event-chip:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.14); }
-    .slot-empty { color: rgba(255, 255, 255, 0.3); }
+    .slot-empty { color: rgba(255, 255, 255, 0.28); }
 }

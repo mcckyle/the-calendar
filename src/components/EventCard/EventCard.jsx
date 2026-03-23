@@ -1,7 +1,7 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 9 March 2026
-//Description: This file contains the contained Event details for the Saint Louis React calendar project.
+//Date: 23 March 2026
+//Description: This file contains the embedded Event information for the Saint Louis React calendar project.
 
 import React from "react";
 import "./EventCard.css";
@@ -19,7 +19,7 @@ const EventCard = ({
 	venueState,
 	url,
   }) => {
-	const isValidDate = (d) => d instanceof Date && !isNaN(d);
+	const isValidDate = (d) => d instanceof Date && !Number.isNaN(d.getTime());
 	const dateObj = date ? new Date(date) : null;
 
 	//Normalize the date...
@@ -50,9 +50,7 @@ const EventCard = ({
 	//Normalize the start time...
 	const start = !allDay ? formatTime(startTime) : null;
 	const end = !allDay ? formatTime(endTime) : null;
-
-	const timeRange =
-      start && (end ? `${start} - ${end}` : start);
+	const timeRange = start && (end ? `${start} - ${end}` : start);
 
     const venueParts = [
 		venueName,
@@ -74,7 +72,7 @@ const EventCard = ({
 		  {hasMeta && (
             <div className="event-card-meta">
               {formattedDate && (
-                <time className="event-date">
+                <time className="event-date" dateTime={date}>
                   {formattedDate}
                 </time>
               )}
