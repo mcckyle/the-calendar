@@ -27,7 +27,11 @@
     margin-bottom: 1.5rem;
     padding: 0 0 1.15rem;
 
-    background: color-mix(in srgb, var(--bg-surface) 88%, transparent);
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--bg-surface) 92%, transparent),
+        color-mix(in srgb, var(--bg-surface) 80%, transparent)
+    );
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -38,9 +42,9 @@
 ======================================= */
 .calendar-feedback
 {
-    width: min(100%, 34rem);
-    margin: 2.5rem auto 0;
-    padding: 1rem 1.25rem;
+    width: min(100%, 32rem);
+    margin: 2.25rem auto 0;
+    padding: 0.95rem 1.2rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
@@ -48,11 +52,17 @@
     background: var(--bg-surface);
     color: var(--text-secondary);
 
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     text-align: center;
     box-shadow: var(--shadow-sm);
 }
-.calendar-feedback.error { color: #c8102e; font-weight: 600; border-color: rgba(200, 16, 46, 0.14); background: color-mix(in srgb, #c8102e 4%, var(--bg-surface)); }
+.calendar-feedback.error
+{
+    color: #c8102e;
+    font-weight: 600;
+    border-color: color-mix(in srgb, #c8102e 30%, transparent);
+    background: color-mix(in srgb, #c8102e 6%, var(--bg-surface));
+}
 
 /* ====================================
    Calendar Grid Wrapper Styling.
@@ -63,7 +73,7 @@
 
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1.75rem;
+    gap: 1.6rem;
 
     animation: calendarFadeIn 220ms ease-out both;
 }
@@ -79,6 +89,7 @@
 
     padding-bottom: 0.2rem;
     scrollbar-gutter: stable both-edges;
+    scroll-behavior: smooth;
 }
 
 /* ====================================
@@ -91,11 +102,11 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: start;
-    gap: 1.25rem;
+    gap: 1.1rem;
 }
 
 /* Calendar Column Separators Styling. */
-.week-view > * { min-width: 0; padding-left: 1rem; border-left: 1px solid var(--border-subtle); }
+.week-view > * { min-width: 0; padding-left: 0.9rem; border-left: 1px solid var(--border-subtle); }
 .week-view > *:first-child { padding-left: 0; border-left: none; }
 
 /* ====================================
@@ -103,7 +114,7 @@
 ======================================= */
 @keyframes calendarFadeIn
 {
-    from { opacity: 0; transform: translateY(4px); }
+    from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: none; }
 }
 
@@ -120,8 +131,8 @@
 {
     .calendar-header { margin-bottom: 1.25rem; padding-bottom: 1rem; }
     .calendar-grid { gap: 1.25rem; }
-    .week-view { gap: 0.75rem; min-width: 980px; }
-    .week-view > * { padding-left: 0.75rem; }
+    .week-view { gap: 0.65rem; min-width: 940px; }
+    .week-view > * { padding-left: 0.65rem; }
     .calendar-feedback { margin-top: 2rem; padding: 0.9rem 1rem; font-size: 0.92rem; }
 }
 

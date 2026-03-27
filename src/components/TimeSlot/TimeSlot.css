@@ -6,12 +6,13 @@
 .time-slot
 {
     display: grid;
-    grid-template-columns: 3.1rem minmax(0, 1fr);
-    column-gap: 0.85rem;
-    align-items: start;
+    grid-template-columns: 2.9rem minmax(0, 1fr);
+    column-gap: 0.75rem;
 
+    align-items: start;
     min-width: 0;
-    padding: 0.55rem 0.4rem;
+
+    padding: 0.5rem 0.35rem;
     border-radius: var(--radius-sm);
 }
 
@@ -20,16 +21,15 @@
 ======================================= */
 .time-label
 {
-    padding-top: 0.45rem;
+    padding-top: 0.42rem;
 
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 600;
-    line-height: 1;
     letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--text-secondary);
     white-space: nowrap;
     user-select: none;
-
-    color: var(--text-secondary);
 }
 
 /* ====================================
@@ -39,7 +39,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.45rem;
     min-width: 0; /* Temporary mitigation to address events overflowing the columns. */
 }
 
@@ -51,35 +51,36 @@
     display: block;
     width: 100%;
     min-width: 0;
-    max-width: 100%;
 
-    appearance: none;
-    padding: 0.7rem 0.8rem;
+    padding: 0.65rem 0.75rem;
     border: 1px solid var(--border-subtle);
-    border-radius: calc(var(--radius-md) - 0.1rem);
+    border-radius: calc(var(--radius-md) - 0.15rem);
 
     background: var(--bg-surface);
     color: var(--text-primary);
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
 
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 500;
     line-height: 1.35;
     text-align: left;
-
-    overflow: hidden;
     cursor: pointer;
 
     transition: background var(--transition),
                 border-color var(--transition),
-                box-shadow var(--transition),
-                transform 120ms ease;
-
+                transform 120ms ease,
+                box-shadow var(--transition);
 }
-.event-title { display: block; min-width: 0; overflow: hidden;  white-space: nowrap; text-overflow: ellipsis; }
-.event-chip:hover { background: rgba(15, 23, 42, 0.025); border-color: rgba(15, 23, 42, 0.12); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.event-title { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.event-chip:hover
+{
+    background: color-mix(in srgb, var(--text-primary) 3%, var(--bg-surface));
+    border-color: color-mix(in srgb, var(--text-primary) 12%, transparent);
+
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
 .event-chip:active { transform: translateY(0); }
-.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 50%, transparent); }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
@@ -88,10 +89,10 @@
 {
     display: inline-flex;
     align-items: center;
-    min-height: 2.4rem;
+    min-height: 2.2rem;
 
-    font-size: 0.78rem;
-    color: rgba(15, 23, 42, 0.28);
+    font-size: 0.75rem;
+    color: rgba(15, 23, 42, 0.26);
 
     user-select: none;
     pointer-events: none;
@@ -102,10 +103,10 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2.8rem minmax(0, 1fr); column-gap: 0.7rem; padding: 0.5rem 0.3rem; }
-    .time-label { padding-top: 0.4rem; font-size: 0.64rem; }
-    .event-chip { padding: 0.62rem 0.72rem; font-size: 0.77rem; }
-    .slot-empty { min-height: 2.2rem; font-size: 0.72rem; }
+    .time-slot { grid-template-columns: 2.6rem minmax(0, 1fr); column-gap: 0.6rem; padding: 0.45rem 0.3rem; }
+    .time-label { font-size: 0.62rem; }
+    .event-chip { padding: 0.58rem 0.65rem; font-size: 0.75rem; }
+    .slot-empty { min-height: 2rem; font-size: 0.7rem; }
 }
 
 /* ====================================
@@ -113,7 +114,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-chip { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03); }
-    .event-chip:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.14); }
-    .slot-empty { color: rgba(255, 255, 255, 0.28); }
+    .event-chip:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); }
+    .slot-empty { color: rgba(255, 255, 255, 0.26); }
 }

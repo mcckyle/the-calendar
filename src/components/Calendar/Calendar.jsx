@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 23 March 2026
+//Date: 26 March 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -43,12 +43,24 @@ const Calendar = () => {
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
   const showCalendar = (!loading) && (!error);
+  const handleEventClick = useCallback((event) => {
+    setSelectedEvent(event);
+  }, []);
   const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
+
+  const groupedByDay = useMemo(() => {
+    return weekDays.map((day) => ({
+      key: day.toISOString(),
+      day,
+      grouped: groupEventsByHour(day, events),
+    }));
+  }, [weekDays, events]);
 
   return (
     <section
       className="calendar"
       aria-label="Weekly Saint Louis events calendar"
+      aria-live="polite"
       aria-busy={loading}
     >
       <header className="calendar-header">
@@ -73,12 +85,12 @@ const Calendar = () => {
 
           <div className="calendar-scroll-shell">
             <div className="week-view" role="list" aria-label="Weekly event columns">
-              {weekDays.map((day) => (
+              {groupedByDay.map(({ key, day, grouped }) => (
                 <WeekDayColumn
-                  key={day.toISOString()}
+                  key={day}
                   day={day}
-                  groupedEvents={groupEventsByHour(day, events)}
-                  onEventClick={setSelectedEvent}
+                  groupedEvents={grouped}
+                  onEventClick={handleEventClick}
                   convertTo12HourFormat={convertTo12HourFormat}
                 />
               ))}

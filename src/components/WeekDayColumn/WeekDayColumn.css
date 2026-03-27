@@ -14,7 +14,15 @@
 /* =========================================
    WeekDayColumn Today Column Highlight Styles.
 ============================================ */
-.weekday-column.is-today { background: linear-gradient(180deg, rgba(15, 47, 86, 0.05) 0%, rgba(15, 47, 86, 0.025) 100%); }
+.weekday-column.is-today
+{
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--brand) 6%, transparent),
+        color-mix(in srgb, var(--brand) 2%, transparent)
+    );
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 10%, transparent);
+}
 
 /* ====================================
     Time Slots Stack Styles.
@@ -23,7 +31,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 0.65rem;
     min-width: 0;
 }
 
@@ -38,7 +46,7 @@
 @media (max-width: 768px)
 {
     .weekday-column { min-width: 180px; }
-    .time-slots { gap: 0.55rem; }
+    .time-slots { gap: 0.5rem; }
 }
 
 /* ====================================
@@ -46,5 +54,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .weekday-column.is-today { background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.025) 100%); }
+    .weekday-column.is-today { background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
 }

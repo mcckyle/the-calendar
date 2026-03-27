@@ -31,7 +31,7 @@
     --text-secondary: #475569;
 
     --border-subtle: rgba(15, 23, 42, 0.08);
-    --border-subtle: rgba(15, 23, 42, 0.14);
+    --border-strong: rgba(15, 23, 42, 0.14);
 
     --shadow-sm: 0 12px 36px rgba(15, 23, 42, 0.06);
     --shadow-md: 0 26px 72px rgba(15, 23, 42, 0.10);
@@ -50,7 +50,7 @@ body
     margin: 0;
     width: 100%;
 
-    background: radial-gradient(circle at top, rgba(15, 47, 86, 0.05), transparent 36%), var(--bg-primary);
+    background: radial-gradient(circle at top, rgba(15, 47, 86, 0.06), transparent 40%), var(--bg-primary);
 
     color: var(--text-primary);
     font-family: var(--body-font);
@@ -67,8 +67,8 @@ h1, h2, h3
     margin: 0;
 
     font-family: var(--title-font);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
     color: var(--brand);
 }
 p { margin: 0; color: var(--text-secondary); /* Paragraphs Styles. */ }
@@ -99,7 +99,7 @@ button
     cursor: pointer;
 }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-::selection { background: rgba(245, 158, 11, 0.22); }
+::selection { background: rgba(245, 158, 11, 0.18); }
 
 /* ====================================
    Scrollbars Styles.
