@@ -9,6 +9,8 @@
     flex-direction: column;
     min-width: 0;
     border-radius: var(--radius-md);
+
+    transition: background var(--transition), box-shadow var(--transition);
 }
 
 /* =========================================
@@ -16,22 +18,18 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--brand) 6%, transparent),
-        color-mix(in srgb, var(--brand) 2%, transparent)
-    );
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 10%, transparent);
+    background: color-mix(in srgb, var(--brand) 4%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
 /* ====================================
-    Time Slots Stack Styles.
+    Time Stack Styles.
 ======================================= */
 .time-slots
 {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 0.6rem;
     min-width: 0;
 }
 
@@ -54,6 +52,5 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .weekday-column.is-today { background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
+    .weekday-column.is-today { background: color-mix(in srgb, white 6%, transparent); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
 }
