@@ -4,18 +4,8 @@
 //Description: This file contains the row of date labels for the Saint Louis calendar React project.
 
 import React, { useMemo } from "react";
+import { weekdayFormatter, dateFormatter } from "../../utils/dateHelpers";
 import "./DaysOfWeek.css";
-
-const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  timeZone: "UTC",
-});
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "long",
-  day: "numeric",
-  timeZone: "UTC",
-});
 
 const DaysOfWeek = ({ weekDays = [] }) => {
   const todayISO = useMemo(() => new Date().toISOString().split("T")[0], []);
@@ -33,12 +23,12 @@ const DaysOfWeek = ({ weekDays = [] }) => {
             role="columnheader"
             aria-current={isToday ? "date" : undefined}
           >
-            <span className="day-label">{weekdayFormatter.format(day)}</span>
+            <span className="day-label">{weekdayFormatter(day)}</span>
             <time
               className="day-date"
               dateTime={iso}
             >
-              {dateFormatter.format(day)}
+              {dateFormatter(day)}
             </time>
           </div>
         );
