@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 16 March 2026
+//Date: 31 March 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -20,6 +20,10 @@ const EventPanel = ({ selectedEvent, onClose }) => {
     const panel = panelRef.current;
     panel?.focus();
 
+    //Prevent background scroll.
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     //Close on Escape key...
     const handleKeyDown = (e) => {
       if (e.key === "Escape")
@@ -28,8 +32,12 @@ const EventPanel = ({ selectedEvent, onClose }) => {
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [selectedEvent, onClose]);
 
   if (!selectedEvent)
@@ -49,6 +57,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="event-panel-title"
+        aria-describedby="event-panel-content"
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
       >
@@ -66,7 +75,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
           </button>
         </header>
 
-        <div className="event-panel-body">
+        <div id="event-panel-content" className="event-panel-body">
           <EventCard {...selectedEvent} />
         </div>
       </section>

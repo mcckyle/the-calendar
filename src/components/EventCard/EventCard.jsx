@@ -26,12 +26,12 @@ const EventCard = ({
 	const formattedDate =
         isValidDate(dateObj) &&
 		dateObj.toLocaleDateString("en-US", {
-			weekday: "long",
-			month: "long",
-			day: "numeric",
-			year: "numeric",
-			timeZone: "UTC",
-		});
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            timeZone: "UTC",
+        });
 
     const formatTime = (value) => {
 		const d = value ? new Date(value) : null;
@@ -50,17 +50,11 @@ const EventCard = ({
 	//Normalize the start time...
 	const start = !allDay ? formatTime(startTime) : null;
 	const end = !allDay ? formatTime(endTime) : null;
-	const timeRange = start && (end ? `${start} - ${end}` : start);
+	const timeRange = start ? (end ? `${start} - ${end}` : start) : null;
 
-    const venueParts = [
-		venueName,
-		venueAddress,
-		venueCity,
-		venueState,
-	].filter(Boolean);
-
-	const venueString = venueParts.join(", ");
-	const hasMeta = ((formattedDate) || (timeRange) || (allDay));
+    const venueParts = [venueName, venueAddress, venueCity, venueState].filter(Boolean);
+    const venueString = venueParts.join(", ");
+    const hasMeta = ((formattedDate) || (timeRange) || (allDay));
 
     return (
 	  <article className="event-card" aria-labelledby="event-card-title">

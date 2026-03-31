@@ -7,25 +7,22 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1rem;
 
     min-width: 0;
-    padding: 0; /* Handled by EventPanel. */
-
     font-family: var(--body-font);
     line-height: 1.65;
-    color: var(--text-primary);
 }
 
 /* ====================================
     EventCard Header Styles.
 ======================================= */
-.event-card-header { display: flex; flex-direction: column; gap: 0.65rem; }
+.event-card-header { display: flex; flex-direction: column; gap: 0.6rem; }
 .event-card-title
 {
     margin: 0;
 
-    font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.025em;
@@ -39,9 +36,9 @@
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 0.65rem;
+    gap: 0.45rem 0.6rem;
 
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--text-secondary);
 }
 .event-date,
@@ -50,10 +47,10 @@
     display: inline-flex;
     align-items: center;
 
-    padding: 0.35rem 0.65rem;
+    padding: 0.32rem 0.6rem;
 
     border-radius: 999px;
-    background: rgba(15, 23, 42, 0.04);
+    background: color-mix(in srgb, var(--text-primary) 4%, transparent);
 }
 .event-date { font-weight: 600; color: var(--text-primary); }
 .event-time { opacity: 0.85; }
@@ -65,10 +62,11 @@
 {
     margin: 0;
 
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     line-height: 1.7;
 
-    opacity: 0.88;
+    color: var(--text-primary);
+    opacity: 0.9;
     white-space: pre-line;
 }
 
@@ -79,11 +77,10 @@
 {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
+    gap: 0.55rem;
 
     margin: 0;
-    font-size: 0.9rem;
-    font-style: normal;
+    font-size: 0.88rem;
     color: var(--text-secondary);
 }
 .venue-icon { flex-shrink: 0; opacity: 0.65;  }
@@ -92,12 +89,9 @@
 /* ====================================
    EventCard Footer Link Styles.
 ======================================= */
-.event-card-footer { margin-top: 0.2rem; }
+.event-card-footer { margin-top: 0.25rem; }
 .event-card-footer a
 {
-    display: inline-flex;
-    align-items: center;
-
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--accent);
@@ -113,10 +107,10 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-card { gap: 1rem; }
-    .event-card-title { font-size: 1.3rem; }
-    .event-card-meta { font-size: 0.82rem; }
-    .event-card-description, .event-card-venue { font-size: 0.88rem; }
+    .event-card { gap: 0.9rem; }
+    .event-card-title { font-size: 1.25rem; }
+    .event-card-meta { font-size: 0.8rem; }
+    .event-card-description, .event-card-venue { font-size: 0.86rem; }
 }
 
 /* ====================================
