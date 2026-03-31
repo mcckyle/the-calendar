@@ -27,14 +27,17 @@
     --bg-primary: #f4f7fb;
     --bg-surface: #ffffff;
 
+    /* Text. */
     --text-primary: #0f172a;
     --text-secondary: #475569;
 
+    /* Borders. */
     --border-subtle: rgba(15, 23, 42, 0.08);
     --border-strong: rgba(15, 23, 42, 0.14);
 
-    --shadow-sm: 0 12px 36px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 26px 72px rgba(15, 23, 42, 0.10);
+    /* Shadows. */
+    --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 22px 60px rgba(15, 23, 42, 0.10);
 
     --transition: 180ms ease;
 }
@@ -50,7 +53,7 @@ body
     margin: 0;
     width: 100%;
 
-    background: radial-gradient(circle at top, rgba(15, 47, 86, 0.06), transparent 40%), var(--bg-primary);
+    background: radial-gradient(circle at top, rgba(15, 47, 86, 0.05), transparent 42%), var(--bg-primary);
 
     color: var(--text-primary);
     font-family: var(--body-font);
@@ -67,7 +70,7 @@ h1, h2, h3
     margin: 0;
 
     font-family: var(--title-font);
-    line-height: 1.08;
+    line-height: 1.06;
     letter-spacing: -0.035em;
     color: var(--brand);
 }

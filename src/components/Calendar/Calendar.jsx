@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 26 March 2026
+//Date: 30 March 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -42,11 +42,6 @@ const Calendar = () => {
 
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
-  const showCalendar = (!loading) && (!error);
-  const handleEventClick = useCallback((event) => {
-    setSelectedEvent(event);
-  }, []);
-  const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
 
   const groupedByDay = useMemo(() => {
     return weekDays.map((day) => ({
@@ -56,11 +51,13 @@ const Calendar = () => {
     }));
   }, [weekDays, events]);
 
+  const handleEventClick = useCallback((event) => setSelectedEvent(event), []);
+  const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
+
   return (
     <section
       className="calendar"
       aria-label="Weekly Saint Louis events calendar"
-      aria-live="polite"
       aria-busy={loading}
     >
       <header className="calendar-header">
@@ -68,7 +65,7 @@ const Calendar = () => {
       </header>
 
       {loading && (
-        <div className="calendar-feedback" role="status" aria-live="polite">
+        <div className="calendar-feedback" role="status">
           Loading this week's events…
         </div>
       )}
@@ -79,15 +76,19 @@ const Calendar = () => {
         </div>
       )}
 
-      {showCalendar && (
+      {(!loading) && (!error) && (
         <div className="calendar-grid">
           <DaysOfWeek weekDays={weekDays} />
 
           <div className="calendar-scroll-shell">
-            <div className="week-view" role="list" aria-label="Weekly event columns">
+            <div
+              className="week-view"
+              role="list"
+              aria-label="Weekly event columns"
+            >
               {groupedByDay.map(({ key, day, grouped }) => (
                 <WeekDayColumn
-                  key={day}
+                  key={key}
                   day={day}
                   groupedEvents={grouped}
                   onEventClick={handleEventClick}
@@ -101,10 +102,7 @@ const Calendar = () => {
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (
-        <EventPanel
-          selectedEvent={selectedEvent}
-          onClose={closeEventPanel}
-        />
+        <EventPanel selectedEvent={selectedEvent} onClose={closeEventPanel} />
       )}
     </section>
   );

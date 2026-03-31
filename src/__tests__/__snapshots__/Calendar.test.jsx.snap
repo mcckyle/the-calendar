@@ -5,7 +5,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
   <section
     aria-busy="false"
     aria-label="Weekly Saint Louis events calendar"
-    aria-live="polite"
     class="calendar"
   >
     <header
