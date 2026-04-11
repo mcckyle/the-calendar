@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 31 March 2026
+//Date: 7 April 2026
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -96,7 +96,7 @@ describe('TimeSlot', () => {
       />
     );
 
-    const div = screen.getByLabelText(/11:00 AM time slot/i);
+    const div = screen.getByLabelText(/Events at 11:00 AM/i);
     expect(div).toBeInTheDocument();
   });
 
@@ -112,7 +112,7 @@ describe('TimeSlot', () => {
       />
     );
 
-    const button = screen.getByRole('button', { name: /View details for Project Review/i });
+    const button = screen.getByRole('button', { name: /View event: Project Review/i });
     expect(button).toBeInTheDocument();
   });
 

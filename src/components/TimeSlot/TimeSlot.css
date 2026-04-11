@@ -6,13 +6,13 @@
 .time-slot
 {
     display: grid;
-    grid-template-columns: 2.8rem minmax(0, 1fr);
-    column-gap: 0.7rem;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    column-gap: 0.6rem;
 
     align-items: start;
     min-width: 0;
 
-    padding: 0.45rem 0.35rem;
+    padding: 0.35rem 0.25rem;
     border-radius: var(--radius-sm);
 }
 
@@ -21,12 +21,12 @@
 ======================================= */
 .time-label
 {
-    padding-top: 0.4rem;
+    padding-top: 0.3rem;
 
-    font-size: 0.64rem;
+    font-size: 0.58rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--text-secondary);
+    letter-spacing: 0.09em;
+    color: color-mix(in srgb, var(--text-primary) 55%, transparent);
 
     white-space: nowrap;
     user-select: none;
@@ -52,14 +52,14 @@
     width: 100%;
     min-width: 0;
 
-    padding: 0.6rem 0.7rem;
+    padding: 0.5rem 0.6rem;
     border: 1px solid var(--border-subtle);
-    border-radius: calc(var(--radius-md) - 0.2rem);
+    border-radius: calc(var(--radius-md) - 0.3rem);
 
     background: var(--bg-surface);
     color: var(--text-primary);
 
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 500;
     line-height: 1.35;
     text-align: left;
@@ -70,16 +70,17 @@
                 transform 120ms ease,
                 box-shadow var(--transition);
 }
-.event-title { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .event-chip:hover
 {
     background: color-mix(in srgb, var(--text-primary) 4%, var(--bg-surface));
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-sm);
+
     transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
-.event-chip:active { transform: translateY(0); }
-.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 50%, transparent); }
+.event-chip:active { transform: translateY(0) scale(0.985); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
@@ -88,10 +89,10 @@
 {
     display: inline-flex;
     align-items: center;
-    min-height: 2rem;
+    min-height: 1.8rem;
 
-    font-size: 0.72rem;
-    color: color-mix(in srgb, var(--text-primary) 30%, transparent);
+    font-size: 0.65rem;
+    color: color-mix(in srgb, var(--text-primary) 25%, transparent);
 
     user-select: none;
     pointer-events: none;
@@ -102,10 +103,9 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2.5rem minmax(0, 1fr); column-gap: 0.6rem; padding: 0.4rem 0.3rem; }
-    .time-label { font-size: 0.6rem; }
-    .event-chip { padding: 0.55rem 0.6rem; font-size: 0.74rem; }
-    .slot-empty { min-height: 1.9rem; font-size: 0.68rem; }
+    .time-slot { grid-template-columns: 2.2rem minmax(0, 1fr); column-gap: 0.5rem; }
+    .time-label { font-size: 0.55rem; }
+    .event-chip { font-size: 0.7rem; padding: 0.45rem 0.5rem; }
 }
 
 /* ====================================
@@ -113,6 +113,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-chip:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); }
-    .slot-empty { color: rgba(255, 255, 255, 0.28); }
+    .event-chip:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.16); }
+    .slot-empty { color: rgba(255, 255, 255, 0.22); }
 }

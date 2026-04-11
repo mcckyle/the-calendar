@@ -1,11 +1,14 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 31 March 2026
+//Date: 10 April 2026
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React, { useMemo } from "react";
 import TimeSlot from "../TimeSlot/TimeSlot.jsx";
 import "./WeekDayColumn.css";
+
+//Generate hours from 9 AM to 9 PM.
+const HOURS = Array.from({ length: 13 }, (_, i) => i + 9);
 
 const WeekDayColumn = ({
   day,
@@ -13,10 +16,11 @@ const WeekDayColumn = ({
   onEventClick,
   convertTo12HourFormat,
 }) => {
-  // Generate hours from 9 AM to 9 PM.
-  const hours = useMemo(() => Array.from({ length: 13 }, (_, i) => i + 9), []);
   const dayISO = day.toISOString().split("T")[0];
-  const todayISO = useMemo(() => new Date().toISOString().split("T")[0], []);
+  const todayISO = useMemo(
+    () => new Date().toISOString().split("T")[0],
+    []
+  );
   const isToday = dayISO === todayISO;
 
   const ariaLabel = useMemo(() => {
@@ -34,7 +38,7 @@ const WeekDayColumn = ({
       aria-label={ariaLabel}
     >
       <div className="time-slots" role="list">
-        {hours.map((hour) => (
+        {HOURS.map((hour) => (
           <TimeSlot
             key={`${dayISO}-${hour}`}
             hour={hour}

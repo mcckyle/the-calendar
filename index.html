@@ -21,7 +21,7 @@
     <meta
       property="og:description"
       content="Explore music, art, festivals, and community life across Saint Louis with a curated weekly events calendar." />
-      <meta property="og:type" content="website" />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Saint Louis Events" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://mcckyle.github.io/the-calendar/" />
@@ -29,8 +29,7 @@
 
     <!-- Theme. -->
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0f2f56" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0f2f56" />
 
     <!-- iOS. -->
     <meta name="apple-mobile-web-app-title" content="STL Events" />
@@ -44,6 +43,8 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="/src/main.jsx" as="script" crossorigin />
+    <meta name="view-transition" content="same-origin" />
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
   </head>

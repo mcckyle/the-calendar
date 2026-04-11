@@ -11,7 +11,7 @@
 
     display: grid;
     place-items: center;
-    padding: clamp(1rem, 2.5vw, 1.5rem);
+    padding: clamp(1rem, 2.5vw, 1.75rem);
 }
 
 /* ====================================
@@ -21,10 +21,11 @@
 {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.38);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-    animation: overlayFade 160ms ease forwards;
+    animation: overlayFade 180ms ease forwards;
 }
 
 /* ====================================
@@ -38,14 +39,18 @@
     max-height: min(88vh, 860px);
     overflow-y: auto;
 
-    padding: clamp(1.2rem, 2vw, 1.5rem);
-
-    background: var(--bg-surface);
+    padding: clamp(1.25rem, 2vw, 1.6rem);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
 
-    animation: panelEnter 200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--bg-surface) 96%, transparent),
+        var(--bg-surface)
+    );
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+
+    animation: panelEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* ====================================
@@ -57,8 +62,8 @@
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 0.85rem;
-    padding-bottom: 0.7rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -68,7 +73,7 @@
 .event-panel-title
 {
     margin: 0;
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -83,8 +88,8 @@
 ======================================= */
 .close-button
 {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 2rem;
+    height: 2rem;
 
     display: grid;
     place-items: center;
@@ -99,9 +104,9 @@
                 transform 120ms ease,
                 box-shadow var(--transition);
 }
-.close-button:hover { background: color-mix(in srgb, var(--text-primary) 6%, transparent); color: var(--text-primary); transform: translateY(-1px); }
-.close-button:active { transform: translateY(0); }
-.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 50%, transparent); }
+.close-button:hover { background: color-mix(in srgb, var(--text-primary) 5%, transparent); color: var(--text-primary); transform: translateY(-1px); }
+.close-button:active { transform: scale(0.96); }
+.close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
 
 /* ====================================
    EventPanel Animations Styles.
@@ -114,7 +119,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(8px) scale(0.985); }
+    from { opacity: 0; transform: translateY(10px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -125,7 +130,6 @@
 {
     .event-modal-root { padding: 0.75rem; }
     .event-panel { max-height: 92vh; padding: 1rem; border-radius: var(--radius-md); }
-    .close-button { width: 2rem; height: 2rem; }
 }
 
 /* ====================================

@@ -26,6 +26,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           </span>
         </button>
         <time
+          aria-atomic="true"
           aria-live="polite"
           class="week-nav-label"
           datetime="2025-10-31"
@@ -51,11 +52,10 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       <div
         aria-label="Days of the week"
         class="days-of-week"
-        role="row"
+        role="rowgroup"
       >
         <div
-          aria-current="date"
-          class="day-item is-today"
+          class="day-item"
           role="columnheader"
         >
           <span

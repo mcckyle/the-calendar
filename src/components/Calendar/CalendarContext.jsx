@@ -1,6 +1,6 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 7 April 2026
 //Description: This file contains the Calendar context component for the Saint Louis React calendar project.
 
 import React, { createContext, useContext, useState } from 'react';
@@ -34,7 +34,8 @@ export const CalendarProvider = ({ children, initialDate }) => {
 
   const selectDate = (date) => {
     const parsedDate = new Date(date);
-    if (!isNaN(parsedDate)) {
+    if ( (parsedDate instanceof Date) && (!Number.isNaN(parsedDate.getTime())))
+    {
       setSelectedDate(parsedDate);
     }
   };
