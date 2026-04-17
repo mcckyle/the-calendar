@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 10 April 2026
+//Date: 16 April 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -24,21 +24,24 @@ const Calendar = () => {
   //Generate the seven days of the current week based on CalendarContext.
   const weekDays = useMemo(() => {
     return Array.from({ length: 7 }, (_, index) => {
-      const day = new Date(currentDate);
-      day.setUTCDate(currentDate.getUTCDate() + index);
-      return day;
+      const dayUTC = new Date(currentDate);
+      dayUTC.setUTCDate(currentDate.getUTCDate() + index);
+
+      //Convert to local Date object for rendering purposes.
+      return new Date(dayUTC);
     });
   }, [currentDate]);
 
   //Compute API query bounds based on CalendarContext.
-  const weekStart = useMemo(
-    () => currentDate.toISOString().split("T")[0],
-    [currentDate]
-  );
-  const weekEnd = useMemo(
-    () => weekDays[6].toISOString().split("T")[0],
-    [weekDays]
-  );
+  const weekStart = useMemo(() => {
+    return currentDate.toISOString().split("T")[0];
+  }, [currentDate]);
+
+  const weekEnd = useMemo(() => {
+    const end = new Date(currentDate);
+    end.setUTCDate(currentDate.getUTCDate() + 6);
+    return end.toISOString().split("T")[0];
+  }, [currentDate]);
 
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
@@ -53,7 +56,7 @@ const Calendar = () => {
 
   const handleEventClick = useCallback(setSelectedEvent, []);
   const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
-  const showGrid = (!loading) && (!error);
+  const isReady = (!loading) && (!error);
 
   return (
     <section
@@ -65,23 +68,25 @@ const Calendar = () => {
         <WeekNavigation />
       </header>
 
-      {loading && (
-        <div className="calendar-feedback" role="status">
-          Loading this week's events…
+      {/* Stable feedback layer (prevents layout jumps). */}
+      {!isReady && (
+        <div className="calendar-feedback" role={error ? "alert" : "status"}>
+          {error ? error : "Loading this week's events…"}
         </div>
       )}
 
-      {error && (
-        <div className="calendar-feedback error" role="alert">
-          {error}
-        </div>
-      )}
+      <div
+        className={`calendar-grid ${isReady ? "is-visible" : "is-hidden"}`}
+        aria-hidden={!isReady}
+      >
+        <div className="calendar-scroll-shell">
+          <div className="calendar-scroll-content">
 
-      {showGrid && (
-        <div className="calendar-grid">
-          <DaysOfWeek weekDays={weekDays} />
+          {/* Sticky row inside scroll context. */}
+            <div className="calendar-days-row">
+              <DaysOfWeek weekDays={weekDays} />
+            </div>
 
-          <div className="calendar-scroll-shell">
             <div
               className="week-view"
               role="list"
@@ -99,7 +104,7 @@ const Calendar = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (

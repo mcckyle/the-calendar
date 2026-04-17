@@ -27,7 +27,7 @@ const normalizeEvents = (rawEvents = []) => {
     return {
       id: event.id,
       title: event.name || "Untitled Event",
-      date: startISO,
+      //date: startISO,
       startTime: start,
       endTime: end,
       allDay: event?.dates?.start?.noSpecificTime ?? false,

@@ -1,6 +1,6 @@
 //Filename: CalendarContext.test.jsx
 //Author: Kyle McColgan
-//Date: 7 April 2026
+//Date: 16 April 2026
 //Description: This file contains the unit tests for the context component for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -13,7 +13,6 @@ describe('CalendarContext', () => {
 		jest.useFakeTimers({
 			now: new Date('2025-10-01T00:00:00Z').getTime(),
 		});
-		//jest.setSystemTime(fixedDate.getTime());
 	});
 
 	afterAll(() => {
@@ -38,8 +37,15 @@ describe('CalendarContext', () => {
 	it('initalizes currentDate to start of the current week (Sunday).', () => {
         const { result } = renderHook(() => useCalendarContext(), { wrapper });
 
-		const day = result.current.currentDate.getUTCDay(); // 0 = Sunday.
-		expect(day).toBe(0);
+		//const day = result.current.currentDate.getUTCDay(); // 0 = Sunday.
+		//expect(day).toBe(0);
+
+		const chicagoDay = new Intl.DateTimeFormat("en-US", {
+			timeZone: "America/Chicago",
+			weekday: "short",
+		}).format(result.current.currentDate);
+
+		expect(chicagoDay).toBe("Sun");
 	});
 
 	//Test #3: changeMonth moves one month forward.

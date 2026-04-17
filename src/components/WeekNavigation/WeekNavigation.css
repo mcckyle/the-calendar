@@ -10,16 +10,12 @@
     justify-content: center;
     gap: 0.4rem;
 
-    padding: 0.25rem;
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 75%, transparent);
+    padding: 0.3rem;
+    border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--bg-surface) 96%, transparent),
-        color-mix(in srgb, var(--bg-surface) 90%, transparent)
-    );
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--bg-surface) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-sm);
 
     user-select: none;
@@ -30,8 +26,8 @@
 ======================================= */
 .week-nav-label
 {
-    min-width: 8.5rem;
-    padding: 0 0.35rem;
+    min-width: 8.75rem;
+    padding: 0 0.6rem;
 
     font-family: var(--title-font);
     font-size: 1rem;
@@ -61,21 +57,21 @@
 
     transition: background var(--transition),
                 color var(--transition),
-                transform 120ms ease,
+                transform 100ms ease,
                 box-shadow var(--transition);
 }
 .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--text-primary) 5%, transparent); }
-.week-nav-button:active { transform: translateY(1px) scale(0.97); }
-.week-nav-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.week-nav-button:active { transform: scale(0.94); }
+.week-nav-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
 
 /* ====================================
    WeekNavigation Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { gap: 0.35rem; }
-    .week-nav-label { min-width: 7.5rem; font-size: 0.95rem; }
-    .week-nav-button { width: 1.85rem; height: 1.85rem; font-size: 0.95rem; }
+    .week-navigation { gap: 0.3rem; }
+    .week-nav-label { min-width: 7.25rem; font-size: 0.92rem; }
+    .week-nav-button { width: 1.8rem; height: 1.8rem; font-size: 0.95rem; }
 }
 
 /* ====================================
@@ -83,6 +79,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .week-navigation { background: linear-gradient(to bottom, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.75)); }
-    .week-nav-button:hover { background: rgba(255, 255, 255, 0.08); }
+    .week-navigation { background: color-mix(in srgb, var(--bg-surface) 92%, transparent); }
+    .week-nav-button:hover { background: rgba(255, 255, 255, 0.06); }
 }

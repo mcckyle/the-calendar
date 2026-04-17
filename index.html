@@ -29,9 +29,10 @@
 
     <!-- Theme. -->
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0f2f56" />
+    <meta name="theme-color" content="#0f2f56" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
 
-    <!-- iOS. -->
+    <!-- PWA / Mobile. -->
     <meta name="apple-mobile-web-app-title" content="STL Events" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no, address=no, email=no" />
@@ -43,10 +44,10 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="/src/main.jsx" as="script" crossorigin />
     <meta name="view-transition" content="same-origin" />
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="preload" href="/src/main.jsx" as="script" type="module" />
   </head>
 
   <body>

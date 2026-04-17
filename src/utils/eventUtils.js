@@ -1,28 +1,66 @@
 //Filename: eventUtils.js
 //Author: Kyle McColgan
-//Date: 02 September 2025
+//Date: 14 April 2026
 //Description: This file contains Calendar-related helper functions for the Saint Louis calendar project.
 
+const TIMEZONE = "America/Chicago";
+
+export const formatTime = (date) => {
+    if (!(date instanceof Date) || (Number.isNaN(date)))
+    {
+        return null;
+    }
+
+    return new Intl.DateTimeFormat("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: TIMEZONE,
+    }).format(date);
+};
+
 export const convertTo12HourFormat = (time) => {
-    const [hour, minute] = time.split(':').map(num => parseInt(num));
+    if (!time)
+    {
+        return "";
+    }
+
+    const [hour, minute] = time.split(':').map(Number);
+    if ((Number.isNaN(hour)) || (Number.isNaN(minute)))
+    {
+        return "";
+    }
+
     const isPM = hour >= 12;
     const adjustedHour = hour % 12 || 12; // Convert hour to 12-hour format.
-    const adjustedMinute = minute.toString().padStart(2, '0');
-    return `${adjustedHour}:${adjustedMinute} ${isPM ? 'PM' : 'AM'}`;
+    const adjustedMinute = minute.toString().padStart(2, "0");
+    return `${adjustedHour}:${adjustedMinute} ${isPM ? "PM" : "AM"}`;
 };
 
 // Helper function to parse 12-hour time into a Date object.
 export const parseEventTime = (date, time) => {
-    if (!date || !time) return null;
+    if ( (!date) || (!time))
+    {
+        return null;
+    }
 
     const [timePart, modifier] = time.split(" ");
-    let [hours, minutes] = timePart ? timePart.split(":").map(Number) : [0, 0];
+    if ( (!timePart) || (!modifier))
+    {
+        return null;
+    }
 
-    if (modifier === "PM" && hours !== 12)
+    let [hours, minutes] = timePart.split(":").map(Number);
+
+    if ((Number.isNaN(hours)) || (Number.isNaN(minutes)))
+    {
+        return null;
+    }
+
+    if ( (modifier === "PM") && (hours !== 12))
     {
         hours += 12; // Convert PM hours to 24-hour format.
     }
-    if (modifier === "AM" && hours === 12)
+    if ( (modifier === "AM") && (hours === 12) )
     {
         hours = 0; // Convert midnight (12 AM) to 0.
     }
@@ -61,56 +99,98 @@ export const parseEventTime = (date, time) => {
 // });
 
 // *** New Updated normalizeEvents for the Ticketmaster API. ***
-export function normalizeEvents(events)
-{
-    return events.map(event => {
-        const startTime = event.dates?.start?.dateTime
-          ? new Date(event.dates.start.dateTime)
-          : null;
-
-        return {
-            id: event.id,
-            title: event.name,
-            venue: event._embedded?.venues?.[0]?.name ?? "Unknown venue",
-            city: event._embedded?.venues?.[0]?.city?.name ?? "Unknown city",
-            startTime: startTime,
-            date: startTime ? startTime.toDateString() : null,
-            time: startTime ? startTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : null
-        };
-    }).filter(e => e.startTime !== null);
-}
+// export function normalizeEvents(events)
+// {
+//     return events.map(event => {
+//         const startTime = event.dates?.start?.dateTime
+//           ? new Date(event.dates.start.dateTime)
+//           : null;
+//
+//         return {
+//             id: event.id,
+//             title: event.name,
+//             venue: event._embedded?.venues?.[0]?.name ?? "Unknown venue",
+//             city: event._embedded?.venues?.[0]?.city?.name ?? "Unknown city",
+//             startTime: startTime,
+//             date: startTime ? startTime.toDateString() : null,
+//             time: startTime ? startTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : null
+//         };
+//     }).filter(e => e.startTime !== null);
+// }
 
 export const filterEventsByDay = (events, day) => {
-    if( (!day) || !(day instanceof Date))
+    if (!(day instanceof Date))
     {
         return []; // Guard against invalid input...
     }
 
-    const startOfDay = new Date(day.getFullYear(), day.getMonth(), day.getDate()); // Local start of the day.
+    const startOfDay = new Date(day); // Local start of the day.
+    startOfDay.setHours(0, 0, 0, 0);
+
     const endOfDay = new Date(startOfDay);
     endOfDay.setDate(startOfDay.getDate() + 1); // Local end of the day.
 
     return events.filter(
-        (event) => event.startTime >= startOfDay && event.startTime < endOfDay
+        (event) =>
+          event.startTime instanceof Date &&
+          event.startTime >= startOfDay &&
+          event.startTime < endOfDay
     );
 };
 
+const getChicagoParts = (date) => {
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TIMEZONE,
+        hour: "numeric",
+        hour12: false,
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+    }).formatToParts(date);
+
+    const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+
+    return {
+        hour: Number(map.hour),
+        year: Number(map.year),
+        month: Number(map.month),
+        day: Number(map.day),
+    };
+};
+
 export const groupEventsByHour = (day, events) => {
-    if( (!day) || !(day instanceof Date))
+    if (!(day instanceof Date))
     {
         return Array.from({ length: 24 }, () => []); // Guard against invalid input...
     }
 
     const eventsByHour = Array.from({ length: 24 }, () => []); // Create 24 independent arrays.
-    const dayEvents = filterEventsByDay(events, day);
+    const target = getChicagoParts(day);
+    //const dayEvents = filterEventsByDay(events, day);
 
-    dayEvents.forEach((event) => {
-        if(event.startTime instanceof Date)
+    for (const event of events)
+    {
+        if (!(event.startTime instanceof Date))
         {
-            const hour = event.startTime.getHours(); // Extract the hour from event time (local time).
-            eventsByHour[hour].push(event); // Add event to the correct hour.
+            continue;
         }
-    });
+
+        //const hour = event.startTime.getHours(); // Extract the hour from event time (local time).
+        const parts= getChicagoParts(event.startTime);
+
+        //Compare in SAME timezone (Chicago).
+        const isSameDay =
+          parts.year === target.year &&
+          parts.month === target.month &&
+          parts.day === target.day;
+
+        if (!isSameDay)
+        {
+            continue;
+        }
+
+        eventsByHour[parts.hour].push(event); // Add event to the correct hour.
+    }
 
     return eventsByHour;
 };

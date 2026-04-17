@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 23 March 2026
+//Date: 15 April 2026
 //Description: This file contains the embedded Event information for the Saint Louis React calendar project.
 
 import React from "react";
@@ -20,17 +20,17 @@ const EventCard = ({
 	url,
   }) => {
 	const isValidDate = (d) => d instanceof Date && !Number.isNaN(d.getTime());
-	const dateObj = date ? new Date(date) : null;
+	const dateObj = isValidDate(startTime) ? startTime : null;
 
 	//Normalize the date...
 	const formattedDate =
-        isValidDate(dateObj) &&
+        dateObj &&
 		dateObj.toLocaleDateString("en-US", {
             weekday: "long",
             month: "long",
             day: "numeric",
             year: "numeric",
-            timeZone: "UTC",
+            timeZone: "America/Chicago",
         });
 
     const formatTime = (value) => {

@@ -1,7 +1,7 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 7 April 2026
-//Description: This file contains the Calendar context component for the Saint Louis React calendar project.
+//Date: 15 April 2026
+//Description: This file contains the Calendar context component for the Saint Louis events calendar React project.
 
 import React, { createContext, useContext, useState } from 'react';
 
@@ -9,11 +9,38 @@ export const CalendarContext = createContext();
 export const useCalendarContext = () => useContext(CalendarContext);
 
 const getStartOfWeekUTC = (date) => {
-  const newDate = new Date(date);
-  const day = newDate.getUTCDay(); //Sunday == 0, Monday == 1, etc.
-  newDate.setUTCDate(newDate.getUTCDate() - day); //Backup to Sunday.
-  newDate.setUTCHours(0, 0, 0, 0);
-  return newDate;
+  const d = new Date(date);
+
+  //Get Chicago Y/M/D + weekday.
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    weekday: "short",
+  }).formatToParts(d);
+
+  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+
+  const dayMap = {
+    Sun: 0, Mon: 1, Tue: 2, Wed: 3,
+    Thu: 4, Fri: 5, Sat: 6,
+  };
+
+  const diff = dayMap[map.weekday];
+
+  //Build Chicago-local date at midnight.
+  const chicagoMidnight = new Date(
+    `${map.year}-${map.month.padStart(2, "0")}-${map.day.padStart(2, "0")}T00:00:00`
+  );
+
+  //Move back to Sunday (still Chicago-local).
+  chicagoMidnight.setDate(chicagoMidnight.getDate() - diff);
+
+  //Now convert that exact Chicago midnight to UTC.
+  return new Date(
+    chicagoMidnight.toLocaleString("en-US", { timeZone: "UTC" })
+  );
 };
 
 export const CalendarProvider = ({ children, initialDate }) => {
