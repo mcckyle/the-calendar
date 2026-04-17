@@ -21,7 +21,7 @@ The **Calendar** is a React-based calendar, with the aim of providing an intuiti
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20251219_235252.png)
+![Calendar Screenshot](./public/images/Screenshot_20260417_025526.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
