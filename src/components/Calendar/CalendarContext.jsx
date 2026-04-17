@@ -1,6 +1,6 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 15 April 2026
+//Date: 17 April 2026
 //Description: This file contains the Calendar context component for the Saint Louis events calendar React project.
 
 import React, { createContext, useContext, useState } from 'react';
@@ -11,15 +11,16 @@ export const useCalendarContext = () => useContext(CalendarContext);
 const getStartOfWeekUTC = (date) => {
   const d = new Date(date);
 
-  //Get Chicago Y/M/D + weekday.
-  const parts = new Intl.DateTimeFormat("en-US", {
+  //Get Chicago date parts.
+  const formatter = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Chicago",
     year: "numeric",
     month: "numeric",
     day: "numeric",
     weekday: "short",
-  }).formatToParts(d);
+  });
 
+  const parts = formatter.formatToParts(d);
   const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
 
   const dayMap = {
@@ -29,18 +30,22 @@ const getStartOfWeekUTC = (date) => {
 
   const diff = dayMap[map.weekday];
 
-  //Build Chicago-local date at midnight.
-  const chicagoMidnight = new Date(
-    `${map.year}-${map.month.padStart(2, "0")}-${map.day.padStart(2, "0")}T00:00:00`
+  //Step #1: Build the Chicago calendar date (no time ambiguity).
+  const chicagoDate = new Date(
+    Number(map.year),
+    Number(map.month) - 1,
+    Number(map.day)
   );
 
-  //Move back to Sunday (still Chicago-local).
-  chicagoMidnight.setDate(chicagoMidnight.getDate() - diff);
+  //Step #2: Move back to Sunday (still Chicago time).
+  chicagoDate.setDate(chicagoDate.getUTCDate() - diff);
 
-  //Now convert that exact Chicago midnight to UTC.
-  return new Date(
-    chicagoMidnight.toLocaleString("en-US", { timeZone: "UTC" })
+  //Step #3: Convert to UTC by reinterpreting as Chicago time.
+  const utc = new Date(
+    chicagoDate.toLocaleString("en-US", { timeZone: "America/Chicago" })
   );
+
+  return utc;
 };
 
 export const CalendarProvider = ({ children, initialDate }) => {
