@@ -15,8 +15,8 @@ const getStartOfWeekUTC = (date) => {
   const formatter = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Chicago",
     year: "numeric",
-    month: "numeric",
-    day: "numeric",
+    month: "2-digit",
+    day: "2-digit",
     weekday: "short",
   });
 
@@ -30,22 +30,29 @@ const getStartOfWeekUTC = (date) => {
 
   const diff = dayMap[map.weekday];
 
-  //Step #1: Build the Chicago calendar date (no time ambiguity).
-  const chicagoDate = new Date(
-    Number(map.year),
-    Number(map.month) - 1,
-    Number(map.day)
+  //Step #1: Chicago-local date string.
+  const chicagoDateStr = `${map.year}-${map.month}-${map.day}`;
+
+  //Step #2: Move back to Sunday in pure date math.
+  const temp = new Date(`${chicagoDateStr}T00:00:00`);
+  temp.setDate(temp.getDate() - diff);
+
+  const sundayStr = temp.toISOString().slice(0, 10);
+
+  //Step #3: Construct exact Chicago midnight -> interpreted in Chicago time -> converted to UTC.
+  const chicagoMidnightUTC = new Date(
+    `${sundayStr}T00:00:00-05:00` //Fallback offset, corrected below.
   );
 
-  //Step #2: Move back to Sunday (still Chicago time).
-  chicagoDate.setDate(chicagoDate.getUTCDate() - diff);
-
-  //Step #3: Convert to UTC by reinterpreting as Chicago time.
-  const utc = new Date(
-    chicagoDate.toLocaleString("en-US", { timeZone: "America/Chicago" })
+  //Step #4: Correct DST dynamically using Intl for GitHub Actions.
+  const chicagoTime = new Date(
+    chicagoMidnightUTC.toLocaleString("en-US", { timeZone: "America/Chicago" })
   );
 
-  return utc;
+  const offsetMinutes =
+    chicagoMidnightUTC.getTime() - chicagoTime.getTime();
+
+  return new Date(chicagoMidnightUTC.getTime() + offsetMinutes);
 };
 
 export const CalendarProvider = ({ children, initialDate }) => {
