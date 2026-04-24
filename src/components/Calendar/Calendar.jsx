@@ -1,10 +1,11 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 16 April 2026
+//Date: 23 April 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
 import { convertTo12HourFormat, groupEventsByHour } from "../../utils/eventUtils";
+import { getChicagoISODate } from "../../utils/dateHelpers";
 import { useCalendarContext } from "./CalendarContext";
 import { useEvents } from "../../hooks/useEvents";
 
@@ -23,12 +24,14 @@ const Calendar = () => {
 
   //Generate the seven days of the current week based on CalendarContext.
   const weekDays = useMemo(() => {
-    return Array.from({ length: 7 }, (_, index) => {
-      const dayUTC = new Date(currentDate);
-      dayUTC.setUTCDate(currentDate.getUTCDate() + index);
+    return Array.from({ length: 7 }, (_, index) =>
+    {
+      const day = new Date(currentDate);
+      day.setDate(currentDate.getDate() + index);
 
-      //Convert to local Date object for rendering purposes.
-      return new Date(dayUTC);
+      //Keep the progression in local calendar-day increments...
+      //rather than UTC timestamp increments.
+      return day;
     });
   }, [currentDate]);
 
@@ -46,9 +49,10 @@ const Calendar = () => {
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
 
+  //Group events by day/hour.
   const groupedByDay = useMemo(() => {
     return weekDays.map((day) => ({
-      key: day.toISOString(),
+      key: getChicagoISODate(day),
       day,
       grouped: groupEventsByHour(day, events),
     }));
@@ -70,38 +74,34 @@ const Calendar = () => {
 
       {/* Stable feedback layer (prevents layout jumps). */}
       {!isReady && (
-        <div className="calendar-feedback" role={error ? "alert" : "status"}>
-          {error ? error : "Loading this week's events…"}
+        <div
+          className={`calendar-feedback ${error ? "error" : ""}`}
+          role={error ? "alert" : "status"}
+        >
+          {error || "Loading this week's events…"}
         </div>
       )}
 
-      <div
-        className={`calendar-grid ${isReady ? "is-visible" : "is-hidden"}`}
-        aria-hidden={!isReady}
-      >
+      <div className={`calendar-grid ${isReady ? "is-visible" : "is-hidden"}`}>
         <div className="calendar-scroll-shell">
-          <div className="calendar-scroll-content">
+          <div className="calendar-days-row">
+            <DaysOfWeek weekDays={weekDays} />
+          </div>
 
-          {/* Sticky row inside scroll context. */}
-            <div className="calendar-days-row">
-              <DaysOfWeek weekDays={weekDays} />
-            </div>
-
-            <div
-              className="week-view"
-              role="list"
-              aria-label="Weekly event columns"
-            >
-              {groupedByDay.map(({ key, day, grouped }) => (
-                <WeekDayColumn
-                  key={key}
-                  day={day}
-                  groupedEvents={grouped}
-                  onEventClick={handleEventClick}
-                  convertTo12HourFormat={convertTo12HourFormat}
-                />
-              ))}
-            </div>
+          <div
+            className="week-view"
+            role="list"
+            aria-label="Weekly event columns"
+          >
+            {groupedByDay.map(({ key, day, grouped }) => (
+              <WeekDayColumn
+                key={key}
+                day={day}
+                groupedEvents={grouped}
+                onEventClick={handleEventClick}
+                convertTo12HourFormat={convertTo12HourFormat}
+              />
+            ))}
           </div>
         </div>
       </div>

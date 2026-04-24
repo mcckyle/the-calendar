@@ -12,27 +12,31 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(2rem, 5vw, 4rem) 1.25rem 3rem;
+    padding: clamp(2rem, 5vw, 4rem)
+             clamp(1rem, 3vw, 1.5rem)
+             3rem;
 }
 
 /* ====================================
-   App Header Styles.
+   App Hero Styles.
 ======================================= */
-.app-header
+.hero
 {
     width: 100%;
     max-width: var(--content-narrow-width);
-    margin-bottom: clamp(2.4rem, 5vw, 3.75rem);
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
     text-align: center;
+    gap: 1.1rem;
+
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
-.eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); opacity: 0.75; }
-.title { font-size: clamp(2.5rem, 5vw, 3.6rem); letter-spacing: -0.05em; line-height: 1.05; }
-.title-accent { color: var(--brand); opacity: 1; }
-.tagline { max-width: 42rem; margin: 0 auto; font-size: 1rem; line-height: 1.75; color: var(--text-secondary); }
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-muted); }
+.title { max-width: 12ch; font-size: clamp(2.7rem, 6vw, 4.5rem); line-height: 0.96; letter-spacing: -0.065em; text-wrap: balance;  }
+.title-accent { color: var(--brand); }
+.tagline { max-width: 44rem; font-size: clamp(1rem, 1.4vw, 1.08rem); line-height: 1.8; color: var(--text-secondary); text-wrap: pretty; }
 
 /* ====================================
    Calendar Shell Styles.
@@ -42,25 +46,18 @@
     width: 100%;
     max-width: var(--content-max-width);
 
-    padding: clamp(1.6rem, 3vw, 2.4rem);
+    padding: clamp(1rem, 2vw, 1.6rem);
 
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
 
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--bg-surface) 92%, transparent),
-        color-mix(in srgb, var(--bg-surface) 100%, transparent)
-    );
+    background: var(--surface-glass);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(10px);
-
-    transition: box-shadow var(--transition),
-                border-color var(--transition),
-                transform var(--transition);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
 }
 
-@media (hover: hover)
+/*@media (hover: hover)
 {
     .calendar-shell:hover
     {
@@ -68,16 +65,16 @@
         box-shadow: var(--shadow-md);
         border-color: var(--border-strong);
     }
-}
+}*/
 
 /* ====================================
    App Media Query Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding: 1.5rem 1rem 2.5rem; }
-    .app-header { margin-bottom: 2rem; }
-    .title { font-size: 2.1rem; }
-    .tagline { font-size: 0.95rem; }
-    .calendar-shell { padding: 1.1rem; border-radius: var(--radius-md); }
+    .app { padding: 1.5rem 0.9rem 2.5rem; }
+    .hero { gap: 0.9rem; margin-bottom: 2.2rem; }
+    .title { font-size: 2.4rem; }
+    .tagline { font-size: 0.97rem; line-height: 1.7; }
+    .calendar-shell { padding: 0.8rem; border-radius: var(--radius-lg); }
 }

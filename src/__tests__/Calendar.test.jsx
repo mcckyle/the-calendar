@@ -1,7 +1,7 @@
 //Filename: Calendar.test.jsx
 //Author: Kyle McColgan
-//Date: 7 April 2026
-//Description: This file contains unit tests for the Calendar component.
+//Date: 23 April 2026
+//Description: This file contains unit tests for the Saint Louis Events React project Calendar component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
@@ -56,7 +56,7 @@ jest.mock('../hooks/useEvents', () => ({
 beforeAll(() => {
   //const fixedDate = new Date(Date.UTC(2025, 9, 31)); //October 31st, 2025.
   jest.useFakeTimers({
-    now: new Date('2025-09-31T00:00:00Z').getTime(),
+    now: new Date('2025-10-31T00:00:00Z').getTime(),
   });
   //jest.setSystemTime(fixedDate.getTime());
 });

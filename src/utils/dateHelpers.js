@@ -1,6 +1,6 @@
 //Filename: dateHelpers.js
 //Author: Kyle McColgan
-//Date: 14 April 2026
+//Date: 23 April 2026
 //Description: This file contains some helper functions for the Saint Louis calendar project.
 
 export const getFirstDayOfMonth = (year, month) => {
@@ -13,6 +13,19 @@ export const getTotalDaysInMonth = (year, month) => {
 
 export const formatToISODate = (year, month, day) => {
   new Date(Date.UTC(year, month, day)).toISOString().split('T')[0];
+};
+
+export const getChicagoISODate = (date = new Date()) => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+
+  return `${map.year}-${map.month}-${map.day}`;
 };
 
 const WEEKDAY_FORMATTER = new Intl.DateTimeFormat("en-US", {

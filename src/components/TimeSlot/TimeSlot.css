@@ -5,15 +5,14 @@
 ======================================= */
 .time-slot
 {
-    display: grid;
-    grid-template-columns: 2.2rem minmax(0, 1fr);
-    column-gap: 0.55rem;
-
-    align-items: start;
     min-width: 0;
 
-    padding: 0.3rem 0.2rem;
-    border-radius: var(--radius-sm);
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    column-gap: 0.65rem;
+    align-items: start;
+
+    padding: 0.15rem 0.2rem;
 }
 
 /* ====================================
@@ -21,26 +20,28 @@
 ======================================= */
 .time-label
 {
-    padding-top: 0.25rem;
+    padding-top: 0.42rem;
 
-    font-size: 0.55rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: color-mix(in srgb, var(--text-primary) 45%, transparent);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    color: color-mix(in srgb, var(--text-primary) 42%, transparent);
 
     white-space: nowrap;
     user-select: none;
 }
 
 /* ====================================
-   TimeSlot Events Stack Styles.
+   TimeSlot Slot Events Styles.
 ======================================= */
 .slot-events
 {
+    min-width: 0; /* Temporary mitigation to address events overflowing the columns. */
+
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    min-width: 0; /* Temporary mitigation to address events overflowing the columns. */
+    gap: 0.42rem;
 }
 
 /* ====================================
@@ -51,47 +52,41 @@
     width: 100%;
     min-width: 0;
 
-    padding: 0.48rem 0.55rem;
+    padding: 0.62rem 0.72rem;
     border: 1px solid var(--border-subtle);
-    border-radius: calc(var(--radius-md) - 0.35rem);
+    border-radius: var(--radius-md);
 
-    background: var(--bg-surface);
+    background: color-mix(in srgb, var(--bg-surface) 94%, transparent);
     color: var(--text-primary);
-
-    font-size: 0.72rem;
-    font-weight: 500;
-    line-height: 1.35;
     text-align: left;
-    cursor: pointer;
 
-    transition: background var(--transition),
-                border-color var(--transition),
-                transform 120ms ease,
-                box-shadow var(--transition);
+    transition: border-color var(--transition),
+                background-color var(--transition),
+                transform 140ms ease;
 }
-.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .event-chip:hover
 {
-    background: color-mix(in srgb, var(--text-primary) 4%, var(--bg-surface));
     border-color: var(--border-strong);
-
+    background: color-mix(in srgb, var(--text-primary) 3%, var(--bg-surface));
     transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
 }
-.event-chip:active { transform: translateY(0) scale(0.985); }
-.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
+.event-chip:active { transform: translateY(0); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 38%, transparent); }
+
+.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.76rem; font-weight: 500; line-height: 1.45; letter-spacing: -0.01em; }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
 ======================================= */
 .slot-empty
 {
+    min-height: 2rem;
+
     display: inline-flex;
     align-items: center;
-    min-height: 1.7rem;
 
-    font-size: 0.64rem;
-    color: color-mix(in srgb, var(--text-primary) 22%, transparent);
+    color: color-mix(in srgb, var(--text-primary) 18%, transparent);
+    font-size: 0.68rem;
 
     user-select: none;
     pointer-events: none;
@@ -102,9 +97,10 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.45rem; }
+    .time-slot { grid-template-columns: 2.1rem minmax(0, 1fr); column-gap: 0.5rem; }
     .time-label { font-size: 0.52rem; }
-    .event-chip { font-size: 0.68rem; padding: 0.42rem 0.5rem; }
+    .event-chip { padding: 0.55rem 0.62rem; }
+    .event-title { font-size: 0.71rem; }
 }
 
 /* ====================================
@@ -112,6 +108,6 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-chip:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.14); }
-    .slot-empty { color: rgba(255, 255, 255, 0.2); }
+    .event-chip:hover { background: rgba(255, 255, 255, 0.04); }
+    .slot-empty { color: rgba(255, 255, 255, 0.18); }
 }
