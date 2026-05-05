@@ -5,7 +5,6 @@
 ======================================= */
 .app
 {
-    position: relative;
     width: 100%;
     min-height: 100vh;
 
@@ -13,7 +12,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: clamp(2.5rem, 7vw, 6rem)
+    padding: clamp(2.5rem, 6vw, 5.5rem)
              clamp(1rem, 3vw, 1.5rem)
              4rem;
 }
@@ -26,8 +25,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
-    margin-bottom: clamp(3rem, 7vw, 5rem);
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 .hero-content
 {
@@ -38,41 +36,40 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-muted); }
-.title { max-width: 10ch; font-size: clamp(3rem, 8vw, 5.4rem); line-height: 0.9; letter-spacing: -0.085em; text-wrap: balance;  }
+.title { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1; letter-spacing: -0.06em; }
 .title-accent { color: var(--brand); }
-.tagline { max-width: 42rem; font-size: clamp(1rem, 1.4vw, 1.08rem); line-height: 1.9; letter-spacing: -0.015em; color: var(--text-secondary); text-wrap: pretty; }
+.tagline { max-width: 44rem; font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.8; color: var(--text-secondary); }
 
 /* ====================================
    Calendar Shell Styles.
 ======================================= */
 .calendar-shell
 {
-    position: relative;
     width: 100%;
     max-width: var(--content-max-width);
-    overflow: hidden;
     padding: clamp(1rem, 2vw, 1.5rem);
 
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
     background: var(--surface-glass);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, var(--shadow-sm);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    isolation: isolate;
+    box-shadow: var(--shadow-sm);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    position: relative;
+    overflow: hidden;
 }
 .calendar-shell::before
 {
     content: "";
     position: absolute;
     inset: 0;
-
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 28%);
-
     pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.06), transparent 30%);
 }
 
 /*@media (hover: hover)
@@ -90,10 +87,8 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding: 1.75rem 0.9rem 2.75rem; }
+    .app { padding: 1.75rem 1rem 3rem; }
     .hero { margin-bottom: 2.5rem; }
-    .hero-content { gap: 1rem; }
-    .title { font-size: 2.6rem; }
-    .tagline { font-size: 0.97rem; line-height: 1.8; }
-    .calendar-shell { padding: 0.85rem; border-radius: var(--radius-lg); }
+    .tagline { font-size: 0.98rem; }
+    .calendar-shell { padding: 0.9rem; border-radius: var(--radius-lg); }
 }

@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 5 May 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from "react";
@@ -37,11 +37,9 @@ describe("EventPanel Component", () => {
 
   //Test #1: Calls onClose() when the overlay is clicked.
   test("calls onClose() when the overlay is clicked.", () => {
-    const { container } = render(
-      <EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />
-    );
+    render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    const overlay = container.querySelector(".event-overlay");
+    const overlay = document.querySelector(".event-overlay");
 
     fireEvent.click(overlay);
     expect(mockOnClose).toHaveBeenCalledTimes(1);
