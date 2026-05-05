@@ -92,12 +92,14 @@
 
     mask-image: linear-gradient(to right, transparent, black 28px, black calc(100% - 28px), transparent);
 }
+.calendar-columns { min-width: 1040px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-template-rows: auto 1fr; gap: 0.85rem; }
 .calendar-days-row
 {
     position: sticky;
     top: 0;
     z-index: 20;
     padding-bottom: 0.8rem;
+    grid-column: 1 / -1;
 
     background: linear-gradient(
         to bottom,
@@ -116,9 +118,7 @@
 {
     min-width: 1040px;
 
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 0.85rem;
+    display: contents;
     padding-top: 0.85rem;
 }
 .week-view > * { min-width: 0; }

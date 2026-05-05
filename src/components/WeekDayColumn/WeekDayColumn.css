@@ -13,6 +13,7 @@
 
     padding-inline: 0.2rem;
     border-radius: var(--radius-lg);
+    grid-row: 2;
 
     transition: background-color var(--transition), box-shadow var(--transition);
 }
