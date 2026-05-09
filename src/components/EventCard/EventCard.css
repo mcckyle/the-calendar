@@ -9,7 +9,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 1.45rem;
 
     line-height: 1.7;
 }
@@ -22,10 +22,10 @@
 {
     margin: 0;
 
-    font-size: clamp(1.75rem, 3vw, 2.3rem);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.06em;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
     text-wrap: balance;
 }
 
@@ -36,7 +36,7 @@
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.55rem;
 
     font-size: 0.8rem;
     color: var(--text-secondary);
@@ -47,13 +47,11 @@
     display: inline-flex;
     align-items: center;
 
-    padding: 0.42rem 0.74rem;
+    padding: 0.42rem 0.72rem;
     border-radius: 999px;
 
     background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 92%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 88%, transparent);
 }
 .event-date { font-weight: 600; color: var(--text-primary); }
 .event-time { opacity: 0.86; }
@@ -64,9 +62,9 @@
 .event-card-description
 {
     margin: 0;
-    max-width: 62ch;
+    max-width: 64ch;
 
-    font-size: 0.98rem;
+    font-size: 1rem;
     line-height: 1.9;
 
     color: color-mix(in srgb, var(--text-primary) 92%, transparent);
@@ -84,17 +82,16 @@
     gap: 0.7rem;
 
     margin: 0;
-    padding: 0.95rem 1rem;
+    padding: 0.9rem 1rem;
 
-    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--bg-surface) 88%, transparent);
+    background: color-mix(in srgb, var(--text-primary) 3%, transparent);
 
     font-size: 0.9rem;
     line-height: 1.7;
     color: var(--text-secondary);
 }
-.venue-icon { padding-top: 0.1rem; opacity: 0.72;  }
+.venue-icon { padding-top: 0.08rem; opacity: 0.7;  }
 .venue-text { flex: 1; min-width: 0; }
 
 /* ====================================
@@ -116,26 +113,30 @@
 .event-card-footer a::after
 {
     content: "↗";
-    font-size: 0.82rem;
+    font-size: 0.8rem;
 
     transition: transform 120ms ease;
 }
-.event-card-footer a:hover { opacity: 0.82; transform: translateX(1px); }
-.event-card-footer a:hover::after { transform: translate(1px, -1px); }
 .event-card-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0.35rem; }
+
+@media (hover: hover)
+{
+    .event-card-footer a:hover { opacity: 0.82; transform: translateX(1px); }
+    .event-card-footer a:hover::after { transform: translate(1px, -1px); }
+}
 
 /* ====================================
    EventCard Media Queries Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-card { gap: 1.15rem; }
+    .event-card { gap: 1.2rem; }
     .event-card-header { gap: 0.8rem; }
-    .event-card-title { font-size: 1.45rem; }
+    .event-card-title { font-size: 1.5rem; }
     .event-card-meta { font-size: 0.74rem; }
-    .event-date, .event-time { padding: 0.38rem 0.65rem; }
-    .event-card-description { font-size: 0.92rem; line-height: 1.82; }
-    .event-card-venue { padding: 0.82rem 0.9rem; font-size: 0.84rem; }
+    .event-date, .event-time { padding: 0.38rem 0.64rem; }
+    .event-card-description { font-size: 0.94rem; line-height: 1.82; }
+    .event-card-venue { padding: 0.82rem 0.92rem; font-size: 0.84rem; }
 }
 
 /* ====================================
@@ -144,5 +145,5 @@
 @media (prefers-color-scheme: dark)
 {
     .event-date, .event-time { background: rgba(255, 255, 255, 0.05); }
-    .event-card-venue { background: rgba(255, 255, 255, 0.03); }
+    .event-card-venue { background: rgba(255, 255, 255, 0.04); }
 }

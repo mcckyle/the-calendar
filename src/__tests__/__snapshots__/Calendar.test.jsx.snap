@@ -19,7 +19,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="week-nav-button"
           type="button"
         >
-          ‹
+          <span
+            aria-hidden="true"
+          >
+            ‹
+          </span>
         </button>
         <time
           aria-atomic="true"
@@ -34,7 +38,11 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           class="week-nav-button"
           type="button"
         >
-          ›
+          <span
+            aria-hidden="true"
+          >
+            ›
+          </span>
         </button>
       </nav>
     </header>
@@ -170,10 +178,9 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
               </div>
             </div>
           </div>
-          <div
+          <section
             aria-label="Weekly event columns"
             class="week-view"
-            role="list"
           >
             <div
               data-testid="week-day-column"
@@ -224,7 +231,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
                 Thu Nov 6 2025
               </span>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

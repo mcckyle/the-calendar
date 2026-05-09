@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 5 May 2026
+//Date: 8 May 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -16,11 +16,12 @@ import EventPanel from "../EventPanel/EventPanel.jsx";
 
 import "./Calendar.css";
 
-const Calendar = () => {
+const API_URL = "https://calendar-backend-xxa6.onrender.com";
+
+const Calendar = () =>
+{
   const { currentDate } = useCalendarContext();
   const [selectedEvent, setSelectedEvent] = useState(null);
-
-  const apiUrl = "https://calendar-backend-xxa6.onrender.com";
 
   //Generate the seven days of the current week based on CalendarContext.
   const weekDays = useMemo(() => {
@@ -36,21 +37,24 @@ const Calendar = () => {
   }, [currentDate]);
 
   //Compute API query bounds based on CalendarContext.
-  const weekStart = useMemo(() => {
+  const weekStart = useMemo(() =>
+  {
     return currentDate.toISOString().split("T")[0];
   }, [currentDate]);
 
-  const weekEnd = useMemo(() => {
+  const weekEnd = useMemo(() =>
+  {
     const end = new Date(currentDate);
-    end.setUTCDate(currentDate.getUTCDate() + 6);
+    end.setDate(currentDate.getDate() + 6);
     return end.toISOString().split("T")[0];
   }, [currentDate]);
 
   //Fetch the weekly events...
-  const { events = [], loading, error } = useEvents(apiUrl, weekStart, weekEnd);
+  const { events = [], loading, error } = useEvents(API_URL, weekStart, weekEnd);
 
   //Group events by day/hour.
-  const groupedByDay = useMemo(() => {
+  const groupedByDay = useMemo(() =>
+  {
     return weekDays.map((day) => ({
       key: getChicagoISODate(day),
       day,
@@ -89,9 +93,8 @@ const Calendar = () => {
               <DaysOfWeek weekDays={weekDays} />
             </div>
 
-            <div
+            <section
               className="week-view"
-              role="list"
               aria-label="Weekly event columns"
             >
               {groupedByDay.map(({ key, day, grouped }) => (
@@ -103,7 +106,7 @@ const Calendar = () => {
                   convertTo12HourFormat={convertTo12HourFormat}
                 />
               ))}
-            </div>
+            </section>
           </div>
         </div>
       </div>

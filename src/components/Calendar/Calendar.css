@@ -8,7 +8,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 /* ====================================
@@ -23,16 +23,13 @@
     display: flex;
     justify-content: center;
 
-    padding-bottom: 0.85rem;
-    margin-bottom: 0.1rem;
-
+    padding-bottom: 1rem;
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--bg-surface) 97%, transparent),
-        color-mix(in srgb, var(--bg-surface) 82%, transparent)
+        color-mix(in srgb, var(--bg-primary) 92%, transparent),
         transparent
     );
-    border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 92%, transparent),
+
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 }
@@ -42,26 +39,28 @@
 ======================================= */
 .calendar-feedback
 {
-    width: min(100%, 24rem);
-    margin: 0.8rem auto 0;
-    padding: 0.9rem 1rem;
+    width: min(100%, 26rem);
+    margin-inline: auto;
+    padding: 0.95rem 1.1rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
 
-    background: color-mix(in srgb, var(--bg-surface) 96%, transparent);
+    background: color-mix(in srgb, var(--surface-glass) 92%, transparent);
     color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
 
     font-size: 0.86rem;
     font-weight: 500;
     line-height: 1.5;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 .calendar-feedback.error
 {
     border-color: color-mix(in srgb, #c8102e 18%, var(--border-subtle));
-    background: color-mix(in srgb, #c8102e 4%, var(--bg-surface));
+    background: color-mix(in srgb, #c8102e 6%, var(--surface-glass));
     color: #c8102e;
 }
 
@@ -74,53 +73,57 @@
 
     transition: opacity var(--transition), transform var(--transition);
 }
-.calendar-grid.is-hidden { opacity: 0; transform: translateY(4px); pointer-events: none; }
+.calendar-grid.is-hidden { opacity: 0; transform: translateY(6px); pointer-events: none; }
 .calendar-grid.is-visible { opacity: 1; transform: none; }
 
 /* ====================================
-   Calendar Horizontal Scroll Container Styling.
+   Calendar Horizontal Scroll Region Styling.
 ======================================= */
 .calendar-scroll-shell
 {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
 
     padding-bottom: 0.5rem;
     scrollbar-gutter: stable both-edges;
     scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
 
-    mask-image: linear-gradient(to right, transparent, black 28px, black calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent);
 }
-.calendar-columns { min-width: 1040px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-template-rows: auto 1fr; gap: 0.85rem; }
+
+/* ====================================
+   Calendar Colum System Styling.
+======================================= */
+.calendar-columns
+{
+    min-width: 1040px;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.85rem;
+}
 .calendar-days-row
 {
     position: sticky;
     top: 0;
     z-index: 20;
-    padding-bottom: 0.8rem;
+    padding-bottom: 0.9rem;
     grid-column: 1 / -1;
 
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--bg-surface) 98%, transparent),
-        color-mix(in srgb, var(--bg-surface) 88%, transparent)
+        color-mix(in srgb, var(--bg-primary) 96%, transparent),
+        transparent
     );
-    border-bottom: 1px solid var(--border-subtle);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ====================================
-   Calendar Week Grid Styling.
+   Calendar Week Columns Styling.
 ======================================= */
-.week-view
-{
-    min-width: 1040px;
-
-    display: contents;
-    padding-top: 0.85rem;
-}
+.week-view { display: contents; }
 .week-view > * { min-width: 0; }
 
 /* ====================================
@@ -128,16 +131,16 @@
 ======================================= */
 @media (max-width: 1024px)
 {
-    .week-view { gap: 0.72rem; }
+    .calendar-columns{ gap: 0.72rem; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar { gap: 0.65rem; }
-    .calendar-header { padding-bottom: 0.72rem; }
+    .calendar { gap: 0.75rem; }
+    .calendar-header { padding-bottom: 0.8rem; }
     .calendar-feedback { width: 100%; font-size: 0.82rem; }
-    .calendar-days-row { padding-bottom: 0.65rem; }
-    .week-view { min-width: 920px; gap: 0.55rem; padding-top: 0.72rem; }
+    .calendar-columns { min-width: 920px; gap: 0.6rem; }
+    .calendar-days-row { padding-bottom: 0.7rem; }
 }
 
 /* ====================================

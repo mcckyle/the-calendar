@@ -11,7 +11,7 @@
 
     display: grid;
     place-items: center;
-    padding: clamp(0.9rem, 2vw, 1.4rem);
+    padding: clamp(1rem, 2vw, 1.5rem);
     isolation: isolate;
 }
 
@@ -22,14 +22,15 @@
 {
     position: absolute;
     inset: 0;
+    border: none;
     background: linear-gradient(
         to bottom,
-        rgba(15, 23, 42, 0.5),
-        rgba(15, 23, 42, 0.58)
+        rgba(15, 23, 42, 0.42),
+        rgba(15, 23, 42, 0.56)
     );
 
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
 
     animation: overlayFade 220ms ease forwards;
 }
@@ -45,18 +46,18 @@
     width: min(100%, 720px);
     max-height: min(90vh, 860px);
     overflow-y: auto;
-    padding: clamp(1.15rem, 2vw, 1.65rem);
+    padding: clamp(1.2rem, 2vw, 1.7rem);
 
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 92%, white 8%);
-    border-radius: calc(var(--radius-xl) + 0.2rem);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 82%, transparent);
+    border-radius: calc(var(--radius-xl) + 0.15rem);
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--bg-surface) 98%, white 2%),
-        color-mix(in srgb, var(--bg-surface) 94%, transparent)
+        color-mix(in srgb, var(--surface-glass) 96%, white 4%),
+        color-mix(in srgb, var(--surface-glass) 92%, transparent)
     );
-    box-shadow: 0 32px 90px rgba(15, 23, 42, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
@@ -73,10 +74,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-
-    margin-bottom: 1.15rem;
-    padding-bottom: 0.95rem;
-    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 1.2rem;
 }
 
 /* ====================================
@@ -85,11 +83,11 @@
 .event-panel-title
 {
     margin: 0;
-    font-size: 0.88rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--text-secondary);
-    opacity: 0.9;
 }
 
 /* ====================================
@@ -109,21 +107,23 @@
     place-items: center;
     flex-shrink: 0;
 
-    border: 1px solid transparent;
     border-radius: 999px;
     color: var(--text-secondary);
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1;
 
     transition: background-color var(--transition),
-                border-color var(--transition),
                 color var(--transition),
                 transform 120ms ease;
 }
-.close-button:hover { background: color-mix(in srgb, var(--text-primary) 4%, transparent); border-color: var(--border-subtle); color: var(--text-primary); }
 .close-button:active { transform: scale(0.95); }
 .close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 34%, transparent); }
+
+@media (hover: hover)
+{
+    .close-button:hover { background: color-mix(in srgb, var(--text-primary) 4%, transparent); color: var(--text-primary); }
+}
 
 /* ====================================
    EventPanel Animations Styles.
@@ -136,7 +136,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(14px) scale(0.985); }
+    from { opacity: 0; transform: translateY(16px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -145,9 +145,9 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-modal-root { align-items: end; }
-    .event-panel { width: 100%; max-height: 94vh; padding: 1rem; border-right: none; border-bottom: none; border-left: none; border-radius: 1.6rem 1.6rem 0 0; }
-    .event-panel-header { margin-bottom: 1rem; padding-bottom: 0.8rem; }
+    .event-modal-root { align-items: end; padding: 0; }
+    .event-panel { width: 100%; max-height: 94vh; padding: 1rem; border-right: none; border-bottom: none; border-left: none; border-radius: 1.75rem 1.75rem 0 0; }
+    .event-panel-header { margin-bottom: 1rem; }
 }
 
 /* ====================================
@@ -155,7 +155,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-overlay { background: linear-gradient(to bottom, rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.82)); }
-    .event-panel { box-shadow: 0 32px 100px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04); }
+    .event-overlay { background: linear-gradient(to bottom, rgba(2, 6, 23, 0.68), rgba(2, 6, 23, 0.82)); }
+    .event-panel { box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5); }
     .close-button:hover { background: rgba(255, 255, 255, 0.05); }
 }

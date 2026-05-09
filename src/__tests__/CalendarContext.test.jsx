@@ -1,6 +1,6 @@
 //Filename: CalendarContext.test.jsx
 //Author: Kyle McColgan
-//Date: 17 April 2026
+//Date: 8 May 2026
 //Description: This file contains the unit tests for the context component for the Saint Louis React calendar project.
 
 import React from 'react';
@@ -9,7 +9,6 @@ import { CalendarProvider, useCalendarContext } from '../components/Calendar/Cal
 
 describe('CalendarContext', () => {
 	beforeAll(() => {
-		const fixedDate = new Date('2025-10-01T00:00:00Z');
 		jest.useFakeTimers({
 			now: new Date('2025-10-01T00:00:00Z').getTime(),
 		});
@@ -110,7 +109,7 @@ describe('CalendarContext', () => {
 	it('updates selectedDate when a valid date is provided.', () => {
 		const { result } = renderHook(() => useCalendarContext(), { wrapper });
 
-		const validDate = new Date(2024, 11, 11);
+		const validDate = new Date("2024-12-11T00:00:00Z");
 		act(() => {
 			result.current.selectDate(validDate);
 		});

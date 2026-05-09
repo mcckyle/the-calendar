@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 23 April 2026
+//Date: 8 May 2026
 //Description: This file contains the embedded Event information for the Saint Louis React calendar project.
 
 import React from "react";
@@ -23,41 +23,41 @@ const EventCard = ({
 	{
 		return value instanceof Date && !Number.isNaN(value.getTime());
     }
-    const dateObj = isValidDate(startTime) ? startTime : null;
-
-	//Normalize the date...
-    const formattedDate =
-        dateObj &&
-		dateObj.toLocaleDateString("en-US", {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-            timeZone: "America/Chicago",
-        });
 
     const formatTime = (value) =>
-    {
+	{
 		const parsed = value ? new Date(value) : null;
 
 		if (!isValidDate(parsed))
 		{
 			return null;
 		}
-        return parsed.toLocaleTimeString("en-US", {
+		return parsed.toLocaleTimeString("en-US", {
 			hour: "numeric",
 			minute: "2-digit",
 			timeZone: "America/Chicago",
-        });
-    };
+		});
+	};
 
-	//Normalize the start time...
+	const parsedStart = startTime ? new Date(startTime) : null;
+
+	//Normalize the date...
+    const formattedDate =
+        isValidDate(parsedStart)
+        ? parsedStart.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            timeZone: "America/Chicago",
+        }) : null;
+
+    //Normalize the start time...
 	const start = !allDay ? formatTime(startTime) : null;
 	const end = !allDay ? formatTime(endTime) : null;
 	const timeRange = start ? (end ? `${start} - ${end}` : start) : null;
 
-    const venueParts = [venueName, venueAddress, venueCity, venueState].filter(Boolean);
-    const venueString = venueParts.join(", ");
+    const venueString = [venueName, venueAddress, venueCity, venueState].filter(Boolean).join(", ");
     const hasMeta = ((formattedDate) || (timeRange) || (allDay));
 
     return (
@@ -78,7 +78,7 @@ const EventCard = ({
               {allDay && <span className="event-time">All Day</span>}
 
               {(!allDay) && (timeRange) && (
-				<span className="event-time">{timeRange}</span>
+                <span className="event-time">{timeRange}</span>
               )}
             </div>
           )}

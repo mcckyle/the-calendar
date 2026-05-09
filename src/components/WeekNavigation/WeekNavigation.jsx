@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.jsx
 //Author: Kyle McColgan
-//Date: 23 April 2026
+//Date: 8 May 2026
 //Description: This file contains the week navigation functionality for the Saint Louis Events project.
 
 import React, { useMemo, useCallback } from "react";
@@ -35,7 +35,7 @@ const WeekNavigation = () => {
         aria-label="Previous week"
         onClick={handlePrev}
       >
-        ‹
+        <span aria-hidden="true">‹</span>
       </button>
 
       <time
@@ -53,7 +53,7 @@ const WeekNavigation = () => {
         aria-label="Next week"
         onClick={handleNext}
       >
-        ›
+        <span aria-hidden="true">›</span>
       </button>
     </nav>
   );
