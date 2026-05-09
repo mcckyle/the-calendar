@@ -28,7 +28,7 @@ const Calendar = () =>
     return Array.from({ length: 7 }, (_, index) =>
     {
       const day = new Date(currentDate);
-      day.setDate(currentDate.getDate() + index);
+      day.setUTCDate(currentDate.getUTCDate() + index);
 
       //Keep the progression in local calendar-day increments...
       //rather than UTC timestamp increments.
@@ -45,7 +45,7 @@ const Calendar = () =>
   const weekEnd = useMemo(() =>
   {
     const end = new Date(currentDate);
-    end.setDate(currentDate.getDate() + 6);
+    end.setUTCDate(currentDate.getUTCDate() + 6);
     return end.toISOString().split("T")[0];
   }, [currentDate]);
 

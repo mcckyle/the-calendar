@@ -7,79 +7,89 @@ import React, { createContext, useContext, useState } from 'react';
 
 export const CalendarContext = createContext();
 export const useCalendarContext = () => useContext(CalendarContext);
-const CHICAGO_TIMEZONE = "America/Chicago";
 
-const getChicagoDateParts = (date) =>
-{
+const getStartOfWeekUTC = (date) => {
+  const d = new Date(date);
+
+  //Get Chicago date parts.
   const formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone: CHICAGO_TIMEZONE,
+    timeZone: "America/Chicago",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
     weekday: "short",
   });
 
-  const parts = formatter.formatToParts(date);
+  const parts = formatter.formatToParts(d);
+  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
 
-  return Object.fromEntries(parts.map(part => [part.type, part.value]));
-};
-
-const getStartOfWeekUTC = (date) =>
-{
-  const parts = getChicagoDateParts(date);
-
-  const weekdayMap = {
+  const dayMap = {
     Sun: 0, Mon: 1, Tue: 2, Wed: 3,
     Thu: 4, Fri: 5, Sat: 6,
   };
 
-  const localDate = new Date(`${parts.year}-${parts.month}-${parts.day}T00:00:00`);
-  localDate.setDate(localDate.getDate() - weekdayMap[parts.weekday]);
+  const diff = dayMap[map.weekday];
 
-  return localDate;
+  //Step #1: Chicago-local date string.
+  const chicagoDateStr = `${map.year}-${map.month}-${map.day}`;
+
+  //Step #2: Move back to Sunday in pure date math.
+  const temp = new Date(`${chicagoDateStr}T00:00:00`);
+  temp.setDate(temp.getDate() - diff);
+
+  const sundayStr = temp.toISOString().slice(0, 10);
+
+  //Step #3: Construct exact Chicago midnight -> interpreted in Chicago time -> converted to UTC.
+  const chicagoMidnightUTC = new Date(
+    `${sundayStr}T00:00:00-05:00` //Fallback offset, corrected below.
+  );
+
+  //Step #4: Correct DST dynamically using Intl for GitHub Actions.
+  const chicagoTime = new Date(
+    chicagoMidnightUTC.toLocaleString("en-US", { timeZone: "America/Chicago" })
+  );
+
+  const offsetMinutes =
+  chicagoMidnightUTC.getTime() - chicagoTime.getTime();
+
+  return new Date(chicagoMidnightUTC.getTime() + offsetMinutes);
 };
 
-export const CalendarProvider = ({ children, initialDate }) =>
-{
+export const CalendarProvider = ({ children, initialDate }) => {
   const [currentDate, setCurrentDate] = useState(initialDate ?? getStartOfWeekUTC(new Date()));
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const changeMonth = (offset) =>
-  {
-    setCurrentDate((previous) =>
-    {
-      const next = new Date(previous);
-      next.setMonth(previous.getMonth() + offset);
-      return getStartOfWeekUTC(next);
-    })
+  const changeMonth = (offset) => {
+    const newDate = new Date(currentDate);
+    newDate.setMonth(currentDate.getMonth() + offset);
+    setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
-  const changeWeek = (offset) =>
-  {
-    setCurrentDate((previous) =>
-    {
-      const next = new Date(previous);
-      next.setDate(previous.getDate() + offset * 7);
-      return getStartOfWeekUTC(next);
-    })
+  const changeWeek = (offset) => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(currentDate.getDate() + offset * 7);
+    setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
-  const selectDate = (date) =>
-  {
-    const parsed = new Date(date);
-    if (!Number.isNaN(parsed.getTime()))
+  const selectDate = (date) => {
+    const parsedDate = new Date(date);
+    if ( (parsedDate instanceof Date) && (!Number.isNaN(parsedDate.getTime())))
     {
-      setSelectedDate(parsed);
+      setSelectedDate(parsedDate);
     }
   };
 
-  const value = {currentDate, selectedDate, changeMonth, changeWeek, selectDate };
-
   return (
     <CalendarContext.Provider
-      value={value}
+    value={{
+      currentDate,
+      selectedDate, // Add selectedDate to the context value.
+      changeMonth,
+      changeWeek,
+      selectDate, // Add selectDate function.
+    }}
     >
-      {children}
+    {children}
     </CalendarContext.Provider>
   );
 };
