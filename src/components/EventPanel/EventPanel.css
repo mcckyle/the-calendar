@@ -25,12 +25,12 @@
     border: none;
     background: linear-gradient(
         to bottom,
-        rgba(15, 23, 42, 0.42),
+        rgba(15, 23, 42, 0.38),
         rgba(15, 23, 42, 0.56)
     );
 
-    backdrop-filter: blur(18px) saturate(135%);
-    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    backdrop-filter: blur(18px) saturate(125%);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
 
     animation: overlayFade 220ms ease forwards;
 }
@@ -46,23 +46,23 @@
     width: min(100%, 720px);
     max-height: min(90vh, 860px);
     overflow-y: auto;
-    padding: clamp(1.2rem, 2vw, 1.7rem);
+    padding: clamp(1.25rem, 2vw, 1.8rem);
 
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 82%, transparent);
-    border-radius: calc(var(--radius-xl) + 0.15rem);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 78%, transparent);
+    border-radius: calc(var(--radius-xl) + 0.1rem);
     background: linear-gradient(
         to bottom,
         color-mix(in srgb, var(--surface-glass) 96%, white 4%),
-        color-mix(in srgb, var(--surface-glass) 92%, transparent)
+        color-mix(in srgb, var(--surface-glass) 90%, transparent)
     );
-    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 28px 90px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
 
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
 
-    animation: panelEnter 240ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* ====================================
@@ -74,7 +74,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.25rem;
 }
 
 /* ====================================
@@ -83,7 +83,7 @@
 .event-panel-title
 {
     margin: 0;
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -110,7 +110,7 @@
     border-radius: 999px;
     color: var(--text-secondary);
 
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     line-height: 1;
 
     transition: background-color var(--transition),
@@ -136,7 +136,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(16px) scale(0.985); }
+    from { opacity: 0; transform: translateY(18px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -146,7 +146,7 @@
 @media (max-width: 768px)
 {
     .event-modal-root { align-items: end; padding: 0; }
-    .event-panel { width: 100%; max-height: 94vh; padding: 1rem; border-right: none; border-bottom: none; border-left: none; border-radius: 1.75rem 1.75rem 0 0; }
+    .event-panel { width: 100%; max-height: 94vh; padding: 1rem; border-right: none; border-bottom: none; border-left: none; border-radius: 1.8rem 1.8rem 0 0; }
     .event-panel-header { margin-bottom: 1rem; }
 }
 
@@ -155,7 +155,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-overlay { background: linear-gradient(to bottom, rgba(2, 6, 23, 0.68), rgba(2, 6, 23, 0.82)); }
-    .event-panel { box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5); }
+    .event-overlay { background: linear-gradient(to bottom, rgba(2, 6, 23, 0.64), rgba(2, 6, 23, 0.82)); }
+    .event-panel { box-shadow: 0 32px 100px rgba(0, 0, 0, 0.56); }
     .close-button:hover { background: rgba(255, 255, 255, 0.05); }
 }

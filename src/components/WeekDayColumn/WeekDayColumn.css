@@ -11,23 +11,22 @@
     display: flex;
     flex-direction: column;
 
-    padding-inline: 0.15rem;
+    padding: 0 0.18rem;
     border-radius: var(--radius-lg);
     grid-row: 2;
 
     transition: background-color var(--transition), opacity var(--transition);
 }
 
-
 /* =========================================
-   WeekDayColumn Today Column (Ambient Highlight) Styles.
+   WeekDayColumn Today Column Styles.
 ============================================ */
 .weekday-column.is-today
 {
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--accent) 5%, transparent),
-        transparent 24%
+        color-mix(in srgb, var(--accent) 4%, transparent),
+        transparent 28%
     );
 }
 .weekday-column.is-today::before
@@ -40,7 +39,7 @@
 
     height: 1px;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--accent) 55%, transparent);
+    background: color-mix(in srgb, var(--accent) 48%, transparent);
 }
 
 /* ====================================
@@ -52,12 +51,12 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.78rem;
 }
 
 @media (hover: hover)
 {
-    .weekday-column:hover { background: color-mix(in srgb, var(--surface-glass) 36%, transparent); }
+    .weekday-column:hover { background: color-mix(in srgb, var(--surface-glass) 28%, transparent); }
 }
 
 /* ====================================

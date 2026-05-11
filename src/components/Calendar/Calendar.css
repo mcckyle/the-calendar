@@ -1,7 +1,7 @@
 /* Filename: src/components/Calendar/Calendar.css */
 
 /* ====================================
-    Calendar Root Styling.
+    Calendar Root Styles.
 ======================================= */
 .calendar
 {
@@ -12,139 +12,137 @@
 }
 
 /* ====================================
-   Calendar Sticky Header Styling.
+   Calendar Sticky Header Styles.
 ======================================= */
 .calendar-header
 {
     position: sticky;
     top: 0;
-    z-index: 40;
+    z-index: 50;
 
     display: flex;
     justify-content: center;
 
-    padding-bottom: 1rem;
+    padding-bottom: 0.9rem;
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--bg-primary) 92%, transparent),
+        color-mix(in srgb, var(--bg-primary) 94%, transparent),
         transparent
     );
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 /* ====================================
-   Calendar Feedback Messages Styling.
+   Calendar Feedback Messages Styles.
 ======================================= */
 .calendar-feedback
 {
-    width: min(100%, 26rem);
+    width: min(100%, 24rem);
     margin-inline: auto;
-    padding: 0.95rem 1.1rem;
+    padding: 0.9rem 1rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
 
-    background: color-mix(in srgb, var(--surface-glass) 92%, transparent);
+    background: color-mix(in srgb, var(--surface-glass) 90%, transparent);
     color: var(--text-secondary);
     box-shadow: var(--shadow-sm);
-
-    font-size: 0.86rem;
-    font-weight: 500;
-    line-height: 1.5;
-    text-align: center;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.55;
+    text-align: center;
 }
 .calendar-feedback.error
 {
-    border-color: color-mix(in srgb, #c8102e 18%, var(--border-subtle));
-    background: color-mix(in srgb, #c8102e 6%, var(--surface-glass));
-    color: #c8102e;
+    border-color: color-mix(in srgb, #c8102e 20%, var(--border-subtle));
+    background: color-mix(in srgb, #c8102e 5%, var(--surface-glass));
+    color: #d13a53;
 }
 
 /* ====================================
-   Calendar Grid Layout Styling.
+   Calendar Visibility Styles.
 ======================================= */
 .calendar-grid
 {
     width: 100%;
 
-    transition: opacity var(--transition), transform var(--transition);
+    transition: opacity 220ms ease, transform 220ms ease;
 }
 .calendar-grid.is-hidden { opacity: 0; transform: translateY(6px); pointer-events: none; }
-.calendar-grid.is-visible { opacity: 1; transform: none; }
+.calendar-grid.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ====================================
-   Calendar Horizontal Scroll Region Styling.
+   Calendar Horizontal Scroll Region Styles.
 ======================================= */
 .calendar-scroll-shell
 {
     overflow-x: auto;
     overflow-y: hidden;
+    padding-bottom: 0.4rem;
 
-    padding-bottom: 0.5rem;
-    scrollbar-gutter: stable both-edges;
     scroll-behavior: smooth;
     overscroll-behavior-x: contain;
-
-    mask-image: linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent);
+    scrollbar-gutter: stable both-edges;
+    mask-image: linear-gradient(to right, transparent, black 1.2rem, black calc(100% - 1.2rem), transparent);
 }
 
 /* ====================================
-   Calendar Colum System Styling.
+   Calendar Column System Styles.
 ======================================= */
 .calendar-columns
 {
     min-width: 1040px;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 0.85rem;
+    gap: 0.8rem;
 }
 .calendar-days-row
 {
     position: sticky;
     top: 0;
-    z-index: 20;
-    padding-bottom: 0.9rem;
+    z-index: 30;
     grid-column: 1 / -1;
-
+    padding-bottom: 0.8rem;
     background: linear-gradient(
         to bottom,
         color-mix(in srgb, var(--bg-primary) 96%, transparent),
         transparent
     );
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* ====================================
-   Calendar Week Columns Styling.
+   Calendar Week Columns Styles.
 ======================================= */
 .week-view { display: contents; }
 .week-view > * { min-width: 0; }
 
 /* ====================================
-   Calendar Media Queries Styling.
+   Calendar Media Queries Styles.
 ======================================= */
 @media (max-width: 1024px)
 {
-    .calendar-columns{ gap: 0.72rem; }
+    .calendar-columns{ gap: 0.7rem; }
 }
 
 @media (max-width: 768px)
 {
-    .calendar { gap: 0.75rem; }
-    .calendar-header { padding-bottom: 0.8rem; }
+    .calendar { gap: 0.8rem; }
+    .calendar-header { padding-bottom: 0.75rem; }
     .calendar-feedback { width: 100%; font-size: 0.82rem; }
     .calendar-columns { min-width: 920px; gap: 0.6rem; }
-    .calendar-days-row { padding-bottom: 0.7rem; }
+    .calendar-days-row { top: 0; padding-bottom: 0.7rem; }
 }
 
 /* ====================================
-   Calendar Dark Mode Media Query Styling.
+   Calendar Dark Mode Media Query Styles.
 ======================================= */
 /*@media (prefers-color-scheme: dark)
 {

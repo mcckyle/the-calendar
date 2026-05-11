@@ -8,36 +8,43 @@
     width: 100%;
     min-height: 100dvh;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     position: relative;
     isolation: isolate;
 
-    padding: clamp(2rem, 5vw, 5rem)
-             clamp(1rem, 3vw, 1.5rem)
-             4rem;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 3vw, 1.5rem) 4rem;
+}
+.app-layout
+{
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* App Ambient Backdrop Glow Styles. */
+/* ====================================
+   App Ambient Background Styles.
+ ======================================= */
 .app::before, .app::after
 {
     content: "";
+
     position: fixed;
     inset: auto;
-    width: 38rem;
-    aspect-ratio: 1;
+    z-index: -1;
 
     border-radius: 999px;
     pointer-events: none;
 
-    filter: blur(90px);
-    opacity: 0.16;
-    z-index: -1;
+    filter: blur(120px);
+    opacity: 0.14;
+
 }
-.app::before { top: -10rem; left: -8rem; background: rgba(22, 63, 109, 0.34); }
-.app::after { top: 8rem; right: -10rem; background: rgba(244, 165, 36, 0.2); }
+.app::before { top: -14rem; left: -10rem; width: 42rem; height: 42rem; background: radial-gradient(circle, rgba(22, 63, 109, 0.42), transparent 72%); }
+.app::after { top: 8rem; right: -12rem; width: 34rem; height: 34rem; background: radial-gradient(circle, rgba(244, 165, 36, 0.22), transparent 72%); }
 
 /* ====================================
    App Hero Styles.
@@ -45,25 +52,24 @@
 .hero
 {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: clamp(2.75rem, 6vw, 5rem);
 }
 .hero-content
 {
     width: 100%;
     max-width: var(--content-narrow-width);
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.25rem;
+    gap: 1.2rem;
 }
 .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-muted); }
-.title { max-width: 12ch; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.92; letter-spacing: -0.07em; text-wrap: balance; }
+.title { max-width: 10ch; font-size: clamp(3.4rem, 8vw, 6rem); line-height: 0.9; letter-spacing: -0.08em; text-wrap: balance; }
 .title-accent { color: var(--brand); }
-.tagline { max-width: 42rem; font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.85; text-wrap: pretty; color: var(--text-secondary); }
+.tagline { max-width: 42rem; font-size: clamp(1rem, 1.3vw, 1.08rem); line-height: 1.9; text-wrap: pretty; color: var(--text-secondary); }
 
 /* ====================================
    Calendar Shell Styles.
@@ -77,13 +83,13 @@
     position: relative;
     overflow: hidden;
 
-    border: 1px solid var(--border-subtle);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-xl);
     background: var(--surface-glass);
     box-shadow: var(--shadow-md);
 
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
 }
 .calendar-shell::before
 {
@@ -91,7 +97,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 26%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 22%);
 }
 
 /*@media (hover: hover)
@@ -110,8 +116,9 @@
 @media (max-width: 768px)
 {
     .app { padding: 1.5rem 1rem 3rem; }
-    .hero { margin-bottom: 2.25rem; }
+    .hero { margin-bottom: 2.5rem; }
     .hero-content { gap: 1rem; }
-    .tagline { font-size: 0.98rem; line-height: 1.75; }
-    .calendar-shell { padding: 0.85rem; border-radius: var(--radius-lg); }
+    .title { max-width: 9ch; font-size: clamp(2.8rem, 14vw, 4.2rem); }
+    .tagline { font-size: 0.98rem; line-height: 1.8; }
+    .calendar-shell { padding: 0.9rem; border-radius: var(--radius-lg); }
 }
