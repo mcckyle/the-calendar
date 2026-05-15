@@ -37,15 +37,11 @@
     --border-strong: rgba(15, 23, 42, 0.14);
 
     /* Glass Surface. */
-    --surface-glass: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.76),
-        rgba(255, 255, 255, 0.64)
-    );
+    --surface-glass: rgba(255, 255, 255, 0.72);
 
     /* Shadows. */
-    --shadow-sm: 0 12px 34px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 30px 90px rgba(15, 23, 42, 0.12);
+    --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 20px 60px rgba(15, 23, 42, 0.1);
 
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -140,11 +136,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
         --border-strong: rgba(255, 255, 255, 0.16);
 
         /* Surfaces. */
-        --surface-glass: linear-gradient(
-            to bottom,
-            rgba(15, 23, 42, 0.78),
-            rgba(15, 23, 42, 0.66)
-        );
+        --surface-glass: rgba(15, 23, 42, 0.72);
 
         --shadow-sm: 0 14px 42px rgba(0, 0, 0, 0.42);
         --shadow-md: 0 36px 100px rgba(0, 0, 0, 0.56);
