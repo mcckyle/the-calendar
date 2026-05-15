@@ -23,14 +23,19 @@
     position: absolute;
     inset: 0;
     border: none;
-    background: linear-gradient(
+    background: radial-gradient(
+        circle at top,
+        rgba(244, 165, 36, 0.08),
+        transparent 36%
+    ),
+    linear-gradient(
         to bottom,
-        rgba(15, 23, 42, 0.38),
-        rgba(15, 23, 42, 0.56)
+        rgba(15, 23, 42, 0.42),
+        rgba(15, 23, 42, 0.66)
     );
 
-    backdrop-filter: blur(18px) saturate(125%);
-    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(22px) saturate(135%);
+    -webkit-backdrop-filter: blur(22px) saturate(135%);
 
     animation: overlayFade 220ms ease forwards;
 }
@@ -43,24 +48,23 @@
     position: relative;
     z-index: 1;
 
-    width: min(100%, 720px);
-    max-height: min(90vh, 860px);
-    overflow-y: auto;
-    padding: clamp(1.25rem, 2vw, 1.8rem);
+    width: min(100%, 760px);
+    max-height: min(92vh, 960px);
 
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 78%, transparent);
-    border-radius: calc(var(--radius-xl) + 0.1rem);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 88%, transparent);
+    border-radius: calc(var(--radius-xl) + 0.2rem);
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--surface-glass) 96%, white 4%),
-        color-mix(in srgb, var(--surface-glass) 90%, transparent)
+        color-mix(in srgb, var(--surface-glass) 98%, white 2%),
+        color-mix(in srgb, var(--surface-glass) 92%, transparent)
     );
-    box-shadow: 0 28px 90px rgba(15, 23, 42, 0.18);
-    backdrop-filter: blur(26px);
-    -webkit-backdrop-filter: blur(26px);
-
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
 
     animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -70,11 +74,24 @@
 ======================================= */
 .event-panel-header
 {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1.25rem;
+
+    padding: clamp(1rem, 1.5vw, 1.2rem) clamp(1.1rem, 2vw, 1.5rem);
+    border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--surface-glass) 96%, transparent),
+        color-mix(in srgb, var(--surface-glass) 88%, transparent)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 /* ====================================
@@ -83,9 +100,9 @@
 .event-panel-title
 {
     margin: 0;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-secondary);
 }
@@ -93,15 +110,24 @@
 /* ====================================
    EventPanel Body Styles.
 ======================================= */
-.event-panel-body { min-width: 0; }
+.event-panel-body
+{
+    min-width: 0;
+    overflow-y: auto;
+    padding: clamp(1.1rem, 2vw, 1.5rem)
+             clamp(1.1rem, 2vw, 1.5rem)
+             clamp(1.4rem, 2.2vw, 1.8rem);
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+}
 
 /* ====================================
     EventPanel Close Button Styles.
 ======================================= */
 .close-button
 {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.35rem;
+    aspect-ratio: 1;
 
     display: grid;
     place-items: center;
@@ -110,19 +136,19 @@
     border-radius: 999px;
     color: var(--text-secondary);
 
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     line-height: 1;
 
     transition: background-color var(--transition),
                 color var(--transition),
-                transform 120ms ease;
+                transform 140ms ease;
 }
 .close-button:active { transform: scale(0.95); }
 .close-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 34%, transparent); }
 
 @media (hover: hover)
 {
-    .close-button:hover { background: color-mix(in srgb, var(--text-primary) 4%, transparent); color: var(--text-primary); }
+    .close-button:hover { background: color-mix(in srgb, var(--text-primary) 5%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
@@ -136,7 +162,7 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(18px) scale(0.985); }
+    from { opacity: 0; transform: translateY(20px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -146,8 +172,9 @@
 @media (max-width: 768px)
 {
     .event-modal-root { align-items: end; padding: 0; }
-    .event-panel { width: 100%; max-height: 94vh; padding: 1rem; border-right: none; border-bottom: none; border-left: none; border-radius: 1.8rem 1.8rem 0 0; }
-    .event-panel-header { margin-bottom: 1rem; }
+    .event-panel { width: 100%; max-height: 95vh; border-right: none; border-bottom: none; border-left: none; border-radius: 1.8rem 1.8rem 0 0; }
+    .event-panel-header { padding: 0.95rem 1rem; }
+    .event-panel-body { padding: 1rem 1rem 1.35rem; }
 }
 
 /* ====================================
@@ -155,7 +182,7 @@
 ======================================= */
 @media (prefers-color-scheme: dark)
 {
-    .event-overlay { background: linear-gradient(to bottom, rgba(2, 6, 23, 0.64), rgba(2, 6, 23, 0.82)); }
-    .event-panel { box-shadow: 0 32px 100px rgba(0, 0, 0, 0.56); }
-    .close-button:hover { background: rgba(255, 255, 255, 0.05); }
+    .event-overlay { background: radial-gradient(circle at top, rgba(244, 165, 36, 0.06), transparent 36%), linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.86)); }
+    .event-panel { box-shadow: 0 32px 100px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.04); }
+    .close-button:hover { background: rgba(255, 255, 255, 0.06); }
 }

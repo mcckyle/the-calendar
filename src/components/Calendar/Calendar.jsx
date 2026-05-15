@@ -85,7 +85,11 @@ const Calendar = () =>
       )}
 
       <div className={`calendar-grid ${isReady ? "is-visible" : "is-hidden"}`}>
-        <div className="calendar-scroll-shell">
+        <div
+          className="calendar-scroll-shell"
+          role="region"
+          aria-label="Weekly calendar grid"
+        >
           <div className="calendar-columns">
             <div className="calendar-days-row">
               <DaysOfWeek weekDays={weekDays} />

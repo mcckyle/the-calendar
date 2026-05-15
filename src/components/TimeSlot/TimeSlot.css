@@ -7,8 +7,8 @@
 {
     min-width: 0;
     display: grid;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    column-gap: 0.72rem;
+    grid-template-columns: 2.35rem minmax(0, 1fr);
+    column-gap: 0.7rem;
     align-items: start;
 }
 
@@ -17,13 +17,13 @@
 ======================================= */
 .time-label
 {
-    padding-top: 0.62rem;
+    padding-top: 0.68rem;
 
-    font-size: 0.54rem;
+    font-size: 0.52rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     line-height: 1;
-    color: color-mix(in srgb, var(--text-primary) 34%, transparent);
+    color: color-mix(in srgb, var(--text-primary) 32%, transparent);
 
     white-space: nowrap;
     user-select: none;
@@ -38,7 +38,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.42rem;
+    gap: 0.38rem;
 }
 
 /* ====================================
@@ -51,16 +51,18 @@
     position: relative;
 
     padding: 0.78rem 0.82rem;
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 84%, transparent);
-    border-radius: calc(var(--radius-md) - 0.1rem);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 82%, transparent);
+    border-radius: calc(var(--radius-md) - 0.12rem);
 
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--surface-glass) 94%, transparent),
-        color-mix(in srgb, var(--surface-glass) 86%, transparent)
+        color-mix(in srgb, var(--surface-glass) 92%, transparent),
+        color-mix(in srgb, var(--surface-glass) 84%, transparent)
     );
     color: var(--text-primary);
     text-align: left;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
     transition: border-color var(--transition),
                 background-color var(--transition),
@@ -69,21 +71,21 @@
 }
 
 .event-chip:active { transform: translateY(0); }
-.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 36%, transparent); }
-.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.76rem; font-weight: 500; line-height: 1.45; letter-spacing: -0.01em; }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 34%, transparent); }
+.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.76rem; font-weight: 500; line-height: 1.45; letter-spacing: -0.012em; }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
 ======================================= */
 .slot-empty
 {
-    min-height: 2.3rem;
+    min-height: 2.35rem;
 
     display: inline-flex;
     align-items: center;
 
-    color: color-mix(in srgb, var(--text-primary) 12%, transparent);
-    font-size: 0.7rem;
+    color: color-mix(in srgb, var(--text-primary) 10%, transparent);
+    font-size: 0.68rem;
 
     user-select: none;
     pointer-events: none;
@@ -96,7 +98,7 @@
         border-color: var(--border-strong);
         background: color-mix(in srgb, var(--text-primary) 2%, var(--surface-glass));
         transform: translateY(-1px);
-        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
     }
 }
 
@@ -105,9 +107,9 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2.1rem minmax(0, 1fr); column-gap: 0.56rem; }
-    .time-label { font-size: 0.5rem; }
-    .event-chip { padding: 0.68rem 0.74rem; }
+    .time-slot { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.54rem; }
+    .time-label { font-size: 0.48rem; }
+    .event-chip { padding: 0.68rem 0.72rem; }
     .event-title { font-size: 0.72rem; }
 }
 
