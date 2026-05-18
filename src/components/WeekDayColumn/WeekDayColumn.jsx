@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 8 May 2026
+//Date: 18 May 2026
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React, { useMemo } from "react";
@@ -38,7 +38,7 @@ const WeekDayColumn = ({
       className={`weekday-column ${isToday ? "is-today" : ""}`}
       aria-label={ariaLabel}
     >
-      <div className="time-slots" role="list">
+      <div className="time-slots" role="presentation">
         {HOURS.map((hour) => (
           <TimeSlot
             key={`${dayISO}-${hour}`}

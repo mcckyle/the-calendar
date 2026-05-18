@@ -11,13 +11,24 @@
     gap: 0.25rem;
 
     padding: 0.28rem;
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 92%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 70%, transparent);
     border-radius: 999px;
     background: color-mix(in srgb, var(--surface-glass) 88%, transparent);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
+    position: relative;
+    overflow: hidden;
     user-select: none;
+}
+.week-navigation::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.18), transparent 45%);
 }
 
 /* ====================================
@@ -29,10 +40,10 @@
     padding-inline: 0.95rem;
 
     font-family: var(--title-font);
-    font-size: 0.96rem;
+    font-size: 0.92rem;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: -0.045em;
+    letter-spacing: -0.035em;
     text-align: center;
     color: var(--text-primary);
 }
@@ -42,7 +53,7 @@
 ======================================= */
 .week-nav-button
 {
-    width: 2.2rem;
+    width: 2.1rem;
     aspect-ratio: 1;
 
     display: grid;
@@ -55,7 +66,7 @@
                 color var(--transition),
                 transform 140ms ease;
 }
-.week-nav-button span { font-size: 1rem; line-height: 1; }
+.week-nav-button span { font-size: 0.95rem; line-height: 1; }
 .week-nav-button:active { transform: scale(0.96); }
 .week-nav-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 34%, transparent); }
 

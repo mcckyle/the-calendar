@@ -7,8 +7,8 @@
 {
     min-width: 0;
     display: grid;
-    grid-template-columns: 2.35rem minmax(0, 1fr);
-    column-gap: 0.7rem;
+    grid-template-columns: 2.1rem minmax(0, 1fr);
+    column-gap: 0.62rem;
     align-items: start;
 }
 
@@ -17,13 +17,13 @@
 ======================================= */
 .time-label
 {
-    padding-top: 0.68rem;
+    padding-top: 0.62rem;
 
-    font-size: 0.52rem;
+    font-size: 0.48rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     line-height: 1;
-    color: color-mix(in srgb, var(--text-primary) 32%, transparent);
+    color: color-mix(in srgb, var(--text-primary) 24%, transparent);
 
     white-space: nowrap;
     user-select: none;
@@ -50,42 +50,48 @@
     min-width: 0;
     position: relative;
 
-    padding: 0.78rem 0.82rem;
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 82%, transparent);
-    border-radius: calc(var(--radius-md) - 0.12rem);
+    padding: 0.72rem 0.78rem;
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 68%, transparent);
+    border-radius: calc(var(--radius-md) - 0.18rem);
 
     background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--surface-glass) 92%, transparent),
-        color-mix(in srgb, var(--surface-glass) 84%, transparent)
+        color-mix(in srgb, var(--surface-primary) 92%, transparent),
+        color-mix(in srgb, var(--surface-secondary) 88%, transparent)
     );
     color: var(--text-primary);
     text-align: left;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
 
     transition: border-color var(--transition),
                 background-color var(--transition),
                 transform 140ms ease,
                 box-shadow var(--transition);
 }
-
+.event-chip::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), transparent 42%);
+}
 .event-chip:active { transform: translateY(0); }
 .event-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 34%, transparent); }
-.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.76rem; font-weight: 500; line-height: 1.45; letter-spacing: -0.012em; }
+.event-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.78rem; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
 
 /* ====================================
    TimeSlot Empty Slot Indicator Styles.
 ======================================= */
 .slot-empty
 {
-    min-height: 2.35rem;
+    min-height: 2.15rem;
 
     display: inline-flex;
     align-items: center;
 
-    color: color-mix(in srgb, var(--text-primary) 10%, transparent);
-    font-size: 0.68rem;
+    color: color-mix(in srgb, var(--text-primary) 7%, transparent);
+    font-size: 0.62rem;
 
     user-select: none;
     pointer-events: none;
@@ -96,9 +102,9 @@
     .event-chip:hover
     {
         border-color: var(--border-strong);
-        background: color-mix(in srgb, var(--text-primary) 2%, var(--surface-glass));
+        background: color-mix(in srgb, var(--surface-raised) 94%, transparent);
         transform: translateY(-1px);
-        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
     }
 }
 
@@ -107,7 +113,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slot { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.54rem; }
+    .time-slot { grid-template-columns: 1.85rem minmax(0, 1fr); column-gap: 0.48rem; }
     .time-label { font-size: 0.48rem; }
     .event-chip { padding: 0.68rem 0.72rem; }
     .event-title { font-size: 0.72rem; }

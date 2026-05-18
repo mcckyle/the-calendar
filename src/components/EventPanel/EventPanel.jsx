@@ -63,6 +63,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         className="event-panel"
         role="dialog"
         aria-modal="true"
+        aria-label="Event details"
         aria-labelledby="event-panel-title"
         aria-describedby="event-panel-content"
         tabIndex={-1}

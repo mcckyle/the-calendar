@@ -36,12 +36,16 @@
     --border-subtle: rgba(15, 23, 42, 0.08);
     --border-strong: rgba(15, 23, 42, 0.14);
 
-    /* Glass Surface. */
+    /* Surfaces. */
+    --surface-primary: rgba(255, 255, 255, 0.78);
+    --surface-secondary: rgba(255, 255, 255, 0.58);
+    --surface-raised: rgba(255, 255, 255, 0.88);
     --surface-glass: rgba(255, 255, 255, 0.72);
 
     /* Shadows. */
-    --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 20px 60px rgba(15, 23, 42, 0.1);
+    --shadow-sm: 0 4px 24px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 32px 80px rgba(15, 23, 42, 0.12);
 
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -50,15 +54,17 @@
    Reset & Base Styles.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; }
 html, body, #root { min-height: 100%; }
 body
 {
     margin: 0;
     overflow-x: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
 
     font-family: var(--body-font);
-    line-height: 1.7;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
 
     background: var(--bg-primary);
     color: var(--text-primary);
@@ -136,12 +142,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
         --border-strong: rgba(255, 255, 255, 0.16);
 
         /* Surfaces. */
+        --surface-primary: rgba(15, 23, 42, 0.76);
+        --surface-secondary: rgba(15, 23, 42, 0.56);
+        --surface-raised: rgba(15, 23, 42, 0.9);
         --surface-glass: rgba(15, 23, 42, 0.72);
 
         --shadow-sm: 0 14px 42px rgba(0, 0, 0, 0.42);
-        --shadow-md: 0 36px 100px rgba(0, 0, 0, 0.56);
+        --shadow-md: 0 24px 64px rgba(0, 0, 0, 0.42);
     }
-    /*body { background: radial-gradient(circle at 20% 0%, rgba(96, 165, 250, 0.08), transparent 40%), radial-gradient(circle at 80% 0%, rgba(245, 158, 11, 0.06), transparent 40%), var(--bg-primary); }*/
     h1, h2, h3 { color: #ffffff; }
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); }
 }

@@ -56,6 +56,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <div
           class="calendar-columns"
+          role="presentation"
         >
           <div
             class="calendar-days-row"
@@ -183,6 +184,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           <section
             aria-label="Weekly event columns"
             class="week-view"
+            role="grid"
           >
             <div
               data-testid="week-day-column"

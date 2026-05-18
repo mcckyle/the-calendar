@@ -21,7 +21,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.18rem;
 
     padding-inline: 0.55rem;
 }
@@ -33,10 +33,10 @@
 {
     font-size: 0.52rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-secondary);
-    opacity: 0.72;
+    opacity: 0.62;
 }
 
 /* ====================================
@@ -66,16 +66,16 @@
 .day-item.is-today .day-label { color: var(--accent); opacity: 1; }
 .day-item.is-today .day-date
 {
-    padding-inline: 0.7rem;
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+    padding-inline: 0.58rem;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
-@media (hover: hover)
+/*@media (hover: hover)
 {
     .day-item:hover .day-date { background: color-mix(in srgb, var(--text-primary) 4%, transparent); }
     .day-item.is-today:hover .day-date { background: color-mix(in srgb, var(--accent) 13%, transparent); }
-}
+}*/
 
 /* ====================================
    DaysOfWeek Media Query Styling.
