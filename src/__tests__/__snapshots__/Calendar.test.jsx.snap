@@ -49,7 +49,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
     <div
       class="calendar-grid is-visible"
     >
-      <div
+      <section
         aria-label="Weekly calendar grid"
         class="calendar-scroll-shell"
         role="region"
@@ -237,7 +237,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
             </div>
           </section>
         </div>
-      </div>
+      </section>
     </div>
   </section>
 </DocumentFragment>

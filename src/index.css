@@ -11,41 +11,44 @@
     --body-font: "Inter", system-ui, sans-serif;
 
     /* Layout. */
-    --content-max-width: 1120px;
+    --content-max-width: 1180px;
     --content-narrow-width: 760px;
 
     /* Radius. */
-    --radius-sm: 0.75rem;
-    --radius-md: 1rem;
-    --radius-lg: 1.5rem;
-    --radius-xl: 2rem;
+    --radius-sm: 0.875rem;
+    --radius-md: 1.25rem;
+    --radius-lg: 1.75rem;
+    --radius-xl: 2.5rem;
 
     /* Brand Colors. */
     --brand: #163f6d;
-    --accent: #f4a524;
-    --accent-muted: rgba(244, 165, 36, 0.74);
+    --brand-soft: #28588f;
 
-    /* Light Theme. */
-    --bg-primary: #f5f7fb;
+    --accent: #f4a524;
+    --accent-soft: #ffc861;
+
+    /* Backgrounds. */
+    --bg-primary: #f4f7fb;
+    --bg-secondary: #edf2f8;
 
     /* Text. */
     --text-primary: #0f172a;
     --text-secondary: #5f6b7b;
+    --text-muted: #7d8896;
 
     /* Borders. */
     --border-subtle: rgba(15, 23, 42, 0.08);
-    --border-strong: rgba(15, 23, 42, 0.14);
+    --border-soft: rgba(15, 23, 42, 0.05);
 
     /* Surfaces. */
-    --surface-primary: rgba(255, 255, 255, 0.78);
-    --surface-secondary: rgba(255, 255, 255, 0.58);
-    --surface-raised: rgba(255, 255, 255, 0.88);
-    --surface-glass: rgba(255, 255, 255, 0.72);
+    --surface-primary: rgba(255, 255, 255, 0.74);
+    --surface-secondary: rgba(255, 255, 255, 0.56);
+    --surface-raised: rgba(255, 255, 255, 0.9);
 
     /* Shadows. */
-    --shadow-sm: 0 4px 24px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 32px 80px rgba(15, 23, 42, 0.12);
+    --shadow-sm: 0 4px 18px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 12px 40px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 24px 80px rgba(15, 23, 42, 0.14);
 
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -60,13 +63,13 @@ body
 {
     margin: 0;
     overflow-x: hidden;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 
     font-family: var(--body-font);
     line-height: 1.6;
     letter-spacing: -0.02em;
 
-    background: var(--bg-primary);
+    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
     color: var(--text-primary);
 
     -webkit-font-smoothing: antialiased;
@@ -78,7 +81,8 @@ h1, h2, h3
 {
     margin: 0;
     font-family: var(--title-font);
-    letter-spacing: -0.045em;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
 }
 p { margin: 0; }
 img, svg { display: block; max-width: 100%; }
@@ -107,7 +111,7 @@ button
     background: none;
     cursor: pointer;
 }
-button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 75%, white); outline-offset: 4px; }
 ::selection { background: rgba(244, 165, 36, 0.2); }
 
 /* ====================================
@@ -133,23 +137,25 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 {
     :root
     {
-        --bg-primary: #08101d;
+        --bg-primary: #07111f;
+        --bg-secondary: #0b1728;
 
-        --text-primary: #f3f6fb;
-        --text-secondary: #94a3b8;
+        --text-primary: #f4f7fb;
+        --text-secondary: #9aa8bc;
+        --text-muted: #748196;
 
         --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-strong: rgba(255, 255, 255, 0.16);
+        --border-soft: rgba(255, 255, 255, 0.04);
 
         /* Surfaces. */
-        --surface-primary: rgba(15, 23, 42, 0.76);
-        --surface-secondary: rgba(15, 23, 42, 0.56);
+        --surface-primary: rgba(11, 23, 40, 0.72);
+        --surface-secondary: rgba(15, 23, 42, 0.54);
         --surface-raised: rgba(15, 23, 42, 0.9);
-        --surface-glass: rgba(15, 23, 42, 0.72);
 
-        --shadow-sm: 0 14px 42px rgba(0, 0, 0, 0.42);
-        --shadow-md: 0 24px 64px rgba(0, 0, 0, 0.42);
+        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.32);
+        --shadow-md: 0 18px 54px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 32px 100px rgba(0, 0, 0, 0.52);
     }
     h1, h2, h3 { color: #ffffff; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); }
 }

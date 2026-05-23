@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 5 May 2026
+//Date: 22 May 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from "react";
@@ -94,7 +94,7 @@ describe("EventPanel Component", () => {
   test('displays "Event Details" heading.', () => {
     render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    expect(screen.getByRole("heading", { name: /event details/i})).toBeInTheDocument();
+    expect(screen.getByText(/event details/i)).toBeInTheDocument();
   });
 
   //Test #8: Dialog has correct aria-labelledby.

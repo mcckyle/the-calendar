@@ -10,11 +10,10 @@
     overflow: clip;
 
     min-height: 100dvh;
-    width: 100%;
+    padding: clamp(1rem, 2vw, 1.5rem);
 
     display: flex;
-    flex-direction: column;
-    padding: clamp(1rem, 1.8vw, 1.5rem) clamp(0.75rem, 1.5vw, 1.25rem);
+    justify-content: center;
 }
 .app-layout
 {
@@ -24,7 +23,7 @@
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(1rem, 1.8vw, 1.5rem);
+    gap: clamp(1.25rem, 2vw, 2rem);
 }
 
 /* ====================================
@@ -41,10 +40,10 @@
     pointer-events: none;
 
     filter: blur(120px);
-    opacity: 0.08;
+    opacity: 0.55;
 }
-.app::before { top: -18rem; left: -14rem; width: 44rem; height: 44rem; background: radial-gradient(circle, rgba(22, 63, 109, 0.28), transparent 72%); }
-.app::after { top: 12rem; right: -14rem; width: 36rem; height: 36rem; background: radial-gradient(circle, rgba(244, 165, 36, 0.22), transparent 72%); }
+.app::before { top: -18rem; left: -14rem; width: 44rem; height: 44rem; background: radial-gradient(circle, rgba(22, 63, 109, 0.16), transparent 72%); }
+.app::after { right: -12rem; bottom: -10rem; width: 36rem; height: 36rem; background: radial-gradient(circle, rgba(244, 165, 36, 0.14), transparent 72%); }
 
 /* ====================================
    App Hero Styles.
@@ -64,10 +63,10 @@
     text-align: center;
     gap: 0.65rem;
 }
-.eyebrow { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-muted); }
-.title { max-width: 10ch; font-size: clamp(3rem, 6vw, 5.8rem); line-height: 0.88; letter-spacing: -0.065em; text-wrap: balance; }
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); }
+.title { max-width: 10ch; font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.88; letter-spacing: -0.075em; text-wrap: balance; }
 .title-accent { color: var(--brand); }
-.tagline { max-width: 38rem; font-size: clamp(0.98rem, 1vw, 1.04rem); line-height: 1.8; color: var(--text-secondary); text-wrap: pretty; }
+.tagline { max-width: 42rem; font-size: clamp(1rem, 1.1vw, 1.08rem); line-height: 1.85; color: var(--text-secondary); text-wrap: pretty; }
 
 /* ====================================
    Calendar Shell Styles.
@@ -76,25 +75,19 @@
 {
     position: relative;
     overflow: hidden;
-    flex: 1;
-
-    width: 100%;
     min-height: 0;
+    padding: clamp(1rem, 1.5vw, 1.25rem);
 
-    display: flex;
-    flex-direction: column;
-    padding: clamp(0.85rem, 1.2vw, 1rem);
-
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 92%, transparent);
-    border-radius: clamp(1.25rem, 2vw, 2rem);
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 90%, transparent);
+    border-radius: var(--radius-xl);
     background: linear-gradient(
         to bottom,
         color-mix(in srgb, var(--surface-primary) 96%, transparent),
         color-mix(in srgb, var(--surface-secondary) 92%, transparent)
     );
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 .calendar-shell::before
 {
