@@ -47,7 +47,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       </nav>
     </header>
     <div
-      class="calendar-grid is-visible"
+      class="calendar-grid ready"
     >
       <section
         aria-label="Weekly calendar grid"
@@ -59,126 +59,122 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
           role="presentation"
         >
           <div
-            class="calendar-days-row"
+            aria-label="Days of the week"
+            class="days-of-week"
+            role="rowgroup"
           >
             <div
-              aria-label="Days of the week"
-              class="days-of-week"
-              role="rowgroup"
+              aria-current="date"
+              class="day-item is-today"
+              role="columnheader"
             >
-              <div
-                aria-current="date"
-                class="day-item is-today"
-                role="columnheader"
+              <span
+                class="day-label"
               >
-                <span
-                  class="day-label"
-                >
-                  Fri
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-10-30"
-                >
-                  October 31
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                Fri
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-10-30"
               >
-                <span
-                  class="day-label"
-                >
-                  Sat
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-10-31"
-                >
-                  November 1
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                October 31
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
               >
-                <span
-                  class="day-label"
-                >
-                  Sun
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-11-01"
-                >
-                  November 2
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                Sat
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-10-31"
               >
-                <span
-                  class="day-label"
-                >
-                  Mon
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-11-02"
-                >
-                  November 3
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                November 1
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
               >
-                <span
-                  class="day-label"
-                >
-                  Tue
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-11-03"
-                >
-                  November 4
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                Sun
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-11-01"
               >
-                <span
-                  class="day-label"
-                >
-                  Wed
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-11-04"
-                >
-                  November 5
-                </time>
-              </div>
-              <div
-                class="day-item "
-                role="columnheader"
+                November 2
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
               >
-                <span
-                  class="day-label"
-                >
-                  Thu
-                </span>
-                <time
-                  class="day-date"
-                  datetime="2025-11-05"
-                >
-                  November 6
-                </time>
-              </div>
+                Mon
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-11-02"
+              >
+                November 3
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
+              >
+                Tue
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-11-03"
+              >
+                November 4
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
+              >
+                Wed
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-11-04"
+              >
+                November 5
+              </time>
+            </div>
+            <div
+              class="day-item "
+              role="columnheader"
+            >
+              <span
+                class="day-label"
+              >
+                Thu
+              </span>
+              <time
+                class="day-date"
+                datetime="2025-11-05"
+              >
+                November 6
+              </time>
             </div>
           </div>
           <section
