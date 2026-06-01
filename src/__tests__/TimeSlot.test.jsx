@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 8 May 2026
+//Date: 1 June 2026
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -73,17 +73,33 @@ describe('TimeSlot', () => {
   });
 
   //Test #4: Renders "—" placeholder when the events array is empty.
-  test('renders "—" placeholder when the events array is empty.', () => {
-    render(
+//   test('renders "—" placeholder when the events array is empty.', () => {
+//     render(
+//       <TimeSlot
+//         label="9:00 AM"
+//         events={[]}
+//         onEventClick={mockOnEventClick}
+//       />
+//     );
+//
+//     expect(screen.getByText('—')).toBeInTheDocument();
+//   });
+
+  //Test #4: Snapshot test for UI consistency.
+  test('matches snapshot for default render.', () => {
+    const mockEvents = [
+      { id: 1, title: 'Workout' },
+       { id: 2, title: 'Dinner' },
+    ];
+
+    const { asFragment } = render(
       <TimeSlot
-        label="9:00 AM"
-        events={[]}
+        label="7:00 PM"
+        events={mockEvents}
         onEventClick={mockOnEventClick}
       />
     );
-
-    // Assert that the placeholder is rendered successfully.
-    expect(screen.getByText('—')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   //Test #5: Div has aria-label based on the time label.

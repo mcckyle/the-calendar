@@ -1,6 +1,6 @@
 //Filename: TimeSlot.jsx
 //Author: Kyle McColgan
-//Date: 8 May 2026
+//Date: 1 June 2026
 //Description: This file contains the individual time slots for the Saint Louis Events project.
 
 import React from "react";
@@ -26,14 +26,13 @@ const TimeSlot = ({ label, events, onEventClick }) => {
               className="event-chip"
               onClick={() => onEventClick(event)} //Notify parent when an event is clicked.
               aria-label={`View ${event.title}`}
-              title={event.title}
             >
               <span className="event-title">{event.title}</span>
             </button>
           ))
         ) : (
           // Placeholder for empty time slots.
-          <span className="slot-empty" aria-hidden="true">—</span>
+          <span className="slot-empty" aria-hidden="true" />
         )}
       </div>
     </div>

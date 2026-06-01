@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 28 May 2026
+//Date: 1 June 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -69,9 +69,9 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         onClick={(event) => event.stopPropagation()}
       >
         <header className="event-panel-header">
-          <p id="event-panel-title" className="event-panel-title">
+          <h2 id="event-panel-title" className="event-panel-title">
             Event Details
-          </p>
+          </h2>
           <button
             type="button"
             className="close-button"

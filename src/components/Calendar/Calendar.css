@@ -25,15 +25,6 @@
     display: flex;
     justify-content: center;
     padding-bottom: 0.2rem;
-
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-primary) 92%, transparent),
-        transparent
-    );
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
 }
 
 /* ====================================
@@ -77,9 +68,9 @@
     min-height: 0;
     width: 100%;
 
-    transition: opacity 240ms ease, transform 240ms ease;
+    transition: opacity 220ms ease;
 }
-.calendar-grid.loading { opacity: 0; transform: translateY(6px); pointer-events: none; }
+.calendar-grid.loading { opacity: 0; pointer-events: none; }
 .calendar-grid.ready { opacity: 1; transform: translateY(0); }
 
 /* ====================================
@@ -97,7 +88,7 @@
     scroll-behavior: smooth;
     scrollbar-gutter: stable both-edges;
 
-    mask-image: linear-gradient(to right, transparent, black 1rem, black calc(100% - 1rem), transparent);
+/*    mask-image: linear-gradient(to right, transparent, black 1rem, black calc(100% - 1rem), transparent);*/
 }
 
 /* ====================================
@@ -105,7 +96,7 @@
 ======================================= */
 .calendar-columns
 {
-    min-width: 1320px;
+    min-width: 1260px;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.7rem;

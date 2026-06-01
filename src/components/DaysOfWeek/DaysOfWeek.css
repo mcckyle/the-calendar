@@ -15,13 +15,7 @@
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.7rem;
     padding-bottom: 0.85rem;
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-primary) 90%, transparent),
-        transparent 88%
-    );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--surface-primary);
 }
 
 /* ====================================
@@ -43,7 +37,7 @@
 ======================================= */
 .day-label
 {
-    font-size: 0.54rem;
+    font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -67,10 +61,6 @@
     letter-spacing: -0.05em;
     color: var(--text-primary);
     border-radius: 999px;
-
-    transition: background-color var(--transition),
-                color var(--transition),
-                box-shadow var(--transition);
 }
 
 /* ====================================
@@ -80,8 +70,7 @@
 .day-item.is-today .day-date
 {
     padding-inline: 0.7rem;
-    background: color-mix(in srgb, var(--accent) 8%, transparent);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 14%, transparent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
 /*@media (hover: hover)

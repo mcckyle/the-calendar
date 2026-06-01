@@ -12,8 +12,6 @@
     flex-direction: column;
     border-radius: var(--radius-lg);
     grid-row: 2;
-
-    transition: background-color var(--transition), border-color var(--transition);
 }
 
 /* =========================================
@@ -21,15 +19,10 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--accent) 4%, transparent),
-        transparent 22%
-    );
+    background: color-mix(in srgb, var(--accent) 3%, transparent);
 }
-.weekday-column.is-today::before
+/*.weekday-column.is-today::before
 {
-    /* WeekDayColumn Today Accent Line Styles. */
     content: "";
     position: absolute;
     top: 0;
@@ -44,7 +37,7 @@
         color-mix(in srgb, var(--accent) 18%, transparent),
         transparent
     );
-}
+}*/
 
 /* ====================================
     Time Stack Styles.
@@ -55,7 +48,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.68rem;
+    gap: 0.6rem;
 }
 
 /*@media (hover: hover)

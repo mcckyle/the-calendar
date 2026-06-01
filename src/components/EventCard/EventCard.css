@@ -9,7 +9,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1.35rem;
+    gap: 1.5rem;
 
     line-height: 1.7;
 }
@@ -22,10 +22,10 @@
 {
     margin: 0;
 
-    font-size: clamp(2.1rem, 3vw, 2.9rem);
+    font-size: clamp(2rem, 3vw, 2.6rem);
     font-weight: 600;
-    line-height: 0.92;
-    letter-spacing: -0.068em;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
     text-wrap: balance;
 }
 
@@ -48,9 +48,9 @@
     align-items: center;
 
     padding: 0.42rem 0.72rem;
-    border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+    border: 1px solid var(--border-soft);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-secondary) 78%, transparent);
+    background: transparent;
 }
 .event-date { font-weight: 600; color: var(--text-primary); }
 .event-time { opacity: 0.84; }
@@ -64,7 +64,7 @@
     max-width: 66ch;
 
     font-size: 0.98rem;
-    line-height: 1.9;
+    line-height: 1.75;
 
     color: color-mix(in srgb, var(--text-primary) 90%, transparent);
     white-space: pre-line;
@@ -81,14 +81,13 @@
     gap: 0.72rem;
 
     margin: 0;
-    padding-top: 1rem;
+    padding-top: 0;
 
-    border-top: 1px solid color-mix(in srgb, var(--border-subtle) 48%, transparent);
+    border-top: none;
     font-size: 0.88rem;
     line-height: 1.75;
     color: var(--text-secondary);
 }
-.venue-icon { padding-top: 0.06rem; opacity: 0.58;  }
 .venue-text { flex: 1; min-width: 0; }
 
 /* ====================================
@@ -105,21 +104,20 @@
     font-weight: 600;
     color: var(--accent);
 
-    transition: opacity var(--transition), transform 140ms ease;
+    transition: opacity var(--transition);
 }
-.event-card-footer a::after
+/*.event-card-footer a::after
 {
     content: "↗";
     font-size: 0.78rem;
 
     transition: transform 140ms ease;
-}
+}*/
 .event-card-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0.35rem; }
 
 @media (hover: hover)
 {
-    .event-card-footer a:hover { opacity: 0.82; }
-    .event-card-footer a:hover::after { transform: translate(1px, -1px); }
+    .event-card-footer a:hover { opacity: 0.8; }
 }
 
 /* ====================================
@@ -139,8 +137,8 @@
 /* ====================================
    EventCard Dark Mode Media Query Styles.
 ======================================= */
-@media (prefers-color-scheme: dark)
+/*@media (prefers-color-scheme: dark)
 {
     .event-date, .event-time { background: rgba(255, 255, 255, 0.05); }
     .event-card-venue { background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent); }
-}
+}*/

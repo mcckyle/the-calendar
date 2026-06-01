@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TimeSlot matches snapshot for default render. 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Events at 7:00 PM"
+    class="time-slot"
+    role="group"
+  >
+    <span
+      aria-hidden="true"
+      class="time-label"
+    >
+      7:00 PM
+    </span>
+    <div
+      class="slot-events"
+      role="list"
+    >
+      <button
+        aria-label="View Workout"
+        class="event-chip"
+        type="button"
+      >
+        <span
+          class="event-title"
+        >
+          Workout
+        </span>
+      </button>
+      <button
+        aria-label="View Dinner"
+        class="event-chip"
+        type="button"
+      >
+        <span
+          class="event-title"
+        >
+          Dinner
+        </span>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

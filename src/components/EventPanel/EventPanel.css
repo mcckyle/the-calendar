@@ -23,12 +23,7 @@
     position: absolute;
     inset: 0;
     border: none;
-    background: radial-gradient(
-        circle at top,
-        rgba(244, 165, 36, 0.05),
-        transparent 34%
-    ),
-    rgba(6, 12, 20, 0.58);
+    background: rgba(6, 12, 20, 0.58);
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -54,14 +49,8 @@
 
     border: 1px solid color-mix(in srgb, var(--border-subtle) 74%, transparent);
     border-radius: calc(var(--radius-xl) + 0.1rem);
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-primary) 97%, transparent),
-        color-mix(in srgb, var(--surface-secondary) 94%, transparent)
-    );
-    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.16), 0 8px 24px rgba(15, 23, 42, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--surface-primary);
+    box-shadow: var(--shadow-lg);
 
     animation: panelEnter 240ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -80,10 +69,6 @@
 ======================================= */
 .event-panel-header
 {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,13 +76,7 @@
 
     padding: clamp(1rem, 1.5vw, 1.1rem) clamp(1.15rem, 2vw, 1.45rem);
     border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 62%, transparent);
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-primary) 92%, transparent),
-        transparent
-    );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--surface-primary);
 }
 
 /* ====================================
@@ -146,8 +125,7 @@
     font-size: 0.76rem;
     line-height: 1;
 
-    transition: background-color var(--transition),
-                color var(--transition),
+    transition: color var(--transition),
                 transform 140ms ease;
 }
 .close-button:active { transform: scale(0.96); }
@@ -155,7 +133,7 @@
 
 @media (hover: hover)
 {
-    .close-button:hover { background: color-mix(in srgb, var(--text-primary) 6%, transparent); color: var(--text-primary); }
+    .close-button:hover { color: var(--text-primary); }
 }
 
 /* ====================================

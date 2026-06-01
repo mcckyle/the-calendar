@@ -6,7 +6,6 @@
 .week-navigation
 {
     position: relative;
-    overflow: hidden;
     user-select: none;
 
     display: inline-flex;
@@ -17,10 +16,8 @@
     padding: 0.4rem;
     border: 1px solid color-mix(in srgb, var(--border-subtle) 78%, transparent);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-primary) 88%, transparent);
+    background: var(--surface-primary);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
 }
 /*.week-navigation::before
 {
@@ -40,9 +37,8 @@
     min-width: 10.5rem;
     padding-inline: 1rem;
 
-    font-family: var(--title-font);
-    font-size: 0.96rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: -0.045em;
     text-align: center;
@@ -73,7 +69,7 @@
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { background: color-mix(in srgb, var(--text-primary) 6%, transparent); color: var(--text-primary); }
+    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
