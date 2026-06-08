@@ -20,7 +20,7 @@
 {
     position: sticky;
     top: 0;
-    z-index: 80;
+    z-index: 5;
 
     display: flex;
     justify-content: center;
@@ -32,8 +32,8 @@
 ======================================= */
 .calendar-feedback
 {
-    width: fit-content;
-    max-width: min(100%, 30rem);
+    width: 100%;
+    max-width: 32rem;
     margin-inline: auto;
     padding: 0.95rem 1.15rem;
 
@@ -65,13 +65,14 @@
 .calendar-grid
 {
     flex: 1;
+    display: flex;
     min-height: 0;
     width: 100%;
 
     transition: opacity 220ms ease;
 }
 .calendar-grid.loading { opacity: 0; pointer-events: none; }
-.calendar-grid.ready { opacity: 1; transform: translateY(0); }
+.calendar-grid.ready { opacity: 1; }
 
 /* ====================================
    Calendar Horizontal Scroll Region Styles.
@@ -79,16 +80,16 @@
 .calendar-scroll-shell
 {
     position: relative;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto; /* Allow vertical scroll on mobile viewports. */
     padding-bottom: 0.45rem;
 
+    scroll-padding-inline: 1rem;
     overscroll-behavior-x: contain;
     scroll-behavior: smooth;
     scrollbar-gutter: stable both-edges;
-
-/*    mask-image: linear-gradient(to right, transparent, black 1rem, black calc(100% - 1rem), transparent);*/
 }
 
 /* ====================================
@@ -96,24 +97,11 @@
 ======================================= */
 .calendar-columns
 {
-    min-width: 1260px;
+    min-width: 1120px;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.7rem;
 }
-/*.calendar-days-row
-{
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    grid-column: 1 / -1;
-    padding-bottom: 0.9rem;
-    background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-primary) 76%, transparent),
-        transparent 86%
-    );
-}*/
 
 /* ====================================
    Calendar Week Columns Styles.
@@ -126,13 +114,13 @@
 ======================================= */
 @media (max-width: 1200px)
 {
-    .calendar-columns { min-width: 980px; gap: 0.65rem; }
+    .calendar-columns { min-width: 900px; gap: 0.65rem; }
 }
 
 @media (max-width: 768px)
 {
     .calendar { gap: 0.85rem; }
     .calendar-feedback { width: 100%; }
-    .calendar-columns { min-width: 920px; gap: 0.6rem; }
+    .calendar-columns { min-width: 840px; gap: 0.6rem; }
     .calendar-days-row { padding-bottom: 0.75rem; }
 }

@@ -6,10 +6,8 @@
 .weekday-column
 {
     position: relative;
-    min-width: 0;
+    min-width: clamp(160px, 14vw, 220px);
 
-    display: flex;
-    flex-direction: column;
     border-radius: var(--radius-lg);
     grid-row: 2;
 }
@@ -19,25 +17,13 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 3%, transparent);
-}
-/*.weekday-column.is-today::before
-{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 1.1rem;
-    right: 1.1rem;
-
-    height: 1px;
-    border-radius: 999px;
     background: linear-gradient(
-        to right,
-        transparent,
-        color-mix(in srgb, var(--accent) 18%, transparent),
-        transparent
+        180deg,
+        color-mix(in srgb, var(--accent) 5%, transparent),
+        transparent 18%
     );
-}*/
+    border-radius: var(--radius-lg);
+}
 
 /* ====================================
     Time Stack Styles.
@@ -51,21 +37,10 @@
     gap: 0.6rem;
 }
 
-/*@media (hover: hover)
-{
-    .weekday-column:hover { background: color-mix(in srgb, var(--surface-glass) 18%, transparent); }
-}*/
-
 /* ====================================
    WeekDayColumn Media Queries Styles.
 ======================================= */
-@media (max-width: 1024px)
-{
-    .weekday-column { min-width: 210px; }
-}
-
 @media (max-width: 768px)
 {
-    .weekday-column { min-width: 172px; }
     .time-slots { gap: 0.58rem; }
 }

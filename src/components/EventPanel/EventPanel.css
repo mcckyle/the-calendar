@@ -39,7 +39,7 @@
     position: relative;
     z-index: 1;
 
-    width: min(100%, 720px);
+    width: min(100%, 760px);
     max-height: min(92vh, 920px);
 
     display: flex;
@@ -49,33 +49,29 @@
 
     border: 1px solid color-mix(in srgb, var(--border-subtle) 74%, transparent);
     border-radius: calc(var(--radius-xl) + 0.1rem);
-    background: var(--surface-primary);
+    background: linear-gradient(180deg, var(--surface-raised), var(--surface-primary));
     box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     animation: panelEnter 240ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-/*.event-panel::before
-{
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent 26%);
-}*/
 
 /* ====================================
     EventPanel Header Styles.
 ======================================= */
 .event-panel-header
 {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
 
     padding: clamp(1rem, 1.5vw, 1.1rem) clamp(1.15rem, 2vw, 1.45rem);
-    border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 62%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--border-soft) 70%, transparent);
     background: var(--surface-primary);
 }
 
@@ -120,12 +116,14 @@
     flex-shrink: 0;
 
     border-radius: 999px;
+    background: color-mix(in srgb, var(--surface-secondary) 85%, transparent);
     color: var(--text-secondary);
 
     font-size: 0.76rem;
     line-height: 1;
 
-    transition: color var(--transition),
+    transition: background-color var(--transition),
+                color var(--transition),
                 transform 140ms ease;
 }
 .close-button:active { transform: scale(0.96); }
@@ -133,7 +131,7 @@
 
 @media (hover: hover)
 {
-    .close-button:hover { color: var(--text-primary); }
+    .close-button:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
@@ -147,8 +145,8 @@
 
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateY(14px) scale(0.992); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ====================================
@@ -157,7 +155,7 @@
 @media (max-width: 768px)
 {
     .event-modal-root { align-items: end; padding: 0; }
-    .event-panel { width: 100%; max-height: 95vh; border-right: none; border-bottom: none; border-left: none; border-radius: 1.8rem 1.8rem 0 0; }
+    .event-panel { width: 100%; max-height: 95vh; border-inline: none; border-radius: 1.8rem 1.8rem 0 0; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.14); }
     .event-panel-header { padding: 1rem; }
     .event-panel-body { padding: 1rem 1rem 1.4rem; }
 }

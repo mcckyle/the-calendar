@@ -5,8 +5,6 @@
 ======================================= */
 .days-of-week
 {
-    position: sticky;
-    top: 0;
     z-index: 50;
     grid-column: 1 / -1;
     width: 100%;
@@ -29,7 +27,7 @@
     flex-direction: column;
     gap: 0.34rem;
 
-    padding-inline: 0.55rem;
+    padding-inline: 0.25rem;
 }
 
 /* ====================================
@@ -71,13 +69,8 @@
 {
     padding-inline: 0.7rem;
     background: color-mix(in srgb, var(--accent) 10%, transparent);
+    font-weight: 700;
 }
-
-/*@media (hover: hover)
-{
-    .day-item:hover .day-date { background: color-mix(in srgb, var(--text-primary) 4%, transparent); }
-    .day-item.is-today:hover .day-date { background: color-mix(in srgb, var(--accent) 13%, transparent); }
-}*/
 
 /* ====================================
    DaysOfWeek Media Query Styling.

@@ -50,7 +50,7 @@
     padding: 0.42rem 0.72rem;
     border: 1px solid var(--border-soft);
     border-radius: 999px;
-    background: transparent;
+    background: color-mix(in srgb, var(--surface-secondary) 90%, transparent);
 }
 .event-date { font-weight: 600; color: var(--text-primary); }
 .event-time { opacity: 0.84; }
@@ -61,7 +61,7 @@
 .event-card-description
 {
     margin: 0;
-    max-width: 66ch;
+    max-width: 62ch;
 
     font-size: 0.98rem;
     line-height: 1.75;
@@ -81,9 +81,9 @@
     gap: 0.72rem;
 
     margin: 0;
-    padding-top: 0;
+    padding-top: 1rem;
 
-    border-top: none;
+    border-top: 1px solid color-mix(in srgb, var(--border-soft) 75%, transparent);
     font-size: 0.88rem;
     line-height: 1.75;
     color: var(--text-secondary);
@@ -106,13 +106,6 @@
 
     transition: opacity var(--transition);
 }
-/*.event-card-footer a::after
-{
-    content: "↗";
-    font-size: 0.78rem;
-
-    transition: transform 140ms ease;
-}*/
 .event-card-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0.35rem; }
 
 @media (hover: hover)
@@ -133,12 +126,3 @@
     .event-card-description { font-size: 0.94rem; line-height: 1.82; }
     .event-card-venue { font-size: 0.84rem; }
 }
-
-/* ====================================
-   EventCard Dark Mode Media Query Styles.
-======================================= */
-/*@media (prefers-color-scheme: dark)
-{
-    .event-date, .event-time { background: rgba(255, 255, 255, 0.05); }
-    .event-card-venue { background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent); }
-}*/

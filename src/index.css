@@ -10,10 +10,6 @@
     --title-font: "Inter", system-ui, sans-serif;
     --body-font: "Inter", system-ui, sans-serif;
 
-    /* Layout. */
-    --content-max-width: 1180px;
-    --content-narrow-width: 760px;
-
     /* Radius. */
     --radius-sm: 0.75rem;
     --radius-md: 1rem;
@@ -58,18 +54,17 @@
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; scroll-behavior: smooth; }
-html, body, #root { min-height: 100%; }
+html, body, #root { height: 100%; }
 body
 {
     margin: 0;
     overflow-x: hidden;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 
     font-family: var(--body-font);
     line-height: 1.6;
     letter-spacing: -0.02em;
 
-    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     color: var(--text-primary);
 
     -webkit-font-smoothing: antialiased;
