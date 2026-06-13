@@ -5,15 +5,11 @@
 ======================================= */
 .days-of-week
 {
-    z-index: 50;
     grid-column: 1 / -1;
-    width: 100%;
-
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 0.7rem;
-    padding-bottom: 0.85rem;
-    background: var(--surface-primary);
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
 /* ====================================
@@ -67,8 +63,8 @@
 .day-item.is-today .day-label { color: var(--accent); opacity: 1; }
 .day-item.is-today .day-date
 {
-    padding-inline: 0.7rem;
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding-inline: 0.65rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
     font-weight: 700;
 }
 

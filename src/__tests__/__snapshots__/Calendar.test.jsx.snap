@@ -47,7 +47,7 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       </nav>
     </header>
     <div
-      class="calendar-grid ready"
+      class="calendar-grid"
     >
       <section
         aria-label="Weekly calendar grid"
@@ -56,7 +56,6 @@ exports[`Calendar Component matches snapshot for default render. 1`] = `
       >
         <div
           class="calendar-columns"
-          role="presentation"
         >
           <div
             aria-label="Days of the week"

@@ -1,9 +1,9 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 28 May 2026
+//Date: 12 June 2026
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
-import React from "react";
+import React, { useMemo } from "react";
 import { getChicagoISODate } from "../../utils/dateHelpers";
 import TimeSlot from "../TimeSlot/TimeSlot.jsx";
 import "./WeekDayColumn.css";
@@ -18,8 +18,10 @@ const WeekDayColumn = ({
   convertTo12HourFormat,
 }) => {
   const dayISO = getChicagoISODate(day);
-  const todayISO = getChicagoISODate();
-  const isToday = dayISO === todayISO;
+  const isToday = useMemo(
+    () => dayISO === getChicagoISODate(),
+    [dayISO]
+  );
 
   const ariaLabel = `Events for ${day.toLocaleDateString("en-US", {
     weekday: "long",
