@@ -1,25 +1,26 @@
 //Filename: WeekNavigation.test.jsx
 //Author: Kyle McColgan
-//Date: 30 March 2026
+//Date: 17 June 2026
 //Description: This file contains unit tests for the MonthNavigation.jsx component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
+import { beforeAll, vi } from "vitest";
 import { render, screen, fireEvent } from '@testing-library/react';
 import WeekNavigation from '../components/WeekNavigation/WeekNavigation.jsx';
 import { useCalendarContext } from '../components/Calendar/CalendarContext';
 
 // Mock CalendarContext.jsx.
-jest.mock('../components/Calendar/CalendarContext', () => ({
-  useCalendarContext: jest.fn(),
+vi.mock('../components/Calendar/CalendarContext', () => ({
+  useCalendarContext: vi.fn(),
 }));
 
 describe('WeekNavigation Component', () => {
-	const mockChangeWeek = jest.fn();
+	const mockChangeWeek = vi.fn();
 	const mockCurrentDate = new Date('2024-11-01T00:00:00');
 
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		useCalendarContext.mockReturnValue({
 			currentDate: mockCurrentDate,
 			changeWeek: mockChangeWeek,

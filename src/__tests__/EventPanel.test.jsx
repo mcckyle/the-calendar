@@ -1,16 +1,17 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 12 June 2026
+//Date: 17 June 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from "react";
 import "@testing-library/jest-dom";
+import { beforeAll, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import EventPanel from "../components/EventPanel/EventPanel.jsx";
 
 // Mock EventCard for isolation.
-jest.mock("../components/EventCard/EventCard.jsx", () => {
-  return ({ title, date, startTime, endTime, description }) => (
+vi.mock("../components/EventCard/EventCard.jsx", () => ({
+  default:  ({ title, date, startTime, endTime, description }) => (
     <div data-testid="event-card">
       <h3>{title}</h3>
       <p>{date}</p>
@@ -18,11 +19,11 @@ jest.mock("../components/EventCard/EventCard.jsx", () => {
       <p>{endTime || "No End Time"}</p>
       <p>{description}</p>
     </div>
-  );
-});
+  )
+}));
 
 describe("EventPanel Component", () => {
-  const mockOnClose = jest.fn();
+  const mockOnClose = vi.fn();
   const mockEvent = {
     title: "Sample Event",
     date: "2024-12-25",
@@ -32,7 +33,7 @@ describe("EventPanel Component", () => {
   };
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   //Test #1: Calls onClose() when the overlay is clicked.

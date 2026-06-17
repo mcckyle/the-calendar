@@ -1,10 +1,11 @@
 //Filename: DaysOfWeek.test.jsx
 //Author: Kyle McColgan
-//Date: 7 April 2026
+//Date: 17 June 2026
 //Description: This file contains unit tests for the Days Of Week component.
 
 import React from "react";
 import "@testing-library/jest-dom";
+import { beforeAll, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import DaysOfWeek from "../components/DaysOfWeek/DaysOfWeek.jsx";
 

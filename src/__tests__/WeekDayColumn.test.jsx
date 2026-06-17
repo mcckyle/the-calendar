@@ -1,29 +1,31 @@
 //Filename: WeekDayColumn.test.jsx
 //Author: Kyle McColgan
-//Date: 8 May 2026
+//Date: 17 June 2026
 //Description: This file contains unit tests for the WeekDayColumn.jsx component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
+import { beforeAll, vi } from "vitest";
 import { render, screen, fireEvent } from '@testing-library/react';
 import WeekDayColumn from '../components/WeekDayColumn/WeekDayColumn.jsx';
 
 // Mock the TimeSlot component.
-jest.mock('../components/TimeSlot/TimeSlot.jsx', () => ({ hour, label, events, onEventClick }) => (
-
-  <div data-testid={`time-slot-${hour}`}>
-    <span>{label}</span>
-    {events.map((event, index) => (
-      <button
-        key={index}
-        data-testid={`event-${hour}-${index}`}
-        onClick={() => onEventClick(event)}
-      >
-        Click Event
-      </button>
-    ))}
+vi.mock('../components/TimeSlot/TimeSlot.jsx', () => ({
+  default: ({ hour, label, events, onEventClick }) => (
+    <div data-testid={`time-slot-${hour}`}>
+      <span>{label}</span>
+      {events.map((event, index) => (
+        <button
+          key={index}
+          data-testid={`event-${hour}-${index}`}
+          onClick={() => onEventClick(event)}
+        >
+          Click Event
+        </button>
+      ))}
   </div>
-));
+  )
+}));
 
 describe('WeekDayColumn', () => {
   const mockDay = new Date(2025, 0, 15); // Example date: January 15, 2025.
@@ -33,11 +35,11 @@ describe('WeekDayColumn', () => {
     12: [{ id: 2, title: 'Lunch Event' }],
   };
 
-  const mockOnEventClick = jest.fn();
-  const mockConvertTo12HourFormat = jest.fn((time) => `${time} AM/PM`);
+  const mockOnEventClick = vi.fn();
+  const mockConvertTo12HourFormat = vi.fn((time) => `${time} AM/PM`);
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   //Test #1: Renders the WeekDayColumn component without crashing.

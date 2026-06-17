@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TimeSlot matches snapshot for default render. 1`] = `
+exports[`TimeSlot > matches snapshot for default render. 1`] = `
 <DocumentFragment>
   <div
     aria-label="Events at 7:00 PM"

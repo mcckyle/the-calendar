@@ -1,18 +1,19 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 1 June 2026
+//Date: 17 June 2026
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
+import { beforeAll, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import TimeSlot from '../components/TimeSlot/TimeSlot.jsx';
 
 describe('TimeSlot', () => {
-  const mockOnEventClick = jest.fn();
+  const mockOnEventClick = vi.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   //Test #1: Renders the time label correctly.

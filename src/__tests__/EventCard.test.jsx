@@ -1,10 +1,11 @@
 //Filename: EventCard.test.jsx
 //Author: Kyle McColgan
-//Date: 5 February 2026
+//Date: 17 June 2026
 //Description: This file contains unit tests for the EventCard component.
 
 import React from 'react';
 import '@testing-library/jest-dom';
+import { beforeAll, vi } from "vitest";
 import { render, screen } from '@testing-library/react';
 import EventCard from '../components/EventCard/EventCard.jsx';
 

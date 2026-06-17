@@ -1,21 +1,22 @@
 //Filename: CalendarContext.test.jsx
 //Author: Kyle McColgan
-//Date: 8 May 2026
+//Date: 17 June 2026
 //Description: This file contains the unit tests for the context component for the Saint Louis React calendar project.
 
 import React from 'react';
+import { beforeAll, vi } from "vitest";
 import { renderHook, act } from '@testing-library/react';
 import { CalendarProvider, useCalendarContext } from '../components/Calendar/CalendarContext.jsx';
 
 describe('CalendarContext', () => {
 	beforeAll(() => {
-		jest.useFakeTimers({
+		vi.useFakeTimers({
 			now: new Date('2025-10-01T00:00:00Z').getTime(),
 		});
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	const wrapper = ({ children }) => <CalendarProvider>{children}</CalendarProvider>;
