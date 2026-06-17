@@ -7,12 +7,13 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.35rem;
 
-    padding: 0.3rem;
+    padding: 0.25rem;
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: var(--surface-raised);
+    background: color-mix(in srgb, var(--surface-primary) 85%, transparent);
+    backdrop-filter: blur(18px);
     box-shadow: var(--shadow-sm);
 }
 
@@ -21,9 +22,9 @@
 ======================================= */
 .week-nav-label
 {
-    min-width: 10rem;
+    min-width: 9rem;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 750;
     letter-spacing: -0.04em;
     text-align: center;
 }
@@ -33,26 +34,24 @@
 ======================================= */
 .week-nav-button
 {
-    width: 2.25rem;
+    width: 2rem;
     aspect-ratio: 1;
 
     display: grid;
     place-items: center;
 
-    border-radius: 999px;
+    border-radius: 50%;
     color: var(--text-secondary);
 
     transition: background-color var(--transition),
-                color var(--transition),
-                transform 140ms ease;
+                transform var(--transition);
 }
-.week-nav-button span { font-size: 1.05rem; line-height: 1; }
-.week-nav-button:active { transform: scale(0.94); }
-.week-nav-button:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 32%, transparent); }
+.week-nav-button span { font-size: 1.25rem; }
+.week-nav-button:active { transform: scale(0.92); }
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text-primary); }
+    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
@@ -60,6 +59,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-nav-label { min-width: 7.5rem; padding-inline: 0.6rem; font-size: 0.9rem; }
-    .week-nav-button { width: 2rem; }
+    .week-nav-label { min-width: 7rem; }
 }

@@ -5,12 +5,11 @@
 ============================================ */
 .weekday-column
 {
-    position: relative;
     min-width: clamp(160px, 14vw, 220px);
-
+    min-height: 100%;
     border-left: 1px solid var(--border-soft);
     border-right: 1px solid var(--border-soft);
-    border-radius: var(--radius-md);
+    background: transparent;
     overflow: hidden;
 }
 
@@ -21,8 +20,8 @@
 {
     background: linear-gradient(
         180deg,
-        color-mix(in srgb, var(--accent) 7%, transparent),
-        transparent
+        color-mix(in srgb, var(--accent) 6%, transparent),
+        transparent 35%
     );
 }
 
@@ -33,7 +32,7 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0;
 }
 
 /* ====================================

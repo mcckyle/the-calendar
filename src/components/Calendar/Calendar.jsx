@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 12 June 2026
+//Date: 17 June 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -58,7 +58,6 @@ const Calendar = () =>
 
   const handleEventClick = useCallback(setSelectedEvent, []);
   const closeEventPanel = useCallback(() => setSelectedEvent(null), []);
-  const isReady = (!loading) && (!error);
 
   return (
     <section
@@ -80,33 +79,31 @@ const Calendar = () =>
         </div>
       )}
 
-      <div className="calendar-grid">
-        <section
-          className="calendar-scroll-shell"
-          role="region"
-          aria-label="Weekly calendar grid"
-        >
-          <div className="calendar-columns">
-            <DaysOfWeek weekDays={weekDays} />
+      <section
+        className="calendar-scroll-shell"
+        role="region"
+        aria-label="Weekly calendar grid"
+      >
+        <div className="calendar-columns">
+          <DaysOfWeek weekDays={weekDays} />
 
-            <section
-              className="week-view"
-              role="grid"
-              aria-label="Weekly event columns"
-            >
-              {groupedByDay.map(({ key, day, grouped }) => (
-                <WeekDayColumn
-                  key={key}
-                  day={day}
-                  groupedEvents={grouped}
-                  onEventClick={handleEventClick}
-                  convertTo12HourFormat={convertTo12HourFormat}
-                />
-              ))}
-            </section>
-          </div>
-        </section>
-      </div>
+          <section
+            className="week-view"
+            role="grid"
+            aria-label="Weekly event columns"
+          >
+            {groupedByDay.map(({ key, day, grouped }) => (
+              <WeekDayColumn
+                key={key}
+                day={day}
+                groupedEvents={grouped}
+                onEventClick={handleEventClick}
+                convertTo12HourFormat={convertTo12HourFormat}
+              />
+            ))}
+          </section>
+        </div>
+      </section>
 
       {/* Conditionally render the EventPanel. */}
       {selectedEvent && (

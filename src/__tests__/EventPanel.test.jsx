@@ -68,7 +68,7 @@ describe("EventPanel Component", () => {
   test("calls onClose when Close button is clicked.", () => {
     render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    fireEvent.click(screen.getByRole("button", { name: /close button/i }));
+    fireEvent.click(screen.getByRole("button", { name: /close event details/i }));
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
