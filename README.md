@@ -113,12 +113,8 @@ the-calendar/
 │   └── EventCard.test.jsx
 │
 ├── .gitignore            # Files and directories to ignore in Git.
-├── .babelrc
 ├── eslint.config.js
 ├── vite.config.js
-├── jest.config.cjs
-├── jest.setup.js
-├── setupTests.js
 ├── index.html
 ├── package-lock.json
 ├── package.json          # Project metadata and dependencies.
