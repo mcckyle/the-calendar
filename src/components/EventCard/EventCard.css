@@ -5,23 +5,20 @@
 ======================================= */
 .event-card
 {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
 }
 
 /* ====================================
     EventCard Header Styles.
 ======================================= */
-.event-card-header { display: flex; flex-direction: column; gap: 0.9rem; }
+.event-card-header { display: grid; gap: 0.75rem; }
 .event-card-title
 {
-    margin: 0;
-
-    font-size: clamp(2rem, 3vw, 2.6rem);
-    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 750;
     line-height: 0.95;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.065em;
     text-wrap: balance;
 }
 
@@ -32,35 +29,27 @@
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    color: var(--text-secondary);
+    gap: 0.5rem;
 }
 .event-date,
 .event-time
 {
     font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
+    padding: 0.35rem 0.7rem;
     border: 1px solid var(--border-soft);
     border-radius: 999px;
-    background: transparent;
+    background: var(--surface-secondary);
 }
-.event-date { font-weight: 600; color: var(--text-primary); }
-.event-time { opacity: 0.84; }
 
 /* ====================================
    EventCard Description Styles.
 ======================================= */
 .event-card-description
 {
-    margin: 0;
-    max-width: 62ch;
-
-    font-size: 0.98rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
     line-height: 1.75;
-
-    color: color-mix(in srgb, var(--text-primary) 90%, transparent);
     white-space: pre-line;
-    text-wrap: pretty;
 }
 
 /* ====================================
@@ -72,42 +61,31 @@
 
     border-top: 1px solid var(--border-soft);
     color: var(--text-secondary);
+    font-size: 0.9rem;
 }
-.venue-text { flex: 1; min-width: 0; }
 
 /* ====================================
    EventCard Footer Link Styles.
 ======================================= */
-.event-card-footer { margin-top: 0.2rem; }
+.event-card-footer { margin-top: 0.5rem; }
 .event-card-footer a
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.42rem;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: var(--brand);
+    color: white;
+    font-weight: 700;
 
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--accent);
-
-    transition: opacity var(--transition);
+    transition: transform var(--transition), opacity var(--transition);
 }
-.event-card-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0.35rem; }
-
-@media (hover: hover)
-{
-    .event-card-footer a:hover { opacity: 0.8; }
-}
+.event-card-footer a:hover { opacity: 0.9; transform: translateY(-1px); }
 
 /* ====================================
    EventCard Media Queries Styles.
 ======================================= */
 @media (max-width: 768px)
 {
-    .event-card { gap: 1.2rem; }
-    .event-card-header { gap: 0.8rem; }
-    .event-card-title { font-size: 1.8rem; }
-    .event-card-meta { font-size: 0.7rem; }
-    .event-date, .event-time { padding: 0.4rem 0.66rem; }
-    .event-card-description { font-size: 0.94rem; line-height: 1.82; }
-    .event-card-venue { font-size: 0.84rem; }
+    .event-card-title { font-size: 1.9rem; }
 }

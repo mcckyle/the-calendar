@@ -7,46 +7,42 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
     aria-label="Weekly Saint Louis events calendar"
     class="calendar"
   >
-    <header
-      class="calendar-header"
+    <nav
+      aria-label="Calendar week navigation"
+      class="week-navigation"
     >
-      <nav
-        aria-label="Calendar week navigation"
-        class="week-navigation"
+      <button
+        aria-label="Previous week"
+        class="week-nav-button"
+        type="button"
       >
-        <button
-          aria-label="Previous week"
-          class="week-nav-button"
-          type="button"
+        <span
+          aria-hidden="true"
         >
-          <span
-            aria-hidden="true"
-          >
-            ‹
-          </span>
-        </button>
-        <time
-          aria-atomic="true"
-          aria-live="polite"
-          class="week-nav-label"
-          datetime="2025-10-31"
+          ‹
+        </span>
+      </button>
+      <time
+        aria-atomic="true"
+        aria-live="polite"
+        class="week-nav-label"
+        datetime="2025-10-31"
+      >
+        October 2025
+      </time>
+      <button
+        aria-label="Next week"
+        class="week-nav-button"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
         >
-          October 2025
-        </time>
-        <button
-          aria-label="Next week"
-          class="week-nav-button"
-          type="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            ›
-          </span>
-        </button>
-      </nav>
-    </header>
-    <section
+          ›
+        </span>
+      </button>
+    </nav>
+    <div
       aria-label="Weekly calendar grid"
       class="calendar-scroll-shell"
       role="region"
@@ -174,7 +170,6 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
           </div>
         </div>
         <section
-          aria-label="Weekly event columns"
           class="week-view"
           role="grid"
         >
@@ -229,7 +224,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
           </div>
         </section>
       </div>
-    </section>
+    </div>
   </section>
 </DocumentFragment>
 `;

@@ -1,6 +1,6 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 10 April 2026
+//Date: 22 June 2026
 //Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar.
 
 import { useState, useEffect, useRef } from "react";
@@ -26,24 +26,49 @@ const normalizeEvents = (rawEvents = []) => {
 
     return {
       id: event.id,
-      title: event.name || "Untitled Event",
-      //date: startISO,
+      title: event.name ?? "Untitled Event",
       startTime: start,
       endTime: end,
       allDay: event?.dates?.start?.noSpecificTime ?? false,
-      description: event.info || event.pleaseNote || "",
-      venueName: venue?.name || "",
-      venueAddress: venue?.address?.line1 || "",
-      venueCity: venue?.city?.name || "",
-      venueState: venue?.state?.stateCode || "",
-      url: event.url || "",
+      description: event.info ?? event.pleaseNote ?? "",
+      venueName: venue?.name ?? "",
+      venueAddress: venue?.address?.line1 ?? "",
+      venueCity: venue?.city?.name ?? "",
+      venueState: venue?.state?.stateCode ?? "",
+      url: event.url ?? "",
     };
   })
   .filter(Boolean)
   .sort((a, b) => a.startTime - b.startTime);
 };
 
-const fetchAndCache = async (apiUrl, start, end, signal) => {
+const getWeekRange = (date) =>
+{
+  const start = new Date(date);
+  const end = new Date(date);
+
+  end.setUTCDate(start.getUTCDate() + 6);
+  return {
+    start: start.toISOString().split("T")[0],
+    end: end.toISOString().split("T")[0],
+  };
+};
+
+const getAdjacentWeeks = (date) =>
+{
+  const current = new Date(date);
+  const previous = new Date(current);
+
+  previous.setUTCDate(current.getUTCDate() - 7);
+  const next = new Date(current);
+  next.setUTCDate(current.getUTCDate() + 7);
+  return {
+    previous,
+    next,
+  };
+};
+
+const fetchEvents = async (apiUrl, start, end, signal) => {
   const key = getKey(start, end);
 
   if (eventsCache.has(key))
@@ -65,31 +90,23 @@ const fetchAndCache = async (apiUrl, start, end, signal) => {
     }
 
     const data = await response.json();
-    const normalized = normalizeEvents(data?._embedded?.events ?? []);
+    const events = normalizeEvents(data?._embedded?.events ?? []);
 
-    eventsCache.set(key, normalized);
+    eventsCache.set(key, events);
 
-    return normalized;
+    return events;
 };
 
-const prefetchWeek = (apiUrl, startDate) => {
-  const start = new Date(startDate);
-  const end = new Date(startDate);
-  end.setUTCDate(start.getUTCDate() + 6);
-
-  const startISO = start.toISOString().split("T")[0];
-  const endISO = end.toISOString().split("T")[0];
-  const key = getKey(startISO, endISO);
+const prefetchWeek = (apiUrl, date) => {
+  const { start, end } = getWeekRange(date);
+  const key = getKey(start, end);
 
   if (eventsCache.has(key))
   {
     return;
   }
 
-  const controller = new AbortController();
-
-  //Silent fail for prefetch...
-  fetchAndCache(apiUrl, startISO, endISO, controller.signal).catch(() => {});
+  fetchEvents(apiUrl, start, end).catch(() => {});
 }
 
 export function useEvents(apiUrl, weekStart, weekEnd) {
@@ -105,24 +122,19 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
     }
 
     const key = getKey(weekStart, weekEnd);
+    const cached = eventsCache.get(key);
 
     //Serve instantly from cache, if available.
-    if (eventsCache.has(key))
+    if (cached)
     {
-      setEvents(eventsCache.get(key));
+      setEvents(cached);
       setLoading(false);
       setError(null);
 
       //Still prefetch neighbors.
-      const current = new Date(weekStart);
+      const { previous, next, } = getAdjacentWeeks(weekStart);
 
-      const prev = new Date(current);
-      prev.setUTCDate(current.getUTCDate() - 7);
-
-      const next = new Date(current);
-      next.setUTCDate(current.getUTCDate() + 7);
-
-      prefetchWeek(apiUrl, prev);
+      prefetchWeek(apiUrl, previous);
       prefetchWeek(apiUrl, next);
 
       return;
@@ -133,7 +145,6 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
 
     const controller = new AbortController();
     controllerRef.current = controller;
-    const { signal } = controller;
 
     const load = async () => {
       setLoading(true);
@@ -141,35 +152,28 @@ export function useEvents(apiUrl, weekStart, weekEnd) {
 
       try
       {
-          const result = await fetchAndCache(apiUrl, weekStart, weekEnd, signal);
+          const result = await fetchEvents(apiUrl, weekStart, weekEnd, controller.signal);
 
-          if (!signal.aborted)
+          if (!controller.signal.aborted)
           {
               setEvents(result);
           }
 
           //Prefetch adjacent weeks.
-          const current = new Date(weekStart);
-
-          const prev = new Date(current);
-          prev.setUTCDate(current.getUTCDate() - 7);
-
-          const next = new Date(current);
-          next.setUTCDate(current.getUTCDate() + 7);
-
-          prefetchWeek(apiUrl, prev);
+          const { previous, next, } = getAdjacentWeeks(weekStart);
+          prefetchWeek(apiUrl, previous);
           prefetchWeek(apiUrl, next);
       }
       catch (error)
       {
         if (error.name !== "AbortError")
         {
-          setError(error.message || "Unable to load events!");
+          setError(error.message ?? "Unable to load events!");
         }
       }
       finally
       {
-        if (!signal.aborted)
+        if (!controller.signal.aborted)
         {
           setLoading(false);
         }

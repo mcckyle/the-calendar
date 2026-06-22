@@ -1,6 +1,6 @@
 //Filename: WeekDayColumn.jsx
 //Author: Kyle McColgan
-//Date: 12 June 2026
+//Date: 22 June 2026
 //Description: This file contains the columns component for the Saint Louis React calendar project.
 
 import React, { useMemo } from "react";
@@ -35,17 +35,15 @@ const WeekDayColumn = ({
       className={`weekday-column ${isToday ? "is-today" : ""}`}
       aria-label={ariaLabel}
     >
-      <div className="time-slots" role="presentation">
-        {HOURS.map((hour) => (
-          <TimeSlot
-            key={`${dayISO}-${hour}`}
-            hour={hour} //Preserves stable test hooks, keeps slot identity explicit.
-            label={convertTo12HourFormat(`${hour}:00`)} // Convert hour to preferred 12-hour format.
-            events={groupedEvents[hour] ?? []} // Events for this hour, default to empty array.
-            onEventClick={onEventClick}
-          />
+      {HOURS.map((hour) => (
+        <TimeSlot
+          key={`${dayISO}-${hour}`}
+          hour={hour} //Preserves stable test hooks, keeps slot identity explicit.
+          label={convertTo12HourFormat(`${hour}:00`)} // Convert hour to preferred 12-hour format.
+          events={groupedEvents[hour] ?? []} // Events for this hour, default to empty array.
+          onEventClick={onEventClick}
+        />
         ))}
-      </div>
     </section>
   );
 };

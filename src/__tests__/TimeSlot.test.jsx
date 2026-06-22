@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 17 June 2026
+//Date: 22 June 2026
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -194,8 +194,8 @@ describe('TimeSlot', () => {
   });
 
 
-  //Test #10: Renders time label inside a span element.
-  test('renders time label inside a span element.', () => {
+  //Test #10: Renders time label inside a time element.
+  test('renders time label inside a time element.', () => {
     const label = '6:00 PM';
 
     render(
@@ -206,7 +206,7 @@ describe('TimeSlot', () => {
       />
     );
 
-    const span = screen.getByText(label).closest('span');
-    expect(span).not.toBeNull();
+    const time = screen.getByText(label).closest('time');
+    expect(time).not.toBeNull();
   });
 });

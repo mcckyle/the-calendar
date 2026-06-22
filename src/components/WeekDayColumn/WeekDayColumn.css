@@ -5,34 +5,25 @@
 ============================================ */
 .weekday-column
 {
-    min-width: clamp(160px, 14vw, 220px);
+    min-width: 0;
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
     border-left: 1px solid var(--border-soft);
-    border-right: 1px solid var(--border-soft);
-    background: transparent;
     overflow: hidden;
 }
+.weekday-column:last-child { border-right: 1px solid var(--border-soft); }
 
 /* =========================================
-   WeekDayColumn Today Column Styles.
+   WeekDayColumn Today Highlight Styles.
 ============================================ */
 .weekday-column.is-today
 {
     background: linear-gradient(
         180deg,
-        color-mix(in srgb, var(--accent) 6%, transparent),
-        transparent 35%
+        color-mix(in srgb, var(--accent) 7%, transparent),
+        transparent 45%
     );
-}
-
-/* ====================================
-    Time Stack Styles.
-======================================= */
-.time-slots
-{
-    display: flex;
-    flex-direction: column;
-    gap: 0;
 }
 
 /* ====================================
@@ -40,5 +31,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time-slots { gap: 0.5rem; }
+    .weekday-column { min-width: 150px; }
 }

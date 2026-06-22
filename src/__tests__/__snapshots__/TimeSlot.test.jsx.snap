@@ -7,12 +7,11 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
     class="time-slot"
     role="group"
   >
-    <span
-      aria-hidden="true"
+    <time
       class="time-label"
     >
       7:00 PM
-    </span>
+    </time>
     <div
       class="slot-events"
       role="list"
