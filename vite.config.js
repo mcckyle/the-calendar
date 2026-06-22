@@ -1,6 +1,6 @@
 //File name: vite.config.js
 //Author: Kyle McColgan
-//Date: 17 June 2026
+//Date: 22 June 2026
 //Description: This file contains the Vite configuration for the Saint Louis calendar React project.
 
 import { defineConfig } from 'vite'
@@ -16,6 +16,5 @@ export default defineConfig({
     env: {
       TZ: 'UTC', //Forces Node and the fake timer context to use UTC uniformly.
     },
-    setupFiles: './setupTests.js',
   },
 })
