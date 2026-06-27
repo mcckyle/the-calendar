@@ -1,12 +1,62 @@
 //Filename: eventUtils.js
 //Author: Kyle McColgan
-//Date: 14 April 2026
+//Date: 26 June 2026
 //Description: This file contains Calendar-related helper functions for the Saint Louis calendar project.
 
 const TIMEZONE = "America/Chicago";
 
+export const isValidDate = (value) =>
+{
+    return (value instanceof Date && !Number.isNaN(value.getTime()));
+};
+
+export const formatEventDate = (value) =>
+{
+    if (!isValidDate(value))
+    {
+        return null;
+    }
+    return new Intl.DateTimeFormat("en-US",
+    {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        timeZone: TIMEZONE,
+    }).format(value);
+};
+
+export const formatEventTimeRange = (startTime, endTime, allDay) =>
+{
+    if (allDay)
+    {
+        return "All Day";
+    }
+
+    const start = formatTime(startTime ? new Date(startTime) : null);
+
+    if (!start)
+    {
+        return null;
+    }
+
+    const end = formatTime(endTime ? new Date(endTime) : null);
+
+    return end ? `${start} - ${end}` : start;
+};
+
+export const formatVenue = ({ venueName, venueAddress, venueCity, venueState }) =>
+{
+    return [venueName, venueAddress, venueCity, venueState].filter(Boolean).join(", ");
+};
+
+export const hasEventMeta = (date, time, allDay) =>
+{
+    return Boolean(date || time || allDay);
+};
+
 export const formatTime = (date) => {
-    if (!(date instanceof Date) || (Number.isNaN(date)))
+    if (!(date instanceof Date) || (Number.isNaN(date.getTime())))
     {
         return null;
     }

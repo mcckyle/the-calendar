@@ -1,7 +1,7 @@
 /* Filename: src/components/TimeSlot/TimeSlot.css */
 
 /* ====================================
-    TimeSlot Layout Styles.
+    TimeSlot Time Row Styles.
 ======================================= */
 .time-slot
 {
@@ -9,23 +9,22 @@
     min-height: 4rem;
     display: grid;
     grid-template-columns: 2.8rem minmax(0, 1fr);
-    gap: 0.5rem;
+    gap: 0.45rem;
     border-bottom: 1px solid var(--border-soft);
 }
+.time-slot:last-child { border-bottom: none; }
 
 /* ====================================
     TimeSlot Time Label Styles.
 ======================================= */
 .time-label
 {
-    padding-top: 0.75rem;
+    padding-top: 0.7rem;
 
     font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: color-mix(in srgb, var(--text-primary) 32%, transparent);
-
-    white-space: nowrap;
+    color: color-mix(in srgb, var(--text-primary) 35%, transparent);
     user-select: none;
 }
 
@@ -36,8 +35,8 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.45rem 0;
+    gap: 0.3rem;
+    padding: 0.35rem 0;
 }
 
 /* ====================================
@@ -50,8 +49,8 @@
 
     padding: 0.55rem 0.65rem;
     border: 1px solid var(--border-soft);
-    border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--surface-raised) 85%, transparent);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--surface-raised) 90%, transparent);
     color: var(--text-primary);
     text-align: left;
 
@@ -61,7 +60,7 @@
 }
 .event-chip:active { transform: scale(0.98); }
 .event-chip:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
-.event-title { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 0.75rem; font-weight: 650; line-height: 1.35; letter-spacing: -0.02em; }
+.event-title { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 0.75rem; font-weight: 700; line-height: 1.35; letter-spacing: -0.02em; }
 
 @media (hover: hover)
 {

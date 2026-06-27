@@ -6,19 +6,19 @@
 .event-card
 {
     display: grid;
-    gap: 1.25rem;
+    gap: 1.5rem;
 }
 
 /* ====================================
     EventCard Header Styles.
 ======================================= */
-.event-card-header { display: grid; gap: 0.75rem; }
+.event-card-header { display: grid; gap: 0.9rem; }
 .event-card-title
 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 750;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 850;
     line-height: 0.95;
-    letter-spacing: -0.065em;
+    letter-spacing: -0.075em;
     text-wrap: balance;
 }
 
@@ -35,7 +35,8 @@
 .event-time
 {
     font-size: 0.75rem;
-    padding: 0.35rem 0.7rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
     border: 1px solid var(--border-soft);
     border-radius: 999px;
     background: var(--surface-secondary);
@@ -48,7 +49,7 @@
 {
     color: var(--text-secondary);
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.8;
     white-space: pre-line;
 }
 
@@ -62,6 +63,7 @@
     border-top: 1px solid var(--border-soft);
     color: var(--text-secondary);
     font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 /* ====================================
@@ -72,11 +74,11 @@
 {
     display: inline-flex;
     align-items: center;
-    padding: 0.65rem 1rem;
+    padding: 0.7rem 1.15rem;
     border-radius: 999px;
     background: var(--brand);
     color: white;
-    font-weight: 700;
+    font-weight: 750;
 
     transition: transform var(--transition), opacity var(--transition);
 }

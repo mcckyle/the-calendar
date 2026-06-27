@@ -11,11 +11,16 @@
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    gap: 0.75rem;
-    padding: max(1rem, env(safe-area-inset-top))
-             max(1rem, env(safe-area-inset-right))
-             max(1rem, env(safe-area-inset-bottom))
-             max(1rem, env(safe-area-inset-left));
+    padding: max(1.25rem, env(safe-area-inset-top))
+             max(1.5rem, env(safe-area-inset-right))
+             max(1.25rem, env(safe-area-inset-bottom))
+             max(1.5rem, env(safe-area-inset-left));
+    background: radial-gradient(
+        circle at top,
+        color-mix(in srgb, var(--brand) 10%, transparent),
+        transparent 45%
+    ),
+    var(--bg-primary);
 }
 
 /* ====================================
@@ -24,19 +29,18 @@
 .hero
 {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-inline: 0.25rem;
+    padding-bottom: 1rem;
     margin: 0 auto;
 }
 .hero-copy { display: grid; gap: 0.25rem; text-align: center; }
 .eyebrow { color: var(--accent); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
-.title { font-size: clamp(2.25rem, 6vw, 4.5rem); font-weight: 850; letter-spacing: -0.075em; line-height: 0.9; }
+.title { font-size: clamp(2.25rem, 5vw, 4.25rem); font-weight: 900; letter-spacing: -0.08em; line-height: 0.9; }
 .title span { color: var(--brand); }
-.tagline { color: var(--text-secondary); font-size: clamp(0.85rem, 1.5vw, 1rem); }
+.tagline { color: var(--text-secondary); max-width: 42rem; font-size: clamp(0.85rem, 1.5vw, 1rem); }
 
 /* ====================================
-   Calendar Frame Styles.
+   Calendar Workspace Styles.
 ======================================= */
 .calendar-shell
 {
@@ -47,10 +51,10 @@
 
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
-    background: color-mix(in srgb, var(--surface-primary), transparent 10%);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: color-mix(in srgb, var(--surface-primary), transparent 8%);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 /* ====================================
@@ -58,7 +62,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .app { padding-inline: 0.75rem; }
-    .hero { padding-inline: 0; }
+    .app { padding-inline: 0.85rem; }
     .calendar-shell { border-radius: var(--radius-lg); }
 }

@@ -9,6 +9,7 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
     border-left: 1px solid var(--border-soft);
     overflow: hidden;
 }
@@ -21,9 +22,19 @@
 {
     background: linear-gradient(
         180deg,
-        color-mix(in srgb, var(--accent) 7%, transparent),
-        transparent 45%
+        color-mix(in srgb, var(--accent) 8%, transparent),
+        transparent 40%
     );
+}
+.weekday-column.is-today::before
+{
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0.8;
 }
 
 /* ====================================

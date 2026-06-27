@@ -1,7 +1,7 @@
 /* Filename: src/components/EventPanel/EventPanel.css */
 
 /* ====================================
-   EventPanel Modal Root Styles.
+   EventPanel Modal Layer Styles.
 ======================================= */
 .event-modal-root
 {
@@ -19,7 +19,9 @@
     position: absolute;
     inset: 0;
     pointer-events: auto;
-    background: rgba(7, 17, 31, 0.24);
+    background: color-mix(in srgb, var(--bg-primary) 45%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
     animation: overlayFade 180ms ease;
 }
@@ -33,19 +35,19 @@
     top: 0;
     right: 0;
     height: 100%;
-    width: min(32rem, 100%);
+    width: min(34rem, 100%);
 
     display: flex;
     flex-direction: column;
     pointer-events: auto;
 
     border-left: 1px solid var(--border-subtle);
-    background: color-mix(in srgb, var(--surface-primary) 90%, transparent);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: color-mix(in srgb, var(--surface-primary) 94%, transparent);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     box-shadow: var(--shadow-lg);
 
-    animation: panelEnter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    animation: panelEnter 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ====================================
@@ -67,8 +69,8 @@
 .event-panel-title
 {
     margin: 0;
-    font-size: 0.68rem;
-    font-weight: 800;
+    font-size: 0.7rem;
+    font-weight: 850;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -81,7 +83,7 @@
 {
     flex: 1;
     overflow: auto;
-    padding: clamp(1.25rem, 4vw, 2.5rem);
+    padding: clamp(1.25rem, 4vw, 2.75rem);
 }
 
 /* ====================================
@@ -89,7 +91,7 @@
 ======================================= */
 .close-button
 {
-    width: 2.2rem;
+    width: 2.25rem;
     aspect-ratio: 1;
 
     display: grid;
@@ -98,17 +100,18 @@
     border-radius: 50%;
     background: var(--surface-secondary);
     color: var(--text-secondary);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 
     transition: transform var(--transition),
-                background var(--transition);
+                background var(--transition),
+                color var(--transition);
 }
 .close-button:active { transform: scale(0.94); }
 .close-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (hover: hover)
 {
-    .close-button:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+    .close-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
