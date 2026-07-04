@@ -6,7 +6,8 @@
 .event-card
 {
     display: grid;
-    gap: 1.5rem;
+    align-content: start;
+    gap: clamp(1.4rem, 2vw, 2rem);
 }
 
 /* ====================================
@@ -15,10 +16,10 @@
 .event-card-header { display: grid; gap: 0.9rem; }
 .event-card-title
 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-size: clamp(2rem, 5vw, 3.4rem);
     font-weight: 850;
-    line-height: 0.95;
-    letter-spacing: -0.075em;
+    line-height: 0.96;
+    letter-spacing: -0.065em;
     text-wrap: balance;
 }
 
@@ -28,15 +29,20 @@
 .event-card-meta
 {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 .event-date,
 .event-time
 {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.8rem;
     font-size: 0.75rem;
     font-weight: 700;
-    padding: 0.35rem 0.75rem;
+
     border: 1px solid var(--border-soft);
     border-radius: 999px;
     background: var(--surface-secondary);
@@ -47,6 +53,7 @@
 ======================================= */
 .event-card-description
 {
+    max-width: 68ch;
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.8;
@@ -58,12 +65,14 @@
 ======================================= */
 .event-card-venue
 {
-    padding-top: 1rem;
+    display: grid;
+    gap: 0.35rem;
+    padding-top: 1.25rem;
 
     border-top: 1px solid var(--border-soft);
     color: var(--text-secondary);
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 /* ====================================
@@ -74,15 +83,16 @@
 {
     display: inline-flex;
     align-items: center;
-    padding: 0.7rem 1.15rem;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
     border-radius: 999px;
     background: var(--brand);
     color: white;
     font-weight: 750;
 
-    transition: transform var(--transition), opacity var(--transition);
+    transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition);
 }
-.event-card-footer a:hover { opacity: 0.9; transform: translateY(-1px); }
+.event-card-footer a:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
 /* ====================================
    EventCard Media Queries Styles.

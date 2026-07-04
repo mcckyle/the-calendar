@@ -50,7 +50,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
       <div
         class="calendar-columns"
       >
-        <div
+        <header
           aria-label="Days of the week"
           class="days-of-week"
           role="rowgroup"
@@ -168,7 +168,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
               November 6
             </time>
           </div>
-        </div>
+        </header>
         <section
           class="week-view"
           role="grid"

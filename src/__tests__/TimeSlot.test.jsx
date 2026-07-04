@@ -1,6 +1,6 @@
 //Filename: TimeSlot.test.jsx
 //Author: Kyle McColgan
-//Date: 22 June 2026
+//Date: 3 July 2026
 //Description: This file contains the unit tests for the TimeSlot component.
 
 import React from 'react';
@@ -103,8 +103,8 @@ describe('TimeSlot', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  //Test #5: Div has aria-label based on the time label.
-  test('div has aria-label based on the time label.', () => {
+  //Test #5: Div has aria-labelledby based on the time label.
+  test('div has accessible label based on the time label.', () => {
     render(
       <TimeSlot
         label="11:00 AM"
@@ -113,8 +113,8 @@ describe('TimeSlot', () => {
       />
     );
 
-    const div = screen.getByLabelText(/Events at 11:00 AM/i);
-    expect(div).toBeInTheDocument();
+    const timeSlotGroup = screen.getByRole('group', { name: /11:00 AM/i });
+    expect(timeSlotGroup).toBeInTheDocument();
   });
 
   //Test #6: Each event button has correct aria-label for accessibility purposes.

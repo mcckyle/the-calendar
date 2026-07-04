@@ -3,12 +3,13 @@
 exports[`TimeSlot > matches snapshot for default render. 1`] = `
 <DocumentFragment>
   <div
-    aria-label="Events at 7:00 PM"
+    aria-labelledby="time-7:00-PM"
     class="time-slot"
     role="group"
   >
     <time
       class="time-label"
+      id="time-7:00-PM"
     >
       7:00 PM
     </time>
