@@ -8,8 +8,8 @@
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: clamp(0.45rem, 0.70vw, 0.75rem);
-    padding-bottom: 0.35rem;
+    gap: clamp(0.55rem, 0.80vw, 0.90rem);
+    padding-bottom: 0.50rem;
 }
 
 /* ====================================
@@ -19,8 +19,8 @@
 {
     min-width: 0;
     display: grid;
-    gap: 0.30rem;
-    align-content: start;
+    gap: 0.40rem;
+    padding-bottom: 0.35rem;
 }
 
 /* ====================================
@@ -28,9 +28,9 @@
 ======================================= */
 .day-label
 {
-    font-size: 0.65rem;
-    font-weight: 850;
-    letter-spacing: 0.18em;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -41,9 +41,9 @@
 .day-date
 {
     width: max-content;
-    font-size: 1.05rem;
-    font-weight: 800;
-    letter-spacing: -0.05em;
+    font-size: 1.1rem;
+    font-weight: 850;
+    letter-spacing: -0.06em;
 }
 
 /* ====================================
@@ -53,14 +53,11 @@
 .day-item.is-today .day-date
 {
     width: fit-content;
-    padding: 0.30rem 0.65rem;
-    margin-left: -0.65rem;
+    padding: 0.35rem 0.80rem;
+    margin-left: -0.80rem;
     border-radius: 999px;
-    background: linear-gradient(
-        to right,
-        color-mix(in srgb, var(--accent) 18%, transparent),
-        color-mix(in srgb, var(--accent) 18%, transparent)
-    );
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 /* ====================================

@@ -5,16 +5,23 @@
 ============================================ */
 .weekday-column
 {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
     min-width: 0;
-    position: relative;
+
     overflow: hidden;
     isolation: isolate;
 
     border-inline-start: 1px solid var(--border-soft);
-    background: transparent;
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-secondary) 32%, transparent),
+        transparent 12rem
+    );
+
+    transition: background var(--transition);
 
 }
 .weekday-column:last-child { border-inline-end: 1px solid var(--border-soft); }
@@ -25,19 +32,18 @@
 .weekday-column.is-today
 {
     background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--accent) 6%, transparent),
-        transparent 18%
+        180deg,
+        color-mix(in srgb, var(--accent) 10%, transparent),
+        transparent 16rem
     );
 }
 .weekday-column.is-today::before
 {
     content: "";
     position: absolute;
+    inset-inline: 0.75rem;
     top: 0;
-    left: 0.4rem;
-    right: 0.4rem;
-    height: 0.2rem;
+    height: 3px;
     border-radius: 999px;
     background: var(--accent);
     opacity: 0.90;

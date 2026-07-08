@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 3 July 2026
+//Date: 8 July 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -57,32 +57,35 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         aria-label="Close event details"
         onClick={onClose}
       />
-      <aside
-        ref={panelRef}
-        className="event-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="event-panel-title"
-        aria-describedby="event-panel-content"
-        tabIndex={-1}
-      >
-        <header className="event-panel-header">
-          <p id="event-panel-title" className="event-panel-title">
-            Event Details
-          </p>
-          <button
-            className="close-button"
-            aria-label="Close"
-            onClick={onClose}
-          >
-            ✕
-          </button>
-        </header>
 
-        <div id="event-panel-content" className="event-panel-body">
-          <EventCard {...selectedEvent} />
-        </div>
-      </aside>
+      <div className="event-panel-layout">
+        <aside
+          ref={panelRef}
+          className="event-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="event-panel-title"
+          aria-describedby="event-panel-content"
+          tabIndex={-1}
+        >
+          <header className="event-panel-header">
+            <p id="event-panel-title" className="event-panel-title">
+              Event Details
+            </p>
+            <button
+              className="close-button"
+              aria-label="Close"
+              onClick={onClose}
+            >
+              ✕
+            </button>
+          </header>
+
+          <div id="event-panel-content" className="event-panel-body">
+            <EventCard {...selectedEvent} />
+          </div>
+        </aside>
+      </div>
     </div>,
     document.body
   );

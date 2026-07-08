@@ -5,21 +5,28 @@
 ======================================= */
 .app
 {
+    position: relative;
     width: 100%;
-    height: 100dvh;
-    overflow: hidden;
+    min-height: 100dvh;
+    overflow-y: auto;
+    isolation: isolate;
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(1.25rem, 2vw, 2rem);
     padding: max(1.25rem, env(safe-area-inset-top))
              max(1.5rem, env(safe-area-inset-right))
-             max(1.25rem, env(safe-area-inset-bottom))
+             max(1.5rem, env(safe-area-inset-bottom))
              max(1.5rem, env(safe-area-inset-left));
     background: radial-gradient(
-        circle at top,
-        color-mix(in srgb, var(--brand) 10%, transparent),
-        transparent 45%
+        900px circle at 50% -20%,
+        color-mix(in srgb, var(--brand) 12%, transparent),
+        transparent 70%
+    ),
+    radial-gradient(
+        700px circle at right center,
+        color-mix(in srgb, var(--accent) 6%, transparent),
+        transparent 72%
     ),
     var(--bg-primary);
 }
@@ -29,38 +36,53 @@
 ======================================= */
 .hero
 {
-    display: grid;
-    place-items: center;
-    max-width: 1400px;
-    width: 100%;
+    width: min(var(--content-width), 100%);
     margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: clamp(0.5rem, 1vw, 1rem);
 }
-.hero-copy { display: grid; gap: 0.45rem; text-align: center; max-width: 46rem; }
-.eyebrow { color: var(--accent); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
-.title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.92; }
+.hero-copy { display: grid; gap: 0.6rem; text-align: center; max-width: 48rem; }
+.eyebrow { color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; }
+.title { font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 900; letter-spacing: -0.075em; line-height: 0.9; text-wrap: balance; }
 .title span { color: var(--brand); }
-.tagline { color: var(--text-secondary); font-size: clamp(0.95rem, 1.3vw, 1.05rem); line-height: 1.6; margin-inline: auto; max-width: 42rem; }
+.tagline { max-width: 42rem; margin-inline: auto; color: var(--text-secondary); font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; text-wrap: pretty; }
 
 /* ====================================
    Calendar Workspace Styles.
 ======================================= */
 .calendar-shell
 {
+    position: relative;
     display: flex;
     min-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    isolation: isolate;
 
     border: 1px solid var(--border-subtle);
     border-radius: clamp(1.5rem, 2vw, 2.25rem);
     background: linear-gradient(
-        to bottom,
+        180deg,
         color-mix(in srgb, var(--surface-raised) 92%, transparent),
         var(--surface-primary)
     );
     box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    isolation: isolate;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+.calendar-shell::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.8;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22),
+        transparent 22%
+    );
 }
 
 /* ====================================

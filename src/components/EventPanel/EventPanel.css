@@ -7,9 +7,22 @@
 {
     position: fixed;
     inset: 0;
+    display: flex;
+    justify-content: flex-end;
     z-index: 2000;
-    pointer-events: none;
     isolation: isolate;
+}
+
+/* ====================================
+   EventPanel Layout Wrapper Styles.
+======================================= */
+.event-panel-layout
+{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    pointer-events: none;
 }
 
 /* ====================================
@@ -20,9 +33,10 @@
     position: absolute;
     inset: 0;
     pointer-events: auto;
-    background: color-mix(in srgb, var(--bg-primary) 38%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 0;
+    background: color-mix(in srgb, var(--bg-primary) 45%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
     animation: overlayFade 180ms ease;
 }
@@ -32,27 +46,26 @@
 ======================================= */
 .event-panel
 {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-end: 0;
-    width: min(36rem, 100%);
+    position: relative;
+    width: min(38rem, 100%);
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     pointer-events: auto;
+    overflow: hidden;
 
     border-inline-start: 1px solid var(--border-subtle);
     background: linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--surface-raised) 92%, transparent),
+        180deg,
+        color-mix(in srgb, var(--surface-raised) 94%, transparent),
         var(--surface-primary)
     );
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     box-shadow: var(--shadow-lg);
-    overflow: hidden;
 
-    animation: panelEnter 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ====================================
@@ -65,10 +78,11 @@
     justify-content: space-between;
     gap: 1rem;
 
-    padding: 1rem 1.25rem;
+    padding: 1.15rem 1.5rem;
     border-bottom: 1px solid var(--border-soft);
-    background: color-mix(in srgb, var(--surface-primary) 95%, transparent);
-    flex-shrink: 0;
+    background: color-mix(in srgb, var(--surface-primary) 96%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 /* ====================================
@@ -76,10 +90,9 @@
 ======================================= */
 .event-panel-title
 {
-    margin: 0;
-    font-size: 0.7rem;
-    font-weight: 850;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -90,9 +103,8 @@
 .event-panel-body
 {
     flex: 1;
-    min-height: 0;
     overflow-y: auto;
-    padding: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.75rem, 4vw, 3.25rem);
     scrollbar-gutter: stable;
 }
 
@@ -101,27 +113,27 @@
 ======================================= */
 .close-button
 {
-    width: 2.5rem;
+    width: 2.6rem;
     aspect-ratio: 1;
-    flex-shrink: 0;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
-    background: var(--surface-secondary);
+    background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
     color: var(--text-secondary);
 
-    transition: background var(--transition),
+    transition: transform var(--transition),
+                background var(--transition),
                 color var(--transition),
-                transform var(--transition);
+                box-shadow var(--transition);
 }
 .close-button:active { transform: scale(0.94); }
 .close-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (hover: hover)
 {
-    .close-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); }
+    .close-button:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); box-shadow: var(--shadow-sm); color: var(--text-primary); }
 }
 
 /* ====================================
@@ -149,7 +161,7 @@
         top: auto;
         bottom: 0;
         width: 100%;
-        height: min(85vh, 40rem);
+        height: min(90vh, 42rem);
 
         border-left: none;
         border-top: 1px solid var(--border-subtle);
