@@ -7,41 +7,45 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
     aria-label="Weekly Saint Louis events calendar"
     class="calendar"
   >
-    <nav
-      aria-label="Calendar week navigation"
-      class="week-navigation"
+    <div
+      class="calendar-toolbar"
     >
-      <button
-        aria-label="Previous week"
-        class="week-nav-button"
-        type="button"
+      <nav
+        aria-label="Calendar week navigation"
+        class="week-navigation"
       >
-        <span
-          aria-hidden="true"
+        <button
+          aria-label="Previous week"
+          class="week-nav-button"
+          type="button"
         >
-          ‹
-        </span>
-      </button>
-      <time
-        aria-atomic="true"
-        aria-live="polite"
-        class="week-nav-label"
-        datetime="2025-10-31"
-      >
-        October 2025
-      </time>
-      <button
-        aria-label="Next week"
-        class="week-nav-button"
-        type="button"
-      >
-        <span
-          aria-hidden="true"
+          <span
+            aria-hidden="true"
+          >
+            ‹
+          </span>
+        </button>
+        <time
+          aria-atomic="true"
+          aria-live="polite"
+          class="week-nav-label"
+          datetime="2025-10-31"
         >
-          ›
-        </span>
-      </button>
-    </nav>
+          October 2025
+        </time>
+        <button
+          aria-label="Next week"
+          class="week-nav-button"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ›
+          </span>
+        </button>
+      </nav>
+    </div>
     <div
       aria-label="Weekly calendar grid"
       class="calendar-scroll-shell"
@@ -169,60 +173,55 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
             </time>
           </div>
         </header>
-        <section
-          class="week-view"
-          role="grid"
+        <div
+          data-testid="week-day-column"
         >
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Fri Oct 31 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Sat Nov 1 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Sun Nov 2 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Mon Nov 3 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Tue Nov 4 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Wed Nov 5 2025
-            </span>
-          </div>
-          <div
-            data-testid="week-day-column"
-          >
-            <span>
-              Thu Nov 6 2025
-            </span>
-          </div>
-        </section>
+          <span>
+            Fri Oct 31 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sat Nov 1 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Sun Nov 2 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Mon Nov 3 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Tue Nov 4 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Wed Nov 5 2025
+          </span>
+        </div>
+        <div
+          data-testid="week-day-column"
+        >
+          <span>
+            Thu Nov 6 2025
+          </span>
+        </div>
       </div>
     </div>
   </section>

@@ -18,7 +18,7 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
       role="list"
     >
       <button
-        aria-label="View Workout"
+        aria-label="View details for Workout"
         class="event-chip"
         type="button"
       >
@@ -29,7 +29,7 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
         </span>
       </button>
       <button
-        aria-label="View Dinner"
+        aria-label="View details for Dinner"
         class="event-chip"
         type="button"
       >

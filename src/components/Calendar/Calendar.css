@@ -8,9 +8,21 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     gap: clamp(1rem, 1vw, 1.35rem);
-    min-height: 0;
     flex: 1;
+    min-height: 0;
     padding: clamp(1.1rem, 1.5vw, 1.75rem);
+}
+.calendar-toolbar
+{
+    display: grid;
+    gap: 1rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 15;
+
+    background: linear-gradient(to bottom, var(--surface-primary), color-mix(in srgb, var(--surface-primary) 90%, transparent));
+    backdrop-filter: blur(20px);
 }
 
 /* ====================================
@@ -19,7 +31,6 @@
 .calendar > .week-navigation
 {
     justify-self: center;
-    align-self: start;
 }
 
 /* ====================================
@@ -28,7 +39,7 @@
 .calendar-feedback
 {
     position: sticky;
-    top: 0;
+    top: calc(100% + 0.50rem);
     z-index: 5;
     display: inline-flex;
     align-self: center;
@@ -53,13 +64,12 @@
 {
     position: relative;
     min-height: 0;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    display: flex;
-    flex-direction: column;
+    display: block;
     padding-inline: 0.15rem; /* Prevent scrollbar visually touching columns. */
 
-    overscroll-behavior: contain;
     scrollbar-gutter: stable;
     isolation: isolate;
 }
@@ -75,18 +85,13 @@
     align-items: stretch;
     align-content: start;
     gap: clamp(0.55rem, 0.8vw, 0.9rem);
+    overflow: visible;
 }
-
-/* ====================================
-   Calendar Grid Accessibility Styles.
-======================================= */
-.week-view { display: contents; }
-.week-view > * { min-width: 0; }
 
 /* ====================================
    Calendar Media Queries Styles.
 ======================================= */
 @media (max-width: 900px)
 {
-    .calendar-columns { min-width: 850px; }
+    .calendar-columns { min-width: max(100%, 7 * 150px); }
 }

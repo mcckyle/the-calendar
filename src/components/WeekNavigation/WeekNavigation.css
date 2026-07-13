@@ -7,6 +7,7 @@
 {
     display: inline-flex;
     align-items: center;
+    margin-inline: auto;
     gap: 0.45rem;
 
     padding: 0.45rem;
@@ -29,9 +30,9 @@
 {
     min-width: clamp(8rem, 11vw, 10rem);
     padding-inline: 0.55rem;
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     text-align: center;
 }
 
@@ -58,7 +59,7 @@
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); box-shadow: inset 0 0 0 1px var(--border-soft); }
+    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); transform: translateY(-1px); box-shadow: inset 0 0 0 1px var(--border-soft); }
 }
 
 /* ====================================
