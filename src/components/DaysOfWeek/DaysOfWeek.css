@@ -5,11 +5,13 @@
 ======================================= */
 .days-of-week
 {
+    /* Header should always match and align with the columns. */
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: clamp(0.55rem, 0.80vw, 0.90rem);
-    padding-bottom: 0.90rem;
+    grid-template-columns: inherit;
+    gap: inherit;
+    margin-bottom: 0.25rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-soft);
 }
 
@@ -19,9 +21,9 @@
 .day-item
 {
     min-width: 0;
-    display: grid;
-    gap: 0.55rem;
-    padding-bottom: 0.60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
 }
 
 /* ====================================
@@ -54,12 +56,14 @@
 .day-item.is-today .day-label { color: var(--accent); }
 .day-item.is-today .day-date
 {
-    align-items: flex-start;
+    display: inline-flex;
+    align-items: center;
     width: fit-content;
-    padding: 0.35rem 0.80rem;
+    padding: 0.40rem 0.90rem;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* ====================================

@@ -6,19 +6,16 @@
 .weekday-column
 {
     position: relative;
-    display: grid;
-    grid-template-rows: repeat(13, minmax(4.75rem, auto));
-    flex: 1;
-    min-width: 0;
 
+    display: grid;
+    grid-auto-rows: minmax(5rem, auto);
+
+    min-width: 0;
     overflow: hidden;
     isolation: isolate;
 
     border-inline-start: 1px solid var(--border-soft);
     background: transparent;
-
-    transition: background var(--transition);
-
 }
 .weekday-column:last-child { border-inline-end: 1px solid var(--border-soft); }
 
@@ -27,11 +24,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--accent) 8%, transparent),
-        transparent 18rem
-    );
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 .weekday-column.is-today::before
 {
@@ -39,10 +32,9 @@
     position: absolute;
     inset-inline: 0;
     top: 0;
-    height: 2px;
-    border-radius: 999px;
+    height: 3px;
     background: var(--accent);
-    opacity: 0.75;
+    opacity: 0.90;
 }
 
 /* ====================================
@@ -50,5 +42,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .weekday-column { min-width: 150px; }
+    .weekday-column { min-width: clamp(150px, 22vw, 190px); }
 }
