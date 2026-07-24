@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 20 July 2026
+//Date: 24 July 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -72,6 +72,7 @@ const Calendar = () =>
         className="calendar-scroll-shell"
         role="region"
         aria-label="Weekly calendar grid"
+        tabIndex={0}
       >
         {error && (
           <div className="calendar-feedback" role="alert">

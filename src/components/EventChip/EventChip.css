@@ -1,0 +1,50 @@
+/* Filename: src/components/EventChip/EventChip.css */
+
+/* ====================================
+   EventChip Event Entry Styles.
+======================================= */
+.event-chip
+{
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    align-self: start;
+    overflow: hidden;
+
+    padding: 0.8rem 1rem 0.8rem 1.15rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+
+    transition: background var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+}
+.event-chip::before
+{
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 4px;
+    background: var(--brand);
+}
+.event-chip:active { transform: translateY(1px); }
+.event-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
+.event-chip-title { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 0.82rem; font-weight: 650; line-height: 1.35; letter-spacing: -0.01em; word-break: break-word; }
+
+@media (hover: hover)
+{
+    .event-chip:hover { background: var(--surface-raised); box-shadow: var(--shadow-md); border-color: transparent; }
+}
+
+/* ====================================
+   EventChip Media Query Styles.
+======================================= */
+@media (max-width: 768px)
+{
+    .event-chip { padding: 0.5rem; }
+    .event-title { font-size: 0.7rem; }
+}

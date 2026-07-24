@@ -8,10 +8,9 @@
     position: relative;
 
     display: grid;
-    grid-auto-rows: minmax(5rem, auto);
+    grid-auto-rows: minmax(var(--calendar-row-height), auto);
 
     min-width: 0;
-    overflow: hidden;
     isolation: isolate;
 
     border-inline-start: 1px solid var(--border-soft);
@@ -24,16 +23,18 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 45%);
 }
 .weekday-column.is-today::before
 {
+    /* Accent Bar Styles. */
     content: "";
     position: absolute;
     inset-inline: 0;
     top: 0;
-    height: 3px;
+    height: 2px;
     background: var(--accent);
+    border-radius: 999px;
     opacity: 0.90;
 }
 

@@ -7,9 +7,9 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.25rem;
 
-    padding: 0.35rem;
+    padding: 0.45rem;
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
     background: var(--surface-primary);
@@ -23,8 +23,8 @@
 ======================================= */
 .week-nav-label
 {
-    min-width: clamp(9rem, 12vw, 11rem);
-    padding-inline: 0.75rem;
+    flex: 1;
+    padding-inline: 1rem;
     font-size: 1rem;
     font-weight: 750;
     letter-spacing: -0.03em;
@@ -36,7 +36,7 @@
 ======================================= */
 .week-nav-button
 {
-    width: 2.35rem;
+    width: 2.5rem;
     aspect-ratio: 1;
 
     display: grid;
@@ -54,7 +54,7 @@
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); transform: translateY(-1px); box-shadow: inset 0 0 0 1px var(--border-soft); }
+    .week-nav-button:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text-primary); transform: translateY(-0.5px); box-shadow: inset 0 0 0 1px var(--border-soft); }
 }
 
 /* ====================================

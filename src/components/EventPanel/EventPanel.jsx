@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 8 July 2026
+//Date: 24 July 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -23,8 +23,9 @@ const EventPanel = ({ selectedEvent, onClose }) => {
     panel?.focus();
 
     //Prevent background scroll.
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const root = document.documentElement;
+    const previousOverflow = root.style.overflow;
+    root.style.overflow = "hidden";
 
     //Close on Escape.
     const handleKeyDown = (event) =>
@@ -39,7 +40,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
 
     return () =>
     {
-      document.body.style.overflow = previousOverflow;
+      root.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedEvent, onClose]);
@@ -58,14 +59,16 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         onClick={onClose}
       />
 
-      <div className="event-panel-layout">
+      <div
+        className="event-panel-layout"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="event-panel-title"
+        aria-describedby="event-panel-content"
+      >
         <aside
           ref={panelRef}
           className="event-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="event-panel-title"
-          aria-describedby="event-panel-content"
           tabIndex={-1}
         >
           <header className="event-panel-header">
@@ -73,6 +76,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
               Event Details
             </p>
             <button
+              type="button"
               className="close-button"
               aria-label="Close"
               onClick={onClose}

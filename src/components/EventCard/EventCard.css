@@ -18,7 +18,7 @@
 {
     font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 850;
-    line-height: 0.94;
+    line-height: 0.96;
     letter-spacing: -0.075em;
     text-wrap: balance;
 }
@@ -38,7 +38,7 @@
 {
     display: inline-flex;
     align-items: center;
-    padding: 0.45rem 0.90rem;
+    padding: 0.50rem 1rem;
     font-size: 0.76rem;
     font-weight: 700;
 
@@ -52,7 +52,7 @@
 ======================================= */
 .event-card-description
 {
-    max-width: 68ch;
+    max-width: 60ch;
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.75;
@@ -66,7 +66,8 @@
 {
     display: grid;
     gap: 0.60rem;
-    padding-top: 1.5rem;
+    margin-top: 0.25rem;
+    padding-top: 1.25rem;
 
     border-top: 1px solid var(--border-soft);
     color: var(--text-secondary);
@@ -85,13 +86,14 @@
     justify-content: center;
     padding: 0.90rem 1.50rem;
     border-radius: 999px;
-    background: var(--brand);
+    background: linear-gradient(180deg, var(--brand-soft), var(--brand));
     color: white;
+    box-shadow: var(--shadow-sm);
     font-weight: 700;
 
-    transition: transform var(--transition), opacity var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition);
 }
-.event-card-footer a:hover { transform: translateY(-1px); opacity: 0.96; }
+.event-card-footer a:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
 /* ====================================
    EventCard Media Queries Styles.

@@ -14,6 +14,7 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
       7:00 PM
     </time>
     <div
+      aria-label="2 events"
       class="slot-events"
       role="list"
     >
@@ -23,7 +24,7 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
         type="button"
       >
         <span
-          class="event-title"
+          class="event-chip-title"
         >
           Workout
         </span>
@@ -34,7 +35,7 @@ exports[`TimeSlot > matches snapshot for default render. 1`] = `
         type="button"
       >
         <span
-          class="event-title"
+          class="event-chip-title"
         >
           Dinner
         </span>

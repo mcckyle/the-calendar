@@ -9,10 +9,10 @@
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
+    align-items: start;
 
     width: 100%;
     min-height: 100dvh;
-    overflow: hidden;
     isolation: isolate;
 
     gap: clamp(1rem, 1.8vw, 1.75rem);
@@ -21,14 +21,19 @@
              max(var(--page-padding), env(safe-area-inset-bottom))
              max(var(--page-padding), env(safe-area-inset-left));
     background: radial-gradient(
-        1100px circle at 50% -10%,
-        color-mix(in srgb, var(--brand) 12%, transparent),
+        900px circle at 50% -15%,
+        color-mix(in srgb, var(--brand) 14%, transparent),
         transparent 72%
     ),
     radial-gradient(
-        900px circle at 100% 40%,
-        color-mix(in srgb, var(--accent) 8%, transparent),
-        transparent 75%
+        900px circle at 110% 35%,
+        color-mix(in srgb, var(--accent) 10%, transparent),
+        transparent 78%
+    ),
+    radial-gradient(
+        700px circle at 0% 100%,
+        rgba(255, 255, 255, 0.35),
+        transparent 80%
     ),
     linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
 }
@@ -43,11 +48,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-block: clamp(0.2rem, 0.7vw, 0.60rem);
+    padding-block: clamp(0.75rem, 2vw, 1.5rem);
 }
-.hero-copy { width: min(90rem, 100%); display: flex; flex-direction: column; align-items: center; gap: 0.65rem; }
+.hero-copy { width: 100%; max-width: 96rem; margin-inline: auto; display: flex; flex-direction: column; align-items: center; gap: 0.65rem; }
 .eyebrow { color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; }
-.title { font-size: clamp(3rem, 7vw, 5.75rem); font-weight: 800; letter-spacing: -0.07em; line-height: 0.92; text-wrap: balance; }
+.title { font-size: clamp(3rem, 7vw, 5.75rem); font-weight: 800; letter-spacing: -0.07em; line-height: 0.88; text-wrap: balance; }
 .title span { color: var(--brand); }
 .tagline { max-width: 42rem; margin-inline: auto; color: var(--text-secondary); font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; text-wrap: pretty; }
 
@@ -58,6 +63,7 @@
 {
     position: relative;
     display: flex;
+    flex: 1;
     width: 100%;
     height: 100%;
     min-height: 0;
@@ -65,11 +71,13 @@
     isolation: isolate;
 
     border: 1px solid var(--border-subtle);
-    border-radius: clamp(1.4rem, 2vw, 2.25rem);
+    border-radius: var(--radius-2xl);
     background: var(--surface-primary);
     box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(22px) saturate(160%);
     -webkit-backdrop-filter: blur(20px);
+
+    contain: layout paint;
 }
 .calendar-shell::before
 {
