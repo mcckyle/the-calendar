@@ -23,7 +23,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 45%);
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
 }
 .weekday-column.is-today::before
 {
@@ -43,5 +43,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .weekday-column { min-width: clamp(150px, 22vw, 190px); }
+    .weekday-column { min-width: 10rem; }
 }

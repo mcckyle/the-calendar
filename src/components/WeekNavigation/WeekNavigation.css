@@ -5,7 +5,12 @@
 ============================================ */
 .week-navigation
 {
-    display: inline-flex;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
     gap: 0.25rem;
 
@@ -25,7 +30,7 @@
 {
     flex: 1;
     padding-inline: 1rem;
-    font-size: 1rem;
+    font-size: clamp(1rem, 0.70vw + 0.90rem, 1.15rem);
     font-weight: 750;
     letter-spacing: -0.03em;
     text-align: center;
@@ -38,6 +43,7 @@
 {
     width: 2.5rem;
     aspect-ratio: 1;
+    flex-shrink: 0;
 
     display: grid;
     place-items: center;

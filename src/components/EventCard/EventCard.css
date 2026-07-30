@@ -13,10 +13,10 @@
 /* ====================================
     EventCard Header Styles.
 ======================================= */
-.event-card-header { display: grid; gap: 0.9rem; }
+.event-card-header { display: grid; gap: 1rem; }
 .event-card-title
 {
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
     font-weight: 850;
     line-height: 0.96;
     letter-spacing: -0.075em;
@@ -44,7 +44,7 @@
 
     border: 1px solid var(--border-soft);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-secondary) 80%, transparent);
+    background: transparent;
 }
 
 /* ====================================
@@ -52,7 +52,7 @@
 ======================================= */
 .event-card-description
 {
-    max-width: 60ch;
+    max-width: 56ch;
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.75;
@@ -66,7 +66,6 @@
 {
     display: grid;
     gap: 0.60rem;
-    margin-top: 0.25rem;
     padding-top: 1.25rem;
 
     border-top: 1px solid var(--border-soft);
@@ -86,14 +85,14 @@
     justify-content: center;
     padding: 0.90rem 1.50rem;
     border-radius: 999px;
-    background: linear-gradient(180deg, var(--brand-soft), var(--brand));
+    background: var(--brand);
     color: white;
     box-shadow: var(--shadow-sm);
     font-weight: 700;
 
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition), filter var(--transition);
 }
-.event-card-footer a:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.event-card-footer a:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
 /* ====================================
    EventCard Media Queries Styles.

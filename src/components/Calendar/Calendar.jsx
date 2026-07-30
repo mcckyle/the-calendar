@@ -65,9 +65,7 @@ const Calendar = () =>
       aria-label="Weekly Saint Louis events calendar"
       aria-busy={loading}
     >
-      <div className="calendar-toolbar">
-        <WeekNavigation />
-      </div>
+      <WeekNavigation />
       <div
         className="calendar-scroll-shell"
         role="region"
