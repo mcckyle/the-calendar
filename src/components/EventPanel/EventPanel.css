@@ -7,8 +7,8 @@
 {
     position: fixed;
     inset: 0;
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 1fr auto;
     z-index: 2000;
     isolation: isolate;
 }
@@ -18,11 +18,7 @@
 ======================================= */
 .event-panel-layout
 {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    pointer-events: none;
+    display: contents;
 }
 
 /* ====================================
@@ -35,8 +31,8 @@
     pointer-events: auto;
     border: 0;
     background: color-mix(in srgb, var(--bg-primary) 36%, transparent);
-    backdrop-filter: blur(12px) saturate(75%);
-    -webkit-backdrop-filter: blur(12px) saturate(75%);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
 
     animation: overlayFade 180ms ease;
 }
@@ -47,8 +43,8 @@
 .event-panel
 {
     position: relative;
-    width: min(var(--event-panel-width), 100%);
-    height: 100%;
+    inline-size: min(var(--event-panel-width), 100%);
+    block-size: 100dvh;
 
     display: flex;
     flex-direction: column;
@@ -58,8 +54,9 @@
     border-inline-start: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-lg), -1px 0 0 var(--border-soft);
     background: var(--surface-primary);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    contain: layout paint;
 
     animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -76,9 +73,9 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 1rem 1.5rem;
+    padding: 1rem clamp(1.25rem, 2vw, 2rem);
     border-bottom: 1px solid var(--border-soft);
-    background: color-mix(in srgb, var(--surface-primary) 92%, transparent);
+    background: color-mix(in srgb, var(--surface-primary) 88%, transparent);
     backdrop-filter: blur(12px);
 }
 
@@ -99,8 +96,9 @@
 ======================================= */
 .event-panel-body
 {
-    flex: 1;
-    overflow-y: auto;
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow: auto;
     overscroll-behavior: contain; /* Prevent scroll chaining into the page. */
     padding: clamp(2rem, 4vw, 3.5rem);
     scrollbar-gutter: stable;
@@ -111,8 +109,8 @@
 ======================================= */
 .close-button
 {
-    width: 2.75rem;
-    aspect-ratio: 1;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
 
     display: grid;
     place-items: center;
@@ -130,7 +128,7 @@
 
 @media (hover: hover)
 {
-    .close-button:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text-primary); }
+    .close-button:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text-primary); }
 }
 
 /* ====================================
@@ -158,12 +156,12 @@
         top: auto;
         bottom: 0;
         width: 100%;
-        max-height: 90dvh;
+        block-size: clamp(90dvh, 48rem);
         min-height: 22rem;
 
         border-left: none;
         border-top: 1px solid var(--border-subtle);
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
 
         animation: sheetEnter 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }

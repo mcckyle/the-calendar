@@ -7,7 +7,7 @@
 {
     display: grid;
     align-content: start;
-    gap: clamp(1.6rem, 2vw, 2.25rem);
+    gap: clamp(1.4rem, 2vw, 2rem);
 }
 
 /* ====================================
@@ -16,7 +16,7 @@
 .event-card-header { display: grid; gap: 1rem; }
 .event-card-title
 {
-    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     font-weight: 850;
     line-height: 0.96;
     letter-spacing: -0.075em;
@@ -39,12 +39,12 @@
     display: inline-flex;
     align-items: center;
     padding: 0.50rem 1rem;
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 700;
 
     border: 1px solid var(--border-soft);
     border-radius: 999px;
-    background: transparent;
+    background: var(--surface-secondary);
 }
 
 /* ====================================
@@ -52,7 +52,7 @@
 ======================================= */
 .event-card-description
 {
-    max-width: 56ch;
+    max-inline-size: 60ch;
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.75;
@@ -66,7 +66,7 @@
 {
     display: grid;
     gap: 0.60rem;
-    padding-top: 1.25rem;
+    padding-block-start: 1rem;
 
     border-top: 1px solid var(--border-soft);
     color: var(--text-secondary);
@@ -85,19 +85,11 @@
     justify-content: center;
     padding: 0.90rem 1.50rem;
     border-radius: 999px;
-    background: var(--brand);
+    background: linear-gradient(180deg, var(--brand-soft), var(--brand));
     color: white;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     font-weight: 700;
 
-    transition: transform var(--transition), filter var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition);
 }
-.event-card-footer a:hover { transform: translateY(-1px); filter: brightness(1.05); }
-
-/* ====================================
-   EventCard Media Queries Styles.
-======================================= */
-@media (max-width: 768px)
-{
-    .event-card-title { font-size: 1.9rem; }
-}
+.event-card-footer a:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }

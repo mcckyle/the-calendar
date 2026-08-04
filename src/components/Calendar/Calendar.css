@@ -7,11 +7,13 @@
 {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    min-width: 0;
-    min-height: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    min-inline-size: 0;
+    min-block-size: 0;
 
-    gap: clamp(0.75rem, 1vw, 1.25rem);
-    padding: clamp(1rem, 1.5vw, 1.75rem);
+    gap: clamp(0.85rem, 1vw, 1.35rem);
+    padding: clamp(1rem, 1.6vw, 1.75rem);
 }
 
 /* ====================================
@@ -28,10 +30,11 @@
 .calendar-feedback
 {
     position: sticky;
-    top: 100%;
-    z-index: 5;
+    top: 1rem;
+    z-index: 30;
     display: inline-flex;
     align-self: center;
+    justify-self: center;
     align-items: center;
     padding: 0.55rem 1rem;
     margin-bottom: 0.75rem;
@@ -53,13 +56,14 @@
 {
     position: relative;
     flex: 1;
-    min-width: 0;
-    min-height: 0;
+    min-inline-size: 0;
+    min-block-size: 0;
     overflow: auto;
 
-    scrollbar-gutter: stable;
-    overscroll-behavior-x: contain;
+    scrollbar-gutter: stable both-edges;
+    overscroll-behavior-x: contain; /* Allow vertical scrolling. */
     scroll-padding-top: 1rem;
+    scroll-behavior: smooth;
 }
 
 /* ====================================
@@ -67,20 +71,10 @@
 ======================================= */
 .calendar-columns
 {
-    min-height: 100%;
-    min-width: 56rem;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    align-items: stretch;
-    align-content: start;
-    gap: clamp(0.75rem, 1vw, 1.1rem);
-    overflow: visible;
-}
-
-/* ====================================
-   Calendar Media Queries Styles.
-======================================= */
-@media (max-width: 900px)
-{
-    .calendar-columns { min-width: max(100%, 65rem); }
+    grid-template-columns: repeat(7, minmax(10rem, 1fr));
+    align-items: start;
+    gap: clamp(0.75rem, 0.9vw, 1.15rem);
+    inline-size: max(100%, 70rem);
+    min-block-size: 100%;
 }

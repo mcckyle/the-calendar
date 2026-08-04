@@ -19,7 +19,7 @@
 
     --page-padding: clamp(1rem, 2.4vw, 2.25rem);
     --calendar-row-height: 5rem;
-    --time-column-width: 3.5rem;
+    --time-column-width: clamp(2.8rem, 4vw, 3.5rem);
     --event-panel-width: 40rem;
 
     /* Brand Colors. */
@@ -60,12 +60,12 @@
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; scroll-behavior: smooth; block-size: 100%; }
-html, body, #root { width: 100%; min-height: 100%; }
+#root { min-block-size: 100%; }
 body
 {
     margin: 0;
     min-height: 100dvh;
-    min-block-size: 100%;
+    min-block-size: 100dvh;
     overflow-x: hidden;
     overflow-y: auto;
     font-family: var(--body-font);

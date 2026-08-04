@@ -45,6 +45,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
     <div
       aria-label="Weekly calendar grid"
       class="calendar-scroll-shell"
+      id="calendar-scroll-region"
       role="region"
       tabindex="0"
     >

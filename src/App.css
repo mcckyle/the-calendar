@@ -9,10 +9,11 @@
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    align-items: start;
 
-    width: 100%;
-    min-height: 100dvh;
+    inline-size: 100%;
+    min-block-size: 100dvh;
+
+    overflow: hidden;
     isolation: isolate;
 }
 .app::before
@@ -23,19 +24,14 @@
     z-index: -1;
     pointer-events: none;
     background: radial-gradient(
-        900px circle at 50% -15%,
-        color-mix(in srgb, var(--brand) 14%, transparent),
+        900px circle at 50% -10%,
+        color-mix(in srgb, var(--brand) 16%, transparent),
         transparent 72%
     ),
     radial-gradient(
-        900px circle at 110% 35%,
-        color-mix(in srgb, var(--accent) 10%, transparent),
+        800px circle at 100% 0%,
+        color-mix(in srgb, var(--accent) 12%, transparent),
         transparent 78%
-    ),
-    radial-gradient(
-        700px circle at 0% 100%,
-        rgba(255, 255, 255, 0.35),
-        transparent 80%
     ),
     linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
 }
@@ -44,10 +40,9 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
 
-    width: min(100%, 250rem);
-    flex: 1;
-    margin-inline: auto;
-    gap: clamp(0.5rem, 1vw, 1rem);
+    inline-size: 100%;
+    min-block-size: 100%;
+    gap: clamp(0.75rem, 1vw, 1.25rem);
     padding: max(var(--page-padding), env(safe-area-inset-top))
              max(var(--page-padding), env(safe-area-inset-right))
              max(var(--page-padding), env(safe-area-inset-bottom))
@@ -57,10 +52,10 @@
 /* ====================================
    App Header Styles.
 ======================================= */
-.hero { padding-block: clamp(0.90rem, 2vw, 1.6rem); }
-.hero-copy { max-width: 48rem; margin-inline: auto; display: grid; justify-items: center; gap: 0.65rem; }
+.hero { display: grid; place-items: center; padding-block: clamp(0.75rem, 1.5vw, 1.35rem); }
+.hero-copy { max-inline-size: 46rem; display: grid; justify-items: center; gap: 0.50rem; text-align: center; }
 .eyebrow { color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; }
-.title { font-size: clamp(3rem, 7vw, 5.75rem); font-weight: 800; letter-spacing: -0.07em; line-height: 0.88; text-wrap: balance; }
+.title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 0.90; text-wrap: balance; }
 .title span { color: var(--brand); }
 .tagline { max-width: 42rem; margin-inline: auto; color: var(--text-secondary); font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; text-wrap: pretty; }
 
@@ -71,7 +66,9 @@
 {
     position: relative;
     display: flex;
+    flex: 1;
     min-height: 0;
+    block-size: 100%;
     overflow: hidden;
     isolation: isolate;
 
@@ -81,8 +78,6 @@
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(22px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-
-    contain: layout paint;
 }
 .calendar-shell::before
 {
