@@ -1,17 +1,18 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 3 July 2026
+//Date: 7 August 2026
 //Description: This file contains the row of date labels for the Saint Louis calendar React project.
 
 import React, { useMemo } from "react";
-import { weekdayFormatter, dateFormatter, getChicagoISODate } from "../../utils/dateHelpers";
+import { dateFormatter, getChicagoISODate, weekdayFormatter } from "../../utils/dateHelpers";
 import "./DaysOfWeek.css";
 
-const DaysOfWeek = ({ weekDays = [] }) => {
+const DaysOfWeek = ({ weekDays = [] }) =>
+{
   const todayISO = useMemo(() => getChicagoISODate(), []);
 
   return (
-    <header className="days-of-week" role="rowgroup" aria-label="Days of the week">
+    <header className="days-of-week" role="row" aria-label="Days of the week">
       {weekDays.map((day) =>
       {
         const iso = getChicagoISODate(day);

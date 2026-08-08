@@ -7,20 +7,20 @@
 {
     color-scheme: light dark;
 
+    /* Fonts. */
     --title-font: "Inter", system-ui, sans-serif;
     --body-font: "Inter", system-ui, sans-serif;
+
+    /* Layout. */
+    --calendar-row-height: 5rem;
+    --time-column-width: clamp(2.8rem, 4vw, 3.5rem);
+    --event-panel-width: 40rem;
 
     /* Radius. */
     --radius-sm: 0.75rem;
     --radius-md: 1rem;
     --radius-lg: 1.5rem;
     --radius-xl: 2rem;
-    --radius-2xl: 2.5rem;
-
-    --page-padding: clamp(1rem, 2.4vw, 2.25rem);
-    --calendar-row-height: 5rem;
-    --time-column-width: clamp(2.8rem, 4vw, 3.5rem);
-    --event-panel-width: 40rem;
 
     /* Brand Colors. */
     --brand: #163f6d;
@@ -45,13 +45,14 @@
     /* Surfaces. */
     --surface-primary: rgba(255, 255, 255, 0.72);
     --surface-secondary: rgba(255, 255, 255, 0.64);
-    --surface-raised: rgba(255, 255, 255, 0.9);
+    --surface-raised: rgba(255, 255, 255, 0.92);
 
     /* Shadows. */
     --shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.10), 0 2px 10px rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 24px 64px rgba(15, 23, 42, 0.12), 0 6px 18px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.09), 0 2px 10px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 28px 80px rgba(15, 23, 42, 0.12), 0 6px 20px rgba(15, 23, 42, 0.05);
 
+    /* Motion. */
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -59,18 +60,18 @@
    Reset & Base Styles.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html { font-size: 16px; scroll-behavior: smooth; block-size: 100%; }
+html { block-size: 100%; font-size: 16px; scroll-behavior: smooth; }
 #root { min-block-size: 100%; }
 body
 {
     margin: 0;
-    min-height: 100dvh;
     min-block-size: 100dvh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: var(--body-font);
+    overflow: hidden;
+
     background: var(--bg-primary);
     color: var(--text-primary);
+
+    font-family: var(--body-font);
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -86,7 +87,7 @@ h1, h2, h3
     line-height: 0.95;
 }
 p { margin: 0; }
-img, svg { display: block; max-width: 100%; }
+img, svg { display: block; max-inline-size: 100%; }
 
 /* ====================================
    Links Styles.
@@ -106,19 +107,19 @@ a:hover { color: var(--accent); }
 button
 {
     padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
+    border: 0;
     background: none;
+    color: inherit;
+    font: inherit;
     cursor: pointer;
 }
 button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 75%, white); outline-offset: 4px; }
-::selection { background: rgba(244, 165, 36, 0.2); }
+::selection { background: color-mix(in srgb, var(--accent) 20%, transparent);  }
 
 /* ====================================
    Scrollbars Styles.
 ======================================= */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { inline-size: 6px; block-size: 6px; }
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--text-primary) 20%, transparent); border-radius: 999px; }
 
 @media (prefers-reduced-motion: reduce)
@@ -151,15 +152,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
         --border-soft: rgba(255, 255, 255, 0.04);
 
         /* Surfaces. */
-        --surface-primary: rgba(10, 19, 33, 0.74);
-        --surface-secondary: rgba(15, 23, 42, 0.54);
-        --surface-raised: rgba(15, 23, 42, 0.92);
+        --surface-primary: rgba(10, 19, 33, 0.76);
+        --surface-secondary: rgba(15, 23, 42, 0.56);
+        --surface-raised: rgba(15, 23, 42, 0.94);
 
         --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.32);
-        --shadow-md: 0 18px 54px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 18px 54px rgba(0, 0, 0, 0.40);
         --shadow-lg: 0 32px 100px rgba(0, 0, 0, 0.52);
     }
-    body { background: #06101c; }
+    body { background: var(--bg-primary); }
     h1, h2, h3 { color: #ffffff; }
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); }
 }

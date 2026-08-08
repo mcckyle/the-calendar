@@ -1,6 +1,6 @@
 //Filename: Calendar.jsx
 //Author: Kyle McColgan
-//Date: 4 August 2026
+//Date: 7 August 2026
 //Description: This file contains the parent component for the Saint Louis calendar React project.
 
 import React, { useState, useMemo, useCallback } from "react";
@@ -46,7 +46,7 @@ const Calendar = () =>
   //Fetch the weekly events...
   const { events = [], loading, error } = useEvents(API_URL, weekStart, weekEnd);
 
-  //Group events by day/hour.
+  //Group events by their calendar day and hour.
   const groupedByDay = useMemo(() =>
   {
     return weekDays.map((day) => ({

@@ -1,6 +1,6 @@
 //Filename: EventPanel.test.jsx
 //Author: Kyle McColgan
-//Date: 17 June 2026
+//Date: 7 August 2026
 //Description: This file contains unit tests for the EventPanel component.
 
 import React from "react";
@@ -68,7 +68,7 @@ describe("EventPanel Component", () => {
   test("calls onClose when Close button is clicked.", () => {
     render(<EventPanel selectedEvent={mockEvent} onClose={mockOnClose} />);
 
-    fireEvent.click(screen.getByRole("button", { name: /close event details/i }));
+    fireEvent.click(screen.getByRole("button", { name: /close event details button/i }));
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });

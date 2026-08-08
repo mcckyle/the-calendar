@@ -3,43 +3,51 @@
 exports[`TimeSlot > matches snapshot for default render. 1`] = `
 <DocumentFragment>
   <div
-    aria-labelledby="time-7:00-PM"
+    aria-labelledby="time-undefined"
     class="time-slot"
     role="group"
   >
-    <time
+    <span
       class="time-label"
-      id="time-7:00-PM"
+      id="time-undefined"
     >
       7:00 PM
-    </time>
+    </span>
     <div
       aria-label="2 events"
       class="slot-events"
       role="list"
     >
-      <button
-        aria-label="View details for Workout"
-        class="event-chip"
-        type="button"
+      <div
+        role="listitem"
       >
-        <span
-          class="event-chip-title"
+        <button
+          aria-label="View details for Workout"
+          class="event-chip"
+          type="button"
         >
-          Workout
-        </span>
-      </button>
-      <button
-        aria-label="View details for Dinner"
-        class="event-chip"
-        type="button"
+          <span
+            class="event-chip-title"
+          >
+            Workout
+          </span>
+        </button>
+      </div>
+      <div
+        role="listitem"
       >
-        <span
-          class="event-chip-title"
+        <button
+          aria-label="View details for Dinner"
+          class="event-chip"
+          type="button"
         >
-          Dinner
-        </span>
-      </button>
+          <span
+            class="event-chip-title"
+          >
+            Dinner
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </DocumentFragment>

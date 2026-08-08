@@ -55,7 +55,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
         <header
           aria-label="Days of the week"
           class="days-of-week"
-          role="rowgroup"
+          role="row"
         >
           <div
             aria-current="date"

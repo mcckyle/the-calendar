@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.test.jsx
 //Author: Kyle McColgan
-//Date: 17 June 2026
+//Date: 7 August 2026
 //Description: This file contains unit tests for the Days Of Week component.
 
 import React from "react";
@@ -14,7 +14,7 @@ describe("DaysOfWeek Component", () => {
     //Test #1: Renders without crashing.
     it("renders the component without errors.", () => {
        render(<DaysOfWeek weekDays={[]}/>);
-       expect(screen.getByRole("rowgroup")).toBeInTheDocument();
+       expect(screen.getByRole("row")).toBeInTheDocument();
     });
 
     //Test #2: Renders all seven days of the week.
@@ -87,7 +87,7 @@ describe("DaysOfWeek Component", () => {
     //Test #7: Parent container has correct role and class.
     it('parent container has role="row" and the correct class.', () => {
         render(<DaysOfWeek weekDays={[]}/>);
-        const container = screen.getByRole("rowgroup");
+        const container = screen.getByRole("row");
         expect(container).toHaveClass("days-of-week");
     });
 
@@ -107,7 +107,7 @@ describe("DaysOfWeek Component", () => {
         const mockWeekDays = Array.from({ length: 7 }, (_, i) => new Date(Date.UTC(2025, 7, i + 1))); //July 1-7, 2025.
 
         render(<DaysOfWeek weekDays={mockWeekDays} />);
-        const container = screen.getByRole("rowgroup");
+        const container = screen.getByRole("row");
         expect(container.children.length).toBe(7);
     });
 

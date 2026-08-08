@@ -1,7 +1,7 @@
 /* Filename: src/components/WeekDayColumn/WeekDayColumn.css */
 
 /* =========================================
-    WeekDayColumn Container Styles.
+    WeekDayColumn Day Column Styles.
 ============================================ */
 .weekday-column
 {
@@ -17,6 +17,10 @@
 
     border-inline-start: 1px solid var(--border-soft);
 }
+
+/* =========================================
+   WeekDayColumn Column Boundary Styles.
+============================================ */
 .weekday-column:last-child { border-inline-end: 1px solid var(--border-soft); }
 
 /* =========================================
@@ -24,7 +28,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    background: color-mix(in srgb, var(--accent) 2.5%, transparent);
 }
 .weekday-column.is-today::before
 {
@@ -32,9 +36,17 @@
     content: "";
     position: absolute;
     inset-inline: 0;
-    top: 0;
-    block-size: 1px;
+    inset-block-start: 0;
+    block-size: 2px;
     background: var(--accent);
-    border-radius: 999px;
-    opacity: 0.75;
+    opacity: 0.70;
+    pointer-events: none;
+}
+
+/* ====================================
+   WeekDayColumn Media Query Styling.
+======================================= */
+@media (max-width: 768px)
+{
+    .weekday-column.is-today::before { block-size: 1px; }
 }

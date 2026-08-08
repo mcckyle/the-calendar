@@ -5,13 +5,12 @@
 ======================================= */
 .time-slot
 {
-    min-block-size: var(--calendar-row-height);
     display: grid;
     grid-template-columns: var(--time-column-width) minmax(0, 1fr);
-    gap: 0.50rem;
-    border-bottom: 1px solid var(--border-soft);
+    min-block-size: var(--calendar-row-height);
+    border-block-end: 1px solid var(--border-soft);
 }
-.time-slot:last-child { border-bottom: none; }
+.time-slot:last-child { border-block-end: none; } /* Last Slot Styles. */
 
 /* ====================================
     TimeSlot Time Label Styles.
@@ -19,15 +18,18 @@
 .time-label
 {
     display: flex;
-    justify-content: flex-end;
     align-items: flex-start;
-    padding-block-start: 0.70rem;
-    padding-inline-end: 0.20rem;
+    justify-content: flex-end;
 
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    padding-block-start: 0.70rem;
+    padding-inline-end: 0.35rem;
+
     color: var(--text-muted);
+    font-size: 0.60rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+
     user-select: none;
     white-space: nowrap;
 }
@@ -37,9 +39,18 @@
 ======================================= */
 .slot-events
 {
-    min-height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
-    padding: 0.45rem 0.50rem 0.45rem 0;
+    gap: 0.40rem;
+    min-block-size: 100%;
+    padding: 0.40rem 0.45rem 0.40rem 0;
+}
+
+/* ====================================
+   TimeSlot Media Query Styling.
+======================================= */
+@media (max-width: 768px)
+{
+    .time-label { padding-block-start: 0.60rem; padding-inline-end: 0.25rem; font-size: 0.52rem; letter-spacing: 0.08em; }
+    .slow-events { gap: 0.30rem; padding-block: 0.30rem; }
 }

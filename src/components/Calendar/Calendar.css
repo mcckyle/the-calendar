@@ -11,9 +11,7 @@
     block-size: 100%;
     min-inline-size: 0;
     min-block-size: 0;
-
-    gap: clamp(0.85rem, 1vw, 1.35rem);
-    padding: clamp(1rem, 1.6vw, 1.75rem);
+    overflow: hidden;
 }
 
 /* ====================================
@@ -22,6 +20,7 @@
 .calendar > .week-navigation
 {
     justify-self: center;
+    margin-block: clamp(0.50rem, 0.80vw, 0.75rem);
 }
 
 /* ====================================
@@ -30,23 +29,28 @@
 .calendar-feedback
 {
     position: sticky;
-    top: 1rem;
-    z-index: 30;
-    display: inline-flex;
-    align-self: center;
-    justify-self: center;
+    top: 0;
+    z-index: 10;
+    display: flex;
     align-items: center;
-    padding: 0.55rem 1rem;
-    margin-bottom: 0.75rem;
+    justify-content: center;
+    align-items: center;
+
+    inline-size: fit-content;
+    margin-block-end: 0.75rem;
+    padding: 0.50rem 0.90rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
 
-    background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
+    background: var(--surface-raised);
     color: var(--text-secondary);
-    backdrop-filter: blur(16px);
-    font-size: 0.82rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    font-size: 0.78rem;
     font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
 }
 
 /* ====================================
@@ -55,15 +59,14 @@
 .calendar-scroll-shell
 {
     position: relative;
-    flex: 1;
     min-inline-size: 0;
     min-block-size: 0;
     overflow: auto;
 
-    scrollbar-gutter: stable both-edges;
-    overscroll-behavior-x: contain; /* Allow vertical scrolling. */
-    scroll-padding-top: 1rem;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
     scroll-behavior: smooth;
+    scroll-padding-block: 0.75rem;
 }
 
 /* ====================================
@@ -74,7 +77,18 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(10rem, 1fr));
     align-items: start;
-    gap: clamp(0.75rem, 0.9vw, 1.15rem);
     inline-size: max(100%, 70rem);
     min-block-size: 100%;
+    gap: clamp(0.50rem, 1vw, 1rem);
+    padding: 0 clamp(0.65rem, 1vw, 1rem) clamp(1rem, 1.4vw, 1.5rem);
+}
+
+/* ====================================
+   Calendar Media Query Styles.
+======================================= */
+@media (max-width: 768px)
+{
+    .calendar > .week-navigation { margin-block: 0.40rem 0.60rem; }
+    .calendar-columns { grid-template-columns: repeat(7, minmax(8rem, 1fr)); gap: 0.45rem; padding-inline: 0.50rem; }
+    .calendar-feedback { font-size: 0.72rem; }
 }

@@ -16,6 +16,7 @@ exports[`EventCard Component > matches snapshot. 1`] = `
         Sample Event
       </h3>
       <div
+        aria-label="Event date and time"
         class="event-card-meta"
       >
         <time

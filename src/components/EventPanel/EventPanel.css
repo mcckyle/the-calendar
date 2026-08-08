@@ -7,18 +7,12 @@
 {
     position: fixed;
     inset: 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
     z-index: 2000;
-    isolation: isolate;
-}
 
-/* ====================================
-   EventPanel Layout Wrapper Styles.
-======================================= */
-.event-panel-layout
-{
-    display: contents;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, var(--event-panel-width));
+
+    isolation: isolate;
 }
 
 /* ====================================
@@ -28,13 +22,17 @@
 {
     position: absolute;
     inset: 0;
-    pointer-events: auto;
-    border: 0;
-    background: color-mix(in srgb, var(--bg-primary) 36%, transparent);
-    backdrop-filter: blur(8px) saturate(120%);
-    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    z-index: -1;
 
-    animation: overlayFade 180ms ease;
+    inline-size: 100%;
+    block-size: 100%;
+    border: 0;
+    background: color-mix(in srgb, var(--bg-primary) 42%, transparent);
+    backdrop-filter: blur(5px) saturate(110%);
+    -webkit-backdrop-filter: blur(5px) saturate(110%);
+    cursor: default;
+
+    animation: overlayFade 180ms ease-out;
 }
 
 /* ====================================
@@ -42,21 +40,21 @@
 ======================================= */
 .event-panel
 {
+    grid-column: 2; /* Keep EventPanel on right side of viewport. */
     position: relative;
-    inline-size: min(var(--event-panel-width), 100%);
-    block-size: 100dvh;
 
     display: flex;
     flex-direction: column;
-    pointer-events: auto;
+    inline-size: 100%;
+    block-size: 100dvh;
     overflow: hidden;
 
     border-inline-start: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-lg), -1px 0 0 var(--border-soft);
-    background: var(--surface-primary);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    contain: layout paint;
+    background: color-mix(in srgb, var(--surface-raised) 94%, transparent);
+    box-shadow: -20px 0 60px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
 
     animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -66,17 +64,14 @@
 ======================================= */
 .event-panel-header
 {
-    position: sticky;
-    top: 0;
-    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex: 0 0 auto;
+    min-block-size: 4rem;
 
-    padding: 1rem clamp(1.25rem, 2vw, 2rem);
-    border-bottom: 1px solid var(--border-soft);
-    background: color-mix(in srgb, var(--surface-primary) 88%, transparent);
-    backdrop-filter: blur(12px);
+    padding: 0.7rem clamp(1rem, 2vw, 1.5rem);
+    border-block-end: 1px solid var(--border-soft);
 }
 
 /* ====================================
@@ -84,11 +79,12 @@
 ======================================= */
 .event-panel-title
 {
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
     color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
 }
 
 /* ====================================
@@ -98,9 +94,9 @@
 {
     flex: 1 1 auto;
     min-block-size: 0;
-    overflow: auto;
+    overflow-y: auto;
     overscroll-behavior: contain; /* Prevent scroll chaining into the page. */
-    padding: clamp(2rem, 4vw, 3.5rem);
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
     scrollbar-gutter: stable;
 }
 
@@ -109,26 +105,26 @@
 ======================================= */
 .close-button
 {
-    inline-size: 2.5rem;
-    block-size: 2.5rem;
-
     display: grid;
     place-items: center;
 
-    border-radius: 999px;
-    background: transparent;
+    inline-size: 2.3rem;
+    block-size: 2.3rem;
+
+    border-radius: 50%;
     color: var(--text-secondary);
 
-    transition: transform var(--transition),
+    transition: color var(--transition),
                 background var(--transition),
-                color var(--transition);
+                transform var(--transition);
 }
-.close-button:active { transform: scale(0.94); }
+.close-button span { font-size: 1.45rem; font-weight: 400; line-height: 1; }
+.close-button:active { transform: scale(0.92); }
 .close-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (hover: hover)
 {
-    .close-button:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--text-primary); }
+    .close-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--accent) 10%, transparent); }
 }
 
 /* ====================================
@@ -139,11 +135,20 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 @keyframes panelEnter
 {
-    from { opacity: 0; transform: translateX(1rem); }
+    from { opacity: 0; transform: translateX(1.5rem); }
     to { opacity: 1; transform: translateX(0); }
+}
+@keyframes sheetEnter
+{
+    from { transform: translateY(1.5rem); }
+    to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .event-overlay, .event-panel { animation: none; }
 }
 
 /* ====================================
@@ -151,23 +156,22 @@
 ======================================= */
 @media (max-width: 768px)
 {
+    .event-modal-root { display: block; }
     .event-panel
     {
-        top: auto;
-        bottom: 0;
-        width: 100%;
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        inline-size: 100%;
         block-size: clamp(90dvh, 48rem);
-        min-height: 22rem;
+        min-block-size: 22rem;
 
-        border-left: none;
-        border-top: 1px solid var(--border-subtle);
-        border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+        border-inline-start: 0;
+        border-block-start: 1px solid var(--border-subtle);
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        box-shadow: 0 -20px 60px rgba(15, 23, 42, 0.12);
 
         animation: sheetEnter 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }
-    @keyframes sheetEnter
-    {
-        from { transform: translateY(2rem); }
-        to { transform: translateY(0); }
-    }
+    .event-panel-body { padding: 1.5rem 1rem max(1.5rem, env(safe-area-inset-bottom)); }
 }

@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 4 August 2026
+//Date: 7 August 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -22,10 +22,9 @@ const EventPanel = ({ selectedEvent, onClose }) => {
     const panel = panelRef.current;
     panel?.focus();
 
-    //Prevent background scroll.
-    const root = document.documentElement;
-    const previousOverflow = root.style.overflow;
-    root.style.overflow = "hidden";
+    //Prevent the application from scrolling behind the panel.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     //Close on Escape.
     const handleKeyDown = (event) =>
@@ -40,7 +39,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
 
     return () =>
     {
-      root.style.overflow = previousOverflow;
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedEvent, onClose]);
@@ -54,42 +53,41 @@ const EventPanel = ({ selectedEvent, onClose }) => {
   return createPortal(
     <div className="event-modal-root">
       <button
+        type="button"
         className="event-overlay"
-        aria-label="Close event details"
+        aria-label="Close event details overlay"
         onClick={onClose}
       />
 
-      <div className="event-panel-layout">
-        <aside
-          ref={panelRef}
-          className="event-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="event-panel-title"
-          aria-describedby="event-panel-content"
-          tabIndex={-1}
-        >
-          <header className="event-panel-header">
-            <p id="event-panel-title" className="event-panel-title">
-              Event Details
-            </p>
-            <button
-              type="button"
-              className="close-button"
-              aria-label="Close"
-              onClick={onClose}
-            >
-              ✕
-            </button>
-          </header>
+      <aside
+        ref={panelRef}
+        className="event-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="event-panel-title"
+        aria-describedby="event-panel-content"
+        tabIndex={-1}
+      >
+        <header className="event-panel-header">
+          <p id="event-panel-title" className="event-panel-title">
+            Event Details
+          </p>
+          <button
+            type="button"
+            className="close-button"
+            aria-label="Close event details button"
+            onClick={onClose}
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        </header>
 
-          <div id="event-panel-content" className="event-panel-body">
-            <EventCard {...selectedEvent} />
-          </div>
-        </aside>
-      </div>
+        <div id="event-panel-content" className="event-panel-body">
+          <EventCard {...selectedEvent} />
+        </div>
+      </aside>
     </div>,
-    document.body
+  document.body
   );
 };
 
