@@ -21,7 +21,7 @@ The **Calendar** is a React-based calendar, with the aim of providing an intuiti
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20260617_182628.png)
+![Calendar Screenshot](./public/images/Screenshot_20260820_172235.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 
@@ -85,6 +85,10 @@ the-calendar/
 │   │   ├── TimeSlot/
 │   │   │   ├── TimeSlot.jsx
 │   │   │   └── TimeSlot.css
+│   │   │ 
+│   │   ├── EventChip/
+│   │   │   ├── EventChip.jsx
+│   │   │   └── EventChip.css
 │   │   │
 │   │   ├── EventPanel/
 │   │   │   ├── EventPanel.jsx
