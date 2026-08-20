@@ -11,7 +11,7 @@
     --title-font: "Inter", system-ui, sans-serif;
     --body-font: "Inter", system-ui, sans-serif;
 
-    /* Layout. */
+    /* Calendar Layout. */
     --calendar-row-height: 5rem;
     --time-column-width: clamp(2.8rem, 4vw, 3.5rem);
     --event-panel-width: 40rem;
@@ -61,11 +61,13 @@
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { block-size: 100%; font-size: 16px; scroll-behavior: smooth; }
-#root { min-block-size: 100%; }
+#root { inline-size: 100%; min-block-size: 100%; }
 body
 {
     margin: 0;
-    min-block-size: 100dvh;
+
+    inline-size: 100%;
+    min-block-size: 100%;
     overflow: hidden;
 
     background: var(--bg-primary);

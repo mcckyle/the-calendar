@@ -6,15 +6,15 @@
 .week-navigation
 {
     display: grid;
-    grid-template-columns: 2.4rem auto 2.4rem;
+    grid-template-columns: 2rem auto 2rem;
     align-items: center;
     inline-size: fit-content;
-    min-inline-size: min(100%, 18rem);
+    min-inline-size: min(100%, 17rem);
 
-    padding: 0.25rem;
+    padding: 0.20rem;
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+    background: color-mix(in srgb, var(--surface-raised) 84%, transparent);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -26,9 +26,9 @@
 .week-nav-label
 {
     min-inline-size: 8rem;
-    padding-inline: 0.65rem;
+    padding-inline: 0.50rem;
     color: var(--text-primary);
-    font-size: 0.90rem;
+    font-size: 0.84rem;
     font-weight: 750;
     letter-spacing: -0.025em;
     text-align: center;
@@ -43,8 +43,8 @@
     display: grid;
     place-items: center;
 
-    inline-size: 2.4rem;
-    block-size: 2.4rem;
+    inline-size: 2rem;
+    block-size: 2rem;
 
     border-radius: 50%;
     color: var(--text-secondary);
@@ -53,8 +53,8 @@
                 background var(--transition),
                 transform var(--transition);
 }
-.week-nav-button span { font-size: 1.35rem; font-weight: 400; line-height: 1; }
-.week-nav-button:active { transform: scale(0.92); }
+.week-nav-button span { font-size: 1.25rem; font-weight: 400; line-height: 1; }
+.week-nav-button:active { transform: scale(0.90); }
 
 @media (hover: hover)
 {
@@ -66,7 +66,7 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .week-navigation { grid-template-columns: 2.2rem auto 2.2rem; min-inline-size: 15rem; }
-    .week-nav-label { min-inline-size: 7rem; font-size: 0.84rem; }
-    .week-nav-button { inline-size: 2.2rem; block-size: 2.2rem; }
+    .week-navigation { grid-template-columns: 1.9rem auto 1.9rem; min-inline-size: 15rem; }
+    .week-nav-label { min-inline-size: 7rem; font-size: 0.80rem; }
+    .week-nav-button { inline-size: 1.9rem; block-size: 1.9rem; }
 }

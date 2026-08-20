@@ -1,6 +1,6 @@
 //Filename: DaysOfWeek.jsx
 //Author: Kyle McColgan
-//Date: 7 August 2026
+//Date: 20 August 2026
 //Description: This file contains the row of date labels for the Saint Louis calendar React project.
 
 import React, { useMemo } from "react";
@@ -21,15 +21,12 @@ const DaysOfWeek = ({ weekDays = [] }) =>
         return (
           <div
             key={iso}
-            className={`day-item ${isToday ? "is-today" : ""}`}
+            className={`day-item${isToday ? " is-today" : ""}`}
             role="columnheader"
             aria-current={isToday ? "date" : undefined}
           >
             <span className="day-label">{weekdayFormatter(day)}</span>
-            <time
-              className="day-date"
-              dateTime={iso}
-            >
+            <time className="day-date" dateTime={iso}>
               {dateFormatter(day)}
             </time>
           </div>

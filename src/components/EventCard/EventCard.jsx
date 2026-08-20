@@ -1,6 +1,6 @@
 //Filename: EventCard.jsx
 //Author: Kyle McColgan
-//Date: 7 August 2026
+//Date: 20 August 2026
 //Description: This file contains the embedded Event information for the Saint Louis React calendar project.
 
 import React from "react";
@@ -55,16 +55,16 @@ const EventCard = ({
         )}
 
         {venue && (
-          <div className="event-card-venue">
+          <address className="event-card-venue">
             <span className="venue-label">Location</span>
             <span className="venue-text">{venue}</span>
-          </div>
+          </address>
 		)}
 
 		{url && (
 		  <footer className="event-card-footer">
 		    <a href={url} target="_blank" rel="noopener noreferrer">
-			  Open event
+			  <span>Open event</span>
 			  <span aria-hidden="true">↗</span>
 			</a>
 		  </footer>

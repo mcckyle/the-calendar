@@ -1,13 +1,12 @@
 //Filename: EventChip.jsx
 //Author: Kyle McColgan
-//Date: 24 July 2026
+//Date: 20 August 2026
 //Description: This file contains the event chips for the Saint Louis Events project.
 
 import React from "react";
 import "./EventChip.css";
 
 const EventChip = ({ event, onClick }) => {
-
   const handleClick = () => onClick(event);
 
   return (

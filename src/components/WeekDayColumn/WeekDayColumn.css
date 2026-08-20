@@ -13,8 +13,6 @@
 
     min-inline-size: 0;
     min-block-size: 100%;
-    isolation: isolate;
-
     border-inline-start: 1px solid var(--border-soft);
 }
 
@@ -28,7 +26,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 2.5%, transparent);
+    background: color-mix(in srgb, var(--accent) 2%, transparent);
 }
 .weekday-column.is-today::before
 {
@@ -39,7 +37,7 @@
     inset-block-start: 0;
     block-size: 2px;
     background: var(--accent);
-    opacity: 0.70;
+    opacity: 0.75;
     pointer-events: none;
 }
 
