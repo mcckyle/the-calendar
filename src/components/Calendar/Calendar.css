@@ -15,7 +15,7 @@
 }
 
 /* ====================================
-   Calendar Navigation Alignment Styles.
+   Calendar Week Navigation Placement Styles.
 ======================================= */
 .calendar > .week-navigation
 {
@@ -68,6 +68,7 @@
 
     scrollbar-gutter: stable;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ====================================
@@ -81,9 +82,8 @@
     inline-size: 100%;
     min-inline-size: 0;
     min-block-size: 100%;
-    column-gap: clamp(0.40rem, 0.85vw, 0.85rem);
-    row-gap: 0;
-    padding-inline: 0 clamp(0.65rem, 1.25vw, 1.5rem);
+    column-gap: clamp(0.35rem, 0.75vw, 0.75rem);
+    padding-inline-end: clamp(0.65rem, 1.25vw, 1.5rem);
     padding-block-end: clamp(0.90rem, 1.4vw, 1.5rem);
 }
 
@@ -93,6 +93,6 @@
 @media (max-width: 768px)
 {
     .calendar > .week-navigation { margin-block: 0.35rem 0.55rem; }
-    .calendar-columns { grid-template-columns: repeat(7, minmax(7.75rem, 1fr)); min-inline-size: 56rem; column-gap: 0.45rem; padding-inline: 0.50rem; }
+    .calendar-columns { grid-template-columns: repeat(7, minmax(7.75rem, 1fr)); min-inline-size: 56rem; column-gap: 0.45rem; padding-inline: 0.50rem; padding-block-end: 1rem; }
     .calendar-feedback { font-size: 0.70rem; }
 }

@@ -26,13 +26,12 @@
 
     inline-size: 100%;
     block-size: 100%;
-    border: 0;
-    background: color-mix(in srgb, var(--bg-primary) 46%, transparent);
-    backdrop-filter: blur(6px) saturate(110%);
-    -webkit-backdrop-filter: blur(6px) saturate(110%);
+    background: color-mix(in srgb, var(--bg-primary) 48%, transparent);
+    backdrop-filter: blur(5px) saturate(105%);
+    -webkit-backdrop-filter: blur(5px) saturate(105%);
     cursor: default;
 
-    animation: overlayFade 180ms ease-out;
+    animation: event-overlay-in 180ms ease-out;
 }
 
 /* ====================================
@@ -50,13 +49,13 @@
     overflow: hidden;
 
     border-inline-start: 1px solid var(--border-subtle);
-    background: color-mix(in srgb, var(--surface-raised) 96%, transparent);
-    box-shadow: -24px 0 70px rgba(15, 23, 42, 0.10);
+    background: color-mix(in srgb, var(--surface-raised) 97%, transparent);
+    box-shadow: -18px 0 60px rgba(15, 23, 42, 0.12);
 
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(135%);
+    -webkit-backdrop-filter: blur(24px) saturate(135%);
 
-    animation: panelEnter 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    animation: event-panel-in 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ====================================
@@ -80,9 +79,9 @@
 .event-panel-title
 {
     color: var(--text-muted);
-    font-size: 0.62rem;
+    font-size: 0.60rem;
     font-weight: 800;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.20em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -96,7 +95,8 @@
     min-block-size: 0;
     overflow-y: auto;
     overscroll-behavior: contain; /* Prevent scroll chaining into the page. */
-    padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.25rem, 3vw, 2.75rem) max(clamp(1.75rem, 3vw, 2.75rem), env(safe-area-inset-bottom));
+    padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 3rem) max(clamp(1.75rem, 3vw, 3rem), env(safe-area-inset-bottom));
+    overscroll-behavior: contain;
     scrollbar-gutter: stable;
 }
 
@@ -115,10 +115,10 @@
     color: var(--text-secondary);
 
     transition: color var(--transition),
-                background var(--transition),
+                background-color var(--transition),
                 transform var(--transition);
 }
-.close-button span { font-size: 1.35rem; font-weight: 400; line-height: 1; }
+.close-button span { display: block; font-size: 1.45rem; font-weight: 400; line-height: 0.80; }
 .close-button:active { transform: scale(0.90); }
 .close-button:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent); outline-offset: 3px; }
 
@@ -130,17 +130,17 @@
 /* ====================================
    EventPanel Animations Styles.
 ======================================= */
-@keyframes overlayFade
+@keyframes event-overlay-in
 {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-@keyframes panelEnter
+@keyframes event-panel-in
 {
     from { opacity: 0; transform: translateX(1.25rem); }
     to { opacity: 1; transform: translateX(0); }
 }
-@keyframes sheetEnter
+@keyframes event-sheet-in
 {
     from { opacity: 0; transform: translateY(1.25rem); }
     to { opacity: 1; transform: translateY(0); }
@@ -169,9 +169,9 @@
         border-inline-start: 0;
         border-block-start: 1px solid var(--border-subtle);
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        box-shadow: 0 -24px 70px rgba(15, 23, 42, 0.12);
+        box-shadow: 0 -18px 60px rgba(15, 23, 42, 0.14);
 
-        animation: sheetEnter 240ms cubic-bezier(0.22, 1, 0.36, 1);
+        animation: event-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }
     .event-panel-body { padding-inline: 1rem; }
 }

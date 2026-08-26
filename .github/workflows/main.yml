@@ -1,3 +1,8 @@
+#Filename: main.yml
+#Author: Kyle McColgan
+#Date: 26 August 2026
+#Description: This file contains the GitHub Actions Workflow and GitHub Pages deployment processes for the Saint Louis Events project.
+
 name: main
 
 on:
@@ -14,12 +19,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '22'
+        node-version: '24'
 
     - name: Install dependencies
       run: npm install
