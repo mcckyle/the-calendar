@@ -14,10 +14,11 @@
     min-inline-size: 0;
     min-block-size: 100%;
     border-inline-start: 1px solid var(--border-soft);
+    background: transparent;
 }
 
 /* =========================================
-   WeekDayColumn Column Boundary Styles.
+   WeekDayColumn Final Column Boundary Styles.
 ============================================ */
 .weekday-column:last-child { border-inline-end: 1px solid var(--border-soft); }
 
@@ -26,7 +27,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 1.5%, transparent);
+    background: color-mix(in srgb, var(--accent) 1.25%, transparent);
 }
 /* Accent Bar Styles. */
 /*.weekday-column.is-today::before
@@ -46,5 +47,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 2%, transparent); }
+    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 1.75%, transparent); }
 }

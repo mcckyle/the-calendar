@@ -19,7 +19,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
         <span
           aria-hidden="true"
         >
-          ‹
+          ←
         </span>
       </button>
       <time
@@ -38,7 +38,7 @@ exports[`Calendar Component > matches snapshot for default render. 1`] = `
         <span
           aria-hidden="true"
         >
-          ›
+          →
         </span>
       </button>
     </nav>

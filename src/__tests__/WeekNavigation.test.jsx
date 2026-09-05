@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.test.jsx
 //Author: Kyle McColgan
-//Date: 17 June 2026
+//Date: 4 September 2026
 //Description: This file contains unit tests for the MonthNavigation.jsx component.
 
 import React from 'react';
@@ -84,11 +84,11 @@ describe('WeekNavigation Component', () => {
 	});
 
 	//Test #7: Buttons contain visible arrow symbols.
-	it('shows arrow symbols (‹ and ›) inside the button.', () => {
+	it('shows arrow symbols (← and →) inside the button.', () => {
 		render(<WeekNavigation />);
 
-		expect(screen.getByText('‹')).toBeInTheDocument();
-		expect(screen.getByText('›')).toBeInTheDocument();
+		expect(screen.getByText('←')).toBeInTheDocument();
+		expect(screen.getByText('→')).toBeInTheDocument();
 	});
 
 	//Test #8: Renders the correct month text dynamically.

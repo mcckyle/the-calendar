@@ -8,13 +8,13 @@
     color-scheme: light dark;
 
     /* Fonts. */
-    --title-font: "Inter", system-ui, sans-serif;
-    --body-font: "Inter", system-ui, sans-serif;
+    --title-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --body-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     /* Calendar Layout. */
     --calendar-row-height: 5rem;
     --time-column-width: clamp(2.8rem, 4vw, 3.5rem);
-    --event-panel-width: 40rem;
+    --event-panel-width: min(40rem, 100vw);
 
     /* Radius. */
     --radius-sm: 0.75rem;
@@ -81,14 +81,13 @@ body
 }
 
 /* Headings Styles. */
+h1, h2, h3, p { margin: 0; }
 h1, h2, h3
 {
-    margin: 0;
     font-family: var(--title-font);
     letter-spacing: -0.05em;
     line-height: 0.95;
 }
-p { margin: 0; }
 img, svg { display: block; max-inline-size: 100%; }
 
 /* ====================================
@@ -130,8 +129,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
     *, *::before, *::after
     {
         scroll-behavior: auto !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -145,8 +142,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
 {
     :root
     {
-        --bg-primary: #06101c;
-        --bg-secondary: #0b1625;
+        --bg-primary: #07111f;
+        --bg-secondary: #0b1727;
 
         --text-primary: #f4f7fb;
         --text-secondary: #9aa8bc;

@@ -5,6 +5,7 @@
 ======================================= */
 .calendar
 {
+    position: relative;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     inline-size: 100%;
@@ -20,7 +21,7 @@
 .calendar > .week-navigation
 {
     justify-self: center;
-    margin-block: clamp(0.45rem, 0.80vw, 0.70rem) clamp(0.50rem, 0.90vw, 0.80rem);
+    margin-block: clamp(0.45rem, 0.80vw, 0.70rem) clamp(0.55rem, 0.90vw, 0.80rem);
 }
 
 /* ====================================
@@ -31,7 +32,7 @@
     position: absolute;
     inset-block-start: 0.75rem;
     inset-inline-start: 50%;
-    z-index: 10;
+    z-index: 20;
     transform: translateX(-50%);
 
     display: flex;
@@ -47,9 +48,9 @@
     background: var(--surface-raised);
     color: var(--text-secondary);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    font-size: 0.76rem;
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    font-size: 0.74rem;
     font-weight: 700;
     line-height: 1.25;
     text-align: center;
@@ -66,9 +67,10 @@
     min-block-size: 0;
     overflow: auto;
 
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable both-edges;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    outline: none;
 }
 
 /* ====================================
@@ -82,9 +84,17 @@
     inline-size: 100%;
     min-inline-size: 0;
     min-block-size: 100%;
-    column-gap: clamp(0.35rem, 0.75vw, 0.75rem);
-    padding-inline-end: clamp(0.65rem, 1.25vw, 1.5rem);
+    column-gap: clamp(0.40rem, 0.75vw, 0.75rem);
+    padding-inline: clamp(0.65rem, 1.25vw, 1.5rem);
     padding-block-end: clamp(0.90rem, 1.4vw, 1.5rem);
+}
+
+/* ====================================
+   Calendar Reduced Motion Styles.
+======================================= */
+@media (prefers-reduced-motion: reduce)
+{
+    .calendar-feedback { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 /* ====================================
