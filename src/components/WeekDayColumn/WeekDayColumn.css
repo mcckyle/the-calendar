@@ -27,25 +27,13 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 1.25%, transparent);
+    background: color-mix(in srgb, var(--accent) 1%, transparent);
 }
-/* Accent Bar Styles. */
-/*.weekday-column.is-today::before
-{
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    inset-block-start: 0;
-    block-size: 2px;
-    background: var(--accent);
-    opacity: 0.75;
-    pointer-events: none;
-}*/
 
 /* ====================================
    WeekDayColumn Media Query Styling.
 ======================================= */
 @media (max-width: 768px)
 {
-    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 1.75%, transparent); }
+    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 1.35%, transparent); }
 }

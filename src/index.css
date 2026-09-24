@@ -23,8 +23,8 @@
     --radius-xl: 2rem;
 
     /* Brand Colors. */
-    --brand: #163f6d;
-    --brand-soft: #28588f;
+    --brand: #24588f;
+    --brand-soft: #3978b8;
 
     --accent: #f4a524;
     --accent-soft: #ffc861;
@@ -44,13 +44,11 @@
 
     /* Surfaces. */
     --surface-primary: rgba(255, 255, 255, 0.72);
-    --surface-secondary: rgba(255, 255, 255, 0.64);
     --surface-raised: rgba(255, 255, 255, 0.92);
 
     /* Shadows. */
-    --shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.09), 0 2px 10px rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 28px 80px rgba(15, 23, 42, 0.12), 0 6px 20px rgba(15, 23, 42, 0.05);
+    --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 20px 60px rgba(15, 23, 42, 0.10), 0 3px 12px rgba(15, 23, 42, 0.04);
 
     /* Motion. */
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -145,21 +143,22 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
         --bg-primary: #07111f;
         --bg-secondary: #0b1727;
 
-        --text-primary: #f4f7fb;
+        --text-primary: #f5f7fb;
         --text-secondary: #9aa8bc;
         --text-muted: #748196;
 
-        --border-subtle: rgba(255, 255, 255, 0.08);
+        --brand: #3c78b5;
+        --brand-soft: #5794d0;
+
+        --border-subtle: rgba(255, 255, 255, 0.075);
         --border-soft: rgba(255, 255, 255, 0.04);
 
         /* Surfaces. */
-        --surface-primary: rgba(10, 19, 33, 0.78);
-        --surface-secondary: rgba(15, 23, 42, 0.58);
-        --surface-raised: rgba(15, 23, 42, 0.94);
+        --surface-primary: rgba(8, 17, 31, 0.84);
+        --surface-raised: rgba(15, 25, 42, 0.96);
 
-        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.32);
-        --shadow-md: 0 18px 54px rgba(0, 0, 0, 0.40);
-        --shadow-lg: 0 32px 100px rgba(0, 0, 0, 0.52);
+        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.28);
+        --shadow-md: 0 22px 64px rgba(0, 0, 0, 0.42), 0 3px 14px rgba(0, 0, 0, 0.22);
     }
     body { background: var(--bg-primary); }
     h1, h2, h3 { color: #ffffff; }

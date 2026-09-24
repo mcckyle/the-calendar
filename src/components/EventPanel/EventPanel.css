@@ -22,15 +22,15 @@
 {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
 
     inline-size: 100%;
     block-size: 100%;
 
     border: 0;
-    background: color-mix(in srgb, var(--bg-primary) 54%, transparent);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: color-mix(in srgb, #020817 58%, transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     cursor: default;
 
     animation: event-overlay-in 180ms ease-out;
@@ -41,6 +41,8 @@
 ======================================= */
 .event-panel
 {
+    position: relative;
+    z-index: 1;
     grid-column: 2; /* Keep EventPanel on right side of viewport. */
     display: flex;
     flex-direction: column;
@@ -50,11 +52,12 @@
     overflow: hidden;
 
     border-inline-start: 1px solid var(--border-subtle);
-    background: color-mix(in srgb, var(--surface-raised) 96%, transparent);
-    box-shadow: -1rem 0 3rem rgba(15, 23, 42, 0.08), -0.25rem 0 1rem rgba(15, 23, 42, 0.04);
+    background: var(--surface-raised);
+    box-shadow: -1.5rem 0 4rem rgba(0, 0, 0, 0.18), -0.25rem 0 1rem rgba(0, 0, 0, 0.08);
+    outline: none;
 
-    backdrop-filter: blur(20px) saturate(125%);
-    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    backdrop-filter: blur(24px) saturate(125%);
+    -webkit-backdrop-filter: blur(24px) saturate(125%);
 
     animation: event-panel-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -79,9 +82,8 @@
 ======================================= */
 .event-panel-title
 {
-    margin: 0;
     color: var(--text-muted);
-    font-size: 0.60rem;
+    font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     line-height: 1;
@@ -98,7 +100,9 @@
     overflow-y: auto;
     overscroll-behavior: contain; /* Prevent scroll chaining into the page. */
     scrollbar-gutter: stable;
-    padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 3rem) max(clamp(1.75rem, 3vw, 3rem), env(safe-area-inset-bottom));
+    padding: clamp(2rem, 5vw, 3.75rem)
+             clamp(1.25rem, 4vw, 3rem)
+             max(clamp(2rem, 4vw, 3.5rem), env(safe-area-inset-bottom));
 }
 
 /* ====================================
@@ -112,9 +116,6 @@
     inline-size: 2.25rem;
     block-size: 2.25rem;
     flex: 0 0 auto;
-
-    padding: 0;
-    border: 0;
     border-radius: 50%;
     color: var(--text-secondary);
 
@@ -122,7 +123,7 @@
                 background-color var(--transition),
                 transform var(--transition);
 }
-.close-button span { display: block; font-size: 1.5rem; font-weight: 400; line-height: 1; }
+.close-button span { display: block; font-size: 1.55rem; font-weight: 400; line-height: 1; }
 .close-button:active { transform: scale(0.92); }
 .close-button:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent); outline-offset: 3px; }
 
@@ -141,12 +142,12 @@
 }
 @keyframes event-panel-in
 {
-    from { opacity: 0; transform: translateX(1rem); }
+    from { opacity: 0; transform: translateX(1.25rem); }
     to { opacity: 1; transform: translateX(0); }
 }
 @keyframes event-sheet-in
 {
-    from { opacity: 0; transform: translateY(1rem); }
+    from { opacity: 0; transform: translateY(1.25rem); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -168,15 +169,16 @@
         inset-inline: 0;
         inset-block-end: 0;
         inline-size: 100%;
-        block-size: min(90dvh, 48rem);
+        block-size: min(88dvh, 48rem);
         min-block-size: 20rem;
 
         border-inline-start: 0;
         border-block-start: 1px solid var(--border-subtle);
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        box-shadow: 0 -1rem 3rem rgba(15, 23, 42, 0.10), 0 -0.25rem 1rem rgba(15, 23, 42, 0.04);
+        box-shadow: 0 -1.5rem 4rem rgba(0, 0, 0, 0.18), 0 -0.25rem 1rem rgba(0, 0, 0, 0.08);
 
         animation: event-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .event-panel-header { min-block-size: 3.75rem; }
     .event-panel-body { padding-inline: 1rem; }
 }

@@ -11,13 +11,13 @@
     inline-size: fit-content;
     min-inline-size: min(100%, 17rem);
 
-    padding: 0.20rem;
+    padding: 0.18rem;
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+    background: color-mix(in srgb, var(--surface-raised) 86%, transparent);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(18px) saturate(130%);
-    -webkit-backdrop-filter: blur(18px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(125%);
+    -webkit-backdrop-filter: blur(16px) saturate(125%);
 }
 
 /* ====================================
@@ -28,9 +28,9 @@
     min-inline-size: 8rem;
     padding-inline: 0.55rem;
     color: var(--text-primary);
-    font-size: 0.80rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
     text-align: center;
     white-space: nowrap;
 }
@@ -47,7 +47,7 @@
     block-size: 2.15rem;
 
     border-radius: 50%;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 
     transition: color var(--transition),
                 background-color var(--transition),
@@ -58,7 +58,7 @@
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--accent) 10%, transparent); }
 }
 
 /* ====================================
@@ -75,6 +75,6 @@
 @media (max-width: 768px)
 {
     .week-navigation { grid-template-columns: 2rem auto 2rem; min-inline-size: 15rem; }
-    .week-nav-label { min-inline-size: 7rem; font-size: 0.77rem; }
+    .week-nav-label { min-inline-size: 7rem; font-size: 0.75rem; }
     .week-nav-button { inline-size: 2rem; block-size: 2rem; }
 }

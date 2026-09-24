@@ -9,6 +9,10 @@ exports[`EventCard Component > matches snapshot. 1`] = `
     <header
       class="event-card-header"
     >
+      <span
+        aria-hidden="true"
+        class="event-card-accent"
+      />
       <h2
         class="event-card-title"
         id="event-card-title"

@@ -8,15 +8,16 @@
     position: sticky;
     inset-block-start: 0;
     z-index: 10;
-    grid-column: 1 / -1; /* Header should always match and align with the columns. */
+
     display: grid;
+    grid-column: 1 / -1; /* Header should always match and align with the columns. */
     grid-template-columns: inherit;
     column-gap: inherit;
-    padding-block: 0.65rem 0.70rem;
+    padding-block: 0.62rem 0.68rem;
     border-block-end: 1px solid var(--border-soft);
     background: color-mix(in srgb, var(--surface-primary) 94%, transparent);
-    backdrop-filter: blur(18px) saturate(125%);
-    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
 }
 
 /* ====================================
@@ -27,7 +28,7 @@
     min-inline-size: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.32rem;
+    gap: 0.34rem;
 }
 
 /* ====================================
@@ -36,9 +37,9 @@
 .day-label
 {
     color: var(--text-muted);
-    font-size: 0.58rem;
+    font-size: 0.57rem;
     font-weight: 800;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.17em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -51,26 +52,28 @@
     display: inline-flex;
     align-items: center;
     align-self: flex-start;
-    min-block-size: 1.9rem;
+    min-block-size: 1.85rem;
     color: var(--text-primary);
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     font-weight: 800;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
     line-height: 1;
 }
 
 /* ====================================
    DaysOfWeek Today State Styling.
  ======================================= */
+.day-item.is-today { position: relative; }
 .day-item.is-today .day-label { color: var(--accent); }
 .day-item.is-today .day-date
 {
+    position: relative;
     padding-inline: 0.62rem;
     border-radius: 999px;
     color: var(--text-primary);
-    background: color-mix(in srgb, var(--accent) 13%, transparent);
+    background: color-mix(in srgb, var(--accent) 11%, transparent);
     color: var(--text-primary);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 24%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 /* ====================================
@@ -86,8 +89,8 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .days-of-week { padding-block: 0.55rem 0.60rem; }
-    .day-label { font-size: 0.49rem; letter-spacing: 0.14em; }
-    .day-date { min-block-size: 1.7rem; font-size: 0.80rem; }
+    .days-of-week { padding-block: 0.52rem 0.58rem; }
+    .day-label { font-size: 0.48rem; letter-spacing: 0.13em; }
+    .day-date { min-block-size: 1.65rem; font-size: 0.79rem; }
     .day-item.is-today .day-date { padding-inline: 0.52rem; }
 }

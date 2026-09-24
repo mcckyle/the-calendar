@@ -8,7 +8,7 @@
     display: grid;
     align-content: start;
     gap: clamp(1.75rem, 3vw, 2.75rem);
-    inline-size: min(100%, 42rem);
+    inline-size: min(100%, 38rem);
     margin-inline: auto;
 }
 
@@ -16,11 +16,12 @@
     EventCard Header Styles.
 ======================================= */
 .event-card-header { display: grid; gap: 1rem; }
+.event-card-accent { inline-size: 2.5rem; block-size: 0.22rem; border-radius: 999px; background: var(--accent); }
 .event-card-title
 {
     margin: 0;
     color: var(--text-primary);
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     font-weight: 800;
     line-height: 0.94;
     letter-spacing: -0.065em;
@@ -35,14 +36,14 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.40rem 0.75rem;
+    gap: 0.45rem 0.75rem;
 }
 .event-date,
 .event-time
 {
     color: var(--text-primary);
     font-size: 0.78rem;
-    font-weight: 750;
+    font-weight: 700;
     line-height: 1.4;
 }
 .event-date { color: var(--brand); }
@@ -55,7 +56,7 @@
 {
     max-inline-size: 62ch;
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.75;
     white-space: pre-line;
 }
@@ -66,7 +67,7 @@
 .event-card-venue
 {
     display: grid;
-    gap: 0.45rem;
+    gap: 0.55rem;
     margin: 0;
     padding-block-start: 1.35rem;
     border-block-start: 1px solid var(--border-soft);

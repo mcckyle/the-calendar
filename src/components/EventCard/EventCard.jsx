@@ -31,6 +31,7 @@ const EventCard = ({
     return (
 	  <article className="event-card" aria-labelledby="event-card-title">
 		<header className="event-card-header">
+		  <span className="event-card-accent" aria-hidden="true" />
 		  <h2 id="event-card-title" className="event-card-title">
 		    {title}
 		  </h2>
