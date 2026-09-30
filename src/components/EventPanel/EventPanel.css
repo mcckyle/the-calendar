@@ -11,7 +11,6 @@
 
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(22rem, var(--event-panel-width));
-
     isolation: isolate;
 }
 
@@ -28,9 +27,9 @@
     block-size: 100%;
 
     border: 0;
-    background: color-mix(in srgb, #020817 58%, transparent);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: color-mix(in srgb, #020817 64%, transparent);
+    backdrop-filter: blur(7px) saturate(85%);
+    -webkit-backdrop-filter: blur(7px) saturate(85%);
     cursor: default;
 
     animation: event-overlay-in 180ms ease-out;
@@ -52,12 +51,9 @@
     overflow: hidden;
 
     border-inline-start: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
-    box-shadow: -1.5rem 0 4rem rgba(0, 0, 0, 0.18), -0.25rem 0 1rem rgba(0, 0, 0, 0.08);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-raised) 98%, var(--brand) 2%), var(--surface-raised));
+    box-shadow: -1.5rem 0 4rem rgba(0, 0, 0, 0.22), -0.25rem 0 1rem rgba(0, 0, 0, 0.10);
     outline: none;
-
-    backdrop-filter: blur(24px) saturate(125%);
-    -webkit-backdrop-filter: blur(24px) saturate(125%);
 
     animation: event-panel-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -71,7 +67,7 @@
     align-items: center;
     justify-content: space-between;
     flex: 0 0 auto;
-    min-block-size: 4rem;
+    min-block-size: 4.25rem;
 
     padding-inline: clamp(1rem, 2vw, 1.5rem);
     border-block-end: 1px solid var(--border-soft);
@@ -85,7 +81,7 @@
     color: var(--text-muted);
     font-size: 0.58rem;
     font-weight: 800;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.20em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -123,7 +119,7 @@
                 background-color var(--transition),
                 transform var(--transition);
 }
-.close-button span { display: block; font-size: 1.55rem; font-weight: 400; line-height: 1; }
+.close-button span { display: block; font-size: 1.45rem; font-weight: 400; line-height: 1; }
 .close-button:active { transform: scale(0.92); }
 .close-button:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent); outline-offset: 3px; }
 
@@ -175,7 +171,7 @@
         border-inline-start: 0;
         border-block-start: 1px solid var(--border-subtle);
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        box-shadow: 0 -1.5rem 4rem rgba(0, 0, 0, 0.18), 0 -0.25rem 1rem rgba(0, 0, 0, 0.08);
+        box-shadow: 0 -1.5rem 4rem rgba(0, 0, 0, 0.22), 0 -0.25rem 1rem rgba(0, 0, 0, 0.10);
 
         animation: event-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }

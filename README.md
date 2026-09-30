@@ -1,3 +1,5 @@
+[![main](https://github.com/mcckyle/the-calendar/actions/workflows/main.yml/badge.svg)](https://github.com/mcckyle/the-calendar/actions/workflows/main.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
 # The Calendar
 
 The **Calendar** is a React-based calendar, with the aim of providing an intuitive and accessible way for the Saint Louis community to explore local events. This project enables community members to easily view events for a specific week, navigate between weeks, and display event details.
@@ -21,7 +23,7 @@ The **Calendar** is a React-based calendar, with the aim of providing an intuiti
 
 ## Screenshots
 
-![Calendar Screenshot](./public/images/Screenshot_20260820_172235.png)
+![Calendar Screenshot](./public/images/Screenshot_20260930_184354.png)
 
 > **Link**: Calendar: https://mcckyle.github.io/the-calendar/
 

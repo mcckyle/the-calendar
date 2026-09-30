@@ -5,8 +5,6 @@
 ============================================ */
 .weekday-column
 {
-    position: relative;
-
     display: grid;
     grid-auto-rows: minmax(var(--calendar-row-height), auto);
     align-content: start;
@@ -27,7 +25,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 1%, transparent);
+    background: color-mix(in srgb, var(--accent) 1.75%, transparent);
 }
 
 /* ====================================
@@ -35,5 +33,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 1.35%, transparent); }
+    .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 2%, transparent); }
 }

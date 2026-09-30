@@ -1,7 +1,7 @@
 //Filename: eventUtils.js
 //Author: Kyle McColgan
-//Date: 26 June 2026
-//Description: This file contains Calendar-related helper functions for the Saint Louis calendar project.
+//Date: 30 September 2026
+//Description: This file contains Calendar-related helper functions for the Saint Louis Events React project.
 
 const TIMEZONE = "America/Chicago";
 
@@ -216,7 +216,6 @@ export const groupEventsByHour = (day, events) => {
 
     const eventsByHour = Array.from({ length: 24 }, () => []); // Create 24 independent arrays.
     const target = getChicagoParts(day);
-    //const dayEvents = filterEventsByDay(events, day);
 
     for (const event of events)
     {
@@ -225,7 +224,6 @@ export const groupEventsByHour = (day, events) => {
             continue;
         }
 
-        //const hour = event.startTime.getHours(); // Extract the hour from event time (local time).
         const parts= getChicagoParts(event.startTime);
 
         //Compare in SAME timezone (Chicago).

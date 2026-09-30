@@ -1,7 +1,7 @@
 #Filename: main.yml
 #Author: Kyle McColgan
-#Date: 26 August 2026
-#Description: This file contains the GitHub Actions Workflow and GitHub Pages deployment processes for the Saint Louis Events project.
+#Date: 30 September 2026
+#Description: This file contains the GitHub Actions Workflow and GitHub Pages deployment processes for the Saint Louis Events React project.
 
 name: main
 
@@ -13,21 +13,29 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # For push to the gh-pages branch...
+
+#Prevents multiple concurrent deployments from stepping on each other...
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v7
       with:
         node-version: '24'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci #Safer/faster alternative to npm install in CI environments.
 
     - name: Run tests
       run: npm test

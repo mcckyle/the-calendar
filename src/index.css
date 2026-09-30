@@ -82,7 +82,9 @@ body
 h1, h2, h3, p { margin: 0; }
 h1, h2, h3
 {
+    color: var(--text-primary);
     font-family: var(--title-font);
+    font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 0.95;
 }
@@ -143,12 +145,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
         --bg-primary: #07111f;
         --bg-secondary: #0b1727;
 
+        --brand: #3c78b5;
+        --brand-soft: #5794d0;
+
         --text-primary: #f5f7fb;
         --text-secondary: #9aa8bc;
         --text-muted: #748196;
-
-        --brand: #3c78b5;
-        --brand-soft: #5794d0;
 
         --border-subtle: rgba(255, 255, 255, 0.075);
         --border-soft: rgba(255, 255, 255, 0.04);
@@ -161,6 +163,5 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
         --shadow-md: 0 22px 64px rgba(0, 0, 0, 0.42), 0 3px 14px rgba(0, 0, 0, 0.22);
     }
     body { background: var(--bg-primary); }
-    h1, h2, h3 { color: #ffffff; }
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); }
 }
