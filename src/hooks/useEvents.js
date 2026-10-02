@@ -1,45 +1,49 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 22 June 2026
-//Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar.
+//Date: 2 October 2026
+//Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar React project.
 
 import { useState, useEffect, useRef } from "react";
 
 //Simple in-memory cache.
 const eventsCache = new Map();
+const inFlightRequests = new Map();
+const CACHE_TTL = 5 * 60 * 1000;
 const getKey = (start, end) => `${start}_${end}`;
 
-const normalizeEvents = (rawEvents = []) => {
+const normalizeEvents = (rawEvents = []) =>
+{
   return rawEvents
-  .map((event) => {
-    const venue = event?._embedded?.venues?.[0];
-    const startISO = event?.dates?.start?.dateTime;
-    const endISO = event?.dates?.end?.dateTime;
-
-    if (!startISO)
+    .map((event) =>
     {
-      return null;
-    }
+      const venue = event?._embedded?.venues?.[0];
+      const startISO = event?.dates?.start?.dateTime;
+      const endISO = event?.dates?.end?.dateTime;
 
-    const start = new Date(startISO);
-    const end = endISO ? new Date(endISO) : null;
+      if (!startISO)
+      {
+        return null;
+      }
 
-    return {
-      id: event.id,
-      title: event.name ?? "Untitled Event",
-      startTime: start,
-      endTime: end,
-      allDay: event?.dates?.start?.noSpecificTime ?? false,
-      description: event.info ?? event.pleaseNote ?? "",
-      venueName: venue?.name ?? "",
-      venueAddress: venue?.address?.line1 ?? "",
-      venueCity: venue?.city?.name ?? "",
-      venueState: venue?.state?.stateCode ?? "",
-      url: event.url ?? "",
-    };
-  })
-  .filter(Boolean)
-  .sort((a, b) => a.startTime - b.startTime);
+      const start = new Date(startISO);
+      const end = endISO ? new Date(endISO) : null;
+
+      return {
+        id: event.id,
+        title: event.name ?? "Untitled Event",
+        startTime: start,
+        endTime: end,
+        allDay: event?.dates?.start?.noSpecificTime ?? false,
+        description: event.info ?? event.pleaseNote ?? "",
+        venueName: venue?.name ?? "",
+        venueAddress: venue?.address?.line1 ?? "",
+        venueCity: venue?.city?.name ?? "",
+        venueState: venue?.state?.stateCode ?? "",
+        url: event.url ?? "",
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.startTime - b.startTime);
 };
 
 const getWeekRange = (date) =>
@@ -57,9 +61,10 @@ const getWeekRange = (date) =>
 const getAdjacentWeeks = (date) =>
 {
   const current = new Date(date);
-  const previous = new Date(current);
 
+  const previous = new Date(current);
   previous.setUTCDate(current.getUTCDate() - 7);
+
   const next = new Date(current);
   next.setUTCDate(current.getUTCDate() + 7);
   return {
@@ -68,12 +73,47 @@ const getAdjacentWeeks = (date) =>
   };
 };
 
-const fetchEvents = async (apiUrl, start, end, signal) => {
+const getCachedEvents = (key) =>
+{
+  const cached = eventsCache.get(key);
+
+  if (!cached)
+  {
+    return null;
+  }
+
+  if (Date.now() >= cached.expiresAt)
+  {
+    eventsCache.delete(key);
+    return null;
+  }
+
+  return cached.events;
+};
+
+const setCachedEvents = (key, events) =>
+{
+  eventsCache.set(key, {
+    events,
+    expiresAt: Date.now() + CACHE_TTL,
+  });
+};
+
+const fetchEvents = async (apiUrl, start, end, signal) =>
+{
   const key = getKey(start, end);
 
-  if (eventsCache.has(key))
+  const cached = getCachedEvents(key);
+
+  if (cached)
   {
-    return eventsCache.get(key);
+    return cached;
+  }
+
+  //Reuse an existing request for the same week.
+  if (inFlightRequests.has(key))
+  {
+    return inFlightRequests.get(key);
   }
 
   const parameters = new URLSearchParams({
@@ -82,94 +122,120 @@ const fetchEvents = async (apiUrl, start, end, signal) => {
       end,
     });
 
-    const response = await fetch(`${apiUrl}/api/events?${parameters}`, { signal });
+    const request = fetch(
+      `${apiUrl}/api/events?${parameters.toString()}`,
+      { signal }
+    )
+      .then((response) =>
+      {
+        if (!response.ok)
+        {
+          throw new Error(`Event request failed (${response.status})`);
+        }
 
-    if (!response.ok)
-    {
-      throw new Error(`Event request failed (${response.status})`);
-    }
+        return response.json();
+      })
+      .then((data) =>
+      {
+        const events = normalizeEvents(data?._embedded?.events ?? []);
+        setCachedEvents(key, events);
+        return events;
+      })
+      .finally(() =>
+      {
+        inFlightRequests.delete(key);
+      });
 
-    const data = await response.json();
-    const events = normalizeEvents(data?._embedded?.events ?? []);
+    inFlightRequests.set(key, request);
 
-    eventsCache.set(key, events);
-
-    return events;
+    return request;
 };
 
-const prefetchWeek = (apiUrl, date) => {
+const prefetchWeek = (apiUrl, date) =>
+{
   const { start, end } = getWeekRange(date);
   const key = getKey(start, end);
 
-  if (eventsCache.has(key))
+  if ((getCachedEvents(key)) || (eventsCache.has(key)))
   {
     return;
   }
 
   fetchEvents(apiUrl, start, end).catch(() => {});
-}
+};
 
-export function useEvents(apiUrl, weekStart, weekEnd) {
+const prefetchAdjacentWeeks = (apiUrl, date) =>
+{
+  const { previous, next } = getAdjacentWeeks(date);
+  prefetchWeek(apiUrl, previous);
+  prefetchWeek(apiUrl, next);
+};
+
+export function useEvents(apiUrl, weekStart, weekEnd)
+{
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const controllerRef = useRef(null); //Keep a ref to the current controller.
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     if ((!apiUrl) || (!weekStart) || (!weekEnd))
     {
+      setEvents([]);
+      setLoading(false);
+      setError(null);
       return;
     }
 
     const key = getKey(weekStart, weekEnd);
-    const cached = eventsCache.get(key);
+    const cached = getCachedEvents(key);
 
-    //Serve instantly from cache, if available.
+    //Serve immediately from cache.
     if (cached)
     {
       setEvents(cached);
       setLoading(false);
       setError(null);
-
-      //Still prefetch neighbors.
-      const { previous, next, } = getAdjacentWeeks(weekStart);
-
-      prefetchWeek(apiUrl, previous);
-      prefetchWeek(apiUrl, next);
+      prefetchAdjacentWeeks(apiUrl, weekStart);
 
       return;
     }
 
-    //Abort any in-flight requests.
+    //Abort the previous foreground request.
     controllerRef.current?.abort();
 
     const controller = new AbortController();
     controllerRef.current = controller;
 
-    const load = async () => {
-      setLoading(true);
-      setError(null);
+    //Prevent stale events from appearing under the new week.
+    setEvents([]);
+    setLoading(true);
+    setError(null);
 
+    const load = async () =>
+    {
       try
       {
           const result = await fetchEvents(apiUrl, weekStart, weekEnd, controller.signal);
 
-          if (!controller.signal.aborted)
+          if (controller.signal.aborted)
           {
-              setEvents(result);
+              return;
           }
 
-          //Prefetch adjacent weeks.
-          const { previous, next, } = getAdjacentWeeks(weekStart);
-          prefetchWeek(apiUrl, previous);
-          prefetchWeek(apiUrl, next);
+          setEvents(result);
+          prefetchAdjacentWeeks(apiUrl, weekStart);
       }
       catch (error)
       {
-        if (error.name !== "AbortError")
+        if (error.name === "AbortError")
         {
-          setError(error.message ?? "Unable to load events!");
+          return;
         }
+
+        setEvents([]);
+        setError(error.message ?? "Unable to load events!");
       }
       finally
       {
