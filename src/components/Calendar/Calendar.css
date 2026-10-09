@@ -21,7 +21,7 @@
 .calendar > .week-navigation
 {
     justify-self: center;
-    margin-block: 0.42rem 0.48rem;
+    margin-block: 0.40rem 0.50rem;
 }
 
 /* ====================================
@@ -40,7 +40,7 @@
     justify-content: center;
     inline-size: max-content;
     max-inline-size: min(calc(100% - 2rem), 32rem);
-    padding: 0.45rem 0.80rem;
+    padding: 0.50rem 0.85rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
@@ -50,9 +50,9 @@
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(16px) saturate(120%);
     -webkit-backdrop-filter: blur(16px) saturate(120%);
-    font-size: 0.70rem;
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.35;
     text-align: center;
     pointer-events: none;
 }
@@ -86,7 +86,7 @@
     min-block-size: 100%;
     column-gap: clamp(0.40rem, 0.65vw, 0.65rem);
     padding-inline: clamp(0.55rem, 0.90vw, 1rem);
-    padding-block-end: clamp(0.70rem, 1vw, 1rem);
+    padding-block-end: 1rem;
 }
 
 /* ====================================

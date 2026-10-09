@@ -1,12 +1,21 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 23 September 2026
+//Date: 8 October 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import EventCard from "../EventCard/EventCard.jsx";
 import "./EventPanel.css";
+
+const FOCUSABLE_ELEMENTS = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(", ");
 
 const EventPanel = ({ selectedEvent, onClose }) => {
   const panelRef = useRef(null);
@@ -17,24 +26,62 @@ const EventPanel = ({ selectedEvent, onClose }) => {
   {
     if (!selectedEvent)
     {
-      return;
+      return undefined;
+    }
+
+    const panel = panelRef.current;
+
+    if (!panel)
+    {
+      return undefined;
     }
 
     previousFocusRef.current = document.activeElement;
 
-    const panel = panelRef.current;
-    panel?.focus();
-
     //Prevent the application from scrolling behind the panel.
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    panel.focus();
 
     //Close on Escape.
     const handleKeyDown = (event) =>
     {
       if (event.key === "Escape")
       {
+        event.preventDefault();
         onClose();
+        return;
+      }
+
+      if (event.key !== "Tab")
+      {
+        return;
+      }
+
+      const focusableElements = [
+        ...panel.querySelectorAll(FOCUSABLE_ELEMENTS),
+      ].filter((element) => !element.hasAttribute("hidden"));
+
+      if (focusableElements.length === 0)
+      {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if ((event.shiftKey) && ((activeElement === firstElement) || (activeElement === panel)))
+      {
+        event.preventDefault();
+        lastElement.focus();
+      }
+      else if ((!event.shiftKey) && ((activeElement === lastElement) || (!panel.contains(activeElement))))
+      {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -45,10 +92,12 @@ const EventPanel = ({ selectedEvent, onClose }) => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
 
+      const previousFocus = previousFocusRef.current;
+
       //Return focus to the event that opened the panel.
-      if (previousFocusRef.current instanceof HTMLElement)
+      if ((previousFocus instanceof HTMLElement) && (previousFocus.isConnected))
       {
-        previousFocusRef.current.focus();
+        previousFocus.focus();
       }
     };
   }, [selectedEvent, onClose]);

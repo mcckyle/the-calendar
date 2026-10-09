@@ -25,13 +25,13 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 1.75%, transparent);
+    background: color-mix(in srgb, var(--accent) 2%, transparent);
 }
 
 /* ====================================
    WeekDayColumn Media Query Styling.
 ======================================= */
-@media (max-width: 768px)
+/*@media (max-width: 768px)
 {
     .weekday-column.is-today { background: color-mix(in srgb, var(--accent) 2%, transparent); }
-}
+}*/
