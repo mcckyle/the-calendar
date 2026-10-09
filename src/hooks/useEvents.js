@@ -1,6 +1,6 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 2 October 2026
+//Date: 9 October 2026
 //Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar React project.
 
 import { useState, useEffect, useRef } from "react";
@@ -9,16 +9,13 @@ import { useState, useEffect, useRef } from "react";
 const eventsCache = new Map();
 const inFlightRequests = new Map();
 const CACHE_TTL = 5 * 60 * 1000;
-const getKey = (start, end) => `${start}_${end}`;
+const getKey = (apiUrl, start, end) => `${apiUrl}|${start}_${end}`;
 
 const normalizeEvents = (rawEvents = []) =>
-{
-  return rawEvents
+  rawEvents
     .map((event) =>
     {
-      const venue = event?._embedded?.venues?.[0];
       const startISO = event?.dates?.start?.dateTime;
-      const endISO = event?.dates?.end?.dateTime;
 
       if (!startISO)
       {
@@ -26,7 +23,19 @@ const normalizeEvents = (rawEvents = []) =>
       }
 
       const start = new Date(startISO);
-      const end = endISO ? new Date(endISO) : null;
+
+      if (!Number.isFinite(start.getTime()))
+      {
+        return null;
+      }
+
+      const endISO = event?.dates?.end?.dateTime;
+      const parsedEnd = endISO ? new Date(endISO) : null;
+      const end = parsedEnd && Number.isFinite(parsedEnd.getTime())
+        ? parsedEnd
+        : null;
+
+      const venue = event?._embedded.venues?.[0];
 
       return {
         id: event.id,
@@ -43,8 +52,7 @@ const normalizeEvents = (rawEvents = []) =>
       };
     })
     .filter(Boolean)
-    .sort((a, b) => a.startTime - b.startTime);
-};
+    .sort((a, b) => a.startTime.getTime() - b.startTime.getTime());
 
 const getWeekRange = (date) =>
 {
@@ -53,24 +61,20 @@ const getWeekRange = (date) =>
 
   end.setUTCDate(start.getUTCDate() + 6);
   return {
-    start: start.toISOString().split("T")[0],
-    end: end.toISOString().split("T")[0],
+    start: start.toISOString().slice(0, 10),
+    end: end.toISOString().slice(0, 10),
   };
 };
 
 const getAdjacentWeeks = (date) =>
 {
-  const current = new Date(date);
+  const previous = new Date(date);
+  const next = new Date(date);
 
-  const previous = new Date(current);
-  previous.setUTCDate(current.getUTCDate() - 7);
+  previous.setUTCDate(previous.getUTCDate() - 7);
+  next.setUTCDate(next.getUTCDate() + 7);
 
-  const next = new Date(current);
-  next.setUTCDate(current.getUTCDate() + 7);
-  return {
-    previous,
-    next,
-  };
+  return { previous, next };
 };
 
 const getCachedEvents = (key) =>
@@ -101,19 +105,22 @@ const setCachedEvents = (key, events) =>
 
 const fetchEvents = async (apiUrl, start, end, signal) =>
 {
-  const key = getKey(start, end);
-
+  const key = getKey(apiUrl, start, end);
   const cached = getCachedEvents(key);
 
-  if (cached)
+  if (cached !== null)
   {
     return cached;
   }
 
-  //Reuse an existing request for the same week.
-  if (inFlightRequests.has(key))
+  const existing = inFlightRequests.get(key);
+
+  //Reuse requests that cannot be cancelled by another consumer.
+  //A request tied to a component's signal must not be shared with
+  //another consumer that could abort it.
+  if ((existing) && (!existing.hasSignal))
   {
-    return inFlightRequests.get(key);
+    return existing.promise;
   }
 
   const parameters = new URLSearchParams({
@@ -122,9 +129,10 @@ const fetchEvents = async (apiUrl, start, end, signal) =>
       end,
     });
 
-    const request = fetch(
+    let request;
+    request = fetch(
       `${apiUrl}/api/events?${parameters.toString()}`,
-      { signal }
+      signal ? { signal } : undefined
     )
       .then((response) =>
       {
@@ -143,10 +151,17 @@ const fetchEvents = async (apiUrl, start, end, signal) =>
       })
       .finally(() =>
       {
-        inFlightRequests.delete(key);
+        //An older request must not remove a newer request's entry.
+        if (inFlightRequests.get(key)?.promise === request)
+        {
+          inFlightRequests.delete(key);
+        }
       });
 
-    inFlightRequests.set(key, request);
+    inFlightRequests.set(key, {
+      promise: request,
+      hasSignal: Boolean(signal),
+    });
 
     return request;
 };
@@ -154,9 +169,9 @@ const fetchEvents = async (apiUrl, start, end, signal) =>
 const prefetchWeek = (apiUrl, date) =>
 {
   const { start, end } = getWeekRange(date);
-  const key = getKey(start, end);
+  const key = getKey(apiUrl, start, end);
 
-  if ((getCachedEvents(key)) || (eventsCache.has(key)))
+  if (getCachedEvents(key) !== null)
   {
     return;
   }
@@ -182,28 +197,32 @@ export function useEvents(apiUrl, weekStart, weekEnd)
   {
     if ((!apiUrl) || (!weekStart) || (!weekEnd))
     {
+      controllerRef.current?.abort();
+      controllerRef.current = null;
+
       setEvents([]);
       setLoading(false);
       setError(null);
-      return;
+
+      return undefined;
     }
 
-    const key = getKey(weekStart, weekEnd);
+    const key = getKey(apiUrl, weekStart, weekEnd);
     const cached = getCachedEvents(key);
 
+    controllerRef.current?.abort();
+
     //Serve immediately from cache.
-    if (cached)
+    if (cached !== null)
     {
+      controllerRef.current = null;
       setEvents(cached);
       setLoading(false);
       setError(null);
       prefetchAdjacentWeeks(apiUrl, weekStart);
 
-      return;
+      return undefined;
     }
-
-    //Abort the previous foreground request.
-    controllerRef.current?.abort();
 
     const controller = new AbortController();
     controllerRef.current = controller;
@@ -227,15 +246,15 @@ export function useEvents(apiUrl, weekStart, weekEnd)
           setEvents(result);
           prefetchAdjacentWeeks(apiUrl, weekStart);
       }
-      catch (error)
+      catch (requestError)
       {
-        if (error.name === "AbortError")
+        if ((controller.signal.aborted) || (requestError.name === "AbortError"))
         {
           return;
         }
 
         setEvents([]);
-        setError(error.message ?? "Unable to load events!");
+        setError(requestError.message ?? "Unable to load events!");
       }
       finally
       {
@@ -247,7 +266,14 @@ export function useEvents(apiUrl, weekStart, weekEnd)
     };
 
     load();
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+
+      if (controllerRef.current === controller)
+      {
+        controllerRef.current = null;
+      }
+    };
   }, [apiUrl, weekStart, weekEnd]);
 
   return { events, loading, error };

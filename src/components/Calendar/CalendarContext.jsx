@@ -1,79 +1,125 @@
 //Filename: CalendarContext.jsx
 //Author: Kyle McColgan
-//Date: 30 September 2026
+//Date: 9 October 2026
 //Description: This file contains the Calendar context component for the Saint Louis Events React project.
 
 import React, { createContext, useContext, useState } from 'react';
 
-export const CalendarContext = createContext();
-export const useCalendarContext = () => useContext(CalendarContext);
+const CHICAGO_TIME_ZONE = "America/Chicago";
+const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
-const getStartOfWeekUTC = (date) => {
-  const d = new Date(date);
-
-  //Get Chicago date parts.
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Chicago",
+const getChicagoParts = (date) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: CHICAGO_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
     weekday: "short",
-  });
+  }).formatToParts(date);
 
-  const parts = formatter.formatToParts(d);
-  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
+  return Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+};
 
-  const dayMap = {
+const chicagoMidnightToDate = (year, month, day) => {
+  const target = Date.UTC(year, month - 1, day);
+  let result = new Date(target);
+
+  for (let attempt = 0; attempt < 3; attempt += 1)
+  {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: CHICAGO_TIME_ZONE,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hourCycle: "h23",
+    }).formatToParts(result);
+
+    const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+
+    const represented = Date.UTC(
+      Number(values.year),
+      Number(values.month) - 1,
+      Number(values.day),
+      Number(values.hour),
+      Number(values.minute),
+      Number(values.second)
+    );
+
+    const difference = target - represented;
+
+    if (difference === 0)
+    {
+      break;
+    }
+
+    result = new Date(result.getTime() + difference);
+  }
+
+  return result;
+};
+
+const getStartOfWeekUTC = (date) => {
+  if (!(date instanceof Date) || !Number.isFinite(date.getTime()))
+  {
+    return getStartOfWeekUTC(new Date());
+  }
+
+  //Get Chicago date parts.
+  const parts = getChicagoParts(date);
+  const weekdayIndex = {
     Sun: 0, Mon: 1, Tue: 2, Wed: 3,
     Thu: 4, Fri: 5, Sat: 6,
-  };
+  }[parts.weekday];
 
-  const diff = dayMap[map.weekday];
+  const year = Number(parts.year);
+  const month = Number(parts.month);
+  const day = Number(parts.day);
 
-  //Step #1: Chicago-local date string.
-  const chicagoDateStr = `${map.year}-${map.month}-${map.day}`;
+  const chicagoCalendarDate = Date.UTC(year, month - 1, day);
+  const sunday = new Date(chicagoCalendarDate - weekdayIndex * MILLISECONDS_PER_DAY);
 
-  //Step #2: Move back to Sunday in pure date math.
-  const temp = new Date(`${chicagoDateStr}T00:00:00`);
-  temp.setDate(temp.getDate() - diff);
-
-  const sundayStr = temp.toISOString().slice(0, 10);
-
-  //Step #3: Construct exact Chicago midnight -> interpreted in Chicago time -> converted to UTC.
-  const chicagoMidnightUTC = new Date(
-    `${sundayStr}T00:00:00-05:00` //Fallback offset, corrected below.
-  );
-
-  //Step #4: Correct DST dynamically using Intl for GitHub Actions.
-  const chicagoTime = new Date(
-    chicagoMidnightUTC.toLocaleString("en-US", { timeZone: "America/Chicago" })
-  );
-
-  const offsetMinutes =
-  chicagoMidnightUTC.getTime() - chicagoTime.getTime();
-
-  return new Date(chicagoMidnightUTC.getTime() + offsetMinutes);
+  return chicagoMidnightToDate(sunday.getUTCFullYear(), sunday.getUTCMonth() + 1, sunday.getUTCDate());
 };
+
+const getCalendarDateAnchor = (date) => {
+  const parts = getChicagoParts(date);
+
+  //Noon UTC keeps the intended Chicago calendar date unambigous.
+  return new Date(
+    Date.UTC(
+      Number(parts.year),
+      Number(parts.month) - 1,
+      Number(parts.day),
+      12
+    )
+  );
+};
+
+export const CalendarContext = createContext();
+export const useCalendarContext = () => useContext(CalendarContext);
 
 export const CalendarProvider = ({ children, initialDate }) => {
   const [currentDate, setCurrentDate] = useState(initialDate ?? getStartOfWeekUTC(new Date()));
   const [selectedDate, setSelectedDate] = useState(null);
 
   const changeMonth = (offset) => {
-    const newDate = new Date(currentDate);
-    newDate.setMonth(currentDate.getMonth() + offset);
+    const newDate = getCalendarDateAnchor(currentDate);
+    newDate.setUTCMonth(newDate.getUTCMonth() + offset);
     setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
   const changeWeek = (offset) => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() + offset * 7);
+    const newDate = getCalendarDateAnchor(currentDate);
+    newDate.setUTCDate(newDate.getUTCDate() + offset * 7);
     setCurrentDate(getStartOfWeekUTC(newDate));
   };
 
   const selectDate = (date) => {
     const parsedDate = new Date(date);
-    if ( (parsedDate instanceof Date) && (!Number.isNaN(parsedDate.getTime())))
+    if (Number.isFinite(parsedDate.getTime()))
     {
       setSelectedDate(parsedDate);
     }

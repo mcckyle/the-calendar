@@ -1,35 +1,9 @@
 //Filename: dateHelpers.js
 //Author: Kyle McColgan
-//Date: 26 June 2026
+//Date: 8 October 2026
 //Description: This file contains some helper functions for the Saint Louis calendar project.
 
-export const getFirstDayOfMonth = (year, month) =>
-{
-  return new Date(year, month, 1).getDay();
-};
-
-export const getTotalDaysInMonth = (year, month) =>
-{
-  return new Date(year, month + 1, 0).getDate();
-};
-
-export const formatToISODate = (year, month, day) =>
-{
-  return new Date(Date.UTC(year, month, day)).toISOString().split('T')[0];
-};
-
-export const getChicagoISODate = (date = new Date()) => {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Chicago",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
-
-  const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
-
-  return `${map.year}-${map.month}-${map.day}`;
-};
+const CHICAGO_TIME_ZONE = "America/Chicago";
 
 const WEEKDAY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
@@ -42,18 +16,45 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
-export const weekdayFormatter = (date) => {
-  if (!(date instanceof Date))
-  {
-    return ""; // Guard against invalid input...
-  }
-  return WEEKDAY_FORMATTER.format(date);
+const isValidDate = (date) =>
+  date instanceof Date && Number.isFinite(date.getTime());
+
+export const getFirstDayOfMonth = (year, month) =>
+  new Date(year, month, 1).getDay();
+
+export const getTotalDaysInMonth = (year, month) =>
+  new Date(year, month + 1, 0).getDate();
+
+export const formatToISODate = (year, month, day) => {
+  const date = new Date(Date.UTC(year, month, day));
+
+  return [
+    String(date.getUTCFullYear()).padStart(4, "0"),
+    String(date.getUTCMonth() + 1).padStart(2, "0"),
+    String(date.getUTCDate()).padStart(2, "0"),
+  ].join("-");
 };
 
-export const dateFormatter = (date) => {
-  if (!(date instanceof Date))
+export const getChicagoISODate = (date = new Date()) => {
+  if (!isValidDate(date))
   {
-    return ""; // Guard against invalid input...
+    return "";
   }
-  return DATE_FORMATTER.format(date);
+
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: CHICAGO_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+
+  return `${values.year}-${values.month}-${values.day}`;
 };
+
+export const weekdayFormatter = (date) =>
+  isValidDate(date) ? WEEKDAY_FORMATTER.format(date) : "";
+
+export const dateFormatter = (date) =>
+  isValidDate(date) ? DATE_FORMATTER.format(date) : "";
