@@ -8,8 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest",
-    "deploy": "npm run build && gh-pages -d dist"
+    "test": "vitest"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -22,7 +21,6 @@
     "@vitest/browser": "^5.0.4",
     "ci-info": "^4.1.0",
     "eslint": "^10.6.0",
-    "gh-pages": "^6.2.0",
     "globals": "^17.4.0",
     "jsdom": "^30.0.1",
     "react": "^19.2.4",

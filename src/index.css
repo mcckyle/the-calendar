@@ -25,7 +25,6 @@
     /* Brand Colors. */
     --brand: #24588f;
     --brand-soft: #3978b8;
-
     --accent: #f4a524;
     --accent-soft: #ffc861;
 
@@ -58,15 +57,15 @@
    Reset & Base Styles.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html { block-size: 100%; font-size: 16px; scroll-behavior: smooth; }
-#root { inline-size: 100%; block-size: 100%; min-inline-size: 0; min-block-size: 0; }
+html { min-block-size: 100%; font-size: 16px; scroll-behavior: smooth; }
+#root { inline-size: 100%; block-size: 100vh; block-size: 100dvh; min-inline-size: 0; min-block-size: 0; }
 body
 {
-    margin: 0;
-
     inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: 100%;
+    min-block-size: 100vh;
+    min-block-size: 100dvh;
+    margin: 0;
     overflow: hidden;
 
     background: var(--bg-primary);
@@ -144,11 +143,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
     :root
     {
         color-scheme: dark;
-        --bg-primary: #07111f;
-        --bg-secondary: #0b1727;
 
         --brand: #3c78b5;
         --brand-soft: #5794d0;
+
+        --bg-primary: #07111f;
+        --bg-secondary: #0b1727;
 
         --text-primary: #f5f7fb;
         --text-secondary: #9aa8bc;

@@ -8,17 +8,15 @@
     display: grid;
     grid-template-columns: 2rem minmax(8rem, auto) 2rem;
     align-items: center;
-    inline-size: fit-content;
-    min-inline-size: 15rem;
-    margin-inline: auto;
 
-    padding: 0.18rem;
+    inline-size: fit-content;
+    min-inline-size: 13.75rem;
+    margin-inline: auto;
+    padding: 0.15rem;
+
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    background: var(--surface-raised);
 }
 
 /* ====================================
@@ -27,14 +25,16 @@
 .week-nav-label
 {
     min-inline-size: 0;
-    padding-inline: 0.40rem;
+    padding-inline: 0.4rem;
+
     color: var(--text-primary);
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
     text-align: center;
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ====================================
@@ -47,7 +47,6 @@
 
     inline-size: 2rem;
     block-size: 2rem;
-
     border-radius: 50%;
     color: var(--text-muted);
 
@@ -56,11 +55,12 @@
                 transform var(--transition);
 }
 .week-nav-button span { font-size: 1rem; font-weight: 500; line-height: 1; }
-.week-nav-button:active { transform: scale(0.92); }
+.week-nav-button:active { transform: scale(0.94); }
+.week-nav-button:focus-visible { position: relative; z-index: 1; outline-offset: 1px; }
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--brand) 9%, transparent); }
 }
 
 /* ====================================
@@ -68,7 +68,6 @@
 ======================================= */
 @media (prefers-reduced-motion: reduce)
 {
-    .week-navigation { backdrop-filter: none; -webkit-backdrop-filter: none; }
     .week-nav-button { transition: none; }
 }
 
