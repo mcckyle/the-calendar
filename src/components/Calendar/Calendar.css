@@ -64,10 +64,9 @@
     position: relative;
     min-inline-size: 0;
     min-block-size: 0;
-
     overflow: auto;
-    outline: none;
 
+    outline: none;
     scrollbar-gutter: stable;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -82,11 +81,12 @@
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: stretch;
+
     inline-size: 100%;
     min-inline-size: 0;
     min-block-size: 100%;
+
     column-gap: 0;
-    padding-inline: 0.35rem;
     padding-block-end: 0.5rem;
 }
 
@@ -96,6 +96,6 @@
 @media (max-width: 768px)
 {
     .calendar > .week-navigation { margin-block: 0.3rem 0.4rem; }
-    .calendar-columns { grid-template-columns: repeat(7, minmax(7.5rem, 1fr)); min-inline-size: 52.5rem; padding-inline: 0.25rem; padding-block-end: 0.5rem; }
+    .calendar-columns { grid-template-columns: repeat(7, minmax(7.5rem, 1fr)); min-inline-size: 52.5rem; }
     .calendar-feedback { font-size: 0.7rem; }
 }

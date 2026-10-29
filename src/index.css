@@ -23,31 +23,31 @@
     --radius-xl: 2rem;
 
     /* Brand Colors. */
-    --brand: #24588f;
-    --brand-soft: #3978b8;
+    --brand: #3c78b5;
+    --brand-soft: #5794d0;
     --accent: #f4a524;
     --accent-soft: #ffc861;
 
     /* Backgrounds. */
-    --bg-primary: #f4f7fb;
-    --bg-secondary: #edf2f8;
+    --bg-primary: #080f1c;
+    --bg-secondary: #0c1625;
 
     /* Text. */
-    --text-primary: #0f172a;
-    --text-secondary: #5f6b7b;
-    --text-muted: #7d8896;
+    --text-primary: #f3f6fc;
+    --text-secondary: #9ba9bd;
+    --text-muted: #748399;
 
     /* Borders. */
-    --border-subtle: rgba(15, 23, 42, 0.08);
-    --border-soft: rgba(15, 23, 42, 0.05);
+    --border-subtle: rgba(174, 194, 222, 0.12);
+    --border-soft: rgba(174, 194, 222, 0.06);
 
     /* Surfaces. */
-    --surface-primary: rgba(255, 255, 255, 0.72);
-    --surface-raised: rgba(255, 255, 255, 0.92);
+    --surface-primary: #080f1c;
+    --surface-raised: #111d2e;
 
     /* Shadows. */
-    --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 20px 60px rgba(15, 23, 42, 0.10), 0 3px 12px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.18);
+    --shadow-md: 0 20px 60px rgba(0, 0, 0, 0.32), 0 3px 12px rgba(0, 0, 0, 0.16);
 
     /* Motion. */
     --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -114,14 +114,14 @@ button
     font: inherit;
     cursor: pointer;
 }
-button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 75%, white); outline-offset: 4px; }
-::selection { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); }
 
 /* ====================================
    Scrollbars Styles.
 ======================================= */
 ::-webkit-scrollbar { inline-size: 6px; block-size: 6px; }
-::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--text-primary) 20%, transparent); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: rgba(174, 194, 222, 0.2); border-radius: 999px; }
 
 @media (prefers-reduced-motion: reduce)
 {
@@ -138,7 +138,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
 /* ====================================
    Calendar Dark Mode Media Query Styles.
 ======================================= */
-@media (prefers-color-scheme: dark)
+/*@media (prefers-color-scheme: dark)
 {
     :root
     {
@@ -156,8 +156,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
 
         --border-subtle: rgba(255, 255, 255, 0.075);
         --border-soft: rgba(255, 255, 255, 0.04);
-
-        /* Surfaces. */
         --surface-primary: rgba(8, 17, 31, 0.84);
         --surface-raised: rgba(15, 25, 42, 0.96);
 
@@ -166,4 +164,4 @@ button:focus-visible, a:focus-visible { outline: 2px solid color-mix(in srgb, va
     }
     body { background: var(--bg-primary); }
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); }
-}
+}*/

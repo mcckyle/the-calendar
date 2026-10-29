@@ -19,8 +19,7 @@
     color: var(--text-primary);
     text-align: start;
 
-    transition: transform var(--transition),
-                border-color var(--transition),
+    transition: border-color var(--transition),
                 background-color var(--transition);
 }
 
@@ -37,13 +36,12 @@
     background: var(--brand-soft);
     pointer-events: none;
 }
-.event-chip:active { transform: scale(0.99); }
-.event-chip:focus-visible { border-color: var(--accent); outline: 2px solid color-mix(in srgb, var(--accent) 75%, transparent); outline-offset: 2px; }
+.event-chip:focus-visible { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 2px; }
 .event-chip-title { display: -webkit-box; overflow: hidden; color: inherit; font-size: 0.71rem; font-weight: 650; letter-spacing: -0.01em; line-height: 1.4; overflow-wrap: anywhere; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
 @media (hover: hover)
 {
-    .event-chip:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--brand-soft) 45%, var(--border-subtle)); background: color-mix(in srgb, var(--surface-raised) 91%, var(--brand) 9%); }
+    .event-chip:hover { border-color: color-mix(in srgb, var(--brand-soft) 45%, var(--border-subtle)); background: color-mix(in srgb, var(--surface-raised) 91%, var(--brand) 9%); }
 }
 
 /* ====================================

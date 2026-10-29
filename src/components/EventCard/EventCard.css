@@ -47,7 +47,7 @@
     font-weight: 650;
     line-height: 1.5;
 }
-.event-date { color: var(--brand); }
+.event-date { color: var(--brand-soft); }
 .event-time { padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--border-subtle); }
 
 /* ====================================
@@ -104,26 +104,22 @@
     min-block-size: 2.75rem;
     padding-inline: 1.1rem;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--brand) 22%, var(--border-subtle));
-    background: color-mix(in srgb, var(--brand) 6%, var(--surface-raised));
-    color: var(--brand);
+    border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--border-subtle));
+    background: color-mix(in srgb, var(--brand) 8%, var(--surface-raised));
+    color: var(--brand-soft);
     font-size: 0.82rem;
     font-weight: 700;
 
-    transition: transform var(--transition), color var(--transition), background-color var(--transition), border-color var(--transition);
+    transition: color var(--transition),
+                background-color var(--transition),
+                border-color var(--transition);
 }
 .event-card-footer a span:last-child { font-size: 1rem; line-height: 1; }
 .event-card-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.event-card-footer a:active { transform: scale(0.98); }
 
 @media (hover: hover)
 {
-    .event-card-footer a:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--brand) 38%, var(--border-subtle)); background: color-mix(in srgb, var(--brand) 10%, var(--surface-raised)); }
-}
-
-@media (prefers-reduced-motion: reduce)
-{
-    .event-card-footer a { transition: none; }
+    .event-card-footer a:hover { border-color: color-mix(in srgb, var(--brand-soft) 45%, var(--border-subtle)); background: color-mix(in srgb, var(--brand) 13%, var(--surface-raised)); color: var(--text-primary); }
 }
 
 /* ====================================

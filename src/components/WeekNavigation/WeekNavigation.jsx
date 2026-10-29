@@ -1,6 +1,6 @@
 //Filename: WeekNavigation.jsx
 //Author: Kyle McColgan
-//Date: 22 October 2026
+//Date: 29 October 2026
 //Description: This file contains the week navigation functionality for the Saint Louis Events project.
 
 import React, { useMemo, useCallback } from "react";
@@ -17,7 +17,7 @@ const WeekNavigation = () => {
       timeZone: "UTC", //Explicitly force UTC.
     }), [currentDate]);
 
-  const isoDate = useMemo(() => currentDate.toISOString().split("T")[0], [currentDate]);
+  const isoDate = useMemo(() => currentDate.toISOString().slice(0, 10), [currentDate]);
 
   const handlePrev = useCallback(() => changeWeek(-1), [changeWeek]);
   const handleNext = useCallback(() => changeWeek(1), [changeWeek]);

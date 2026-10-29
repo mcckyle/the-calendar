@@ -25,7 +25,7 @@
 ============================================ */
 .weekday-column.is-today
 {
-    background: color-mix(in srgb, var(--accent) 2%, transparent);
+    background: color-mix(in srgb, var(--accent) 2.5%, transparent);
 }
 
 /* ====================================

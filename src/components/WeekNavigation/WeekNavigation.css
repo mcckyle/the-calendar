@@ -6,13 +6,13 @@
 .week-navigation
 {
     display: grid;
-    grid-template-columns: 2rem minmax(8rem, auto) 2rem;
+    grid-template-columns: 2.25rem minmax(8rem, auto) 2.25rem;
     align-items: center;
 
     inline-size: fit-content;
-    min-inline-size: 13.75rem;
+    min-inline-size: 14rem;
     margin-inline: auto;
-    padding: 0.15rem;
+    padding: 0.2rem;
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
@@ -45,22 +45,20 @@
     display: grid;
     place-items: center;
 
-    inline-size: 2rem;
-    block-size: 2rem;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
     border-radius: 50%;
     color: var(--text-muted);
 
-    transition: color var(--transition),
-                background-color var(--transition),
-                transform var(--transition);
+    transition: color var(--transition), background-color var(--transition);
 }
-.week-nav-button span { font-size: 1rem; font-weight: 500; line-height: 1; }
-.week-nav-button:active { transform: scale(0.94); }
+.week-nav-button span { font-size: 1.05rem; font-weight: 500; line-height: 1; }
+.week-nav-button:active { background: color-mix(in srgb, var(--brand) 14%, transparent); }
 .week-nav-button:focus-visible { position: relative; z-index: 1; outline-offset: 1px; }
 
 @media (hover: hover)
 {
-    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--brand) 9%, transparent); }
+    .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--brand) 12%, transparent); }
 }
 
 /* ====================================
