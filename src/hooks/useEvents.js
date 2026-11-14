@@ -1,48 +1,66 @@
 //Filename: useEvents.js
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 13 November 2026
 //Description: This file contains the hook to call the backend endpoint for the Saint Louis Calendar React project.
 
 import { useState, useEffect, useRef } from "react";
 
+const CACHE_TTL = 5 * 60 * 1000;
+const MAX_CACHE_ENTRIES = 24;
+
 //Simple in-memory cache.
 const eventsCache = new Map();
 const inFlightRequests = new Map();
-const CACHE_TTL = 5 * 60 * 1000;
-const getKey = (apiUrl, start, end) => `${apiUrl}|${start}_${end}`;
+
+const normalizeApiUrl = (apiUrl) =>
+  apiUrl.replace(/\/+$/, "");
+
+const getKey = (apiUrl, start, end) =>
+  `${normalizeApiUrl(apiUrl)}|${start}_${end}`;
+
+const isValidDate = (date) =>
+  date instanceof Date && Number.isFinite(date.getTime());
 
 const normalizeEvents = (rawEvents = []) =>
-  rawEvents
+{
+  if (!Array.isArray(rawEvents))
+  {
+    return [];
+  }
+
+  return rawEvents
     .map((event) =>
     {
       const startISO = event?.dates?.start?.dateTime;
 
-      if (!startISO)
+      if ((typeof startISO !== "string") || (!startISO))
       {
         return null;
       }
 
       const start = new Date(startISO);
 
-      if (!Number.isFinite(start.getTime()))
+      if (!isValidDate(start))
       {
         return null;
       }
 
       const endISO = event?.dates?.end?.dateTime;
-      const parsedEnd = endISO ? new Date(endISO) : null;
-      const end = parsedEnd && Number.isFinite(parsedEnd.getTime())
-        ? parsedEnd
-        : null;
+      const parsedEnd = typeof endISO === "string"
+      ? new Date(endISO)
+      : null;
+      const end = isValidDate(parsedEnd)
+      ? parsedEnd
+      : null;
 
-      const venue = event?._embedded.venues?.[0];
+      const venue = event?._embedded?.venues?.[0];
 
       return {
         id: event.id,
-        title: event.name ?? "Untitled Event",
+        title: event.name || "Untitled Event",
         startTime: start,
         endTime: end,
-        allDay: event?.dates?.start?.noSpecificTime ?? false,
+        allDay: event?.dates?.start?.noSpecificTime === true,
         description: event.info ?? event.pleaseNote ?? "",
         venueName: venue?.name ?? "",
         venueAddress: venue?.address?.line1 ?? "",
@@ -53,13 +71,19 @@ const normalizeEvents = (rawEvents = []) =>
     })
     .filter(Boolean)
     .sort((a, b) => a.startTime.getTime() - b.startTime.getTime());
+};
 
 const getWeekRange = (date) =>
 {
   const start = new Date(date);
-  const end = new Date(date);
+  if (!isValidDate(start))
+  {
+    return null;
+  }
 
-  end.setUTCDate(start.getUTCDate() + 6);
+  const end = new Date(start);
+  end.setUTCDate(end.getUTCDate() + 6);
+
   return {
     start: start.toISOString().slice(0, 10),
     end: end.toISOString().slice(0, 10),
@@ -68,8 +92,14 @@ const getWeekRange = (date) =>
 
 const getAdjacentWeeks = (date) =>
 {
-  const previous = new Date(date);
-  const next = new Date(date);
+  const current = new Date(date);
+  if (!isValidDate(current))
+  {
+    return null;
+  }
+
+  const previous = new Date(current);
+  const next = new Date(current);
 
   previous.setUTCDate(previous.getUTCDate() - 7);
   next.setUTCDate(next.getUTCDate() + 7);
@@ -97,15 +127,51 @@ const getCachedEvents = (key) =>
 
 const setCachedEvents = (key, events) =>
 {
+  const now = Date.now();
+
+  //Remove expired entries before adding another.
+  for (const [cacheKey, cached] of eventsCache)
+  {
+    if (now >= cached.expiresAt)
+    {
+      eventsCache.delete(cacheKey);
+    }
+  }
+
+  //Refresh insertion order for recently used entries.
+  eventsCache.delete(key);
+
+  while(eventsCache.size >= MAX_CACHE_ENTRIES)
+  {
+    const oldestKey = eventsCache.keys().next().value;
+    eventsCache.delete(oldestKey);
+  }
+
   eventsCache.set(key, {
     events,
-    expiresAt: Date.now() + CACHE_TTL,
+    expiresAt: now + CACHE_TTL,
   });
+};
+
+const getRequestError = async (response) =>
+{
+  const fallback = `Event request failed (${response.status})`;
+
+  try
+  {
+    const body = await response.json();
+    return body?.error || body?.message || fallback;
+  }
+  catch
+  {
+    return fallback;
+  }
 };
 
 const fetchEvents = async (apiUrl, start, end, signal) =>
 {
-  const key = getKey(apiUrl, start, end);
+  const baseUrl = normalizeApiUrl(apiUrl);
+  const key = getKey(baseUrl, start, end);
   const cached = getCachedEvents(key);
 
   if (cached !== null)
@@ -124,51 +190,56 @@ const fetchEvents = async (apiUrl, start, end, signal) =>
   }
 
   const parameters = new URLSearchParams({
-      city: "Saint Louis",
-      start,
-      end,
-    });
+    city: "Saint Louis",
+    start,
+    end,
+  });
 
-    let request;
-    request = fetch(
-      `${apiUrl}/api/events?${parameters.toString()}`,
-      signal ? { signal } : undefined
-    )
-      .then((response) =>
-      {
-        if (!response.ok)
-        {
-          throw new Error(`Event request failed (${response.status})`);
-        }
+  const request = fetch(
+    `${baseUrl}/api/events?${parameters.toString()}`,
+                        signal ? { signal } : undefined
+  )
+  .then(async (response) =>
+  {
+    if (!response.ok)
+    {
+      throw new Error(await getRequestError(response));
+    }
 
-        return response.json();
-      })
-      .then((data) =>
-      {
-        const events = normalizeEvents(data?._embedded?.events ?? []);
-        setCachedEvents(key, events);
-        return events;
-      })
-      .finally(() =>
-      {
-        //An older request must not remove a newer request's entry.
-        if (inFlightRequests.get(key)?.promise === request)
-        {
-          inFlightRequests.delete(key);
-        }
-      });
+    return response.json();
+  })
+  .then((data) =>
+  {
+    const events = normalizeEvents(data?._embedded?.events ?? []);
+    setCachedEvents(key, events);
+    return events;
+  })
+  .finally(() =>
+  {
+    //Do not let an older request remove a newer request's entry.
+    if (inFlightRequests.get(key)?.promise === request)
+    {
+      inFlightRequests.delete(key);
+    }
+  });
 
-    inFlightRequests.set(key, {
-      promise: request,
-      hasSignal: Boolean(signal),
-    });
+  inFlightRequests.set(key, {
+    promise: request,
+    hasSignal: Boolean(signal),
+  });
 
-    return request;
+  return request;
 };
 
 const prefetchWeek = (apiUrl, date) =>
 {
-  const { start, end } = getWeekRange(date);
+  const range = getWeekRange(date);
+  if (!range)
+  {
+    return;
+  }
+
+  const { start, end } = range;
   const key = getKey(apiUrl, start, end);
 
   if (getCachedEvents(key) !== null)
@@ -181,9 +252,14 @@ const prefetchWeek = (apiUrl, date) =>
 
 const prefetchAdjacentWeeks = (apiUrl, date) =>
 {
-  const { previous, next } = getAdjacentWeeks(date);
-  prefetchWeek(apiUrl, previous);
-  prefetchWeek(apiUrl, next);
+  const adjacent = getAdjacentWeeks(date);
+  if (!adjacent)
+  {
+    return;
+  }
+
+  prefetchWeek(apiUrl, adjacent.previous);
+  prefetchWeek(apiUrl, adjacent.next);
 };
 
 export function useEvents(apiUrl, weekStart, weekEnd)
@@ -227,7 +303,7 @@ export function useEvents(apiUrl, weekStart, weekEnd)
     const controller = new AbortController();
     controllerRef.current = controller;
 
-    //Prevent stale events from appearing under the new week.
+    //Do not display events belonging to the previous week.
     setEvents([]);
     setLoading(true);
     setError(null);
@@ -236,25 +312,25 @@ export function useEvents(apiUrl, weekStart, weekEnd)
     {
       try
       {
-          const result = await fetchEvents(apiUrl, weekStart, weekEnd, controller.signal);
+        const result = await fetchEvents(apiUrl, weekStart, weekEnd, controller.signal);
 
-          if (controller.signal.aborted)
-          {
-              return;
-          }
+        if (controller.signal.aborted)
+        {
+          return;
+        }
 
-          setEvents(result);
-          prefetchAdjacentWeeks(apiUrl, weekStart);
+        setEvents(result);
+        prefetchAdjacentWeeks(apiUrl, weekStart);
       }
       catch (requestError)
       {
-        if ((controller.signal.aborted) || (requestError.name === "AbortError"))
+        if ((controller.signal.aborted) || (requestError?.name === "AbortError"))
         {
           return;
         }
 
         setEvents([]);
-        setError(requestError.message ?? "Unable to load events!");
+        setError(requestError?.message || "Unable to load events!");
       }
       finally
       {
@@ -266,7 +342,8 @@ export function useEvents(apiUrl, weekStart, weekEnd)
     };
 
     load();
-    return () => {
+    return () =>
+    {
       controller.abort();
 
       if (controllerRef.current === controller)

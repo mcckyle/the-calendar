@@ -1,112 +1,74 @@
 //Filename: eventUtils.js
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 13 November 2026
 //Description: This file contains Calendar-related helper functions for the Saint Louis Events React project.
 
 const TIMEZONE = "America/Chicago";
 
-export const isValidDate = (value) =>
+const CHICAGO_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+    timeZone: TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "short",
+});
+const CHICAGO_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
+    timeZone: TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+});
+
+const isValidDate = (value) =>
   value instanceof Date && Number.isFinite(value.getTime());
 
+export const isValidEventDate = isValidDate;
+
 const getChicagoParts = (date) => {
-    const parts = new Intl.DateTimeFormat("en-US", {
-        timeZone: TIMEZONE,
-        hour: "numeric",
-        hourCycle: "h23",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-    }).formatToParts(date);
+    const parts = CHICAGO_DATE_TIME_FORMATTER.formatToParts(date);
 
     const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
 
     return {
-        hour: Number(values.hour),
         year: Number(values.year),
         month: Number(values.month),
         day: Number(values.day),
+        hour: Number(values.hour),
     };
 };
 
-const getDateParts = (date) => {
-    if (!isValidDate(date))
-    {
-        return null;
-    }
-
-    const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1;
-    const day = date.getUTCDate();
-
-    return { year, month, day };
-};
-
-const parseTime = (time) => {
-    if (typeof time !== "string")
-    {
-        return null;
-    }
-
-    const match = time.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
-
-    if (!match)
-    {
-        return null;
-    }
-
-    let [, hourText, minuteText, modifier] = match;
-
-    let hour = Number(hourText);
-    const minute = Number(minuteText);
-    modifier = modifier.toUpperCase();
-
-    if ((hour < 1) || (hour > 12) || (minute < 0) || (minute > 59))
-    {
-        return null;
-    }
-
-    if ((modifier === "PM") && (hour !== 12))
-    {
-        hour += 12;
-    }
-    else if ((modifier === "AM") && (hour === 12))
-    {
-        hour = 0;
-    }
-
-    return { hour, minute };
-};
-
 const chicagoWallTimeToDate = (year, month, day, hour, minute) => {
-    const target = Date.UTC(year, month - 1, day, hour, minute);
+    const targetDate = new Date(0);
+    targetDate.setUTCHours(0, 0, 0, 0);
+    targetDate.setUTCFullYear(year, month - 1, day);
+    targetDate.setUTCHours(hour, minute, 0, 0);
 
-    let result = new Date(target);
+    const targetTimestamp = targetDate.getTime();
 
-    //Correct the candidate using the wall time represented in Chicago.
-    //This avoids assuming that Chicago always uses UTC-05:00.
-    for (let attempt = 0; attempt < 3; attempt += 1)
+    if (!Number.isFinite(targetTimestamp))
     {
-        const parts = new Intl.DateTimeFormat("en-US", {
-            timeZone: TIMEZONE,
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            hourCycle: "h23",
-        }).formatToParts(result);
+        return null;
+    }
+
+    let result = new Date(targetTimestamp);
+
+    //Iteratively correct the UTC candidate against Chicago wall time.
+    for (let attempt = 0; attempt < 4; attempt += 1)
+    {
+        const parts = CHICAGO_DATE_TIME_FORMATTER.formatToParts(result);
 
         const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
 
-        const represented = Date.UTC(
-            Number(values.year),
-            Number(values.month) - 1,
-            Number(values.day),
-            Number(values.hour),
-            Number(values.minute)
-        );
+        const represented = new Date(0);
+        represented.setUTCHours(0, 0, 0, 0);
+        represented.setUTCFullYear(Number(values.year), Number(values.month) - 1, Number(values.day));
+        represented.setUTCHours(Number(values.hour), Number(values.minute), 0);
 
-        const difference = target - represented;
+        const difference = targetTimestamp - represented.getTime();
 
         if (difference === 0)
         {
@@ -116,10 +78,21 @@ const chicagoWallTimeToDate = (year, month, day, hour, minute) => {
         result = new Date(result.getTime() + difference);
     }
 
-    return result;
-};
+    //Reject wall-clock times that do not exist because of DST.
+    const actual = getChicagoParts(result);
+    const matchesTarget =
+        actual.year === year &&
+        actual.month === month &&
+        actual.day === day &&
+        actual.hour === hour &&
+        Number(
+            CHICAGO_DATE_TIME_FORMATTER
+              .formatToParts(result)
+              .find(({ type }) => type === "minute")?.value
+        ) === minute;
 
-export const isValidEventDate = isValidDate;
+    return matchesTarget ? result : null;
+};
 
 export const formatEventDate = (value) =>
 {
@@ -127,8 +100,8 @@ export const formatEventDate = (value) =>
     {
         return null;
     }
-    return new Intl.DateTimeFormat("en-US",
-    {
+
+    return new Intl.DateTimeFormat("en-US", {
         weekday: "long",
         month: "long",
         day: "numeric",
@@ -161,10 +134,12 @@ export const formatVenue = ({
     venueAddress,
     venueCity,
     venueState
-} = {}) =>
-  [venueName, venueAddress, venueCity, venueState]
-    .filter((value) => typeof value === "string" && value.trim())
+} = {}) => {
+  return [venueName, venueAddress, venueCity, venueState]
+    .filter((value) => typeof value === "string" && value.trim().length > 0)
+    .map((value) => value.trim())
     .join(", ");
+};
 
 export const hasEventMeta = (dateOrMeta, time, allDay) => {
     if ((dateOrMeta !== null) && (typeof dateOrMeta === "object") && (!(dateOrMeta instanceof Date)))
@@ -214,6 +189,41 @@ export const convertTo12HourFormat = (time) => {
     return `${adjustedHour}:${String(minute).padStart(2, "0")}${modifier}`;
 };
 
+//Parse a 12-hour clock value into a Chicago-local date.
+const parseTime = (time) => {
+    if (typeof time !== "string")
+    {
+        return null;
+    }
+
+    const match = time.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+
+    if (!match)
+    {
+        return null;
+    }
+
+    let hour = Number(match[1]);
+    const minute = Number(match[2]);
+    const modifier = match[3].toUpperCase();
+
+    if ((hour < 1) || (hour > 12) || (minute > 59))
+    {
+        return null;
+    }
+
+    if ((modifier === "PM") && (hour !== 12))
+    {
+        hour += 12;
+    }
+    else if ((modifier === "AM") && (hour === 12))
+    {
+        hour = 0;
+    }
+
+    return { hour, minute };
+};
+
 // Helper function to parse 12-hour time into a Date object.
 export const parseEventTime = (date, time) => {
     if ((typeof date !== "string") || (typeof time !== "string"))
@@ -229,12 +239,14 @@ export const parseEventTime = (date, time) => {
         return null;
     }
 
-    let [, yearText, monthText, dayText] = dateMatch;
-    const year = Number(yearText);
-    const month = Number(monthText);
-    const day = Number(dayText);
+    const year = Number(dateMatch[1]);
+    const month = Number(dateMatch[2]);
+    const day = Number(dateMatch[3]);
 
-    const validationDate = new Date(Date.UTC(year, month - 1, day));
+    //Validate the calendar date without relying on a local timezone.
+    const validationDate = new Date(0);
+    validationDate.setUTCHours(0, 0, 0, 0);
+    validationDate.setUTCFullYear(year, month - 1, day);
 
     if ((validationDate.getUTCFullYear() !== year) || (validationDate.getUTCMonth() !== month - 1) || (validationDate.getUTCDate() !== day))
     {
@@ -332,9 +344,12 @@ export const groupEventsByHour = (day, events) => {
         }
 
         const start = getChicagoParts(event.startTime);
+        const matchesDay =
+            start.year === target.year &&
+            start.month === target.month &&
+            start.day === target.day;
 
-        if ((start.year !== target.year) || (start.month !== target.month) ||
-        (start.day !== target.day))
+        if (!matchesDay)
         {
             continue;
         }

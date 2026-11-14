@@ -12,10 +12,9 @@
     display: grid;
     grid-column: 1 / -1; /* Header should always match and align with the columns. */
     grid-template-columns: inherit;
-    column-gap: inherit;
     padding-block: 0.6rem 0.65rem;
     border-block-end: 1px solid var(--border-subtle);
-    background: var(--bg-primary);
+    background: var(--surface-primary);
 }
 
 /* ====================================

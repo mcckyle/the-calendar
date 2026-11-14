@@ -85,8 +85,6 @@
     inline-size: 100%;
     min-inline-size: 0;
     min-block-size: 100%;
-
-    column-gap: 0;
     padding-block-end: 0.5rem;
 }
 

@@ -1,6 +1,6 @@
 //Filename: EventPanel.jsx
 //Author: Kyle McColgan
-//Date: 29 October 2026
+//Date: 12 November 2026
 //Description: This file contains the event modal for the Saint Louis Events project.
 
 import React, { useEffect, useRef } from "react";
@@ -20,13 +20,14 @@ const FOCUSABLE_ELEMENTS = [
 const EventPanel = ({ selectedEvent, onClose }) => {
   const panelRef = useRef(null);
   const previousFocusRef = useRef(null);
+  const isOpen = Boolean(selectedEvent);
 
   //Focus the panel when it opens & handle Escape key...
   useEffect(() =>
   {
     const panel = panelRef.current;
 
-    if ((!selectedEvent) || (!panel))
+    if ((!isOpen) || (!panel))
     {
       return undefined;
     }
@@ -56,10 +57,11 @@ const EventPanel = ({ selectedEvent, onClose }) => {
       const focusableElements = [
         ...panel.querySelectorAll(FOCUSABLE_ELEMENTS),
       ].filter(
-        (element) =>
+        ((element) =>
           !element.hasAttribute("hidden") &&
           element.getAttribute("aria-hidden") !== "true" &&
-          element.getAttribute("aria-disabled") !== "true");
+          element.getAttribute("aria-disabled") !== "true") &&
+          !element.closest("[inert]"));
 
       if (focusableElements.length === 0)
       {
@@ -98,8 +100,10 @@ const EventPanel = ({ selectedEvent, onClose }) => {
       {
         previousFocus.focus();
       }
+
+      previousFocusRef.current = null;
     };
-  }, [selectedEvent, onClose]);
+  }, [isOpen, onClose]);
 
   if (!selectedEvent)
   {
@@ -113,6 +117,7 @@ const EventPanel = ({ selectedEvent, onClose }) => {
         type="button"
         className="event-overlay"
         aria-label="Close event details overlay"
+        tabIndex={-1}
         onClick={onClose}
       />
 

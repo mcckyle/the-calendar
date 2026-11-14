@@ -8,7 +8,6 @@
     display: grid;
     grid-template-columns: var(--time-column-width) minmax(0, 1fr);
     min-inline-size: 0;
-    min-block-size: var(--calendar-row-height);
     border-block-end: 1px solid var(--border-soft);
 }
 .time-slot:last-child { border-block-end: 0; } /* Last Slot Styles. */
@@ -43,7 +42,6 @@
     flex-direction: column;
     gap: 0.4rem;
     min-inline-size: 0;
-    min-block-size: 100%;
     padding-block: 0.4rem;
     padding-inline-end: 0.4rem;
 }

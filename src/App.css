@@ -17,8 +17,8 @@
     isolation: isolate;
     color: var(--text-primary);
     background: radial-gradient(
-        ellipse 52rem 20rem at 50% -14rem,
-        color-mix(in srgb, var(--brand) 12%, transparent),
+        ellipse 54rem 22rem at 50% -16rem,
+        color-mix(in srgb, var(--brand) 13%, transparent),
         transparent 75%
     ),
     var(--bg-primary);
@@ -31,10 +31,10 @@
 {
     display: grid;
     place-items: center;
-    padding-block: max(0.8rem, env(safe-area-inset-top)) 1rem;
+    padding-block: max(0.8rem, env(safe-area-inset-top)) 0.95rem;
     padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right));
     border-block-end: 1px solid var(--border-subtle);
-    background: color-mix(in srgb, var(--bg-primary) 94%, transparent);
+    background: color-mix(in srgb, var(--bg-primary) 96%, transparent);
 }
 .hero-copy { display: grid; justify-items: center; gap: 0.45rem; inline-size: min(100%, 56rem); text-align: center; }
 .eyebrow { color: var(--accent); font-size: 0.625rem; font-weight: 800; letter-spacing: 0.15em; line-height: 1.4; text-transform: uppercase; }
@@ -69,6 +69,6 @@
 @media (max-width: 360px)
 {
     .hero { padding-inline: 0.75rem; }
-    .eyebrow { font-size: 0.5rem; letter-spacing: 0.10rem; }
+    .eyebrow { font-size: 0.5rem; letter-spacing: 0.1rem; }
     .tagline { max-inline-size: 22rem; font-size: 0.675rem; }
 }

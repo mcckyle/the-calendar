@@ -6,12 +6,11 @@
 .week-navigation
 {
     display: grid;
-    grid-template-columns: 2.25rem minmax(8rem, auto) 2.25rem;
+    grid-template-columns: 2.25rem minmax(8rem, 1fr) 2.25rem;
     align-items: center;
 
     inline-size: fit-content;
     min-inline-size: 14rem;
-    margin-inline: auto;
     padding: 0.2rem;
 
     border: 1px solid var(--border-subtle);
@@ -60,21 +59,3 @@
 {
     .week-nav-button:hover { color: var(--text-primary); background: color-mix(in srgb, var(--brand) 12%, transparent); }
 }
-
-/* ====================================
-   WeekNavigation Reduced Motion Styles.
-======================================= */
-@media (prefers-reduced-motion: reduce)
-{
-    .week-nav-button { transition: none; }
-}
-
-/* ====================================
-   WeekNavigation Media Query Styles.
-======================================= */
-/*@media (max-width: 768px)
-{
-    .week-navigation { grid-template-columns: 1.9rem auto 1.9rem; min-inline-size: 14.5rem; }
-    .week-nav-label { min-inline-size: 7rem; font-size: 0.73rem; }
-    .week-nav-button { inline-size: 1.9rem; block-size: 1.9rem; }
-}*/

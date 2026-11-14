@@ -1,6 +1,6 @@
 //Filename: dateHelpers.js
 //Author: Kyle McColgan
-//Date: 8 October 2026
+//Date: 12 November 2026
 //Description: This file contains some helper functions for the Saint Louis calendar project.
 
 const CHICAGO_TIME_ZONE = "America/Chicago";
@@ -15,18 +15,34 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   timeZone: "UTC",
 });
+const CHICAGO_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  timeZone: CHICAGO_TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
 
 const isValidDate = (date) =>
   date instanceof Date && Number.isFinite(date.getTime());
 
-export const getFirstDayOfMonth = (year, month) =>
-  new Date(year, month, 1).getDay();
+//Construct a UTC date without the special handling of years 0-99.
+const createUTCDate = (year, month, day) => {
+  const date = new Date(0);
+  date.setUTCHours(0, 0, 0, 0);
+  date.setUTCFullYear(year, month, day);
+  return date;
+};
 
-export const getTotalDaysInMonth = (year, month) =>
-  new Date(year, month + 1, 0).getDate();
+export const getFirstDayOfMonth = (year, month) => {
+  return createUTCDate(year, month, 1).getUTCDay();
+};
+
+export const getTotalDaysInMonth = (year, month) => {
+  return createUTCDate(year, month + 1, 0).getUTCDate();
+};
 
 export const formatToISODate = (year, month, day) => {
-  const date = new Date(Date.UTC(year, month, day));
+  const date = createUTCDate(year, month, day);
 
   return [
     String(date.getUTCFullYear()).padStart(4, "0"),
@@ -41,20 +57,21 @@ export const getChicagoISODate = (date = new Date()) => {
     return "";
   }
 
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: CHICAGO_TIME_ZONE,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
+  const parts = CHICAGO_DATE_FORMATTER.formatToParts(date);
 
   const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
 
-  return `${values.year}-${values.month}-${values.day}`;
+  return [
+    String(values.year).padStart(4, "0"),
+    String(values.month).padStart(2, "0"),
+    String(values.day).padStart(2, "0"),
+  ].join("-");
 };
 
-export const weekdayFormatter = (date) =>
-  isValidDate(date) ? WEEKDAY_FORMATTER.format(date) : "";
+export const weekdayFormatter = (date) => {
+  return isValidDate(date) ? WEEKDAY_FORMATTER.format(date) : "";
+};
 
-export const dateFormatter = (date) =>
-  isValidDate(date) ? DATE_FORMATTER.format(date) : "";
+export const dateFormatter = (date) => {
+  return isValidDate(date) ? DATE_FORMATTER.format(date) : "";
+};
